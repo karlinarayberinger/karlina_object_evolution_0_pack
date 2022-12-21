@@ -35,6 +35,7 @@ function generate_array_of_objects_representing_all_possible_T_values() {
     for (i = 0; i < MAXIMUM_T; i++) {
         current_object.T_nonnegative_integer_value = i;
         current_object.html_color_code = generate_html_color_code("#000000", (10 * i));
+        array_of_objects.push(current_object);
     }
     return array_of_objects;
 }
