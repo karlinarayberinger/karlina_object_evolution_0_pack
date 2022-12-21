@@ -17,6 +17,10 @@ function generate_time_stamp() {
     return  milliseconds_elapsed_since_unix_epoch + " milliseconds since midnight on 01_JANUARY_1970.";
 }
 
+function generate_html_color_code(start_html_color_code_value, nonnegative_integer_offset) {
+
+}
+
 /**
  * Return an array of objects such that each object represents a unqique HTML color code 
  * and corresponding nonnegative integer value no larger than the cardinality of the returned array
@@ -30,7 +34,7 @@ function generate_array_of_objects_representing_all_possible_T_values() {
     let i = 0, current_object = {html_color_code: "#RRGGBB", T_nonnegative_integer_value: 0};
     for (i = 0; i < MAXIMUM_T; i++) {
         current_object.T_nonnegative_integer_value = i;
-        current_object.html_color_code = generate_html_color_code(start_html_color_code_value, nonnegative_integer_offset);
+        current_object.html_color_code = generate_html_color_code("#000000", (10 * i));
     }
     return array_of_objects;
 }
