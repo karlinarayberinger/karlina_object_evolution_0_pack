@@ -118,12 +118,17 @@ function generate_array_D() {
  * 
  * Display a histogram describing the contents of array A.
  * 
- * Display a histogram describing the contents of array A.
- * Display a histogram describing the contents of array A.
- * Display a histogram describing the contents of array A.
+ * Display a histogram describing the contents of array B.
+ * 
+ * Display a histogram describing the contents of array C.
+ * 
+ * Display a histogram describing the contents of array D.
  */
 function populate_output_div_with_statistics_about_arrays_A_B_C_D() {
-
+    // array_0 represents the set of all possible states for T.
+    let array_0;
+    // array_1 represents the set of all possible states for 
+    //...
 }
 
 /**
@@ -167,7 +172,17 @@ function populate_universe_menu_paragraph() {
  * or else refreshed by a web browser.
  */
 function initialize_application() {
-    //...
+    try {
+        const page_loaded_message = ("function initialize_application() was called at time: " + generate_time_stamp()), p0 = ('<' + 'p' + '>'), p1 = ('<' + '/' + 'p' + '>');
+        const output_initial_message = "Statistics about the probability of each T state manifesting (abstract) and being empirically observed (concrete) will be displayed as cyan text (replacing this text) when the START button is clicked.";
+        console.log(page_loaded_message);
+        document.getElementById("log").innerHTML = p0 + page_loaded_message + p1;
+        document.getElementById("output").innerHTML = p0 + output_initial_message + p1;
+        document.getElementById("start_button").style.display = "block";
+    }
+    catch(e) {
+        console.log("An exception to normal functioning occurred during the runtime of initialize_application(): " + e);
+    }
 }
 
 /**
@@ -180,5 +195,17 @@ function initialize_application() {
  * Display program output.
  */
 function start() {
-    //...
+    try {
+        const start_button_clicked_message = ("function start() was called at time: " + generate_time_stamp()), p0 = ('<' + 'p' + '>'), p1 = ('<' + '/' + 'p' + '>');
+        const output_initial_message = "Statistics about the probability of each T state manifesting (abstract) and being empirically observed (concrete) will be displayed as cyan text (replacing this text) when the START button is clicked.";
+        let statistics_string = "// statistics_string";
+        console.log(start_button_clicked_message);
+        //...
+        document.getElementById("log").innerHTML = p0 + start_button_clicked_message + p1;
+        document.getElementById("output").innerHTML = p0 + statistics_string + p1;
+        document.getElementById("start_button").style.display = "none";
+    }
+    catch(e) {
+        console.log("An exception to normal functioning occurred during the runtime of start(): " + e);
+    }
 }
