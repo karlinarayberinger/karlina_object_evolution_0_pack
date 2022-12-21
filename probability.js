@@ -26,9 +26,12 @@ function generate_time_stamp() {
  * @return {Object} an array comprised of Object type elements.
  */
 function generate_array_of_objects_representing_all_possible_T_values() {
-    const array_of_objects = [];
+    const array_of_objects = [], MAXIMUM_T = 100;
     let i = 0, current_object = {html_color_code: "#RRGGBB", T_nonnegative_integer_value: 0};
-    //...
+    for (i = 0; i < MAXIMUM_T; i++) {
+        current_object.T_nonnegative_integer_value = i;
+        current_object.html_color_code = generate_html_color_code(start_html_color_code_value, nonnegative_integer_offset);
+    }
     return array_of_objects;
 }
 
