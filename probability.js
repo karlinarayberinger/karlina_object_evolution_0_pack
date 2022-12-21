@@ -17,7 +17,7 @@ function generate_time_stamp() {
     return  milliseconds_elapsed_since_unix_epoch + " milliseconds since midnight on 01_JANUARY_1970.";
 }
 
-function generate_html_color_code(start_html_color_code_value, nonnegative_integer_offset) {
+function generate_array_of_html_color_codes() {
 
 }
 
@@ -32,10 +32,11 @@ function generate_html_color_code(start_html_color_code_value, nonnegative_integ
 function generate_array_of_objects_representing_all_possible_T_values() {
     const array_of_objects = [], MAXIMUM_T = 100;
     let i = 0, current_object = {html_color_code: "#RRGGBB", T_nonnegative_integer_value: 0};
+    let array_of_html_color_codes = generate_array_of_html_color_codes();
     for (i = 0; i < MAXIMUM_T; i++) {
         current_object.T_nonnegative_integer_value = i;
-        current_object.html_color_code = generate_html_color_code("#000000", (10 * i));
-        array_of_objects.push(current_object);
+        current_object.html_color_code = array_of_html_color_codes[i];
+        array_of_objects.push(current_obect)
     }
     return array_of_objects;
 }
