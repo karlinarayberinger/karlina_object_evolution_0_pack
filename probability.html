@@ -18,15 +18,17 @@
  <body onload="initialize_application()">
     <div>
         <h1>PROBABILITY</h1>
-        <p>STEP_0: Select a natural number values to store in variable S.</p>
-        <p>STEP_1: Select a natural number values to store in variable T.</p>
+        <p>STEP_0: Select a natural number value to store in variable S.</p>
+        <p id="S_menu_paragraph">(Insert select_S menu here).</p>
+        <p>STEP_1: Select a natural number value to store in variable T.</p>
+        <p id="T_menu_paragraph">(Insert select_Tmenu here).</p>
         <p>
             STEP_2: Click START to generate a "random" set of objects such that 
             each object manifests as one of T possible unique nonnegative integer values
             and such that the set contains exactly S objects. Display facts about the
             set of S objects.
         </p>
-        <p><input type="button" value="START" onclick="start()"></p>
+        <p><input id="start_button" type="button" value="START" onclick="start()"></p>
     <div id="output">
         <p>
             Statistics about the probability of each T state manifesting (abstract) 
