@@ -1,0 +1,41 @@
+<!--
+/**
+ * file: probability.html
+ * type: Hyper-Text-Markup-Language
+ * author: karbytes
+ * date: 20_DECEMBER_2022
+ * license: PUBLIC_DOMAIN
+ */
+ -->
+ <!DOCTYPE html>
+ <html>
+ <head>
+    <meta charset="UTF-8">
+    <title>PROBABILITY</title>
+ 	<link rel="stylesheet" href="karbytes_aesthetic.css">
+    <script src="probability.js"></script>
+ </head>
+ <body onload="initialize_application()">
+    <div>
+        <h1>PROBABILITY</h1>
+        <p>STEP_0: Select a natural number value to store in variable S.</p>
+        <p>STEP_1: Select a natural number value to store in variable T.</p>
+        <p>
+            STEP_2: Click START to generate a "random" set of objects such that 
+            each object manifests as one of T possible unique nonnegative integer values
+            and such that the set contains exactly S objects. Display facts about the
+            set of S objects.
+        </p>
+        <p><input type="button" value="START" onclick="start()"></p>
+    <div id="output">
+        <p>
+            Statistics about the probability of each T state manifesting (abstract) 
+            and being empirically observed (concrete) will be displayed as cyan text 
+            (replacing this text) when the START button is clicked.
+        </p>
+    </div>
+    <div class="console" id="console_log_display">
+        <p>???</p>
+    </div>
+ </body>
+ </html>
