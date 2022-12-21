@@ -29,3 +29,21 @@ function generate_array_of_objects_representing_all_possible_T_values() {
     //...
     return array_of_objects;
 }
+
+/**
+ * Insert a select element which displays every nonnegative integer in ascending order 
+ * which is less than or equal to the natural number (S - 1) into the paragraph element
+ * whose id is "S_menu_paragraph".
+ */
+function populate_S_menu_paragraph() {
+    //..
+}
+
+/**
+ * Insert a select element which displays every nonnegative integer in ascending order 
+ * which is less than or equal to the natural number (T - 1) into the paragraph element
+ * whose id is "T_menu_paragraph".
+ */
+function populate_T_menu_paragraph() {
+    //..
+}
