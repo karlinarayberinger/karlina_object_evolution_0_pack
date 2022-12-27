@@ -10,7 +10,7 @@
  * Return a String which describes the number of milliseconds which have elapsed since the Unix Epoch.
  * 
  * Note that the Unix Epoch is 01_JANUARY_1970 at 0 hours, 0 minutes, 0 seconds, and 0 seconds 
- * (i.e. midnight) (Coordinated Universal Time (UTC)).
+ * (i.e. 00:00:00) (i.e. midnight) (Coordinated Universal Time (UTC)).
  */
 function generate_time_stamp() {
     const milliseconds_elapsed_since_unix_epoch = Date.now();
