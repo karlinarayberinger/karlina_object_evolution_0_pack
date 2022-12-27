@@ -3,7 +3,7 @@
  * file: probability.html
  * type: Hyper-Text-Markup-Language
  * author: karbytes
- * date: 26_DECEMBER_2022
+ * date: 27_DECEMBER_2022
  * license: PUBLIC_DOMAIN
  */
  -->
@@ -15,20 +15,12 @@
     <link rel="stylesheet" href="karbytes_aesthetic.css">
     <script src="probability.js"></script>
  </head>
- <!--=========================================================================================-->
- <!-- This function is called when the web page is loaded or refreshed by a web browser       -->
- <!-- or when the RESET button is clicked.                                                    -->
- <!--=========================================================================================-->
  <body onload="initialize_application()">
    <h1>PROBABILITY</h1>
    <p>
       STEP_0: For each unique COLOR value, select a nonnegative integer number of 
       times to include that COLOR value as an element of an array named A.
    </p>
-   <!--=========================================================================================-->
-   <!-- This div element will be populated with a list of SELECT elements when                  -->
-   <!-- initialize_application() is called.                                                     -->
-   <!--=========================================================================================-->
    <div id="c_menus_div" class="console"><p>#c_menus_div</p></div>
    <p>
       STEP_1: Specify whether to randomly remove elements from A until A is empty 
@@ -38,10 +30,6 @@
       for a total of N selections ("probability with replacement").
    </p>
    <p>Note that N is the total number of elements in the array named A.</p>
-   <!--=========================================================================================-->
-   <!-- This div element will be populated with one SELECT element when                         -->
-   <!-- initialize_application() is called.                                                     -->
-   <!--=========================================================================================-->
    <div id="p_menu_div" class="console">#p_menu_div</div>
    <p>
       STEP_2: Click the GENERATE button to create an array named A whose elements 
@@ -51,22 +39,9 @@
       A until A is empty or, if the "probability with replacement" option was selected
       in STEP_1, until N elements were selected at random and removed from A.
    </p>
-   <!--=========================================================================================-->
-   <!-- This button element will be hidden when generate() is called and unhidden when          -->
-   <!-- initialize_application() is called.                                                     -->
-   <!--=========================================================================================-->
    <p><input id="generate_button" type="button" value="GENERATE" onclick="generate()"></p>
-   <!--=========================================================================================-->
-   <!-- This button element will reset the web page interface to its initial state.             -->
-   <!--=========================================================================================-->
    <p><input id="reset_button" type="button" value="RESET" onclick="initialize_application()"></p>
-   <!--=========================================================================================-->
-   <!-- This div element will display program output after generate() is called. -->
-   <!--=========================================================================================-->
    <div id="output"><p>#output</p></div> 
-   <!--=========================================================================================-->
-   <!-- This div element will display program output after intitialize_application() is called. -->
-   <!--=========================================================================================-->
    <div class="console" id="events_log"><p>#events_log</p></div> 
  </body>
  </html>
