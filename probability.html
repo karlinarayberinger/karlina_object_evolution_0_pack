@@ -3,7 +3,7 @@
  * file: probability.html
  * type: Hyper-Text-Markup-Language
  * author: karbytes
- * date: 20_DECEMBER_2022
+ * date: 26_DECEMBER_2022
  * license: PUBLIC_DOMAIN
  */
  -->
@@ -15,25 +15,58 @@
     <link rel="stylesheet" href="karbytes_aesthetic.css">
     <script src="probability.js"></script>
  </head>
+ <!--=========================================================================================-->
+ <!-- This function is called when the web page is loaded or refreshed by a web browser       -->
+ <!-- or when the RESET button is clicked.                                                    -->
+ <!--=========================================================================================-->
  <body onload="initialize_application()">
-    <div>
-        <h1>PROBABILITY</h1>
-        <p>STEP_0: Select a natural number value to store in variable S.</p>
-        <p id="S_menu_paragraph">(Insert select_S menu here).</p>
-        <p>STEP_1: Select a natural number value to store in variable T.</p>
-        <p id="T_menu_paragraph">(Insert select_T menu here).</p>
-        <p>STEP_2: Select one of the two universe types to instantiate into.</p>
-        <!-- // probability using replacement or else not using replacement -->
-        <p id="universe_menu_paragraph">(Insert universe_type menu here).</p> 
-        <p>
-            STEP_3: Click START to generate a "random" set of objects such that 
-            each object manifests as one of T possible unique nonnegative integer values
-            and such that the set contains exactly S objects. Display facts about the
-            set of S objects.
-        </p>
-        <!-- // button and menus disappear after START is clicked -->
-        <p><input id="start_button" type="button" value="START" onclick="start()"></p>
-    <div id="output"><p>???</p></div> <!-- // cyan text (program input/output information) -->
-    <div class="console" id="log"><p>???</p></div> <!-- // green text (time-stamped program events) --> 
+   <h1>PROBABILITY</h1>
+   <p>
+      STEP_0: For each unique COLOR value, select a nonnegative integer number of 
+      times to include that COLOR value as an element of an array named A.
+   </p>
+   <!--=========================================================================================-->
+   <!-- This div element will be populated with a list of SELECT elements when                  -->
+   <!-- initialize_application() is called.                                                     -->
+   <!--=========================================================================================-->
+   <div id="c_menus_div" class="console"><p>#c_menus_div</p></div>
+   <p>
+      STEP_1: Specify whether to randomly remove elements from A until A is empty 
+      ("probability without replacement") or else to randomy remove elements from
+      A while replacing each of those elements with exactly one newly randomly 
+      generated COLOR value from the list of all possible colors enumerated in STEP_0 
+      for a total of N selections ("probability with replacement").
+   </p>
+   <p>Note that N is the total number of elements in the array named A.</p>
+   <!--=========================================================================================-->
+   <!-- This div element will be populated with one SELECT element when                         -->
+   <!-- initialize_application() is called.                                                     -->
+   <!--=========================================================================================-->
+   <div id="p_menu_div" class="console">#p_menu_div</div>
+   <p>
+      STEP_2: Click the GENERATE button to create an array named A whose elements 
+      are the COLOR values which each appear as many times as its corresponding input
+      quantity in STEP_0 specifies, arranges the elements of A in a random order, 
+      and then allows the user to select one element of A at random to remove from
+      A until A is empty or, if the "probability with replacement" option was selected
+      in STEP_1, until N elements were selected at random and removed from A.
+   </p>
+   <!--=========================================================================================-->
+   <!-- This button element will be hidden when generate() is called and unhidden when          -->
+   <!-- initialize_application() is called.                                                     -->
+   <!--=========================================================================================-->
+   <p><input id="generate_button" type="button" value="GENERATE" onclick="generate()"></p>
+   <!--=========================================================================================-->
+   <!-- This button element will reset the web page interface to its initial state.             -->
+   <!--=========================================================================================-->
+   <p><input id="reset_button" type="button" value="RESET" onclick="initialize_application()"></p>
+   <!--=========================================================================================-->
+   <!-- This div element will display program output after generate() is called. -->
+   <!--=========================================================================================-->
+   <div id="output"><p>#output</p></div> 
+   <!--=========================================================================================-->
+   <!-- This div element will display program output after intitialize_application() is called. -->
+   <!--=========================================================================================-->
+   <div class="console" id="events_log"><p>#events_log</p></div> 
  </body>
  </html>
