@@ -37,9 +37,23 @@ function generate_color_values() {
     return ["#3cfa07", "#fa0738", "#0a7df7", "#b700ff", "#ffc800", "#00ff95", "#1a02b8", "#a89c87", "#4c7852", "#f5a9a9"];
 }
 
-function initialize_application() {
-    let colors = generate_color_values(), i = 0, N = 10, S = "";
-    for (i = 0; i < N; i++) S += '<' + 'p style="background:' + colors[i] + '"' + '>' + colors[i] + '<' + '/' + 'p' + '>';
-    document.getElementById("output").innerHTML = S;
+/**
+ * Return the String type value of the selected menu option of a SELECT menu element.
+ * 
+ * Assume that select_menu_identifier is a String type value and the id of an existing select HTML element.
+ */
+function get_selected_menu_option_value(select_menu_identifier) {
+    try {
+        let menu_object = {}, options_array = [], selected_option_index = 0, selected_option_object = {}, selected_option_value;
+        menu_object = document.getElementById(select_menu_identifier);
+        options_array = menu_object.options;
+        selected_option_index = menu_object.selectedIndex;
+        selected_option_object = options_array[selected_option_index];
+        selected_option_value = selected_option_object.value
+        return selected_option_value;
+    }
+    catch(exception) {
+        console.log("An exception to normal functioning occurred during the runtime of get_selected_menu_option(select_menu_identifier): " + exception);
+    }
 }
 
