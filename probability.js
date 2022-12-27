@@ -14,7 +14,7 @@
  */
 function generate_time_stamp() {
     const milliseconds_elapsed_since_unix_epoch = Date.now();
-    return  milliseconds_elapsed_since_unix_epoch + " milliseconds since midnight on 01_JANUARY_1970.";
+    return milliseconds_elapsed_since_unix_epoch + " milliseconds since midnight on 01_JANUARY_1970.";
 }
 
 /**
