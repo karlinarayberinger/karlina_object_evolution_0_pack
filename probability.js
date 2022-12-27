@@ -1,7 +1,7 @@
 /**
  * file: probability.js
  * type: JavaScript
- * date: 26_DECEMBER_2022
+ * date: 27_DECEMBER_2022
  * author: karbytes
  * license: PUBLIC_DOMAIN
  */
@@ -18,14 +18,28 @@ function generate_time_stamp() {
 }
 
 /**
- * Return an array of 
+ * Return an array of ten String type values such that each of those values is a unique HTML color code.
  * 
+ * An HTML color code is a String whose leftmost character is '#' followed by two hexidecimal digits
+ * which represent a RED hue, then two hexidecimal digits which represent a GREEN hue, and then
+ * two hexidecimal digits which represent a BLUE hue.
+ * 
+ * RED: #ff0000
+ * GREEN: #00ff00
+ * BLUE: #0000ff
+ * MAGENTA: #ff00ff
+ * CYAN: #00ffff
+ * YELLOW: #ffff00
+ * BLACK: #000000
+ * WHITE: #ffffff
  */
 function generate_color_values() {
-
+    return ["#3cfa07", "#fa0738", "#0a7df7", "#b700ff", "#ffc800", "#00ff95", "#1a02b8", "#a89c87", "#4c7852", "#f5a9a9"];
 }
 
 function initialize_application() {
-    console.log(typeof { color: "#00ff00", name: "green"});
+    let colors = generate_color_values(), i = 0, N = 10, S = "";
+    for (i = 0; i < N; i++) S += '<' + 'p style="background:' + colors[i] + '"' + '>' + colors[i] + '<' + '/' + 'p' + '>';
+    document.getElementById("output").innerHTML = S;
 }
 
