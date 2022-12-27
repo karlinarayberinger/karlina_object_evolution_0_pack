@@ -18,9 +18,14 @@ function generate_time_stamp() {
 }
 
 /**
+ * Return an array of 
  * 
  */
 function generate_color_values() {
 
+}
+
+function initialize_application() {
+    console.log(typeof { color: "#00ff00", name: "green"});
 }
 
