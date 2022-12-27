@@ -18,10 +18,15 @@
  <body onload="initialize_application()">
    <h1>PROBABILITY</h1>
    <p>
-      STEP_0: For each unique COLOR value, select a nonnegative integer number of 
-      times to include that COLOR value as an element of an array named A.
+      STEP_0: Select a nonnegative integer quantity for each COLOR value
+      to store in an array of COLOR values named A.
    </p>
-   <div id="c_menus_div" class="console"><p>#c_menus_div</p></div>
+   <p>
+      Note that A is an array consisting exclusively of the COLOR values
+      such that each unique COLOR value appears as an element of A for
+      some nonnegative integer number of times.
+   </p>
+   <div id="c_menus" class="console"><p>#c_menus</p></div>
    <p>
       STEP_1: Specify whether to randomly remove elements from A until A is empty 
       ("probability without replacement") or else to randomy remove elements from
@@ -30,14 +35,16 @@
       for a total of N selections ("probability with replacement").
    </p>
    <p>Note that N is the total number of elements in the array named A.</p>
-   <div id="p_menu_div" class="console">#p_menu_div</div>
+   <p id="p_menu" class="console">#p_menu</p>
+   <p>STEP_2: Click the GENERATE button to create the array named A and to
+      copy the contents of that array into a new array named B.
+   </p>
    <p>
-      STEP_2: Click the GENERATE button to create an array named A whose elements 
-      are the COLOR values which each appear as many times as its corresponding input
-      quantity in STEP_0 specifies, arranges the elements of A in a random order, 
-      and then allows the user to select one element of A at random to remove from
-      A until A is empty or, if the "probability with replacement" option was selected
-      in STEP_1, until N elements were selected at random and removed from A.
+      Note that the array named B is comprised exclusively of all the elements 
+      of A arranged in a random order. The elements of A are arranged such that
+      the same COLOR values are adjacent to each other and such that the COLOR
+      values are listed in the same order those COLOR values are enumerated in
+      the STEP_0 list.
    </p>
    <p><input id="generate_button" type="button" value="GENERATE" onclick="generate()"></p>
    <p><input id="reset_button" type="button" value="RESET" onclick="initialize_application()"></p>
