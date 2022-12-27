@@ -37,6 +37,10 @@ function generate_color_values() {
     return ["#3cfa07", "#fa0738", "#0a7df7", "#b700ff", "#ffc800", "#00ff95", "#1a02b8", "#a89c87", "#4c7852", "#f5a9a9"];
 }
 
+function generate_colors_and_quantities_select_menus_string() {
+    
+}
+
 /**
  * Return the String type value of the selected menu option of a SELECT menu element.
  * 
