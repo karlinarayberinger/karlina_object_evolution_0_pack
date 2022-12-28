@@ -44,6 +44,11 @@ function generate_color_values() {
 function populate_c_menus() {
     try {
         let html_color_codes = generate_color_values();
+        let T = html_color_codes.length;
+        let i = 0, S = "", p0 = '<' + 'p' + '>', p1 = '<' + '/' + 'p' + '>';
+        for(i = 0; i < T; i += 1) {
+            
+        }
     }
     catch(exception) {
         console.log("An exception to normal functioning occurred during the runtime of get_selected_menu_option(select_menu_identifier): " + exception);
