@@ -53,9 +53,12 @@ function populate_c_menus() {
         let i = 0, k = 0, S = "", p0 = '<' + 'p' + '>', p1 = '<' + '/' + 'p' + '>';
         for(i = 0; i < 10; i += 1) {
             S += p1;
-            S += '<' + 'select id="' + html_color_codes[i] + '"' + '>';
+            S += '<' + 'select id="' + html_color_codes[i] + '" style="background:' + html_color_code[i] + '"' + '>';
             for (k = 1; k <= 100; k += ) {
-                //...
+                if (k === 1) S += '<' + 'option selected' + '>';
+                else S += '<' + 'option' + '>';
+                S += k;
+                S += '<' + '/' + 'option' + '>';
             }
             S += '<' + '/' + 'select' + '>';
             S += p0;
