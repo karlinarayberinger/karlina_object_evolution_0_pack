@@ -7,7 +7,7 @@
  */
 
 /**
- * Return a String which describes the number of milliseconds which have elapsed since the Unix Epoch.
+ * Return a String type value which describes the number of milliseconds which have elapsed since the Unix Epoch.
  * 
  * Note that the Unix Epoch is 01_JANUARY_1970 at 0 hours, 0 minutes, 0 seconds, and 0 seconds 
  * (i.e. 00:00:00) (i.e. midnight) (Coordinated Universal Time (UTC)).
@@ -37,8 +37,17 @@ function generate_color_values() {
     return ["#3cfa07", "#fa0738", "#0a7df7", "#b700ff", "#ffc800", "#00ff95", "#1a02b8", "#a89c87", "#4c7852", "#f5a9a9"];
 }
 
-function generate_colors_and_quantities_select_menus_string() {
-    
+/**
+ * Return a String type value which will be used as the inner HTML content of the 
+ * DIV element whose id is "c_menus" in probability.html.
+ */
+function populate_c_menus() {
+    try {
+        let html_color_codes = generate_color_values();
+    }
+    catch(exception) {
+        console.log("An exception to normal functioning occurred during the runtime of get_selected_menu_option(select_menu_identifier): " + exception);
+    }
 }
 
 /**
