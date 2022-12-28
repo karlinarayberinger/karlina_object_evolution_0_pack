@@ -1,7 +1,7 @@
 /**
  * file: probability.js
  * type: JavaScript
- * date: 27_DECEMBER_2022
+ * date: 28_DECEMBER_2022
  * author: karbytes
  * license: PUBLIC_DOMAIN
  */
@@ -40,14 +40,25 @@ function generate_color_values() {
 /**
  * Return a String type value which will be used as the inner HTML content of the 
  * DIV element whose id is "c_menus" in probability.html.
+ * 
+ * The returned inner HTML string defines ten SELECT elements such that each SELECT element
+ * is assigned the same id value as the background color of that SELECT element and
+ * such that the SELECT menu displays the first 100 natural numbers in ascending order
+ * as OPTION elements within that SELECT menu (and the first OPTION is selected by default).
  */
 function populate_c_menus() {
     try {
         let html_color_codes = generate_color_values();
         let T = html_color_codes.length;
-        let i = 0, S = "", p0 = '<' + 'p' + '>', p1 = '<' + '/' + 'p' + '>';
-        for(i = 0; i < T; i += 1) {
-            
+        let i = 0, k = 0, S = "", p0 = '<' + 'p' + '>', p1 = '<' + '/' + 'p' + '>';
+        for(i = 0; i < 10; i += 1) {
+            S += p1;
+            S += '<' + 'select id="' + html_color_codes[i] + '"' + '>';
+            for (k = 1; k <= 100; k += ) {
+                //...
+            }
+            S += '<' + '/' + 'select' + '>';
+            S += p0;
         }
     }
     catch(exception) {
