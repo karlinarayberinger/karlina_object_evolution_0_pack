@@ -3,7 +3,7 @@
  * file: probability.html
  * type: Hyper-Text-Markup-Language
  * author: karbytes
- * date: 27_DECEMBER_2022
+ * date: 08_JANUARY_2023
  * license: PUBLIC_DOMAIN
  */
  -->
@@ -26,15 +26,18 @@
       such that each unique COLOR value appears as an element of A for
       some nonnegative integer number of times.
    </p>
+   <p>Note that the array named A is a JavaScript Object type value.</p>
+   <p>Note that each of the elements of A are JavaScript String type values.</p>
    <div id="c_menus" class="console"><p>#c_menus</p></div>
    <p>
       STEP_1: Specify whether to randomly remove elements from A until A is empty 
-      ("probability without replacement") or else to randomy remove elements from
-      A while replacing each of those elements with exactly one newly randomly 
+      (PROBABILITY_WITHOUT_REPLACEMENT) or else to randomly remove elements from
+      A while replacing each of those elements with exactly one new randomly 
       generated COLOR value from the list of all possible colors enumerated in STEP_0 
-      for a total of N selections ("probability with replacement").
+      for a total of N selections (PROBABILITY_WITH_REPLACEMENT).
    </p>
    <p>Note that N is the total number of elements in the array named A.</p>
+   <p>Note that N is a JavaScript Number type value.</p>
    <p id="p_menu" class="console">#p_menu</p>
    <p>STEP_2: Click the GENERATE button to create the array named A, to
       copy the contents of A into a new array named B, and to display statistics 
