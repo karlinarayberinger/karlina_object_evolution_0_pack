@@ -1,7 +1,7 @@
 /**
  * file: probability.js
  * type: JavaScript
- * date: 28_DECEMBER_2022
+ * date: 08_JANUARY_2023
  * author: karbytes
  * license: PUBLIC_DOMAIN
  */
@@ -11,6 +11,8 @@
  * 
  * Note that the Unix Epoch is 01_JANUARY_1970 at 0 hours, 0 minutes, 0 seconds, and 0 seconds 
  * (i.e. 00:00:00) (i.e. midnight) (Coordinated Universal Time (UTC)).
+ * 
+ * @return {String} text which denotes the number of milliseconds which have elapsed since the Unix Epoch
  */
 function generate_time_stamp() {
     const milliseconds_elapsed_since_unix_epoch = Date.now();
@@ -18,11 +20,14 @@ function generate_time_stamp() {
 }
 
 /**
- * Return an array of ten String type values such that each of those values is a unique HTML color code.
+ * Return an array of ten unique String type values such that each of those values is a unique HTML color code.
  * 
  * An HTML color code is a String whose leftmost character is '#' followed by two hexidecimal digits
  * which represent a RED hue, then two hexidecimal digits which represent a GREEN hue, and then
  * two hexidecimal digits which represent a BLUE hue.
+ * 
+ * The lower the hue value is, the darker that hue is.
+ * The higher the hue value is, the brighter that hue is.
  * 
  * RED: #ff0000
  * GREEN: #00ff00
@@ -32,6 +37,8 @@ function generate_time_stamp() {
  * YELLOW: #ffff00
  * BLACK: #000000
  * WHITE: #ffffff
+ * 
+ * @return {Object} array of ten unique String type values
  */
 function generate_color_values() {
     return ["#3cfa07", "#fa0738", "#0a7df7", "#b700ff", "#ffc800", "#00ff95", "#1a02b8", "#a89c87", "#4c7852", "#f5a9a9"];
@@ -45,14 +52,17 @@ function generate_color_values() {
  * is assigned the same id value as the background color of that SELECT element and
  * such that the SELECT menu displays the first 100 natural numbers in ascending order
  * as OPTION elements within that SELECT menu (and the first OPTION is selected by default).
+ * 
+ * @return {String} inner HTML content to populate the DIV element whose id is "c_menus"
  */
 function populate_c_menus() {
     try {
+        const p0 = '<' + 'p' + '>', p1 = '<' + '/' + 'p' + '>';
         let html_color_codes = generate_color_values();
         let T = html_color_codes.length;
-        let i = 0, k = 0, S = "", p0 = '<' + 'p' + '>', p1 = '<' + '/' + 'p' + '>';
+        let i = 0, k = 0, S = "";
         for(i = 0; i < 10; i += 1) {
-            S += p1;
+            S += p0;
             S += '<' + 'select id="' + html_color_codes[i] + '" style="background:' + html_color_code[i] + '"' + '>';
             for (k = 1; k <= 100; k += ) {
                 if (k === 1) S += '<' + 'option selected' + '>';
@@ -61,11 +71,11 @@ function populate_c_menus() {
                 S += '<' + '/' + 'option' + '>';
             }
             S += '<' + '/' + 'select' + '>';
-            S += p0;
+            S += p1;
         }
     }
     catch(exception) {
-        console.log("An exception to normal functioning occurred during the runtime of get_selected_menu_option(select_menu_identifier): " + exception);
+        console.log("An exception to normal functioning occurred during the runtime of populate_c_menus(): " + exception);
     }
 }
 
@@ -73,6 +83,10 @@ function populate_c_menus() {
  * Return the String type value of the selected menu option of a SELECT menu element.
  * 
  * Assume that select_menu_identifier is a String type value and the id of an existing select HTML element.
+ * 
+ * @param {String} id of a SELECT menu web page element
+ * 
+ * @return {String} value of an OPTION of the SELECT whose id is select_menu_identifier
  */
 function get_selected_menu_option_value(select_menu_identifier) {
     try {
