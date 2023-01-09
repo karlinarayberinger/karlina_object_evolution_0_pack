@@ -121,6 +121,7 @@ function initialize_application() {
         const message = "The initialize_application() function was called at time: " + generate_time_stamp();
         console.log(message);
         document.getElementById("events_log").innerHTML = p0 + message + p1;
+        document.getElementById("output").innerHTML = p0 + "This text will be replaced with program output." + p1;
     }
     catch(exception) {
         console.log("An exception to normal functioning occurred during the runtime of initialize_application(): " + exception);
