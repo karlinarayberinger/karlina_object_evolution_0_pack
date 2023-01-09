@@ -99,10 +99,10 @@ function populate_p_menu() {
         const p0 = '<' + 'p' + '>', p1 = '<' + '/' + 'p' + '>';
         let S = '<' + 'select class="console" id="probability_options"' + '>';
         S += '<' + 'option value="probability_without_replacement" selected' + '>';
-        S += PROBABILITY_WITHOUT_REPLACEMENT;
+        S += "PROBABILITY_WITHOUT_REPLACEMENT";
         S += '<' + '/' + 'option' + '>';
         S += '<' + 'option value="probability_with_replacement"' + '>';
-        S += PROBABILITY_WITH_REPLACEMENT;
+        S += "PROBABILITY_WITH_REPLACEMENT";
         S += '<' + '/' + 'option' + '>';
         S += '<' + '/' + 'select' + '>';
         return S;
@@ -160,11 +160,37 @@ function initialize_application() {
         console.log(message);
         document.getElementById("c_menus").innerHTML = populate_c_menus();
         document.getElementById("p_menu").innerHTML = populate_p_menu();
+        document.getElementById("generate_button").style.display = "inline";
+        document.getElementById("reset_button").style.display = "none";
         document.getElementById("output").innerHTML = p0 + "This text will be replaced with program output." + p1;
         document.getElementById("events_log").innerHTML = p0 + message + p1;
     }
     catch(exception) {
         console.log("An exception to normal functioning occurred during the runtime of initialize_application(): " + exception);
+    }
+}
+
+/**
+ * Assume that this function is called in response to the event of a GENERATE button click.
+ * 
+ * Set the GENERATE button to hidden.
+ * 
+ * Set the RESET button to visible.
+ * 
+ * Append a paragraph to the inner HTML conent of the DIV element whose id is "events_log" to a message 
+ * indicating that the generate() function was called.
+ */
+function generate() {
+    try {
+        const p0 = '<' + 'p' + '>', p1 = '<' + '/' + 'p' + '>';
+        const message = "The generate() function was called at time: " + generate_time_stamp();
+        console.log(message);
+        document.getElementById("generate_button").style.display = "none";
+        document.getElementById("reset_button").style.display = "inline";
+        document.getElementById("events_log").innerHTML += p0 + message + p1;
+    }
+    catch(exception) {
+        console.log("An exception to normal functioning occurred during the runtime of generate(): " + exception);
     }
 }
 
