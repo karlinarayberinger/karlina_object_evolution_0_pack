@@ -14,9 +14,17 @@
     <title>PROBABILITY</title>
     <link rel="stylesheet" href="karbytes_aesthetic.css">
     <script src="probability.js"></script>
+    <style>
+      hr {
+         border: 3px solid #ff00ff;
+         border-radius: 5px;
+      }
+    </style>
  </head>
  <body onload="initialize_application()">
+   <hr>
    <h1>PROBABILITY</h1>
+   <hr>
    <p>
       STEP_0: Select a nonnegative integer quantity for each COLOR value
       to store in an array of COLOR values named A.
@@ -29,6 +37,7 @@
    <p>Note that the array named A is a JavaScript Object type value.</p>
    <p>Note that each of the elements of A are JavaScript String type values.</p>
    <div id="c_menus" class="console"><p>#c_menus</p></div>
+   <hr>
    <p>
       STEP_1: Specify whether to randomly remove elements from A until A is empty 
       (PROBABILITY_WITHOUT_REPLACEMENT) or else to randomly remove elements from
@@ -39,6 +48,7 @@
    <p>Note that N is the total number of elements in the array named A.</p>
    <p>Note that N is a JavaScript Number type value.</p>
    <p id="p_menu" class="console">#p_menu</p>
+   <hr>
    <p>STEP_2: Click the GENERATE button to create the array named A, to
       copy the contents of A into a new array named B, and to display statistics 
       about A and B on this web page.
@@ -51,10 +61,13 @@
       in STEP_0 of this web page.
    </p>
    <p>
-      <input id="generate_button" type="button" value="GENERATE" onclick="generate()">&nbsp;
-      <input id="reset_button" type="button" value="RESET" onclick="initialize_application()">
+      <input class="console" id="generate_button" type="button" value="GENERATE" onclick="generate()">&nbsp;
+      <input class="console" id="reset_button" type="button" value="RESET" onclick="initialize_application()">
    </p>
+   <hr>
    <div id="output"><p>#output</p></div> 
+   <hr>
    <div class="console" id="events_log"><p>#events_log</p></div> 
+   <hr>
  </body>
  </html>
