@@ -63,7 +63,9 @@ function populate_c_menus() {
         let i = 0, k = 0, S = "";
         for(i = 0; i < 10; i += 1) {
             S += p0;
-            S += '<' + 'select id="' + html_color_codes[i] + '" style="background:' + html_color_code[i] + '"' + '>';
+            S += html_color_codes[i] + " := ";
+
+            S += '<' + 'select id="' + html_color_codes[i] + '" style="color:#000000;background:' + html_color_codes[i] + '"' + '>';
             for (k = 1; k <= 100; k += 1) {
                 if (k === 1) S += '<' + 'option selected' + '>';
                 else S += '<' + 'option' + '>';
@@ -95,7 +97,7 @@ function populate_c_menus() {
 function populate_p_menu() {
     try {
         const p0 = '<' + 'p' + '>', p1 = '<' + '/' + 'p' + '>';
-        let S = '<' + 'select id="probability_options"' + '>';
+        let S = '<' + 'select class="console" id="probability_options"' + '>';
         S += '<' + 'option value="probability_without_replacement" selected' + '>';
         S += PROBABILITY_WITHOUT_REPLACEMENT;
         S += '<' + '/' + 'option' + '>';
@@ -156,7 +158,7 @@ function initialize_application() {
         const p0 = '<' + 'p' + '>', p1 = '<' + '/' + 'p' + '>';
         const message = "The initialize_application() function was called at time: " + generate_time_stamp();
         console.log(message);
-        document.getElementById("c_mens").innerHTML = populate_c_menus();
+        document.getElementById("c_menus").innerHTML = populate_c_menus();
         document.getElementById("p_menu").innerHTML = populate_p_menu();
         document.getElementById("output").innerHTML = p0 + "This text will be replaced with program output." + p1;
         document.getElementById("events_log").innerHTML = p0 + message + p1;
