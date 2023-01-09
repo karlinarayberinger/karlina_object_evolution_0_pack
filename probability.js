@@ -73,10 +73,41 @@ function populate_c_menus() {
             S += '<' + '/' + 'select' + '>';
             S += p1;
         }
+        return S;
     }
     catch(exception) {
         console.log("An exception to normal functioning occurred during the runtime of populate_c_menus(): " + exception);
     }
+}
+
+/**
+ * Return a String type value which will be used as the inner HTML content of the 
+ * P element whose id is "p_menu" in probability.html.
+ * 
+ * The returned inner HTML string defines a SELECT element whose options are
+ * PROBABILITY_WITHOUT_REPLACEMENT or PROBABILITY_WITH_REPLACEMENT.
+ * 
+ * Note that the PROBABILITY_WITHOUT_REPLACEMENT option is automatically selected 
+ * if the application user does not click on the SELECT element whose id is "probability_options".
+ * 
+ * @return {String} inner HTML content to populate the DIV element whose id is "c_menus"
+ */
+function populate_p_menu() {
+    try {
+        const p0 = '<' + 'p' + '>', p1 = '<' + '/' + 'p' + '>';
+        let S = '<' + 'select id="probability_options"' + '>';
+        S += '<' + 'option value="probability_without_replacement" selected' + '>';
+        S += PROBABILITY_WITHOUT_REPLACEMENT;
+        S += '<' + '/' + 'option' + '>';
+        S += '<' + 'option value="probability_with_replacement"' + '>';
+        S += PROBABILITY_WITH_REPLACEMENT;
+        S += '<' + '/' + 'option' + '>';
+        S += '<' + '/' + 'select' + '>';
+        return S;
+    }
+    catch(exception) {
+        console.log("An exception to normal functioning occurred during the runtime of populate_p_menu(): " + exception);
+    } 
 }
 
 /**
@@ -107,21 +138,28 @@ function get_selected_menu_option_value(select_menu_identifier) {
  * Assume that this function is called in response to either the web page named probability.html being loaded by a web browser 
  * or else the RESET button being clicked.
  * 
+ * Populate the DIV element whose id is "c_menus" with a SELECT menu for each one of the ten COLOR values used by this web application.
+ * 
+ * Populate the P element whose id is "p_menu" with a SELECT menu for the options of whether to use PROBABILITY_WITHOUT_REPLACEMENT
+ * or else PROBABILITY_WITH_REPLACEMENT.
+ * 
  * Set the GENERATE button to visible.
  * 
  * Set the RESET button to hidden.
  * 
- * Set the DIV whose id is "output" inner HTML content to some default message.
+ * Set the DIV element whose id is "output" inner HTML content to some default message.
  * 
- * Set the DIV whose id is "events_log" inner HTML content to a message indicating that the initialize_application() function was called.
+ * Set the DIV element whose id is "events_log" inner HTML content to a message indicating that the initialize_application() function was called.
  */
 function initialize_application() {
     try {
         const p0 = '<' + 'p' + '>', p1 = '<' + '/' + 'p' + '>';
         const message = "The initialize_application() function was called at time: " + generate_time_stamp();
         console.log(message);
-        document.getElementById("events_log").innerHTML = p0 + message + p1;
+        document.getElementById("c_mens").innerHTML = populate_c_menus();
+        document.getElementById("p_menu").innerHTML = populate_p_menu();
         document.getElementById("output").innerHTML = p0 + "This text will be replaced with program output." + p1;
+        document.getElementById("events_log").innerHTML = p0 + message + p1;
     }
     catch(exception) {
         console.log("An exception to normal functioning occurred during the runtime of initialize_application(): " + exception);
