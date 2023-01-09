@@ -64,7 +64,7 @@ function populate_c_menus() {
         for(i = 0; i < 10; i += 1) {
             S += p0;
             S += '<' + 'select id="' + html_color_codes[i] + '" style="background:' + html_color_code[i] + '"' + '>';
-            for (k = 1; k <= 100; k += ) {
+            for (k = 1; k <= 100; k += 1) {
                 if (k === 1) S += '<' + 'option selected' + '>';
                 else S += '<' + 'option' + '>';
                 S += k;
@@ -102,4 +102,29 @@ function get_selected_menu_option_value(select_menu_identifier) {
         console.log("An exception to normal functioning occurred during the runtime of get_selected_menu_option(select_menu_identifier): " + exception);
     }
 }
+
+/**
+ * Assume that this function is called in response to either the web page named probability.html being loaded by a web browser 
+ * or else the RESET button being clicked.
+ * 
+ * Set the GENERATE button to visible.
+ * 
+ * Set the RESET button to hidden.
+ * 
+ * Set the DIV whose id is "output" inner HTML content to some default message.
+ * 
+ * Set the DIV whose id is "events_log" inner HTML content to a message indicating that the initialize_application() function was called.
+ */
+function initialize_application() {
+    try {
+        const p0 = '<' + 'p' + '>', p1 = '<' + '/' + 'p' + '>';
+        const message = "The initialize_application() function was called at time: " + generate_time_stamp();
+        console.log(message);
+        document.getElementById("events_log").innerHTML = p0 + message + p1;
+    }
+    catch(exception) {
+        console.log("An exception to normal functioning occurred during the runtime of initialize_application(): " + exception);
+    }
+}
+
 
