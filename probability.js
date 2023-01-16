@@ -241,9 +241,12 @@ function validate_array_of_color_values(array) {
  * 
  */
 function generate_array_B(A) {
+    let B, i;
     try {
-       if (!validate_array_of_color_values(array)) throw "Status: validate_array_of_color_values(array) returned false.";
-       //...
+       if (!validate_array_of_color_values(A)) throw "Status: validate_array_of_color_values(A) returned false.";
+       for (i = 0; i < A.length; i += 1) B[i] = 0;
+       // ...
+       return B;
     }
     catch(exception) {
         console.log("An exception to normal functioning occurred during the runtime of generate_array_B(A): " + exception);
