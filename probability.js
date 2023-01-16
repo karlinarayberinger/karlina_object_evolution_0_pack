@@ -241,11 +241,14 @@ function validate_array_of_color_values(array) {
  * 
  */
 function generate_array_B(A) {
-    let B, i;
+    let B, C, i;
+    C = [];
     try {
        if (!validate_array_of_color_values(A)) throw "Status: validate_array_of_color_values(A) returned false.";
-       for (i = 0; i < A.length; i += 1) B[i] = 0;
-       // This might as well be Sudoku.
+       for (i = 0; i < A.length; i += 1) {
+            B[i] = 0;
+            C[i] = A[i];
+       }
        return B;
     }
     catch(exception) {
