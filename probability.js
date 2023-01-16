@@ -197,6 +197,56 @@ function generate_array_A() {
 }
 
 /**
+ * Determine whether or not the input array is comprised exclusively of valid HTML color code values.
+ * 
+ * If erroneous input is detected or if a runtime error occurs, use a try-catch block for exception handling
+ * which outputs a message to the web browser console about the type of runtime exception which was detected.
+ * 
+ * @param {Object} array is assumed to be a non-empty array containing exclusively String type elements.
+ * 
+ * @return {Boolean} true if array is an array comprised exclusively of valid HTML color code values; false otherwise.
+ */
+function validate_array_of_color_values(array) {
+    try {
+        const hexidecimal_digits = "0123456789abcdef";
+        let i = 0, k = 0,  S = "", is_hexidecimal_digit = false;
+        if (arguments.length !== 1) throw "Error: exactly one function input is required.";
+        for (i = 0; i < A.length; i += 1) {
+            if (typeof A[i] !== "string") throw "Error: A[" + i + "] does not represent a String type value."
+            if (A[i].length !== 7) throw "Error: A[" + i + "] does not represent a string comprised of exactly 7 characters.";
+            if (A[i][0] !== "#") throw "Error: The first character of the string represented by A[" + i + "] does is not '#'.";
+            for (k = 0; k < 16; k++) if ((i > 0) && (A[i] === hexidecmial_digits[k])) is_hexidecimal_digit = true;
+            if (!is_hexidecimal_digit) throw "Error: A[" + i + "] does not represent a valid hexidecimal digit.";
+            is_hexidecimal_digit = false;
+        }
+        return true;
+    }
+    catch(exception) {
+        console.log("An exception to normal functioning occurred during the runtime of validate_array_of_color_values(array): " + exception);
+        return false;
+    }
+}
+
+/**
+ * Generate an HTML content string to be appended to the inner HTMl of the DIV element whose id is "output" 
+ * such that the string which is returned by this function represents a TABLE whose cells (table data (TD))
+ * each represents exactly one element of array A (and that table cell depicts the corresponding HTML color code
+ * value as black text and as the background color of that cell).
+ * 
+ * @param {Object} a non-empty array whose elements are exclusively HTML color code values.
+ * 
+ * @return {String} HTML content which visually depicts array A.
+ */
+function generate_array_A_visual_representation(A) {
+    try {
+        //...
+    }
+    catch(exception) {
+        console.log("An exception to normal functioning occurred during the runtime of generate_array_A_visual_representation(): " + exception);
+    }
+}
+
+/**
  * Assume that this function is called in response to the event of a GENERATE button click.
  * 
  * Set each of the ten SELECT elements for unique HTML color values to disabled.
