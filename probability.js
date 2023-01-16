@@ -211,15 +211,21 @@ function generate_array_A() {
 function validate_array_of_color_values(array) {
     try {
         const hexidecimal_digits = "0123456789abcdef";
-        let i = 0, k = 0,  S = "", is_hexidecimal_digit = false;
+        let i = 0, k = 0, p = 0, S = "", is_hexidecimal_digit = false;
         if (arguments.length !== 1) throw "Error: exactly one function input is required.";
         for (i = 0; i < array.length; i += 1) {
             if (typeof array[i] !== "string") throw "Error: array[" + i + "] does not represent a String type value."
             if (array[i].length !== 7) throw "Error: array[" + i + "] does not represent a string comprised of exactly 7 characters.";
             if (array[i][0] !== "#") throw "Error: The first character of the string represented by array[" + i + "] does is not '#'.";
             if (i > 0) {
-                for (k = 0; k < hexidecimal_digits.length; k++) if (array[i][k] === hexidecimal_digits[k]) is_hexidecimal_digit = true;
-                if ((i > 0) && (!is_hexidecimal_digit)) throw "Error: array[" + i + "][" + k + "] does not represent a valid hexidecimal digit.";
+                for (k = 0; k < array[i].length; k++) {
+                    for (p = 0; p < hexidecimal_digits.length; p++) {
+                        if (array[i][k] === hexidecimal_digits[p]) {
+                            is_hexidecimal_digit = true;
+                        }
+                    }
+                }
+                if (!is_hexidecimal_digit) throw "Error: array[" + i + "][" + k + "] does not represent a valid hexidecimal digit.";
                 is_hexidecimal_digit = false;
             }
         }
