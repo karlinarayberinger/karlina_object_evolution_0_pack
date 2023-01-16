@@ -1,10 +1,34 @@
 /**
  * file: probability.js
  * type: JavaScript
- * date: 15_JANUARY_2023
+ * date: 16_JANUARY_2023
  * author: karbytes
  * license: PUBLIC_DOMAIN
  */
+
+/**
+ * Use the native JavaScript Math library function for generating random numbers to select a 
+ * base-ten number no smaller than 0 and less than 1.
+ * 
+ * @return {Number} a base-ten (i.e. decimal) number no smaller than zero and smaller than one.
+ */
+function generate_random_nonnegative_number_less_than_one() {
+    return Math.random();
+}
+
+/**
+ * Use the native JavaScript Math library function for generating random numbers to select a base-ten 
+ * number no smaller than 0 and less than 1 and store the result in a variable named N.
+ * 
+ * Multiply N by T, round the result down to the nearest integer, and return that rounded down result.
+ * 
+ * @return {Number} a base-ten (i.e. decimal) integer no smaller than 0 and no larger than T.
+ */
+function generate_random_nonnegative_integer_less_than_T(T) {
+    let N = generate_random_nonnegative_number_less_than_one();
+    if ((typeof T != "number") || (T !== Math.floor(T))) T = 1;
+    return Math.floor(N * T);
+}
 
 /**
  * Return a String type value which describes the number of milliseconds which have elapsed since the Unix Epoch.
@@ -241,13 +265,17 @@ function validate_array_of_color_values(array) {
  * 
  */
 function generate_array_B(A) {
-    let B, C, i;
+    let B, C, i, r;
     C = [];
     try {
        if (!validate_array_of_color_values(A)) throw "Status: validate_array_of_color_values(A) returned false.";
        for (i = 0; i < A.length; i += 1) {
             B[i] = 0;
             C[i] = A[i];
+       }
+       for (i = 0; i < A.length; i += 1) {
+            r = generate_random_nonnegative_integer_less_than_T(A.length);
+            //...
        }
        return B;
     }
