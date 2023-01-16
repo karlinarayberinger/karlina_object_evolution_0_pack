@@ -66,8 +66,8 @@ function populate_c_menus() {
             S += html_color_codes[i] + " := ";
 
             S += '<' + 'select id="' + html_color_codes[i] + '" style="color:#000000;background:' + html_color_codes[i] + '"' + '>';
-            for (k = 1; k <= 100; k += 1) {
-                if (k === 1) S += '<' + 'option selected' + '>';
+            for (k = 0; k <= 100; k += 1) {
+                if (k === 0) S += '<' + 'option selected' + '>';
                 else S += '<' + 'option' + '>';
                 S += k;
                 S += '<' + '/' + 'option' + '>';
@@ -249,9 +249,21 @@ function validate_array_of_color_values(array) {
  */
 function generate_array_A_visual_representation(array) {
     const p0 = '<' + 'p' + '>', p1 = '<' + '/' + 'p' + '>';
+    const tr0 = '<' + 'tr' + '>', tr1 = '<' + '/' + 'tr' + '>';
+    const t0 = '<' + 'table' + '>', t1 = '<' + '/' + 'table' + '>';
+    let i = 0, S = '';
     try {
        if (!validate_array_of_color_values(array)) throw "Status: validate_array_of_color_values(array) returned false.";
-       //...
+       S += p0 + t0;
+       for (i = 0; i < array.length; i += 1) {
+            S += tr0;
+            S += '<' + 'td style="background:' + array[i] + '; color:#000000; text-align: center"' + '>';
+            S += array[i];
+            S += '<' + '/' + 'td' + '>';
+            S += tr1;
+       }
+       S += t1 + p1;
+       return S;
     }
     catch(exception) {
         console.log("An exception to normal functioning occurred during the runtime of generate_array_A_visual_representation(array): " + exception);
@@ -288,7 +300,8 @@ function generate() {
         document.getElementById("events_log").innerHTML += p0 + message + p1;
         // Generate array A and display it on the web page interface inside of the DIV element whose id is "output".
         A = generate_array_A();
-        document.getElementById("output").innerHTML = generate_array_A_visual_representation(A);
+        document.getElementById("output").innerHTML = p0 + "Array A:" + p1;
+        document.getElementById("output").innerHTML += generate_array_A_visual_representation(A);
     }
     catch(exception) {
         console.log("An exception to normal functioning occurred during the runtime of generate(): " + exception);
