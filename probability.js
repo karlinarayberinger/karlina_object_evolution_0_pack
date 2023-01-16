@@ -216,9 +216,11 @@ function validate_array_of_color_values(array) {
             if (array[i].length !== 7) throw "Error: array[" + i + "] does not represent a string comprised of exactly 7 characters.";
             if (array[i][0] !== "#") throw "Error: The first character of the string represented by array[" + i + "] does is not '#'.";
             for (k = 0; k < 16; k++) if ((i > 0) && (array[i] === hexidecmial_digits[k])) is_hexidecimal_digit = true;
-            if (!is_hexidecimal_digit) throw "Error: array[" + i + "] does not represent a valid hexidecimal digit.";
+            if ((i > 0) && (!is_hexidecimal_digit)) throw "Error: array[" + i + "] does not represent a valid hexidecimal digit.";
             is_hexidecimal_digit = false;
         }
+        // Debugging: display a web console message for each element value of array.
+        for (i = 0; i < array.length; i++) console.log("test");
         return true;
     }
     catch(exception) {
@@ -275,6 +277,8 @@ function generate() {
         document.getElementById("events_log").innerHTML += p0 + message + p1;
         // Generate array A and display it on the web page interface inside of the DIV element whose id is "output".
         A = generate_array_A();
+        A = ["#000000"];
+        validate_array_of_color_values(A);
     }
     catch(exception) {
         console.log("An exception to normal functioning occurred during the runtime of generate(): " + exception);
