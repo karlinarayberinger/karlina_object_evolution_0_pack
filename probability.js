@@ -199,18 +199,6 @@ function generate_array_A() {
 }
 
 /**
- * 
- */
-function generate_array_B(A) {
-    try {
-        //...
-    }
-    catch(exception) {
-        console.log("An exception to normal functioning occurred during the runtime of generate_array_B(A): " + exception);
-    }
-}
-
-/**
  * Determine whether or not the input array is comprised exclusively of valid HTML color code values.
  * 
  * If erroneous input is detected or if a runtime error occurs, use a try-catch block for exception handling
@@ -246,6 +234,19 @@ function validate_array_of_color_values(array) {
     catch(exception) {
         console.log("An exception to normal functioning occurred during the runtime of validate_array_of_color_values(array): " + exception);
         return false;
+    }
+}
+
+/**
+ * 
+ */
+function generate_array_B(A) {
+    try {
+       if (!validate_array_of_color_values(array)) throw "Status: validate_array_of_color_values(array) returned false.";
+       //...
+    }
+    catch(exception) {
+        console.log("An exception to normal functioning occurred during the runtime of generate_array_B(A): " + exception);
     }
 }
 
