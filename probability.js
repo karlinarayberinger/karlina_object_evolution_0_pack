@@ -247,7 +247,7 @@ function validate_array_of_color_values(array) {
  * 
  * @return {String} HTML content which visually depicts the contents of A.
  */
-function generate_array_A_visual_representation(array) {
+function generate_array_visual_representation(array) {
     const p0 = '<' + 'p' + '>', p1 = '<' + '/' + 'p' + '>';
     const tr0 = '<' + 'tr' + '>', tr1 = '<' + '/' + 'tr' + '>';
     const t0 = '<' + 'table' + '>', t1 = '<' + '/' + 'table' + '>';
@@ -266,7 +266,7 @@ function generate_array_A_visual_representation(array) {
        return S;
     }
     catch(exception) {
-        console.log("An exception to normal functioning occurred during the runtime of generate_array_A_visual_representation(array): " + exception);
+        console.log("An exception to normal functioning occurred during the runtime of generate_array_visual_representation(array): " + exception);
         return p0 + "ERROR" + p1;
     }
 }
@@ -301,7 +301,7 @@ function generate() {
         // Generate array A and display it on the web page interface inside of the DIV element whose id is "output".
         A = generate_array_A();
         document.getElementById("output").innerHTML = p0 + "Array A:" + p1;
-        document.getElementById("output").innerHTML += generate_array_A_visual_representation(A);
+        document.getElementById("output").innerHTML += generate_array_visual_representation(A);
     }
     catch(exception) {
         console.log("An exception to normal functioning occurred during the runtime of generate(): " + exception);
