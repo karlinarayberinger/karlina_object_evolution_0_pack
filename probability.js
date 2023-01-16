@@ -1,7 +1,7 @@
 /**
  * file: probability.js
  * type: JavaScript
- * date: 08_JANUARY_2023
+ * date: 15_JANUARY_2023
  * author: karbytes
  * license: PUBLIC_DOMAIN
  */
@@ -173,6 +173,11 @@ function initialize_application() {
 /**
  * Assume that this function is called in response to the event of a GENERATE button click.
  * 
+ * Set each of the ten SELECT elements for unique HTML color values to disabled.
+ * 
+ * Set the SELECT element whose for whether to use PROBABILITY_WITHOUT_REPLACEMENT or 
+ * else PROBABILITY_WIT_REPLACEMENT to disabled.
+ * 
  * Set the GENERATE button to hidden.
  * 
  * Set the RESET button to visible.
@@ -182,9 +187,12 @@ function initialize_application() {
  */
 function generate() {
     try {
-        const p0 = '<' + 'p' + '>', p1 = '<' + '/' + 'p' + '>';
+        let i = 0;
+        const p0 = '<' + 'p' + '>', p1 = '<' + '/' + 'p' + '>', html_color_codes = generate_color_values();
         const message = "The generate() function was called at time: " + generate_time_stamp();
         console.log(message);
+        for (i = 0; i < 10; i += 1) document.getElementById(html_color_codes[i]).disabled = true;
+        document.getElementById("probability_options").disabled = true;
         document.getElementById("generate_button").style.display = "none";
         document.getElementById("reset_button").style.display = "inline";
         document.getElementById("events_log").innerHTML += p0 + message + p1;
