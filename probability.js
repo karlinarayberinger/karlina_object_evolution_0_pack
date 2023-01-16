@@ -58,7 +58,7 @@ function generate_color_values() {
 function populate_c_menus() {
     try {
         const p0 = '<' + 'p' + '>', p1 = '<' + '/' + 'p' + '>';
-        let html_color_codes = generate_color_values();
+        const html_color_codes = generate_color_values();
         let T = html_color_codes.length;
         let i = 0, k = 0, S = "";
         for(i = 0; i < 10; i += 1) {
@@ -171,11 +171,37 @@ function initialize_application() {
 }
 
 /**
+ * Create an emtpy array named A.
+ * 
+ * For each one of the ten unique HTML color code values displayed on the web page named probability.html,
+ * extract the selected quantity option for in the SELECT menu element which is accociate with that particular color value
+ * and insert that color value into A as many times as that quantity represents (i.e. some nonnegative integer less than 100).
+ * 
+ * Return A after all the color values are inserted into A.
+ * 
+ * @return {Object} an array containing String type elements which each represent one of ten unique HTML color code values.
+ */
+function generate_array_A() {
+    try {
+        let i = 0, k = 0, A = [], selected_quantity = 0;
+        const html_color_codes = generate_color_values();
+        for (i = 0; i < A.length; i += 1) {
+            selected_quantity = get_selected_menu_option_value(html_color_codes[i]);
+            for (k = 0; k < selected_quantity; k += 1) A.push(html_color_codes[i]);
+        }
+        return A;
+    }
+    catch(exception) {
+        console.log("An exception to normal functioning occurred during the runtime of generate_array_A(): " + exception);
+    }
+}
+
+/**
  * Assume that this function is called in response to the event of a GENERATE button click.
  * 
  * Set each of the ten SELECT elements for unique HTML color values to disabled.
  * 
- * Set the SELECT element whose for whether to use PROBABILITY_WITHOUT_REPLACEMENT or 
+ * Set the SELECT element for whether to use PROBABILITY_WITHOUT_REPLACEMENT or 
  * else PROBABILITY_WIT_REPLACEMENT to disabled.
  * 
  * Set the GENERATE button to hidden.
