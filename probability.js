@@ -211,12 +211,12 @@ function validate_array_of_color_values(array) {
         const hexidecimal_digits = "0123456789abcdef";
         let i = 0, k = 0,  S = "", is_hexidecimal_digit = false;
         if (arguments.length !== 1) throw "Error: exactly one function input is required.";
-        for (i = 0; i < A.length; i += 1) {
-            if (typeof A[i] !== "string") throw "Error: A[" + i + "] does not represent a String type value."
-            if (A[i].length !== 7) throw "Error: A[" + i + "] does not represent a string comprised of exactly 7 characters.";
-            if (A[i][0] !== "#") throw "Error: The first character of the string represented by A[" + i + "] does is not '#'.";
-            for (k = 0; k < 16; k++) if ((i > 0) && (A[i] === hexidecmial_digits[k])) is_hexidecimal_digit = true;
-            if (!is_hexidecimal_digit) throw "Error: A[" + i + "] does not represent a valid hexidecimal digit.";
+        for (i = 0; i < array.length; i += 1) {
+            if (typeof array[i] !== "string") throw "Error: array[" + i + "] does not represent a String type value."
+            if (array[i].length !== 7) throw "Error: array[" + i + "] does not represent a string comprised of exactly 7 characters.";
+            if (array[i][0] !== "#") throw "Error: The first character of the string represented by array[" + i + "] does is not '#'.";
+            for (k = 0; k < 16; k++) if ((i > 0) && (array[i] === hexidecmial_digits[k])) is_hexidecimal_digit = true;
+            if (!is_hexidecimal_digit) throw "Error: array[" + i + "] does not represent a valid hexidecimal digit.";
             is_hexidecimal_digit = false;
         }
         return true;
@@ -263,19 +263,20 @@ function generate_array_A_visual_representation(A) {
  */
 function generate() {
     try {
-        let i = 0;
+        let i = 0, A = undefined;
         const p0 = '<' + 'p' + '>', p1 = '<' + '/' + 'p' + '>', html_color_codes = generate_color_values();
         const message = "The generate() function was called at time: " + generate_time_stamp();
         console.log(message);
+        // Update the web page user interface such that the RESET button is the only interactive web page element.
         for (i = 0; i < 10; i += 1) document.getElementById(html_color_codes[i]).disabled = true;
         document.getElementById("probability_options").disabled = true;
         document.getElementById("generate_button").style.display = "none";
         document.getElementById("reset_button").style.display = "inline";
         document.getElementById("events_log").innerHTML += p0 + message + p1;
+        // Generate array A and display it on the web page interface inside of the DIV element whose id is "output".
+        A = generate_array_A();
     }
     catch(exception) {
         console.log("An exception to normal functioning occurred during the runtime of generate(): " + exception);
     }
 }
-
-
