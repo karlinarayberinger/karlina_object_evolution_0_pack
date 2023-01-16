@@ -185,10 +185,12 @@ function generate_array_A() {
     try {
         let i = 0, k = 0, A = [], selected_quantity = 0;
         const html_color_codes = generate_color_values();
-        for (i = 0; i < A.length; i += 1) {
-            selected_quantity = get_selected_menu_option_value(html_color_codes[i]);
+        for (i = 0; i < html_color_codes.length; i += 1) {
+            selected_quantity = parseInt(get_selected_menu_option_value(html_color_codes[i]));
             for (k = 0; k < selected_quantity; k += 1) A.push(html_color_codes[i]);
         }
+        // Debugging: display a web console message for each element value of array.
+        for (i = 0; i < A.length; i++) console.log("A[" + i + "] := " + A[i] + ".");
         return A;
     }
     catch(exception) {
@@ -215,12 +217,12 @@ function validate_array_of_color_values(array) {
             if (typeof array[i] !== "string") throw "Error: array[" + i + "] does not represent a String type value."
             if (array[i].length !== 7) throw "Error: array[" + i + "] does not represent a string comprised of exactly 7 characters.";
             if (array[i][0] !== "#") throw "Error: The first character of the string represented by array[" + i + "] does is not '#'.";
-            for (k = 0; k < 16; k++) if ((i > 0) && (array[i] === hexidecmial_digits[k])) is_hexidecimal_digit = true;
-            if ((i > 0) && (!is_hexidecimal_digit)) throw "Error: array[" + i + "] does not represent a valid hexidecimal digit.";
-            is_hexidecimal_digit = false;
+            if (i > 0) {
+                for (k = 0; k < hexidecimal_digits.length; k++) if (array[i][k] === hexidecimal_digits[k]) is_hexidecimal_digit = true;
+                if ((i > 0) && (!is_hexidecimal_digit)) throw "Error: array[" + i + "][" + k + "] does not represent a valid hexidecimal digit.";
+                is_hexidecimal_digit = false;
+            }
         }
-        // Debugging: display a web console message for each element value of array.
-        for (i = 0; i < array.length; i++) console.log("test");
         return true;
     }
     catch(exception) {
@@ -277,7 +279,6 @@ function generate() {
         document.getElementById("events_log").innerHTML += p0 + message + p1;
         // Generate array A and display it on the web page interface inside of the DIV element whose id is "output".
         A = generate_array_A();
-        A = ["#000000"];
         validate_array_of_color_values(A);
     }
     catch(exception) {
