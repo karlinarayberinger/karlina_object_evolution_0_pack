@@ -199,6 +199,18 @@ function generate_array_A() {
 }
 
 /**
+ * 
+ */
+function generate_array_B(A) {
+    try {
+        //...
+    }
+    catch(exception) {
+        console.log("An exception to normal functioning occurred during the runtime of generate_array_B(A): " + exception);
+    }
+}
+
+/**
  * Determine whether or not the input array is comprised exclusively of valid HTML color code values.
  * 
  * If erroneous input is detected or if a runtime error occurs, use a try-catch block for exception handling
@@ -302,6 +314,7 @@ function generate() {
         A = generate_array_A();
         document.getElementById("output").innerHTML = p0 + "Array A:" + p1;
         document.getElementById("output").innerHTML += generate_array_visual_representation(A);
+        // Generate array B and display it on the web page interface inside of the DIV element whose id is "output".
     }
     catch(exception) {
         console.log("An exception to normal functioning occurred during the runtime of generate(): " + exception);
