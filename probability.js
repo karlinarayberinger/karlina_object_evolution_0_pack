@@ -190,7 +190,7 @@ function generate_array_A() {
             for (k = 0; k < selected_quantity; k += 1) A.push(html_color_codes[i]);
         }
         // Debugging: display a web console message for each element value of array.
-        for (i = 0; i < A.length; i++) console.log("A[" + i + "] := " + A[i] + ".");
+        // for (i = 0; i < A.length; i++) console.log("A[" + i + "] := " + A[i] + ".");
         return A;
     }
     catch(exception) {
@@ -240,19 +240,22 @@ function validate_array_of_color_values(array) {
 /**
  * Generate an HTML content string to be appended to the inner HTMl of the DIV element whose id is "output" 
  * such that the string which is returned by this function represents a TABLE whose cells (table data (TD))
- * each represents exactly one element of array A (and that table cell depicts the corresponding HTML color code
- * value as black text and as the background color of that cell).
+ * each represents exactly one element of array (and that table cell depicts the corresponding HTML color code
+ * value (which is a String-type element of array) as black text and as the background color of that cell).
  * 
  * @param {Object} a non-empty array whose elements are exclusively HTML color code values.
  * 
- * @return {String} HTML content which visually depicts array A.
+ * @return {String} HTML content which visually depicts the contents of A.
  */
-function generate_array_A_visual_representation(A) {
+function generate_array_A_visual_representation(array) {
+    const p0 = '<' + 'p' + '>', p1 = '<' + '/' + 'p' + '>';
     try {
-        //...
+       if (!validate_array_of_color_values(array)) throw "Status: validate_array_of_color_values(array) returned false.";
+       //...
     }
     catch(exception) {
-        console.log("An exception to normal functioning occurred during the runtime of generate_array_A_visual_representation(): " + exception);
+        console.log("An exception to normal functioning occurred during the runtime of generate_array_A_visual_representation(array): " + exception);
+        return p0 + "ERROR" + p1;
     }
 }
 
@@ -285,7 +288,7 @@ function generate() {
         document.getElementById("events_log").innerHTML += p0 + message + p1;
         // Generate array A and display it on the web page interface inside of the DIV element whose id is "output".
         A = generate_array_A();
-        validate_array_of_color_values(A);
+        document.getElementById("output").innerHTML = generate_array_A_visual_representation(A);
     }
     catch(exception) {
         console.log("An exception to normal functioning occurred during the runtime of generate(): " + exception);
