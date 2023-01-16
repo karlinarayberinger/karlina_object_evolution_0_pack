@@ -245,7 +245,7 @@ function generate_array_B(A) {
     try {
        if (!validate_array_of_color_values(A)) throw "Status: validate_array_of_color_values(A) returned false.";
        for (i = 0; i < A.length; i += 1) B[i] = 0;
-       // ...
+       // This might as well be Sudoku.
        return B;
     }
     catch(exception) {
