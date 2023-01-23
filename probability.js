@@ -1,7 +1,7 @@
 /**
  * file: probability.js
  * type: JavaScript
- * date: 16_JANUARY_2023
+ * date: 23_JANUARY_2023
  * author: karbytes
  * license: PUBLIC_DOMAIN
  */
@@ -22,11 +22,13 @@ function generate_random_nonnegative_number_less_than_one() {
  * 
  * Multiply N by T, round the result down to the nearest integer, and return that rounded down result.
  * 
- * @return {Number} a base-ten (i.e. decimal) integer no smaller than 0 and no larger than T.
+ * @param {Number} T is assumed to be a natural number no larger than 1000
+ * 
+ * @return {Number} a base-ten (i.e. decimal) integer no smaller than 0 and no larger than (T - 1).
  */
 function generate_random_nonnegative_integer_less_than_T(T) {
     let N = generate_random_nonnegative_number_less_than_one();
-    if ((typeof T != "number") || (T !== Math.floor(T))) T = 1;
+    if ((typeof T != "number") || (T !== Math.floor(T)) || (T < 1) || (T > 1000)) T = 1;
     return Math.floor(N * T);
 }
 
@@ -141,7 +143,7 @@ function populate_p_menu() {
  * 
  * Assume that select_menu_identifier is a String type value and the id of an existing select HTML element.
  * 
- * @param {String} id of a SELECT menu web page element
+ * @param {String} select_menu_identififier is assumed to be the id of an existing SELECT menu web page element
  * 
  * @return {String} value of an OPTION of the SELECT whose id is select_menu_identifier
  */
@@ -285,12 +287,26 @@ function generate_array_B(A) {
 }
 
 /**
- * Generate an HTML content string to be appended to the inner HTMl of the DIV element whose id is "output" 
- * such that the string which is returned by this function represents a TABLE whose cells (table data (TD))
- * each represents exactly one element of array (and that table cell depicts the corresponding HTML color code
+ * Generate an HTML content string to be appended to the inner HTMl of the DIV element whose id is "output".
+ * 
+ * The string which is returned by this function represents a TABLE which has two columns and as many rows
+ * as there are elements in array.
+ * 
+ * The left column denotes the index value of an array element.
+ * 
+ * The right column denotes the value of the the array element whose index number is the adjacent left table data cell value.
+ *  
+ * The string which is returned by this function represents a TABLE whose cells (table data (TD))
+ * each represent exactly one element of array (and that table cell depicts the corresponding HTML color code
  * value (which is a String-type element of array) as black text and as the background color of that cell).
  * 
- * @param {Object} a non-empty array whose elements are exclusively HTML color code values.
+ * The background color of each table data cell which contains an array element index value is CYAN.
+ * 
+ * The background color of each table data cell which contains an array element value is identical to that array element value.
+ * 
+ * The text color of each table data cell is black.
+ * 
+ * @param {Object} array is assumed to be a non-empty array whose elements are exclusively HTML color code values.
  * 
  * @return {String} HTML content which visually depicts the contents of A.
  */
@@ -302,11 +318,10 @@ function generate_array_visual_representation(array) {
     try {
        if (!validate_array_of_color_values(array)) throw "Status: validate_array_of_color_values(array) returned false.";
        S += p0 + t0;
-       for (i = 0; i < array.length; i += 1) {
+       for (i = 0; i < array.length; i += 1) { 
             S += tr0;
-            S += '<' + 'td style="background:' + array[i] + '; color:#000000; text-align: center"' + '>';
-            S += array[i];
-            S += '<' + '/' + 'td' + '>';
+            S += '<' + 'td style="background:#00ffff;color:#000000;text-align:center"' + '>' + i + '<' + '/' + 'td' + '>';
+            S += '<' + 'td style="background:' + array[i] + ';color:#000000;text-align:center"' + '>' + array[i] + '<' + '/' + 'td' + '>';
             S += tr1;
        }
        S += t1 + p1;
