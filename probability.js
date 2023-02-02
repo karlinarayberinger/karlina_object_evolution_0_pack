@@ -346,6 +346,29 @@ function generate_array_visual_representation(array) {
 }
 
 /**
+ * For each unique color value which occurs as an element of array, generate a paragraph which displays the number of times
+ * that particular color value occurs as an element of array and the expected probability that the color value will be
+ * randomly selected from array.
+ * 
+ * @param {Object} array is assumed to be a non-empty array whose elements are exclusively HTML color code (String type) values.
+ * 
+ * @return {String} HTML which textually depicts the contents of array.
+ */
+function generate_color_probabilities_list(array) {
+    const p0 = '<' + 'p' + '>', p1 = '<' + '/' + 'p' + '>';
+    let i = 0, S = '';
+    try {
+        if (!validate_array_of_color_values(array)) throw "Status: validate_array_of_color_values(array) returned false.";
+        //...
+        return S;
+    }
+    catch(exception) {
+        console.log("An exception to normal functioning occurred during the runtime of generate_color_probabilities_list(array): " + exception);
+        return p0 + "ERROR" + p1;
+    }
+}
+
+/**
  * Assume that this function is called in response to the event of a GENERATE button click.
  * 
  * Set each of the ten SELECT elements for unique HTML color values to disabled.
