@@ -278,7 +278,7 @@ function validate_array_of_color_values(array) {
  */
 function generate_array_B(A) {
     let B, C, i, r;
-    C = [];
+    B = [], C = [];
     try {
        if (!validate_array_of_color_values(A)) throw "Status: validate_array_of_color_values(A) returned false.";
        // Populate array C with the elements of array A such that the elements of C are arranged in the same order as the elements of A are arranged.
@@ -377,6 +377,9 @@ function generate() {
         document.getElementById("output").innerHTML = p0 + "Array A:" + p1;
         document.getElementById("output").innerHTML += generate_array_visual_representation(A);
         // Generate array B and display it on the web page interface inside of the DIV element whose id is "output".
+        B = generate_array_B(A);
+        document.getElementById("output").innerHTML += p0 + "Array B:" + p1;
+        document.getElementById("output").innerHTML += generate_array_visual_representation(B);
     }
     catch(exception) {
         console.log("An exception to normal functioning occurred during the runtime of generate(): " + exception);
