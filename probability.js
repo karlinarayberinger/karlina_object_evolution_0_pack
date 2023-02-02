@@ -244,18 +244,32 @@ function generate_array_A() {
  */
 function generate_initial_color_probabilities_list() {
     const p0 = '<' + 'p' + '>', p1 = '<' + '/' + 'p' + '>';
-    let html_color_codes = undefined, i = 0, total_elements_in_A = 0, S = '', unique_color_counts_array = [];
-    let unique_color_count_object = { UNIQUE_COLOR_VALUE: "unique_color", UNIQUE_COLOR_QUANTITY: 0, UNIQUE_COLOR_PROBABILITY_OF_BEING_RANDOMLY_SELECTED: 0 };
+    let html_color_codes = undefined, total_number_of_elements_in_A = 0, selected_color_frequency = 0, i = 0, S = '', unique_color_counts_array = [], unique_color_count_object = {};
     try {
         html_color_codes = generate_color_values();
         for (i = 0; i < html_color_codes.length; i += 1) {
-            unique_color_count_object.UNIQUE_COLOR_VALUE = html_color_codes[i];
-            unique_color_count_object.UNIQUE_COLOR_QUANTITY = parseInt(get_selected_menu_option_value(html_color_codes[i]));
-            A += unique_color_count_object.UNIQUE_COLOR_QUANTITY;
-            unique_color_counts_array.push(unique_color_count_object);
+            selected_color_frequency = parseInt(get_selected_menu_option_value(html_color_codes[i]));
+            // Only insert a JSON object into the statistics array if the frequency for that JSON object's corresponding color value is larger than zero.
+            if (selected_color_frequency > 0) {
+                unique_color_count_object.VALUE = html_color_codes[i];
+                unique_color_count_object.FREQUENCY = selected_color_frequency;
+                unique_color_counts_array.push(unique_color_count_object);
+                total_number_of_elements_in_A += unique_color_count_object.FREQUENCY;
+                unique_color_count_object = {};
+            }
         }
+        // Debugging: display the value of total_number_of_elements_in_A to the web console.
+        // console.log("total_number_of_elements_in_A := " + total_number_of_elements_in_A + ".");
         for (i = 0; i < unique_color_counts_array.length; i += 1) {
-            unique_color_counts_array[i].UNIQUE_COLOR_QUANTITY = (unique_color_counts_array[i].UNIQUE_COLOR_QUANTITY / total_elements_A);
+            unique_color_counts_array[i].PROBABILITY = (unique_color_counts_array[i].FREQUENCY / total_number_of_elements_in_A);
+            // Debugging: display the property values of the Object type value named unique_color_count_object to the web console.
+            /*
+            console.log("-------------------------------------");
+            console.log("unique_color_counts_array[i].VALUE := " + unique_color_counts_array[i].VALUE + ". // HTML color code (String).");
+            console.log("unique_color_counts_array[i].FREQUENCY := " + unique_color_counts_array[i].FREQUENCY + ". // number of occurrences in A (nonnegative integer).");
+            console.log("unique_color_counts_array[i].PROBABILITY:= " + unique_color_counts_array[i].PROBABILITY + ". // likelihood of being selected in A (number which is no smaller than 0 and no larger than 1).");
+            console.log("-------------------------------------");
+            */
         }
         return unique_color_counts_array;
     }
@@ -412,17 +426,15 @@ function generate() {
         document.getElementById("output").innerHTML = p0 + "Array A:" + p1;
         document.getElementById("output").innerHTML += generate_array_visual_representation(A);
         // Generate a textual description of the contents of A in terms of color value quantities and the probabilities which are dependent on such quantities.
-        /*
         P = generate_initial_color_probabilities_list();
-        document.getElementById("output").innerHTML += p0 + "Initial Color Probabilities:" + p1;
+        document.getElementById("output").innerHTML += p0 + "Array A Statistics:" + p1;
         for (i = 0; i < P.length; i += 1) {
             document.getElementById("output").innerHTML += p0;
-            document.getElementById("output").innerHTML += "{ UNIQUE_COLOR_VALUE: " + P[i].UNIQUE_COLOR_VALUE + ", ";
-            document.getElementById("output").innerHTML += "UNIQUE_COLOR_QUANTITY: " + P[i].UNIQUE_COLOR_QUANTITY + ", ";
-            document.getElementById("output").innerHTML += "UNIQUE_COLOR_PROBABILITY_OF_BEING_RANDOMLY_SELECTED: " + P[i].UNIQUE_COLOR_PROBABILITY_OF_BEING_RANDOMLY_SELECTED + " }";
+            document.getElementById("output").innerHTML += "{ VALUE: " + P[i].VALUE + ", ";
+            document.getElementById("output").innerHTML += "FREQUENCY: " + P[i].FREQUENCY + ", ";
+            document.getElementById("output").innerHTML += "PROBABILITY: " + P[i].PROBABILITY + " }";
             document.getElementById("output").innerHTML += p1;
         }
-        */
         // Generate array B and display it on the web page interface inside of the DIV element whose id is "output".
         B = generate_array_B(A);
         document.getElementById("output").innerHTML += p0 + "Array B:" + p1;
