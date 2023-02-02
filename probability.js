@@ -1,10 +1,23 @@
 /**
  * file: probability.js
  * type: JavaScript
- * date: 23_JANUARY_2023
+ * date: 01_FEBRUARY_2023
  * author: karbytes
  * license: PUBLIC_DOMAIN
  */
+
+/**
+ * Return a String type value which describes the number of milliseconds which have elapsed since the Unix Epoch.
+ * 
+ * Note that the Unix Epoch is 01_JANUARY_1970 at 0 hours, 0 minutes, 0 seconds, and 0 seconds 
+ * (i.e. 00:00:00) (i.e. midnight) (Coordinated Universal Time (UTC)).
+ * 
+ * @return {String} text which denotes the number of milliseconds which have elapsed since the Unix Epoch
+ */
+function generate_time_stamp() {
+    const milliseconds_elapsed_since_unix_epoch = Date.now();
+    return milliseconds_elapsed_since_unix_epoch + " milliseconds since midnight on 01_JANUARY_1970.";
+}
 
 /**
  * Use the native JavaScript Math library function for generating random numbers to select a 
@@ -27,22 +40,15 @@ function generate_random_nonnegative_number_less_than_one() {
  * @return {Number} a base-ten (i.e. decimal) integer no smaller than 0 and no larger than (T - 1).
  */
 function generate_random_nonnegative_integer_less_than_T(T) {
-    let N = generate_random_nonnegative_number_less_than_one();
-    if ((typeof T != "number") || (T !== Math.floor(T)) || (T < 1) || (T > 1000)) T = 1;
-    return Math.floor(N * T);
-}
-
-/**
- * Return a String type value which describes the number of milliseconds which have elapsed since the Unix Epoch.
- * 
- * Note that the Unix Epoch is 01_JANUARY_1970 at 0 hours, 0 minutes, 0 seconds, and 0 seconds 
- * (i.e. 00:00:00) (i.e. midnight) (Coordinated Universal Time (UTC)).
- * 
- * @return {String} text which denotes the number of milliseconds which have elapsed since the Unix Epoch
- */
-function generate_time_stamp() {
-    const milliseconds_elapsed_since_unix_epoch = Date.now();
-    return milliseconds_elapsed_since_unix_epoch + " milliseconds since midnight on 01_JANUARY_1970.";
+    try {
+        let N = generate_random_nonnegative_number_less_than_one();
+        if (arguments.length !== 1) throw "Error: exactly one function input is required.";
+        if ((typeof T != "number") || (T !== Math.floor(T)) || (T < 1) || (T > 1000)) throw "Error: T is required to be a natural number no larger than 1000.";
+        return Math.floor(N * T);
+    }
+    catch(exception) {
+        console.log("An exception to normal functioning occurred during the runtime of generate_random_nonnegative_integer_less_than_T(T): " + exception);
+    }
 }
 
 /**
@@ -90,7 +96,6 @@ function populate_c_menus() {
         for(i = 0; i < 10; i += 1) {
             S += p0;
             S += html_color_codes[i] + " := ";
-
             S += '<' + 'select id="' + html_color_codes[i] + '" style="color:#000000;background:' + html_color_codes[i] + '"' + '>';
             for (k = 0; k <= 100; k += 1) {
                 if (k === 0) S += '<' + 'option selected' + '>';
@@ -150,6 +155,7 @@ function populate_p_menu() {
 function get_selected_menu_option_value(select_menu_identifier) {
     try {
         let menu_object = {}, options_array = [], selected_option_index = 0, selected_option_object = {}, selected_option_value;
+        if (arguments.length !== 1) throw "Error: exactly one function input is required.";
         menu_object = document.getElementById(select_menu_identifier);
         options_array = menu_object.options;
         selected_option_index = menu_object.selectedIndex;
@@ -205,7 +211,7 @@ function initialize_application() {
  * 
  * Return A after all the color values are inserted into A.
  * 
- * @return {Object} an array containing String type elements which each represent one of ten unique HTML color code values.
+ * @return {Object} an array containing exclusively String type elements which each represent one of ten unique HTML color code values.
  */
 function generate_array_A() {
     try {
@@ -230,7 +236,7 @@ function generate_array_A() {
  * If erroneous input is detected or if a runtime error occurs, use a try-catch block for exception handling
  * which outputs a message to the web browser console about the type of runtime exception which was detected.
  * 
- * @param {Object} array is assumed to be a non-empty array containing exclusively String type elements.
+ * @param {Object} array is assumed to be a non-empty array containing no more than 1000 exclusively String type elements.
  * 
  * @return {Boolean} true if array is an array comprised exclusively of valid HTML color code values; false otherwise.
  */
@@ -264,7 +270,11 @@ function validate_array_of_color_values(array) {
 }
 
 /**
+ * Copy the contents of array A into a new array named B such that the elements of A are each of the elements of A (but the elements of B are arranged in a randomized order).
  * 
+ * @param {Object} A is assumed to be a non-empty array containing no more than 1000 exclusively String type elements which each represent one of ten unique HTML color code values.
+ * 
+ * @return {Object} an array containing each of the elements of A arranged in a randomized order (if no runtime errors occur (and undefined otherwise)).
  */
 function generate_array_B(A) {
     let B, C, i, r;
@@ -277,7 +287,7 @@ function generate_array_B(A) {
        }
        for (i = 0; i < A.length; i += 1) {
             r = generate_random_nonnegative_integer_less_than_T(A.length);
-            //...
+            //..
        }
        return B;
     }
@@ -306,7 +316,7 @@ function generate_array_B(A) {
  * 
  * The text color of each table data cell is black.
  * 
- * @param {Object} array is assumed to be a non-empty array whose elements are exclusively HTML color code values.
+ * @param {Object} array is assumed to be a non-empty array whose elements are exclusively HTML color code (String type) values.
  * 
  * @return {String} HTML content which visually depicts the contents of A.
  */
