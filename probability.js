@@ -397,7 +397,7 @@ function generate_array_visual_representation(array) {
  */
 function generate() {
     try {
-        let i = 0, A = undefined;
+        let i = 0, A = undefined, P = undefined;
         const p0 = '<' + 'p' + '>', p1 = '<' + '/' + 'p' + '>', html_color_codes = generate_color_values();
         const message = "The generate() function was called at time: " + generate_time_stamp();
         console.log(message);
@@ -411,6 +411,18 @@ function generate() {
         A = generate_array_A();
         document.getElementById("output").innerHTML = p0 + "Array A:" + p1;
         document.getElementById("output").innerHTML += generate_array_visual_representation(A);
+        // Generate a textual description of the contents of A in terms of color value quantities and the probabilities which are dependent on such quantities.
+        /*
+        P = generate_initial_color_probabilities_list();
+        document.getElementById("output").innerHTML += p0 + "Initial Color Probabilities:" + p1;
+        for (i = 0; i < P.length; i += 1) {
+            document.getElementById("output").innerHTML += p0;
+            document.getElementById("output").innerHTML += "{ UNIQUE_COLOR_VALUE: " + P[i].UNIQUE_COLOR_VALUE + ", ";
+            document.getElementById("output").innerHTML += "UNIQUE_COLOR_QUANTITY: " + P[i].UNIQUE_COLOR_QUANTITY + ", ";
+            document.getElementById("output").innerHTML += "UNIQUE_COLOR_PROBABILITY_OF_BEING_RANDOMLY_SELECTED: " + P[i].UNIQUE_COLOR_PROBABILITY_OF_BEING_RANDOMLY_SELECTED + " }";
+            document.getElementById("output").innerHTML += p1;
+        }
+        */
         // Generate array B and display it on the web page interface inside of the DIV element whose id is "output".
         B = generate_array_B(A);
         document.getElementById("output").innerHTML += p0 + "Array B:" + p1;
