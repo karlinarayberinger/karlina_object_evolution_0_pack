@@ -231,6 +231,41 @@ function generate_array_A() {
 }
 
 /**
+ * For each unique color value which occurs as an element of A, generate a paragraph which displays the HTML color code associated with that color (String),
+ * the number of times that particular color value occurs as an element of A (Number), and the expected probability that the color value will be
+ * randomly selected from A (Number).
+ * 
+ * Assume that each random selection of one element from A is approximately equal in terms of randomness as every other random selection of one element from A
+ * and that no particular color value is intrinsicall favored more or less than any other color from the list of ten unique colors which could be added to array A.
+ * (What that means is that, if each one of the ten unique colors is selected to have the same quantity in A as every other one of those ten colors, 
+ * then each of those color values is assumed to have the same probability of being selected during the first seclection of either A or else B).
+ * 
+ * @return {Object} array of JSON objects which textually depicts the contents of A based on what the user selected on the web page interface for unique color counts.
+ */
+function generate_initial_color_probabilities_list() {
+    const p0 = '<' + 'p' + '>', p1 = '<' + '/' + 'p' + '>';
+    let html_color_codes = undefined, i = 0, total_elements_in_A = 0, S = '', unique_color_counts_array = [];
+    let unique_color_count_object = { UNIQUE_COLOR_VALUE: "unique_color", UNIQUE_COLOR_QUANTITY: 0, UNIQUE_COLOR_PROBABILITY_OF_BEING_RANDOMLY_SELECTED: 0 };
+    try {
+        html_color_codes = generate_color_values();
+        for (i = 0; i < html_color_codes.length; i += 1) {
+            unique_color_count_object.UNIQUE_COLOR_VALUE = html_color_codes[i];
+            unique_color_count_object.UNIQUE_COLOR_QUANTITY = parseInt(get_selected_menu_option_value(html_color_codes[i]));
+            A += unique_color_count_object.UNIQUE_COLOR_QUANTITY;
+            unique_color_counts_array.push(unique_color_count_object);
+        }
+        for (i = 0; i < unique_color_counts_array.length; i += 1) {
+            unique_color_counts_array[i].UNIQUE_COLOR_QUANTITY = (unique_color_counts_array[i].UNIQUE_COLOR_QUANTITY / total_elements_A);
+        }
+        return unique_color_counts_array;
+    }
+    catch(exception) {
+        console.log("An exception to normal functioning occurred during the runtime of generate_initial_color_probabilities_list(): " + exception);
+        return undefined;
+    }
+}
+
+/**
  * Determine whether or not the input array is comprised exclusively of valid HTML color code values.
  * 
  * If erroneous input is detected or if a runtime error occurs, use a try-catch block for exception handling
@@ -341,29 +376,6 @@ function generate_array_visual_representation(array) {
     }
     catch(exception) {
         console.log("An exception to normal functioning occurred during the runtime of generate_array_visual_representation(array): " + exception);
-        return p0 + "ERROR" + p1;
-    }
-}
-
-/**
- * For each unique color value which occurs as an element of array, generate a paragraph which displays the number of times
- * that particular color value occurs as an element of array and the expected probability that the color value will be
- * randomly selected from array.
- * 
- * @param {Object} array is assumed to be a non-empty array whose elements are exclusively HTML color code (String type) values.
- * 
- * @return {String} HTML which textually depicts the contents of array.
- */
-function generate_color_probabilities_list(array) {
-    const p0 = '<' + 'p' + '>', p1 = '<' + '/' + 'p' + '>';
-    let i = 0, S = '';
-    try {
-        if (!validate_array_of_color_values(array)) throw "Status: validate_array_of_color_values(array) returned false.";
-        //...
-        return S;
-    }
-    catch(exception) {
-        console.log("An exception to normal functioning occurred during the runtime of generate_color_probabilities_list(array): " + exception);
         return p0 + "ERROR" + p1;
     }
 }
