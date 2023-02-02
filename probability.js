@@ -281,13 +281,15 @@ function generate_array_B(A) {
     C = [];
     try {
        if (!validate_array_of_color_values(A)) throw "Status: validate_array_of_color_values(A) returned false.";
-       for (i = 0; i < A.length; i += 1) {
-            B[i] = 0;
-            C[i] = A[i];
-       }
-       for (i = 0; i < A.length; i += 1) {
-            r = generate_random_nonnegative_integer_less_than_T(A.length);
-            //..
+       // Populate array C with the elements of array A such that the elements of C are arranged in the same order as the elements of A are arranged.
+       for (i = 0; i < A.length; i += 1) C.push(A[i]);
+       // Until array C is empty, randomly remove an element from C and place it into B.
+       while (C.length > 0) {
+            for (i = 0; i < C.length; i += 1) {
+                r = generate_random_nonnegative_integer_less_than_T(C.length);
+                B.push(C[r]); // Insert C[r] into B at the right end of B.
+                C.splice(r,1); // At position r, remove one element.
+            }
        }
        return B;
     }
