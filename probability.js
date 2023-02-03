@@ -376,7 +376,7 @@ function validate_array_of_color_array_statistics(array) {
                 throw "Error: current_PROBABILITY is required to be a natural number no larger than ten.";
             }
         }
-        return false;
+        return true;
     }
     catch(exception) {
         console.log("An exception to normal functioning occurred during the runtime of validate_array_of_color_array_statistics(array): " + exception);
