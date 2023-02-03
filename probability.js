@@ -1,7 +1,7 @@
 /**
  * file: probability.js
  * type: JavaScript
- * date: 01_FEBRUARY_2023
+ * date: 02_FEBRUARY_2023
  * author: karbytes
  * license: PUBLIC_DOMAIN
  */
@@ -129,10 +129,10 @@ function populate_p_menu() {
     try {
         const p0 = '<' + 'p' + '>', p1 = '<' + '/' + 'p' + '>';
         let S = '<' + 'select class="console" id="probability_options"' + '>';
-        S += '<' + 'option value="probability_without_replacement" selected' + '>';
+        S += '<' + 'option value="PROBABILITY_WITH_REPLACEMENT" selected' + '>';
         S += "PROBABILITY_WITHOUT_REPLACEMENT";
         S += '<' + '/' + 'option' + '>';
-        S += '<' + 'option value="probability_with_replacement"' + '>';
+        S += '<' + 'option value="PROBABILITY_WITH_REPLACEMENT"' + '>';
         S += "PROBABILITY_WITH_REPLACEMENT";
         S += '<' + '/' + 'option' + '>';
         S += '<' + '/' + 'select' + '>';
@@ -411,8 +411,9 @@ function generate_array_visual_representation(array) {
  */
 function generate() {
     try {
-        let i = 0, A = undefined, P = undefined;
+        let i = 0, N = 0, selected_probability_type = "", A = undefined, P = undefined;
         const p0 = '<' + 'p' + '>', p1 = '<' + '/' + 'p' + '>', html_color_codes = generate_color_values();
+        const divider_line = p0 + "------------------------------------------------------------------" + p1;
         const message = "The generate() function was called at time: " + generate_time_stamp();
         console.log(message);
         // Update the web page user interface such that the RESET button is the only interactive web page element.
@@ -423,8 +424,10 @@ function generate() {
         document.getElementById("events_log").innerHTML += p0 + message + p1;
         // Generate array A and display it on the web page interface inside of the DIV element whose id is "output".
         A = generate_array_A();
-        document.getElementById("output").innerHTML = p0 + "Array A:" + p1;
+        document.getElementById("output").innerHTML = divider_line;
+        document.getElementById("output").innerHTML += p0 + "Array A: (colors according to selected frequencies)" + p1;
         document.getElementById("output").innerHTML += generate_array_visual_representation(A);
+        document.getElementById("output").innerHTML += divider_line;
         // Generate a textual description of the contents of A in terms of color value quantities and the probabilities which are dependent on such quantities.
         P = generate_initial_color_probabilities_list();
         document.getElementById("output").innerHTML += p0 + "Array A Statistics:" + p1;
@@ -437,8 +440,17 @@ function generate() {
         }
         // Generate array B and display it on the web page interface inside of the DIV element whose id is "output".
         B = generate_array_B(A);
-        document.getElementById("output").innerHTML += p0 + "Array B:" + p1;
+        document.getElementById("output").innerHTML += divider_line;
+        document.getElementById("output").innerHTML += p0 + "Array B: (randomized version of A)" + p1;
         document.getElementById("output").innerHTML += generate_array_visual_representation(B);
+        document.getElementById("output").innerHTML += divider_line;
+        // Display whether PROBABILITY_WITHOUT_REPLACEMENT or else PROBABILITY_WITH_REPLACEMENT was selected by the application user.
+        selected_probability_type = get_selected_menu_option_value("probability_options");
+        document.getElementById("output").innerHTML += p0 + "Probability Type: " + selected_probability_type + p1;
+        // Display the value of N (and N represents the number random selections to perform on array B).
+        N = A.length;
+        document.getElementById("output").innerHTML += p0 + "N: " + N + " (number of random selections to perform on B)" + p1;
+        // For each one of the N random selections from array B, display the selected array element and statistics about array B after B is updated as a result of that selection.
     }
     catch(exception) {
         console.log("An exception to normal functioning occurred during the runtime of generate(): " + exception);
