@@ -476,6 +476,7 @@ function randomly_select_element_from_array(colors_array, statistics_array, prob
     try {
         if (arguments.length !== 3) throw "Error: exactly three function inputs are required.";
         if (!validate_array_of_color_values(colors_array)) throw "Error: validate_array_of_color_values(colors_array) returned false.";
+        if (!validate_array_of_color_array_statistics(statistics_array)) throw "Error: validate_array_of_color_array_statistics(statistics_array) returned false.";
     }
     catch(exception) {
         console.log("An exception to normal functioning occurred during the runtime of randomly_select_element_from_array(colors_array, statistics_array, probability_type): " + exception);
