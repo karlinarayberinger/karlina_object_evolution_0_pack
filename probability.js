@@ -335,8 +335,39 @@ function validate_array_of_color_values(array) {
  */
 function validate_array_of_color_array_statistics(array) {
     try {
+        let i = 0, k = 0, current_COLOR = "", current_FREQUENCY = 0, current_PROBABILITY = 0.0, is_valid_html_color_code = false;
+        const html_color_codes = generate_color_values();
+        let mutable_html_color_codes = generate_color_values();
         if (arguments.length !== 1) throw "Error: exactly one function input is required.";
-        //...
+        if (typeof array !== "object") throw "Error: array is required to be an Object type data value.";
+        if (array.length < 11) throw "Error: array is required to contain no more than ten elements.";
+        for (i = 0; i < array.length; i += 1) {
+            // Type check the value represented by the ith element of array (i.e. array[i]).
+            if (typeof array[i] !== "object") throw "Error: array[i] is required to be an Object type data value.";
+            // Store the relevant property values of array[i] in respective variables.
+            current_COLOR = array[i].COLOR;
+            current_FREQUENCY = array[i].FREQUENCY;
+            current_PROBABILITY = array[i].PROBABILITY;
+            // Type check the property values of the object represented by array[i].
+            if (typeof current_COLOR !== "string") throw "Error: array[i].COLOR is required to be a String type data value.";
+            if (typeof current_FREQUENCY !== "number") throw "Error: array[i].FREQUENCY is required to be a Number type data value.";
+            if (typeof current_PROBABILITY !== "number") throw "Error: array[i].PROBABILITY is required to be a Number type data value.";
+            // Require that current_COLOR occurs as an element value of the array named html_color_codes.
+            is_valid_html_color_code = false;
+            for (k = 0, k < html_color_codes.length; k += 1) if(current_COLOR === html_color_codes[k]) is_valid_html_color_code = true;
+            if (!is_valid_html_color_code) throw "Error: current_COLOR is not an element of the array returned by generate_color_values().";
+            // Require that exactly one instance of current_COLOR occurs in array.
+            is_valid_html_color_code = false;
+            for (k = 0, k < mutable_html_color_codes.length; k += 1) if (current_COLOR === mutable_html_color_codes[k]) is_valid_html_color_code = true;
+            if (!is_valid_html_color_code) throw "Error: current_COLOR is not an element of the array named mutable_html_color_codes.";
+            // Remove the element from mutable_html_color_codes whose value is identical to current_COLOR.
+            for (k = 0; k < mutable_html_color_codes.length; k += 1) {
+                if (current_COLOR === mutable_html_color_codes[k]) mutable_html_color_codes.splice(k,1); // Remove mutable_html_color_codes[k] from mutable_html_color_codes.
+            }
+            // Require that current_FREQUENCY be a natural number no larger than ten.
+            // if ((typeof )) ... gotta go to the bathroom; be right back (hopefully)....
+        }
+        return false;
     }
     catch(exception) {
         console.log("An exception to normal functioning occurred during the runtime of validate_array_of_color_array_statistics(array): " + exception);
