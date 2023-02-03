@@ -1,7 +1,7 @@
 /**
  * file: probability.js
  * type: JavaScript
- * date: 02_FEBRUARY_2023
+ * date: 03_FEBRUARY_2023
  * author: karbytes
  * license: PUBLIC_DOMAIN
  */
@@ -354,11 +354,11 @@ function validate_array_of_color_array_statistics(array) {
             if (typeof current_PROBABILITY !== "number") throw "Error: array[i].PROBABILITY is required to be a Number type data value.";
             // Require that current_COLOR occurs as an element value of the array named html_color_codes.
             is_valid_html_color_code = false;
-            for (k = 0, k < html_color_codes.length; k += 1) if(current_COLOR === html_color_codes[k]) is_valid_html_color_code = true;
+            for (k = 0; k < html_color_codes.length; k += 1) if(current_COLOR === html_color_codes[k]) is_valid_html_color_code = true;
             if (!is_valid_html_color_code) throw "Error: current_COLOR is not an element of the array returned by generate_color_values().";
             // Require that exactly one instance of current_COLOR occurs in array.
             is_valid_html_color_code = false;
-            for (k = 0, k < mutable_html_color_codes.length; k += 1) if (current_COLOR === mutable_html_color_codes[k]) is_valid_html_color_code = true;
+            for (k = 0; k < mutable_html_color_codes.length; k += 1) if (current_COLOR === mutable_html_color_codes[k]) is_valid_html_color_code = true;
             if (!is_valid_html_color_code) throw "Error: current_COLOR is not an element of the array named mutable_html_color_codes.";
             // Remove the element from mutable_html_color_codes whose value is identical to current_COLOR.
             for (k = 0; k < mutable_html_color_codes.length; k += 1) {
@@ -368,13 +368,9 @@ function validate_array_of_color_array_statistics(array) {
                 }
             }
             // Require that current_FREQUENCY be a natural number no larger than ten.
-            if ((current_FREQUENCY !== parseInt(current_FREQUENCY)) || (current_FREQUENCY < 1) || (current_FREQUENCY > 10)) {
-                throw "Error: current_FREQUENCY is required to be a natural number no larger than ten.";
-            }
+            if ((current_FREQUENCY !== parseInt(current_FREQUENCY)) || (current_FREQUENCY < 1) || (current_FREQUENCY > 10)) throw "Error: current_FREQUENCY is required to be a natural number no larger than ten.";
             // Require that current_PROBABILITY be a number which is larger than zero and no larger than one.
-            if ((current_PROBABILITY < 0) || (current_PROBABILITY > 1)) {
-                throw "Error: current_PROBABILITY is required to be a natural number no larger than ten.";
-            }
+            if ((current_PROBABILITY < 0) || (current_PROBABILITY > 1)) throw "Error: current_PROBABILITY is required to be a natural number no larger than ten.";
         }
         return true;
     }
