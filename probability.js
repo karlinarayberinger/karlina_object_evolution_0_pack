@@ -470,7 +470,9 @@ function generate_array_visual_representation(array) {
  * 
  * @param {String} probability_type is assumed to either be "PROBABILITY_WITHOUT_REPLACEMENT" or else "PROBABILITY_WITH_REPLACEMENT".
  * 
- * @return {Object} the modified input array after removing (and possibly replacing) one of the elements from the array.
+ * @return {Object} object containing two objects:
+ *                  A (the modified input array named colors_array after removing (and possibly replacing) one of the elements from that array) and 
+ *                  B (the modified input array named statistics_array after removing (and possibly replacing) one of the elements from that array).
  */
 function randomly_select_element_from_array(colors_array, statistics_array, probability_type) {
     try {
