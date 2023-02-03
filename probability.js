@@ -395,6 +395,24 @@ function generate_array_visual_representation(array) {
 }
 
 /**
+ * @param {Object} colors_array is assumed to be array B.
+ * 
+ * @param {Object} statistics_array is assumed to be P (i.e. the arary returned by the call to generate_initial_color_probabilities_list() in the generate() function).
+ * 
+ * @param {String} probability_type is assumed to either be "PROBABILITY_WITHOUT_REPLACEMENT" or else "PROBABILITY_WITH_REPLACEMENT".
+ * 
+ * @return {Object} the modified input array after removing (and possibly replacing) one of the elements from the array.
+ */
+function randomly_select_element_from_array(colors_array, statistics_array, probability_type) {
+    try {
+
+    }
+    catch(exception) {
+        console.log("An exception to normal functioning occurred during the runtime of randomly_select_element_from_array(colors_array, statistics_array, probability_type): " + exception);
+    }
+}
+
+/**
  * Assume that this function is called in response to the event of a GENERATE button click.
  * 
  * Set each of the ten SELECT elements for unique HTML color values to disabled.
@@ -450,6 +468,7 @@ function generate() {
         // Display the value of N (and N represents the number random selections to perform on array B).
         N = A.length;
         document.getElementById("output").innerHTML += p0 + "N: " + N + " (number of random selections to perform on B)" + p1;
+        document.getElementById("output").innerHTML += divider_line;
         // For each one of the N random selections from array B, display the selected array element and statistics about array B after B is updated as a result of that selection.
     }
     catch(exception) {
