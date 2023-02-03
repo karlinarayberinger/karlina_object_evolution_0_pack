@@ -479,7 +479,7 @@ function randomly_select_element_from_array(colors_array, statistics_array, prob
         if (!validate_array_of_color_values(colors_array)) throw "Error: validate_array_of_color_values(colors_array) returned false.";
         if (!validate_array_of_color_array_statistics(statistics_array)) throw "Error: validate_array_of_color_array_statistics(statistics_array) returned false.";
         if (typeof probability_type !== "string") throw "Error: probability_type is required to be a String type data value."; 
-        random_array_element_index = generate_random_nonnegative_integer_less_than_T(colors_array.length);
+        random_array_element_index = generate_random_nonnegative_integer_less_than_T(colors_array.length - 1);
         colors_array.splice(random_array_element_index,1); 
     }
     catch(exception) {
