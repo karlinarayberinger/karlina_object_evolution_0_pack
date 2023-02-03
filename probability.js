@@ -489,7 +489,7 @@ function randomly_select_element_from_array(colors_array, statistics_array, prob
  * Set each of the ten SELECT elements for unique HTML color values to disabled.
  * 
  * Set the SELECT element for whether to use PROBABILITY_WITHOUT_REPLACEMENT or 
- * else PROBABILITY_WIT_REPLACEMENT to disabled.
+ * else PROBABILITY_WITH_REPLACEMENT to disabled.
  * 
  * Set the GENERATE button to hidden.
  * 
