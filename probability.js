@@ -362,10 +362,19 @@ function validate_array_of_color_array_statistics(array) {
             if (!is_valid_html_color_code) throw "Error: current_COLOR is not an element of the array named mutable_html_color_codes.";
             // Remove the element from mutable_html_color_codes whose value is identical to current_COLOR.
             for (k = 0; k < mutable_html_color_codes.length; k += 1) {
-                if (current_COLOR === mutable_html_color_codes[k]) mutable_html_color_codes.splice(k,1); // Remove mutable_html_color_codes[k] from mutable_html_color_codes.
+                if (current_COLOR === mutable_html_color_codes[k]) {
+                    // Remove mutable_html_color_codes[k] from mutable_html_color_codes.
+                    mutable_html_color_codes.splice(k,1); 
+                }
             }
             // Require that current_FREQUENCY be a natural number no larger than ten.
-            // if ((typeof )) ... gotta go to the bathroom; be right back (hopefully)....
+            if ((current_FREQUENCY !== parseInt(current_FREQUENCY)) || (current_FREQUENCY < 1) || (current_FREQUENCY > 10)) {
+                throw "Error: current_FREQUENCY is required to be a natural number no larger than ten.";
+            }
+            // Require that current_PROBABILITY be a number which is larger than zero and no larger than one.
+            if ((current_PROBABILITY < 0) || (current_PROBABILITY > 1)) {
+                throw "Error: current_PROBABILITY is required to be a natural number no larger than ten.";
+            }
         }
         return false;
     }
