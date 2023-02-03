@@ -319,6 +319,32 @@ function validate_array_of_color_values(array) {
 }
 
 /**
+ * A unique_color_count_object is a JSON object comprised of the following three properties:
+ * COLOR: {String} one of the ten unique HTML color codes comprising the array returned by generate_color_values().
+ * FREQUENCY: {Number} a natural number no larger than 100.
+ * PROBABILITY: {Number} a number which is larger than 0 and no larger than 1.
+ * 
+ * In order for the input array to be considered valid, 
+ * that array must not contain more than ten elements,
+ * each element of array must be formatted as a unique_color_count_object (as described above),
+ * and each element of array must contain a unique COLOR property with respect to every other element or array.
+ * 
+ * @param {Object} array is assumed to be a non-empty array containing no more than 100 exclusively Object type elements.
+ * 
+ * @return {Boolean} true if array is an array comprised exclusively of valid unique_color_count_object array values; false otherwise.
+ */
+function validate_array_of_color_array_statistics(array) {
+    try {
+        if (arguments.length !== 1) throw "Error: exactly one function input is required.";
+        //...
+    }
+    catch(exception) {
+        console.log("An exception to normal functioning occurred during the runtime of validate_array_of_color_array_statistics(array): " + exception);
+        return false;
+    }
+}
+
+/**
  * Copy the contents of array A into a new array named B such that the elements of A are each of the elements of A (but the elements of B are arranged in a randomized order).
  * 
  * @param {Object} A is assumed to be a non-empty array containing no more than 1000 exclusively String type elements which each represent one of ten unique HTML color code values.
@@ -329,7 +355,7 @@ function generate_array_B(A) {
     let B, C, i, r;
     B = [], C = [];
     try {
-       if (!validate_array_of_color_values(A)) throw "Status: validate_array_of_color_values(A) returned false.";
+       if (!validate_array_of_color_values(A)) throw "Error: validate_array_of_color_values(A) returned false.";
        // Populate array C with the elements of array A such that the elements of C are arranged in the same order as the elements of A are arranged.
        for (i = 0; i < A.length; i += 1) C.push(A[i]);
        // Until array C is empty, randomly remove an element from C and place it into B.
@@ -377,7 +403,7 @@ function generate_array_visual_representation(array) {
     const t0 = '<' + 'table' + '>', t1 = '<' + '/' + 'table' + '>';
     let i = 0, S = '';
     try {
-       if (!validate_array_of_color_values(array)) throw "Status: validate_array_of_color_values(array) returned false.";
+       if (!validate_array_of_color_values(array)) throw "Error: validate_array_of_color_values(array) returned false.";
        S += p0 + t0;
        for (i = 0; i < array.length; i += 1) { 
             S += tr0;
@@ -395,6 +421,13 @@ function generate_array_visual_representation(array) {
 }
 
 /**
+ * For each call to this function, randomly select one element of colors_array to be removed.
+ * Then update statistics_array accordingly.
+ * 
+ * If probability_type is "PROBABILITY_WITH_REPLACEMENT", then insert a new randomly generated color value
+ * which is one of the ten unique HTML color code values displayed on the web page interface.
+ * Then update statistics_array accordingly.
+ * 
  * @param {Object} colors_array is assumed to be array B.
  * 
  * @param {Object} statistics_array is assumed to be P (i.e. the arary returned by the call to generate_initial_color_probabilities_list() in the generate() function).
@@ -405,7 +438,8 @@ function generate_array_visual_representation(array) {
  */
 function randomly_select_element_from_array(colors_array, statistics_array, probability_type) {
     try {
-
+        if (arguments.length !== 3) throw "Error: exactly three function inputs are required.";
+        if (!validate_array_of_color_values(colors_array)) throw "Error: validate_array_of_color_values(colors_array) returned false.";
     }
     catch(exception) {
         console.log("An exception to normal functioning occurred during the runtime of randomly_select_element_from_array(colors_array, statistics_array, probability_type): " + exception);
