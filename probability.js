@@ -251,7 +251,7 @@ function generate_initial_color_probabilities_list() {
             selected_color_frequency = parseInt(get_selected_menu_option_value(html_color_codes[i]));
             // Only insert a JSON object into the statistics array if the frequency for that JSON object's corresponding color value is larger than zero.
             if (selected_color_frequency > 0) {
-                unique_color_count_object.VALUE = html_color_codes[i];
+                unique_color_count_object.COLOR = html_color_codes[i];
                 unique_color_count_object.FREQUENCY = selected_color_frequency;
                 unique_color_counts_array.push(unique_color_count_object);
                 total_number_of_elements_in_A += unique_color_count_object.FREQUENCY;
@@ -340,7 +340,7 @@ function validate_array_of_color_array_statistics(array) {
         let mutable_html_color_codes = generate_color_values();
         if (arguments.length !== 1) throw "Error: exactly one function input is required.";
         if (typeof array !== "object") throw "Error: array is required to be an Object type data value.";
-        if (array.length < 11) throw "Error: array is required to contain no more than ten elements.";
+        if (array.length > 10) throw "Error: array is required to contain no more than ten elements.";
         for (i = 0; i < array.length; i += 1) {
             // Type check the value represented by the ith element of array (i.e. array[i]).
             if (typeof array[i] !== "object") throw "Error: array[i] is required to be an Object type data value.";
@@ -367,10 +367,10 @@ function validate_array_of_color_array_statistics(array) {
                     mutable_html_color_codes.splice(k,1); 
                 }
             }
-            // Require that current_FREQUENCY be a natural number no larger than ten.
-            if ((current_FREQUENCY !== parseInt(current_FREQUENCY)) || (current_FREQUENCY < 1) || (current_FREQUENCY > 10)) throw "Error: current_FREQUENCY is required to be a natural number no larger than ten.";
-            // Require that current_PROBABILITY be a number which is larger than zero and no larger than one.
-            if ((current_PROBABILITY < 0) || (current_PROBABILITY > 1)) throw "Error: current_PROBABILITY is required to be a natural number no larger than ten.";
+            // Require that current_FREQUENCY be a natural number no larger than one hundred.
+            if ((current_FREQUENCY !== parseInt(current_FREQUENCY)) || (current_FREQUENCY < 1) || (current_FREQUENCY > 100)) throw "Error: current_FREQUENCY is required to be a natural number no larger than one hundred.";
+            // Require that current_PROBABILITY be a nonnegative integer which is no larger than one.
+            if ((current_PROBABILITY < 0) || (current_PROBABILITY > 1)) throw "Error: current_PROBABILITY is required to be a nonnegative integer no larger than one.";
         }
         return true;
     }
@@ -479,7 +479,7 @@ function randomly_select_element_from_array(colors_array, statistics_array, prob
         let random_array_element_index = 0, i = 0, return_object = {};
         if (arguments.length !== 3) throw "Error: exactly three function inputs are required.";
         if (!validate_array_of_color_values(colors_array)) throw "Error: validate_array_of_color_values(colors_array) returned false.";
-        // if (!validate_array_of_color_array_statistics(statistics_array)) throw "Error: validate_array_of_color_array_statistics(statistics_array) returned false.";
+        if (!validate_array_of_color_array_statistics(statistics_array)) throw "Error: validate_array_of_color_array_statistics(statistics_array) returned false.";
         if (typeof probability_type !== "string") throw "Error: probability_type is required to be a String type data value."; 
         random_array_element_index = generate_random_nonnegative_integer_less_than_T(colors_array.length - 1);
         colors_array.splice(random_array_element_index,1); // Remove colors_array[random_array_element_index] from colors_array.
@@ -491,7 +491,6 @@ function randomly_select_element_from_array(colors_array, statistics_array, prob
                 }
             }
         }
-        console.log(probability_type);
         if (probability_type === "PROBABILITY_WITHOUT_REPLACEMENT") {
             for (i = 0; i < statistics_array.length; i += 1) {
                 statistics_array[i].PROBABILITY = statistics_array[i].FREQUENCY / colors_array.length;
@@ -500,10 +499,19 @@ function randomly_select_element_from_array(colors_array, statistics_array, prob
             return_object.B = statistics_array;
             // Debugging: display the property values of the Object type value named return object to the web console.
             console.log("return_object.A := " + return_object.A + ".");
+            console.log("return_object.B := ");
+            for (i = 0; i < return_object.B.length; i++) {
+                console.log("{");
+                console.log("    COLOR: " + return_object.B[i].COLOR + ",");
+                console.log("    FREQUENCY: " + return_object.B[i].FREQUENCY + ",");
+                console.log("    PROBABILITY: " + return_object.B[i].PROBABILITY);
+                if (i < (return_object.B.length - 1)) console.log("},");
+                else console.log("}");
+            }
+            console.log(".");
             return return_object;
         }
         //...
-
     }
     catch(exception) {
         console.log("An exception to normal functioning occurred during the runtime of randomly_select_element_from_array(colors_array, statistics_array, probability_type): " + exception);
@@ -573,9 +581,9 @@ function generate() {
         document.getElementById("output").innerHTML += divider_line;
         // For each one of the N random selections from array B, display the selected array element and statistics about array B after B is updated as a result of that selection.
         //for (i = 0; i < N; i += 1) {
-            return_object = randomly_select_element_from_array(A, B, selected_probability_type);
+            return_object = randomly_select_element_from_array(A, P, selected_probability_type);
             A = return_object.A;
-            B = return_object.B;
+            P = return_object.B;
         //}
     }
     catch(exception) {
