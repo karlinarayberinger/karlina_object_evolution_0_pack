@@ -1,7 +1,0 @@
-Create a C++ program which allows the program user to simulate students taking a class and you being the teacher to find out how to calibrate each student's final grade based on that student's individual progress in terms of points earned on assignments (inlcuding extra credit to make up to one whole letter grade) and a metric which compares all the students' grades. Independent and dependent grades will be assigned.
-
-Or maybe create a C++ program which simulates a dice (or collection of die) which have weighted probabilities such that not all six sides of any one of those die is equally likely to be (1/6).
-
-dice_A := { side_0: 2, side_1 : 3, side_2 : 5, side_3: 1, side_4: 2, side_5: 1 };
-
-dice_B := { side_0: 11, side_1 : 1, side_2 : 8, side_3: 14, side_4: 5, side_5: 3 };
