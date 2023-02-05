@@ -129,7 +129,7 @@ function populate_p_menu() {
     try {
         const p0 = '<' + 'p' + '>', p1 = '<' + '/' + 'p' + '>';
         let S = '<' + 'select class="console" id="probability_options"' + '>';
-        S += '<' + 'option value="PROBABILITY_WITH_REPLACEMENT" selected' + '>';
+        S += '<' + 'option value="PROBABILITY_WITHOUT_REPLACEMENT" selected' + '>';
         S += "PROBABILITY_WITHOUT_REPLACEMENT";
         S += '<' + '/' + 'option' + '>';
         S += '<' + 'option value="PROBABILITY_WITH_REPLACEMENT"' + '>';
@@ -479,7 +479,7 @@ function randomly_select_element_from_array(colors_array, statistics_array, prob
         let random_array_element_index = 0, i = 0, return_object = {};
         if (arguments.length !== 3) throw "Error: exactly three function inputs are required.";
         if (!validate_array_of_color_values(colors_array)) throw "Error: validate_array_of_color_values(colors_array) returned false.";
-        if (!validate_array_of_color_array_statistics(statistics_array)) throw "Error: validate_array_of_color_array_statistics(statistics_array) returned false.";
+        // if (!validate_array_of_color_array_statistics(statistics_array)) throw "Error: validate_array_of_color_array_statistics(statistics_array) returned false.";
         if (typeof probability_type !== "string") throw "Error: probability_type is required to be a String type data value."; 
         random_array_element_index = generate_random_nonnegative_integer_less_than_T(colors_array.length - 1);
         colors_array.splice(random_array_element_index,1); // Remove colors_array[random_array_element_index] from colors_array.
@@ -491,12 +491,15 @@ function randomly_select_element_from_array(colors_array, statistics_array, prob
                 }
             }
         }
+        console.log(probability_type);
         if (probability_type === "PROBABILITY_WITHOUT_REPLACEMENT") {
             for (i = 0; i < statistics_array.length; i += 1) {
                 statistics_array[i].PROBABILITY = statistics_array[i].FREQUENCY / colors_array.length;
             }
             return_object.A = colors_array;
             return_object.B = statistics_array;
+            // Debugging: display the property values of the Object type value named return object to the web console.
+            console.log("return_object.A := " + return_object.A + ".");
             return return_object;
         }
         //...
@@ -521,10 +524,14 @@ function randomly_select_element_from_array(colors_array, statistics_array, prob
  * 
  * Append a paragraph to the inner HTML conent of the DIV element whose id is "events_log" to a message 
  * indicating that the generate() function was called.
+ * 
+ * Perform N random selections of elements from array B and display information about each
+ * one of those selections as a paragraph which is appended to the inner HTML content
+ * of the div whose id is "output".
  */
 function generate() {
     try {
-        let i = 0, N = 0, selected_probability_type = "", A = undefined, P = undefined;
+        let i = 0, N = 0, selected_probability_type = "", A = undefined, P = undefined, return_object = {};
         const p0 = '<' + 'p' + '>', p1 = '<' + '/' + 'p' + '>', html_color_codes = generate_color_values();
         const divider_line = p0 + "------------------------------------------------------------------" + p1;
         const message = "The generate() function was called at time: " + generate_time_stamp();
@@ -565,6 +572,11 @@ function generate() {
         document.getElementById("output").innerHTML += p0 + "N: " + N + " (number of random selections to perform on B)" + p1;
         document.getElementById("output").innerHTML += divider_line;
         // For each one of the N random selections from array B, display the selected array element and statistics about array B after B is updated as a result of that selection.
+        //for (i = 0; i < N; i += 1) {
+            return_object = randomly_select_element_from_array(A, B, selected_probability_type);
+            A = return_object.A;
+            B = return_object.B;
+        //}
     }
     catch(exception) {
         console.log("An exception to normal functioning occurred during the runtime of generate(): " + exception);
