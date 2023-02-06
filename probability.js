@@ -35,7 +35,7 @@ function generate_random_nonnegative_number_less_than_one() {
  * 
  * Then multiply N by T, round the result down to the nearest integer, and return that rounded down result.
  * 
- * @param {Number} T is assumed to be a nonnegative integer no larger than ten.
+ * @param {Number} T is assumed to be a nonnegative integer no larger than one thousand.
  * 
  * @return {Number} a base-ten (i.e. decimal) integer no smaller than 0 and no larger than (T - 1).
  */
@@ -43,7 +43,13 @@ function generate_random_nonnegative_integer_less_than_T(T) {
     try {
         let N = generate_random_nonnegative_number_less_than_one();
         if (arguments.length !== 1) throw "Error: exactly one function input is required.";
-        if ((typeof T != "number") || (T !== Math.floor(T)) || (T < 0) || (T > 10)) throw "Error: T is required to be a nonnegative integer no larger than ten.";
+        /**
+         * 
+         * 
+         * BROWSER CRASHES WHEN TOO MANY COLOR VALUES ARE USED. TRY SHRINKING COLOR PALETTE.
+         * 
+         */
+        if ((typeof T != "number") || (T !== Math.floor(T)) || (T < 0) || (T > 1000)) throw "Error: T is required to be a nonnegative integer no larger than one thousand.";
         return Math.floor(N * T);
     }
     catch(exception) {
