@@ -265,7 +265,7 @@ function generate_initial_color_probabilities_list() {
             // Debugging: display the property values of the Object type value named unique_color_count_object to the web console.
             /*
             console.log("-------------------------------------");
-            console.log("unique_color_counts_array[i].VALUE := " + unique_color_counts_array[i].VALUE + ". // HTML color code (String).");
+            console.log("unique_color_counts_array[i].COLOR := " + unique_color_counts_array[i].COLOR + ". // HTML color code (String).");
             console.log("unique_color_counts_array[i].FREQUENCY := " + unique_color_counts_array[i].FREQUENCY + ". // number of occurrences in A (nonnegative integer).");
             console.log("unique_color_counts_array[i].PROBABILITY:= " + unique_color_counts_array[i].PROBABILITY + ". // likelihood of being selected in A (number which is no smaller than 0 and no larger than 1).");
             console.log("-------------------------------------");
@@ -470,9 +470,10 @@ function generate_array_visual_representation(array) {
  * 
  * @param {String} probability_type is assumed to either be "PROBABILITY_WITHOUT_REPLACEMENT" or else "PROBABILITY_WITH_REPLACEMENT".
  * 
- * @return {Object} object containing two objects:
- *                  A (the modified input array named colors_array after removing (and possibly replacing) one of the elements from that array) and 
- *                  B (the modified input array named statistics_array after modifying (and possibly removing or replacing) one of the elements from that array).
+ * @return {Object} object containing three properties:
+ *                  A (the modified input array named colors_array after removing (and possibly replacing) one of the elements from that array),
+ *                  B (the modified input array named statistics_array after modifying (and possibly removing or replacing) one of the elements from that array), and
+ *                  C (the value of the element which was removed from colors_array).
  */
 function randomly_select_element_from_array(colors_array, statistics_array, probability_type) {
     try {
@@ -498,20 +499,22 @@ function randomly_select_element_from_array(colors_array, statistics_array, prob
             }
             return_object.A = colors_array;
             return_object.B = statistics_array;
-            // Debugging: display the value of color_instance_to_remove to the web oonsole.
-            console.log("color_instance_to_remove := " + color_instance_to_remove + ".");
+            return_object.C = color_instance_to_remove;
             // Debugging: display the property values of the Object type value named return object to the web console.
-            console.log("return_object.A := " + return_object.A + ".");
-            console.log("return_object.B := ");
+            console.log("----------------------------------------------");
+            console.log("return_object.A := [" + return_object.A + "].");
+            console.log("return_object.B := [");
             for (i = 0; i < return_object.B.length; i++) {
-                console.log("{");
-                console.log("    COLOR: " + return_object.B[i].COLOR + ",");
-                console.log("    FREQUENCY: " + return_object.B[i].FREQUENCY + ",");
-                console.log("    PROBABILITY: " + return_object.B[i].PROBABILITY);
-                if (i < (return_object.B.length - 1)) console.log("},");
-                else console.log("}");
+                console.log("    {");
+                console.log("        COLOR: " + return_object.B[i].COLOR + ",");
+                console.log("        FREQUENCY: " + return_object.B[i].FREQUENCY + ",");
+                console.log("        PROBABILITY: " + return_object.B[i].PROBABILITY);
+                if (i < (return_object.B.length - 1)) console.log("    },");
+                else console.log("    }");
             }
-            console.log(".");
+            console.log("].");
+            console.log("return_object.C := " + color_instance_to_remove + ".");
+            console.log("----------------------------------------------");
             return return_object;
         }
         //...
@@ -564,7 +567,7 @@ function generate() {
         document.getElementById("output").innerHTML += p0 + "Array A Statistics:" + p1;
         for (i = 0; i < P.length; i += 1) {
             document.getElementById("output").innerHTML += p0;
-            document.getElementById("output").innerHTML += "{ VALUE: " + P[i].VALUE + ", ";
+            document.getElementById("output").innerHTML += "{ COLOR: " + P[i].COLOR + ", ";
             document.getElementById("output").innerHTML += "FREQUENCY: " + P[i].FREQUENCY + ", ";
             document.getElementById("output").innerHTML += "PROBABILITY: " + P[i].PROBABILITY + " }";
             document.getElementById("output").innerHTML += p1;
