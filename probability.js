@@ -476,16 +476,17 @@ function generate_array_visual_representation(array) {
  */
 function randomly_select_element_from_array(colors_array, statistics_array, probability_type) {
     try {
-        let random_array_element_index = 0, i = 0, return_object = {};
+        let random_array_element_index = 0, color_instance_to_remove = "", i = 0, return_object = {};
         if (arguments.length !== 3) throw "Error: exactly three function inputs are required.";
         if (!validate_array_of_color_values(colors_array)) throw "Error: validate_array_of_color_values(colors_array) returned false.";
         if (!validate_array_of_color_array_statistics(statistics_array)) throw "Error: validate_array_of_color_array_statistics(statistics_array) returned false.";
         if (typeof probability_type !== "string") throw "Error: probability_type is required to be a String type data value."; 
         random_array_element_index = generate_random_nonnegative_integer_less_than_T(colors_array.length - 1);
+        color_instance_to_remove = colors_array[random_array_element_index];
         colors_array.splice(random_array_element_index,1); // Remove colors_array[random_array_element_index] from colors_array.
         for (i = 0; i < statistics_array.length; i += 1) {
-            if (colors_array[random_array_element_index] === statistics_array[i].COLOR) {
-                statistics_array[i].FREQUENCY -= 1;
+            if (color_instance_to_remove === statistics_array[i].COLOR) {
+                statistics_array[i].FREQUENCY -= 1; // Decrement statistics_array[i].FREQUENCY by one.
                 if (statistics_array[i].FREQUENCY < 1) {
                     statistics_array.splice(random_array_element_index,1); // Remove statistics_array[random_array_element_index] from statistics_array.
                 }
@@ -497,6 +498,8 @@ function randomly_select_element_from_array(colors_array, statistics_array, prob
             }
             return_object.A = colors_array;
             return_object.B = statistics_array;
+            // Debugging: display the value of color_instance_to_remove to the web oonsole.
+            console.log("color_instance_to_remove := " + color_instance_to_remove + ".");
             // Debugging: display the property values of the Object type value named return object to the web console.
             console.log("return_object.A := " + return_object.A + ".");
             console.log("return_object.B := ");
