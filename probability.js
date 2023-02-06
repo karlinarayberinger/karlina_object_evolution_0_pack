@@ -1,7 +1,7 @@
 /**
  * file: probability.js
  * type: JavaScript
- * date: 05_FEBRUARY_2023
+ * date: 06_FEBRUARY_2023
  * author: karbytes
  * license: PUBLIC_DOMAIN
  */
@@ -35,7 +35,7 @@ function generate_random_nonnegative_number_less_than_one() {
  * 
  * Then multiply N by T, round the result down to the nearest integer, and return that rounded down result.
  * 
- * @param {Number} T is assumed to be a nonnegative integer no larger than one thousand.
+ * @param {Number} T is assumed to be a nonnegative integer no larger than fifty.
  * 
  * @return {Number} a base-ten (i.e. decimal) integer no smaller than 0 and no larger than (T - 1).
  */
@@ -43,13 +43,7 @@ function generate_random_nonnegative_integer_less_than_T(T) {
     try {
         let N = generate_random_nonnegative_number_less_than_one();
         if (arguments.length !== 1) throw "Error: exactly one function input is required.";
-        /**
-         * 
-         * 
-         * BROWSER CRASHES WHEN TOO MANY COLOR VALUES ARE USED. TRY SHRINKING COLOR PALETTE.
-         * 
-         */
-        if ((typeof T != "number") || (T !== Math.floor(T)) || (T < 0) || (T > 1000)) throw "Error: T is required to be a nonnegative integer no larger than one thousand.";
+        if ((typeof T != "number") || (T !== Math.floor(T)) || (T < 0) || (T > 50)) throw "Error: T is required to be a nonnegative integer no larger than fifty.";
         return Math.floor(N * T);
     }
     catch(exception) {
@@ -58,14 +52,18 @@ function generate_random_nonnegative_integer_less_than_T(T) {
 }
 
 /**
- * Return an array of ten unique String type values such that each of those values is a unique HTML color code.
+ * Return an array of five unique String type values such that each of those values is a unique HTML color code.
  * 
  * An HTML color code is a String whose leftmost character is '#' followed by two hexidecimal digits
  * which represent a RED hue, then two hexidecimal digits which represent a GREEN hue, and then
  * two hexidecimal digits which represent a BLUE hue.
  * 
- * The lower the hue value is, the darker that hue is.
- * The higher the hue value is, the brighter that hue is.
+ * (In this context, "hue" is used as a synonym for "primary color").
+ * 
+ * The lower the two-digit hexidecimal hue value is, the darker that hue is.
+ * The higher the two-digit hexidecimal hue value is, the brighter that hue is.
+ * 
+ * Common Web Page Colors:
  * 
  * RED: #ff0000
  * GREEN: #00ff00
@@ -76,19 +74,19 @@ function generate_random_nonnegative_integer_less_than_T(T) {
  * BLACK: #000000
  * WHITE: #ffffff
  * 
- * @return {Object} array of ten unique String type values.
+ * @return {Object} array of five unique String type values.
  */
 function generate_color_values() {
-    return ["#3cfa07", "#fa0738", "#0a7df7", "#b700ff", "#ffc800", "#00ff95", "#1a02b8", "#a89c87", "#4c7852", "#f5a9a9"];
+    return ["#fa0738", "#0a7df7", "#b700ff", "#ffc800", "#00ff95"];
 }
 
 /**
  * Return a String type value which will be used as the inner HTML content of the 
  * DIV element whose id is "c_menus" in probability.html.
  * 
- * The returned inner HTML string defines ten SELECT elements such that each SELECT element
- * is assigned the same id value as the background color of that SELECT element and such that 
- * the SELECT menu displays the first 11 nonnegative integers in ascending order as OPTION elements 
+ * The returned inner HTML string defines five SELECT elements such that each SELECT element
+ * is assigned the same id value as the background color of that SELECT element is and such that 
+ * the SELECT menu displays the first fifty-one nonnegative integers in descending order as OPTION elements 
  * within that SELECT menu (and the first OPTION (i.e zero) is selected by default).
  * 
  * @return {String} inner HTML content to populate the DIV element whose id is "c_menus".
