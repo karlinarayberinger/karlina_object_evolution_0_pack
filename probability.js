@@ -33,9 +33,9 @@ function generate_random_nonnegative_number_less_than_one() {
  * Use the native JavaScript Math library function for generating random numbers to select a base-ten 
  * number no smaller than 0 and less than 1 and store the result in a variable named N.
  * 
- * Multiply N by T, round the result down to the nearest integer, and return that rounded down result.
+ * Then multiply N by T, round the result down to the nearest integer, and return that rounded down result.
  * 
- * @param {Number} T is assumed to be a natural number no larger than 1000.
+ * @param {Number} T is assumed to be a nonnegative integer no larger than 1000.
  * 
  * @return {Number} a base-ten (i.e. decimal) integer no smaller than 0 and no larger than (T - 1).
  */
@@ -43,7 +43,7 @@ function generate_random_nonnegative_integer_less_than_T(T) {
     try {
         let N = generate_random_nonnegative_number_less_than_one();
         if (arguments.length !== 1) throw "Error: exactly one function input is required.";
-        if ((typeof T != "number") || (T !== Math.floor(T)) || (T < 1) || (T > 1000)) throw "Error: T is required to be a natural number no larger than 1000.";
+        if ((typeof T != "number") || (T !== Math.floor(T)) || (T < 0) || (T > 1000)) throw "Error: T is required to be a nonnegative integer no larger than 1000.";
         return Math.floor(N * T);
     }
     catch(exception) {
