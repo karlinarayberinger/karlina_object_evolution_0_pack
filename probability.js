@@ -494,9 +494,7 @@ function randomly_select_element_from_array(colors_array, statistics_array, prob
             }
         }
         if (probability_type === "PROBABILITY_WITHOUT_REPLACEMENT") {
-            for (i = 0; i < statistics_array.length; i += 1) {
-                statistics_array[i].PROBABILITY = statistics_array[i].FREQUENCY / colors_array.length;
-            }
+            for (i = 0; i < statistics_array.length; i += 1) statistics_array[i].PROBABILITY = statistics_array[i].FREQUENCY / colors_array.length;
             return_object.A = colors_array;
             return_object.B = statistics_array;
             return_object.C = color_instance_to_remove;
@@ -586,14 +584,14 @@ function generate() {
         document.getElementById("output").innerHTML += p0 + "N: " + N + " (number of random selections to perform on B)" + p1;
         document.getElementById("output").innerHTML += divider_line;
         // For each one of the N random selections from array B, display the selected array element and statistics about array B after B is updated as a result of that selection.
-        //for (i = 0; i < N; i += 1) {
+        for (i = 0; i < (N - 1); i += 1) {
             return_object = randomly_select_element_from_array(B, P, selected_probability_type);
             B = return_object.A;
             P = return_object.B;
             document.getElementById("output").innerHTML += p0 + "Array B: (after removing one randomly selected element)" + p1;
             document.getElementById("output").innerHTML += generate_array_visual_representation(B);
             document.getElementById("output").innerHTML += divider_line;
-        //}
+        }
     }
     catch(exception) {
         console.log("An exception to normal functioning occurred during the runtime of generate(): " + exception);
