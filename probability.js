@@ -587,7 +587,6 @@ function generate() {
         document.getElementById("output").innerHTML = divider_line;
         document.getElementById("output").innerHTML += p0 + "Array A: (colors according to selected frequencies)" + p1;
         document.getElementById("output").innerHTML += generate_array_visual_representation(A);
-        document.getElementById("output").innerHTML += divider_line;
         // Generate a textual description of the contents of A in terms of color value quantities and the probabilities which are dependent on such quantities.
         P = generate_initial_color_probabilities_list();
         document.getElementById("output").innerHTML += p0 + "Array A Statistics:" + p1;
@@ -598,7 +597,6 @@ function generate() {
         document.getElementById("output").innerHTML += p0 + "Array B: (randomized version of A)" + p1;
         document.getElementById("output").innerHTML += generate_array_visual_representation(B);
         // Display statistics about B (and those statistics are logically identical to A because B contains the same number of elements and color frequencies as A does).
-        document.getElementById("output").innerHTML += divider_line;
         document.getElementById("output").innerHTML += p0 + "Array B Statistics:" + p1;
         print_statistics_array(P);
         // Display whether PROBABILITY_WITHOUT_REPLACEMENT or else PROBABILITY_WITH_REPLACEMENT was selected by the application user.
@@ -614,10 +612,11 @@ function generate() {
             return_object = randomly_select_element_from_array(B, P, selected_probability_type);
             B = return_object.A;
             P = return_object.B;
+            document.getElementById("output").innerHTML += p0 + "Random Selection # " + (i + 1) + " of " + N + p1;
+            document.getElementById("output").innerHTML += divider_line;
             document.getElementById("output").innerHTML += p0 + "Array B: (after removing one randomly selected element)" + p1;
             document.getElementById("output").innerHTML += p0 + "Value of Removed Element: " + return_object.C + p1;
             document.getElementById("output").innerHTML += generate_array_visual_representation(B);
-            document.getElementById("output").innerHTML += divider_line;
             document.getElementById("output").innerHTML += p0 + "Array B Statistics:" + p1;
             print_statistics_array(P);
             document.getElementById("output").innerHTML += divider_line;
