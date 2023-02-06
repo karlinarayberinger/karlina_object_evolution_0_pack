@@ -523,6 +523,34 @@ function randomly_select_element_from_array(colors_array, statistics_array, prob
 }
 
 /**
+ * Append a paragraph to the content displayed inside of the DIV element whose id is "output" which 
+ * displays the contents of the input array.
+ * 
+ * Each element of the input array is assumed to be a JSON object comprised of the following three properties:
+ * COLOR: {String} one of the ten unique HTML color codes comprising the array returned by generate_color_values().
+ * FREQUENCY: {Number} a natural number no larger than 100.
+ * PROBABILITY: {Number} a number which is larger than 0 and no larger than 1.
+ * 
+ * @param {Object} array is assumed to be a non-empty array containing no more than 100 exclusively Object type elements.
+ */
+function print_statistics_array(array) {
+    try {
+        const p0 = '<' + 'p' + '>', p1 = '<' + '/' + 'p' + '>';
+        if (!validate_array_of_color_array_statistics(array)) throw "Error: validate_array_of_color_array_statistics(array) returned false.";
+        for (i = 0; i < array.length; i += 1) {
+            document.getElementById("output").innerHTML += p0;
+            document.getElementById("output").innerHTML += "{ COLOR: " + array[i].COLOR + ", ";
+            document.getElementById("output").innerHTML += "FREQUENCY: " + array[i].FREQUENCY + ", ";
+            document.getElementById("output").innerHTML += "PROBABILITY: " + array[i].PROBABILITY + " }";
+            document.getElementById("output").innerHTML += p1;
+        }
+    }
+    catch(exception) {
+        console.log("An exception to normal functioning occurred during the runtime of print_statistics_array(array) " + exception);
+    }
+}
+
+/**
  * Assume that this function is called in response to the event of a GENERATE button click.
  * 
  * Set each of the ten SELECT elements for unique HTML color values to disabled.
@@ -563,20 +591,18 @@ function generate() {
         // Generate a textual description of the contents of A in terms of color value quantities and the probabilities which are dependent on such quantities.
         P = generate_initial_color_probabilities_list();
         document.getElementById("output").innerHTML += p0 + "Array A Statistics:" + p1;
-        for (i = 0; i < P.length; i += 1) {
-            document.getElementById("output").innerHTML += p0;
-            document.getElementById("output").innerHTML += "{ COLOR: " + P[i].COLOR + ", ";
-            document.getElementById("output").innerHTML += "FREQUENCY: " + P[i].FREQUENCY + ", ";
-            document.getElementById("output").innerHTML += "PROBABILITY: " + P[i].PROBABILITY + " }";
-            document.getElementById("output").innerHTML += p1;
-        }
+        print_statistics_array(P);
         // Generate array B and display it on the web page interface inside of the DIV element whose id is "output".
         B = generate_array_B(A);
         document.getElementById("output").innerHTML += divider_line;
         document.getElementById("output").innerHTML += p0 + "Array B: (randomized version of A)" + p1;
         document.getElementById("output").innerHTML += generate_array_visual_representation(B);
+        // Display statistics about B (and those statistics are logically identical to A because B contains the same number of elements and color frequencies as A does).
         document.getElementById("output").innerHTML += divider_line;
+        document.getElementById("output").innerHTML += p0 + "Array B Statistics:" + p1;
+        print_statistics_array(P);
         // Display whether PROBABILITY_WITHOUT_REPLACEMENT or else PROBABILITY_WITH_REPLACEMENT was selected by the application user.
+        document.getElementById("output").innerHTML += divider_line;
         selected_probability_type = get_selected_menu_option_value("probability_options");
         document.getElementById("output").innerHTML += p0 + "Probability Type: " + selected_probability_type + p1;
         // Display the value of N (and N represents the number random selections to perform on array B).
@@ -591,6 +617,10 @@ function generate() {
             document.getElementById("output").innerHTML += p0 + "Array B: (after removing one randomly selected element)" + p1;
             document.getElementById("output").innerHTML += generate_array_visual_representation(B);
             document.getElementById("output").innerHTML += divider_line;
+            document.getElementById("output").innerHTML += p0 + "Array B Statistics:" + p1;
+            print_statistics_array(P);
+            document.getElementById("output").innerHTML += divider_line;
+
         }
     }
     catch(exception) {
