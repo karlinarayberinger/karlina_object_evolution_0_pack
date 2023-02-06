@@ -35,7 +35,7 @@ function generate_random_nonnegative_number_less_than_one() {
  * 
  * Then multiply N by T, round the result down to the nearest integer, and return that rounded down result.
  * 
- * @param {Number} T is assumed to be a nonnegative integer no larger than 1000.
+ * @param {Number} T is assumed to be a nonnegative integer no larger than ten.
  * 
  * @return {Number} a base-ten (i.e. decimal) integer no smaller than 0 and no larger than (T - 1).
  */
@@ -43,7 +43,7 @@ function generate_random_nonnegative_integer_less_than_T(T) {
     try {
         let N = generate_random_nonnegative_number_less_than_one();
         if (arguments.length !== 1) throw "Error: exactly one function input is required.";
-        if ((typeof T != "number") || (T !== Math.floor(T)) || (T < 0) || (T > 1000)) throw "Error: T is required to be a nonnegative integer no larger than 1000.";
+        if ((typeof T != "number") || (T !== Math.floor(T)) || (T < 0) || (T > 10)) throw "Error: T is required to be a nonnegative integer no larger than ten.";
         return Math.floor(N * T);
     }
     catch(exception) {
@@ -81,9 +81,9 @@ function generate_color_values() {
  * DIV element whose id is "c_menus" in probability.html.
  * 
  * The returned inner HTML string defines ten SELECT elements such that each SELECT element
- * is assigned the same id value as the background color of that SELECT element and
- * such that the SELECT menu displays the first 100 natural numbers in ascending order
- * as OPTION elements within that SELECT menu (and the first OPTION is selected by default).
+ * is assigned the same id value as the background color of that SELECT element and such that 
+ * the SELECT menu displays the first 11 nonnegative integers in ascending order as OPTION elements 
+ * within that SELECT menu (and the first OPTION (i.e zero) is selected by default).
  * 
  * @return {String} inner HTML content to populate the DIV element whose id is "c_menus".
  */
@@ -97,7 +97,7 @@ function populate_c_menus() {
             S += p0;
             S += html_color_codes[i] + " := ";
             S += '<' + 'select id="' + html_color_codes[i] + '" style="color:#000000;background:' + html_color_codes[i] + '"' + '>';
-            for (k = 0; k <= 100; k += 1) {
+            for (k = 0; k <= 10; k += 1) {
                 if (k === 0) S += '<' + 'option selected' + '>';
                 else S += '<' + 'option' + '>';
                 S += k;
@@ -285,7 +285,7 @@ function generate_initial_color_probabilities_list() {
  * If erroneous input is detected or if a runtime error occurs, use a try-catch block for exception handling
  * which outputs a message to the web browser console about the type of runtime exception which was detected.
  * 
- * @param {Object} array is assumed to be a non-empty array containing no more than 1000 exclusively String type elements.
+ * @param {Object} array is assumed to be a non-empty array containing no more than 100 exclusively String type elements.
  * 
  * @return {Boolean} true if array is an array comprised exclusively of valid HTML color code values; false otherwise.
  */
@@ -294,6 +294,7 @@ function validate_array_of_color_values(array) {
         const hexidecimal_digits = "0123456789abcdef";
         let i = 0, k = 0, p = 0, S = "", is_hexidecimal_digit = false;
         if (arguments.length !== 1) throw "Error: exactly one function input is required.";
+        if (arguments[0].length > 100) throw "Error: array must contain no more than one hundred elements.";
         for (i = 0; i < array.length; i += 1) {
             if (typeof array[i] !== "string") throw "Error: array[" + i + "] does not represent a String type value."
             if (array[i].length !== 7) throw "Error: array[" + i + "] does not represent a string comprised of exactly 7 characters.";
@@ -319,9 +320,11 @@ function validate_array_of_color_values(array) {
 }
 
 /**
+ * Determine whether or not the input array represents a valid statistics array which is used to describe the contents of a colors_array.
+ * 
  * A unique_color_count_object is a JSON object comprised of the following three properties:
  * COLOR: {String} one of the ten unique HTML color codes comprising the array returned by generate_color_values().
- * FREQUENCY: {Number} a natural number no larger than 100.
+ * FREQUENCY: {Number} a natural number no larger than 10.
  * PROBABILITY: {Number} a number which is larger than 0 and no larger than 1.
  * 
  * In order for the input array to be considered valid, 
@@ -329,7 +332,7 @@ function validate_array_of_color_values(array) {
  * each element of array must be formatted as a unique_color_count_object (as described above),
  * and each element of array must contain a unique COLOR property with respect to every other element or array.
  * 
- * @param {Object} array is assumed to be a non-empty array containing no more than 100 exclusively Object type elements.
+ * @param {Object} array is assumed to be a non-empty array containing no more than 10 exclusively Object type elements.
  * 
  * @return {Boolean} true if array is an array comprised exclusively of valid unique_color_count_object array values; false otherwise.
  */
@@ -367,8 +370,8 @@ function validate_array_of_color_array_statistics(array) {
                     mutable_html_color_codes.splice(k,1); 
                 }
             }
-            // Require that current_FREQUENCY be a natural number no larger than one hundred.
-            if ((current_FREQUENCY !== parseInt(current_FREQUENCY)) || (current_FREQUENCY < 1) || (current_FREQUENCY > 100)) throw "Error: current_FREQUENCY is required to be a natural number no larger than one hundred.";
+            // Require that current_FREQUENCY be a natural number no larger than ten.
+            if ((current_FREQUENCY !== parseInt(current_FREQUENCY)) || (current_FREQUENCY < 1) || (current_FREQUENCY > 10)) throw "Error: current_FREQUENCY is required to be a natural number no larger than ten.";
             // Require that current_PROBABILITY be a nonnegative integer which is no larger than one.
             if ((current_PROBABILITY < 0) || (current_PROBABILITY > 1)) throw "Error: current_PROBABILITY is required to be a nonnegative integer no larger than one.";
         }
@@ -477,7 +480,7 @@ function generate_array_visual_representation(array) {
  */
 function randomly_select_element_from_array(colors_array, statistics_array, probability_type) {
     try {
-        let random_array_element_index = 0, color_instance_to_remove = "", i = 0, return_object = {};
+        let random_array_element_index = 0, color_instance_to_remove = "", i = 0, return_object = {}, html_color_codes = [], new_color_array_element = "";
         if (arguments.length !== 3) throw "Error: exactly three function inputs are required.";
         if (!validate_array_of_color_values(colors_array)) throw "Error: validate_array_of_color_values(colors_array) returned false.";
         if (!validate_array_of_color_array_statistics(statistics_array)) throw "Error: validate_array_of_color_array_statistics(statistics_array) returned false.";
@@ -493,29 +496,39 @@ function randomly_select_element_from_array(colors_array, statistics_array, prob
                 }
             }
         }
-        if (probability_type === "PROBABILITY_WITHOUT_REPLACEMENT") {
-            for (i = 0; i < statistics_array.length; i += 1) statistics_array[i].PROBABILITY = statistics_array[i].FREQUENCY / colors_array.length;
-            return_object.A = colors_array;
-            return_object.B = statistics_array;
-            return_object.C = color_instance_to_remove;
-            // Debugging: display the property values of the Object type value named return object to the web console.
-            console.log("----------------------------------------------");
-            console.log("return_object.A := [" + return_object.A + "].");
-            console.log("return_object.B := [");
-            for (i = 0; i < return_object.B.length; i++) {
-                console.log("    {");
-                console.log("        COLOR: " + return_object.B[i].COLOR + ",");
-                console.log("        FREQUENCY: " + return_object.B[i].FREQUENCY + ",");
-                console.log("        PROBABILITY: " + return_object.B[i].PROBABILITY);
-                if (i < (return_object.B.length - 1)) console.log("    },");
-                else console.log("    }");
-            }
-            console.log("].");
-            console.log("return_object.C := " + color_instance_to_remove + ".");
-            console.log("----------------------------------------------");
-            return return_object;
+        for (i = 0; i < statistics_array.length; i += 1) statistics_array[i].PROBABILITY = statistics_array[i].FREQUENCY / colors_array.length;
+        return_object.A = colors_array;
+        return_object.B = statistics_array;
+        return_object.C = color_instance_to_remove;
+        // Debugging: display the property values of the Object type value named return object to the web console.
+        /*
+        console.log("----------------------------------------------");
+        console.log("return_object.A := [" + return_object.A + "].");
+        console.log("return_object.B := [");
+        for (i = 0; i < return_object.B.length; i++) {
+            console.log("    {");
+            console.log("        COLOR: " + return_object.B[i].COLOR + ",");
+            console.log("        FREQUENCY: " + return_object.B[i].FREQUENCY + ",");
+            console.log("        PROBABILITY: " + return_object.B[i].PROBABILITY);
+            if (i < (return_object.B.length - 1)) console.log("    },");
+            else console.log("    }");
         }
+        console.log("].");
+        console.log("return_object.C := " + color_instance_to_remove + ".");
+        console.log("----------------------------------------------");
+        */
+        if (probability_type === "PROBABILITY_WITHOUT_REPLACEMENT") return return_object;
+        /**
+         * If "PROBABILITY_WITH_REPLACEMENT" was selected, then randomly select a color from the list of ten unique HTML color codes 
+         * to insert into colors_array as the last element of that array.
+         * 
+         * Then update the statistics array accordingly before returning the return_object.
+         */
+        html_color_codes = generate_color_values();
+        random_array_element_index = generate_random_nonnegative_integer_less_than_T(html_color_codes.length - 1);
+        new_color_array_element = html_color_codes[random_array_element_index];
         //...
+        colors_array.pop(new_color_array_element);
     }
     catch(exception) {
         console.log("An exception to normal functioning occurred during the runtime of randomly_select_element_from_array(colors_array, statistics_array, probability_type): " + exception);
