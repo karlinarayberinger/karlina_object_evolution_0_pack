@@ -489,7 +489,7 @@ function randomly_select_element_from_array(colors_array, statistics_array, prob
             if (color_instance_to_remove === statistics_array[i].COLOR) {
                 statistics_array[i].FREQUENCY -= 1; // Decrement statistics_array[i].FREQUENCY by one.
                 if (statistics_array[i].FREQUENCY < 1) {
-                    statistics_array.splice(random_array_element_index,1); // Remove statistics_array[random_array_element_index] from statistics_array.
+                    statistics_array.splice(i,1); // Remove statistics_array[i] from statistics_array.
                 }
             }
         }
