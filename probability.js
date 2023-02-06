@@ -610,17 +610,17 @@ function generate() {
         document.getElementById("output").innerHTML += p0 + "N: " + N + " (number of random selections to perform on B)" + p1;
         document.getElementById("output").innerHTML += divider_line;
         // For each one of the N random selections from array B, display the selected array element and statistics about array B after B is updated as a result of that selection.
-        for (i = 0; i < (N - 1); i += 1) {
+        for (i = 0; i < N; i += 1) {
             return_object = randomly_select_element_from_array(B, P, selected_probability_type);
             B = return_object.A;
             P = return_object.B;
             document.getElementById("output").innerHTML += p0 + "Array B: (after removing one randomly selected element)" + p1;
+            document.getElementById("output").innerHTML += p0 + "Value of Removed Element: " + return_object.C + p1;
             document.getElementById("output").innerHTML += generate_array_visual_representation(B);
             document.getElementById("output").innerHTML += divider_line;
             document.getElementById("output").innerHTML += p0 + "Array B Statistics:" + p1;
             print_statistics_array(P);
             document.getElementById("output").innerHTML += divider_line;
-
         }
     }
     catch(exception) {
