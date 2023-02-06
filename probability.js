@@ -584,9 +584,12 @@ function generate() {
         document.getElementById("output").innerHTML += divider_line;
         // For each one of the N random selections from array B, display the selected array element and statistics about array B after B is updated as a result of that selection.
         //for (i = 0; i < N; i += 1) {
-            return_object = randomly_select_element_from_array(A, P, selected_probability_type);
-            A = return_object.A;
+            return_object = randomly_select_element_from_array(B, P, selected_probability_type);
+            B = return_object.A;
             P = return_object.B;
+            document.getElementById("output").innerHTML += p0 + "Array B: (after removing one randomly selected element)" + p1;
+            document.getElementById("output").innerHTML += generate_array_visual_representation(B);
+            document.getElementById("output").innerHTML += divider_line;
         //}
     }
     catch(exception) {
