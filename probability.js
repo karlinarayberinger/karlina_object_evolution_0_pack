@@ -12,7 +12,7 @@
  * Note that the Unix Epoch is 01_JANUARY_1970 at 0 hours, 0 minutes, 0 seconds, and 0 seconds 
  * (i.e. 00:00:00) (i.e. midnight) (Coordinated Universal Time (UTC)).
  * 
- * @return {String} text which denotes the number of milliseconds which have elapsed since the Unix Epoch
+ * @return {String} text which denotes the number of milliseconds which have elapsed since the Unix Epoch.
  */
 function generate_time_stamp() {
     const milliseconds_elapsed_since_unix_epoch = Date.now();
@@ -35,7 +35,7 @@ function generate_random_nonnegative_number_less_than_one() {
  * 
  * Multiply N by T, round the result down to the nearest integer, and return that rounded down result.
  * 
- * @param {Number} T is assumed to be a natural number no larger than 1000
+ * @param {Number} T is assumed to be a natural number no larger than 1000.
  * 
  * @return {Number} a base-ten (i.e. decimal) integer no smaller than 0 and no larger than (T - 1).
  */
@@ -70,7 +70,7 @@ function generate_random_nonnegative_integer_less_than_T(T) {
  * BLACK: #000000
  * WHITE: #ffffff
  * 
- * @return {Object} array of ten unique String type values
+ * @return {Object} array of ten unique String type values.
  */
 function generate_color_values() {
     return ["#3cfa07", "#fa0738", "#0a7df7", "#b700ff", "#ffc800", "#00ff95", "#1a02b8", "#a89c87", "#4c7852", "#f5a9a9"];
@@ -85,7 +85,7 @@ function generate_color_values() {
  * such that the SELECT menu displays the first 100 natural numbers in ascending order
  * as OPTION elements within that SELECT menu (and the first OPTION is selected by default).
  * 
- * @return {String} inner HTML content to populate the DIV element whose id is "c_menus"
+ * @return {String} inner HTML content to populate the DIV element whose id is "c_menus".
  */
 function populate_c_menus() {
     try {
@@ -123,7 +123,7 @@ function populate_c_menus() {
  * Note that the PROBABILITY_WITHOUT_REPLACEMENT option is automatically selected 
  * if the application user does not click on the SELECT element whose id is "probability_options".
  * 
- * @return {String} inner HTML content to populate the DIV element whose id is "c_menus"
+ * @return {String} inner HTML content to populate the DIV element whose id is "c_menus".
  */
 function populate_p_menu() {
     try {
@@ -148,9 +148,9 @@ function populate_p_menu() {
  * 
  * Assume that select_menu_identifier is a String type value and the id of an existing select HTML element.
  * 
- * @param {String} select_menu_identififier is assumed to be the id of an existing SELECT menu web page element
+ * @param {String} select_menu_identififier is assumed to be the id of an existing SELECT menu web page element.
  * 
- * @return {String} value of an OPTION of the SELECT whose id is select_menu_identifier
+ * @return {String} value of an OPTION of the SELECT whose id is select_menu_identifier.
  */
 function get_selected_menu_option_value(select_menu_identifier) {
     try {
