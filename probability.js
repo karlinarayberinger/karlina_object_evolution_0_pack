@@ -95,9 +95,8 @@ function populate_c_menus() {
     try {
         const p0 = '<' + 'p' + '>', p1 = '<' + '/' + 'p' + '>';
         const html_color_codes = generate_color_values();
-        let T = html_color_codes.length;
-        let i = 0, k = 0, S = "";
-        for(i = 0; i < 10; i += 1) {
+        let i = 0, k = 0, L = html_color_codes.length, S = "";
+        for(i = 0; i < L; i += 1) {
             S += p0;
             S += html_color_codes[i] + " := ";
             S += '<' + 'select id="' + html_color_codes[i] + '" style="color:#000000;background:' + html_color_codes[i] + '"' + '>';
@@ -160,6 +159,7 @@ function get_selected_menu_option_value(select_menu_identifier) {
     try {
         let menu_object = {}, options_array = [], selected_option_index = 0, selected_option_object = {}, selected_option_value;
         if (arguments.length !== 1) throw "Error: exactly one function input is required.";
+        if (typeof arguments[0] !== "string") throw "Error: select_menu_identifier is required to be a String type data value.";
         menu_object = document.getElementById(select_menu_identifier);
         options_array = menu_object.options;
         selected_option_index = menu_object.selectedIndex;
@@ -209,13 +209,13 @@ function initialize_application() {
 /**
  * Create an emtpy array named A.
  * 
- * For each one of the ten unique HTML color code values displayed on the web page named probability.html,
+ * For each one of the five unique HTML color code values displayed on the web page named probability.html,
  * extract the selected quantity option for in the SELECT menu element which is accociate with that particular color value
- * and insert that color value into A as many times as that quantity represents (i.e. some nonnegative integer less than 100).
+ * and insert that color value into A as many times as that quantity represents (i.e. some nonnegative integer less than fifty-one).
  * 
  * Return A after all the color values are inserted into A.
  * 
- * @return {Object} an array containing exclusively String type elements which each represent one of ten unique HTML color code values.
+ * @return {Object} an array containing exclusively String type elements which each represent one of five unique HTML color code values.
  */
 function generate_array_A() {
     try {
@@ -241,8 +241,8 @@ function generate_array_A() {
  * 
  * Assume that each random selection of one element from A is approximately equal in terms of randomness as every other random selection of one element from A
  * and that no particular color value is intrinsicall favored more or less than any other color from the list of ten unique colors which could be added to array A.
- * (What that means is that, if each one of the ten unique colors is selected to have the same quantity in A as every other one of those ten colors, 
- * then each of those color values is assumed to have the same probability of being selected during the first seclection of either A or else B).
+ * (What that means is that, if each one of the five unique colors is selected to have the same quantity in A as every other one of those five colors, 
+ * then each of those color values is assumed to have the same probability of being selected during the first random selection from either A or B).
  * 
  * @return {Object} array of JSON objects which textually depicts the contents of A based on what the user selected on the web page interface for unique color counts.
  */
@@ -289,7 +289,7 @@ function generate_initial_color_probabilities_list() {
  * If erroneous input is detected or if a runtime error occurs, use a try-catch block for exception handling
  * which outputs a message to the web browser console about the type of runtime exception which was detected.
  * 
- * @param {Object} array is assumed to be a non-empty array containing no more than 100 exclusively String type elements.
+ * @param {Object} array is assumed to be a non-empty array containing no more than fifty exclusively String type elements.
  * 
  * @return {Boolean} true if array is an array comprised exclusively of valid HTML color code values; false otherwise.
  */
@@ -298,7 +298,7 @@ function validate_array_of_color_values(array) {
         const hexidecimal_digits = "0123456789abcdef";
         let i = 0, k = 0, p = 0, S = "", is_hexidecimal_digit = false;
         if (arguments.length !== 1) throw "Error: exactly one function input is required.";
-        if (arguments[0].length > 100) throw "Error: array must contain no more than one hundred elements.";
+        if (arguments[0].length > 50) throw "Error: array must contain no more than fifty elements.";
         for (i = 0; i < array.length; i += 1) {
             if (typeof array[i] !== "string") throw "Error: array[" + i + "] does not represent a String type value."
             if (array[i].length !== 7) throw "Error: array[" + i + "] does not represent a string comprised of exactly 7 characters.";
@@ -328,15 +328,15 @@ function validate_array_of_color_values(array) {
  * 
  * A unique_color_count_object is a JSON object comprised of the following three properties:
  * COLOR: {String} one of the ten unique HTML color codes comprising the array returned by generate_color_values().
- * FREQUENCY: {Number} a natural number no larger than 10.
- * PROBABILITY: {Number} a number which is larger than 0 and no larger than 1.
+ * FREQUENCY: {Number} a natural number no larger than ten.
+ * PROBABILITY: {Number} a number which is larger than zero and no larger than one.
  * 
  * In order for the input array to be considered valid, 
- * that array must not contain more than ten elements,
+ * that array must not contain more than five elements,
  * each element of array must be formatted as a unique_color_count_object (as described above),
- * and each element of array must contain a unique COLOR property with respect to every other element or array.
+ * and each element of array must contain a unique COLOR property with respect to every other element of array.
  * 
- * @param {Object} array is assumed to be a non-empty array containing no more than 10 exclusively Object type elements.
+ * @param {Object} array is assumed to be a non-empty array containing no more than five exclusively Object type elements.
  * 
  * @return {Boolean} true if array is an array comprised exclusively of valid unique_color_count_object array values; false otherwise.
  */
@@ -347,7 +347,7 @@ function validate_array_of_color_array_statistics(array) {
         let mutable_html_color_codes = generate_color_values();
         if (arguments.length !== 1) throw "Error: exactly one function input is required.";
         if (typeof array !== "object") throw "Error: array is required to be an Object type data value.";
-        if (array.length > 10) throw "Error: array is required to contain no more than ten elements.";
+        if (array.length > 5) throw "Error: array is required to contain no more than five elements.";
         for (i = 0; i < array.length; i += 1) {
             // Type check the value represented by the ith element of array (i.e. array[i]).
             if (typeof array[i] !== "object") throw "Error: array[i] is required to be an Object type data value.";
@@ -359,7 +359,7 @@ function validate_array_of_color_array_statistics(array) {
             if (typeof current_COLOR !== "string") throw "Error: array[i].COLOR is required to be a String type data value.";
             if (typeof current_FREQUENCY !== "number") throw "Error: array[i].FREQUENCY is required to be a Number type data value.";
             if (typeof current_PROBABILITY !== "number") throw "Error: array[i].PROBABILITY is required to be a Number type data value.";
-            // Require that current_COLOR occurs as an element value of the array named html_color_codes.
+            // Require that current_COLOR occurs is an element value of the array named html_color_codes.
             is_valid_html_color_code = false;
             for (k = 0; k < html_color_codes.length; k += 1) if(current_COLOR === html_color_codes[k]) is_valid_html_color_code = true;
             if (!is_valid_html_color_code) throw "Error: current_COLOR is not an element of the array returned by generate_color_values().";
@@ -390,7 +390,7 @@ function validate_array_of_color_array_statistics(array) {
 /**
  * Copy the contents of array A into a new array named B such that the elements of A are each of the elements of A (but the elements of B are arranged in a randomized order).
  * 
- * @param {Object} A is assumed to be a non-empty array containing no more than 1000 exclusively String type elements which each represent one of ten unique HTML color code values.
+ * @param {Object} A is assumed to be a non-empty array containing no more than fifty exclusively String type elements which each represent one of five unique HTML color code values.
  * 
  * @return {Object} an array containing each of the elements of A arranged in a randomized order (if no runtime errors occur (and undefined otherwise)).
  */
@@ -468,12 +468,12 @@ function generate_array_visual_representation(array) {
  * Then update statistics_array accordingly.
  * 
  * If probability_type is "PROBABILITY_WITH_REPLACEMENT", then insert a new randomly generated color value
- * which is one of the ten unique HTML color code values displayed on the web page interface.
+ * which is one of the five unique HTML color code values displayed on the web page interface.
  * Then update statistics_array accordingly.
  * 
  * @param {Object} colors_array is assumed to be array B.
  * 
- * @param {Object} statistics_array is assumed to be P (i.e. the arary returned by the call to generate_initial_color_probabilities_list() in the generate() function).
+ * @param {Object} statistics_array is assumed to be P (i.e. the array which is initially generated as the return value from a call to generate_initial_color_probabilities_list() in the generate() function).
  * 
  * @param {String} probability_type is assumed to either be "PROBABILITY_WITHOUT_REPLACEMENT" or else "PROBABILITY_WITH_REPLACEMENT".
  * 
@@ -545,15 +545,15 @@ function randomly_select_element_from_array(colors_array, statistics_array, prob
  * 
  * Each element of the input array is assumed to be a JSON object comprised of the following three properties:
  * COLOR: {String} one of the ten unique HTML color codes comprising the array returned by generate_color_values().
- * FREQUENCY: {Number} a natural number no larger than 100.
- * PROBABILITY: {Number} a number which is larger than 0 and no larger than 1.
+ * FREQUENCY: {Number} a natural number no larger than ten.
+ * PROBABILITY: {Number} a number which is larger than zero and no larger than one.
  * 
- * @param {Object} array is assumed to be a non-empty array containing no more than 100 exclusively Object type elements.
+ * @param {Object} statistics_array is assumed to be a non-empty array containing no more than five exclusively Object type elements.
  */
-function print_statistics_array(array) {
+function print_statistics_array(statistics_array) {
     try {
         const p0 = '<' + 'p' + '>', p1 = '<' + '/' + 'p' + '>';
-        if (!validate_array_of_color_array_statistics(array)) throw "Error: validate_array_of_color_array_statistics(array) returned false.";
+        if (!validate_array_of_color_array_statistics(array)) throw "Error: validate_array_of_color_array_statistics(statistics_array) returned false.";
         for (i = 0; i < array.length; i += 1) {
             document.getElementById("output").innerHTML += p0;
             document.getElementById("output").innerHTML += "{ COLOR: " + array[i].COLOR + ", ";
@@ -563,7 +563,7 @@ function print_statistics_array(array) {
         }
     }
     catch(exception) {
-        console.log("An exception to normal functioning occurred during the runtime of print_statistics_array(array) " + exception);
+        console.log("An exception to normal functioning occurred during the runtime of print_statistics_array(statistics_array) " + exception);
     }
 }
 
@@ -582,9 +582,8 @@ function print_statistics_array(array) {
  * Append a paragraph to the inner HTML conent of the DIV element whose id is "events_log" to a message 
  * indicating that the generate() function was called.
  * 
- * Perform N random selections of elements from array B and display information about each
- * one of those selections as a paragraph which is appended to the inner HTML content
- * of the div whose id is "output".
+ * Perform N random selections of one element per selection from array B and display information about each
+ * one of those selections as a paragraph which is appended to the inner HTML content of the div whose id is "output".
  */
 function generate() {
     try {
