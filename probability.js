@@ -592,8 +592,9 @@ function generate() {
         const divider_line = p0 + "------------------------------------------------------------------" + p1;
         const message = "The generate() function was called at time: " + generate_time_stamp();
         console.log(message);
+        console.log("test");
         // Update the web page user interface such that the RESET button is the only interactive web page element.
-        for (i = 0; i < 10; i += 1) document.getElementById(html_color_codes[i]).disabled = true;
+        for (i = 0; i < html_color_codes.length; i += 1) document.getElementById(html_color_codes[i]).disabled = true;
         document.getElementById("probability_options").disabled = true;
         document.getElementById("generate_button").style.display = "none";
         document.getElementById("reset_button").style.display = "inline";
