@@ -535,25 +535,21 @@ function randomly_select_element_from_array(colors_array, statistics_array, prob
         for (i = 0; i < return_object.B.length; i += 1) {
             if (new_color_array_element === return_object.B[i].COLOR) {
                 return_object.B[i].FREQUENCY += 1; // Increment return_object.B[i].FREQUENCY by one.
-                // color_match_found = true;
-                return return_object;
-            }
-            if (!color_match_found) { // If the record for the new_color_array_element has been removed from the statsitics array, reinsert that record in its original position within the statistics array.
-                for (k = 0; k < html_color_codes.length; k += 1) {
-                    if (new_color_array_element === html_color_codes[k]) {
-                        new_record.COLOR = new_color_array_element;
-                        new_record.FREQUENCY = 1;
-                        new_record.PROBABILITY = 0; // This will be corrected after new_record is inserted into the returned and updated version of statistics_array.
-                        return_object.B.splice(k, 0, new_record); // At position k, add one element.
-                    }
-                }
-                for (k = 0; k < return_object.B.length; k += 1) {
-                    return_object.B[i].PROBABILITY = return_object.B[i].FREQUENCY / return_object.A.length;
-                }
-                return return_object;
+                color_match_found = true;
             }
         }
-        if (true) throw "Error: the nested for loop at the bottom of the try block terminated without returning the return_object.";
+        if (!color_match_found) { // If the record for the new_color_array_element has been removed from the statsitics array, reinsert that record in its original position within the statistics array.
+            for (k = 0; k < html_color_codes.length; k += 1) {
+                if (new_color_array_element === html_color_codes[k]) {
+                    new_record.COLOR = new_color_array_element;
+                    new_record.FREQUENCY = 1;
+                    new_record.PROBABILITY = 0; // This will be corrected after new_record is inserted into the returned and updated version of statistics_array.
+                    return_object.B.splice(k, 0, new_record); // At position k, add one element.
+                }
+            }
+        }
+        for (k = 0; k < return_object.B.length; k += 1) return_object.B[i].PROBABILITY = return_object.B[i].FREQUENCY / return_object.A.length;
+        return return_object;
     }
     catch(exception) {
         console.log("An exception to normal functioning occurred during the runtime of randomly_select_element_from_array(colors_array, statistics_array, probability_type): " + exception);
