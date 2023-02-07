@@ -544,7 +544,7 @@ function randomly_select_element_from_array(colors_array, statistics_array, prob
                     new_record.COLOR = new_color_array_element;
                     new_record.FREQUENCY = 1;
                     new_record.PROBABILITY = 0; // This will be corrected after new_record is inserted into the returned and updated version of statistics_array.
-                    return_object.B.splice(k, 0, new_record); // At position k, add one element.
+                    return_object.B.splice(i, 0, new_record); // At position k, add one element.
                 }
             }
         }
