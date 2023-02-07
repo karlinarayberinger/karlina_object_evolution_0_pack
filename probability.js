@@ -484,7 +484,7 @@ function generate_array_visual_representation(array) {
  */
 function randomly_select_element_from_array(colors_array, statistics_array, probability_type) {
     try {
-        let random_array_element_index = 0, color_instance_to_remove = "", i = 0, k = 0, return_object = {}, html_color_codes = [], new_color_array_element = "", color_match_found = false, new_record = {};
+        let random_array_element_index = 0, color_instance_to_remove = "", i = 0, return_object = {}, html_color_codes = [], new_color_array_element = "", color_match_found = false, new_record = {};
         if (arguments.length !== 3) throw "Error: exactly three function inputs are required.";
         if (!validate_array_of_color_values(colors_array)) throw "Error: validate_array_of_color_values(colors_array) returned false.";
         if (!validate_array_of_color_array_statistics(statistics_array)) throw "Error: validate_array_of_color_array_statistics(statistics_array) returned false.";
@@ -539,8 +539,8 @@ function randomly_select_element_from_array(colors_array, statistics_array, prob
             }
         }
         if (!color_match_found) { // If the record for the new_color_array_element has been removed from the statsitics array, reinsert that record in its original position within the statistics array.
-            for (k = 0; k < html_color_codes.length; k += 1) {
-                if (new_color_array_element === html_color_codes[k]) {
+            for (i = 0; i < html_color_codes.length; i += 1) {
+                if (new_color_array_element === html_color_codes[i]) {
                     new_record.COLOR = new_color_array_element;
                     new_record.FREQUENCY = 1;
                     new_record.PROBABILITY = 0; // This will be corrected after new_record is inserted into the returned and updated version of statistics_array.
@@ -548,7 +548,7 @@ function randomly_select_element_from_array(colors_array, statistics_array, prob
                 }
             }
         }
-        for (k = 0; k < return_object.B.length; k += 1) return_object.B[i].PROBABILITY = return_object.B[i].FREQUENCY / return_object.A.length;
+        for (i = 0; i < return_object.B.length; i += 1) return_object.B[i].PROBABILITY = return_object.B[i].FREQUENCY / return_object.A.length;
         return return_object;
     }
     catch(exception) {
