@@ -553,12 +553,12 @@ function randomly_select_element_from_array(colors_array, statistics_array, prob
 function print_statistics_array(statistics_array) {
     try {
         const p0 = '<' + 'p' + '>', p1 = '<' + '/' + 'p' + '>';
-        if (!validate_array_of_color_array_statistics(array)) throw "Error: validate_array_of_color_array_statistics(statistics_array) returned false.";
-        for (i = 0; i < array.length; i += 1) {
+        if (!validate_array_of_color_array_statistics(statistics_array)) throw "Error: validate_array_of_color_array_statistics(statistics_array) returned false.";
+        for (i = 0; i < statistics_array.length; i += 1) {
             document.getElementById("output").innerHTML += p0;
-            document.getElementById("output").innerHTML += "{ COLOR: " + array[i].COLOR + ", ";
-            document.getElementById("output").innerHTML += "FREQUENCY: " + array[i].FREQUENCY + ", ";
-            document.getElementById("output").innerHTML += "PROBABILITY: " + array[i].PROBABILITY + " }";
+            document.getElementById("output").innerHTML += "{ COLOR: " + statistics_array[i].COLOR + ", ";
+            document.getElementById("output").innerHTML += "FREQUENCY: " + statistics_array[i].FREQUENCY + ", ";
+            document.getElementById("output").innerHTML += "PROBABILITY: " + statistics_array[i].PROBABILITY + " }";
             document.getElementById("output").innerHTML += p1;
         }
     }
@@ -592,7 +592,6 @@ function generate() {
         const divider_line = p0 + "------------------------------------------------------------------" + p1;
         const message = "The generate() function was called at time: " + generate_time_stamp();
         console.log(message);
-        console.log("test");
         // Update the web page user interface such that the RESET button is the only interactive web page element.
         for (i = 0; i < html_color_codes.length; i += 1) document.getElementById(html_color_codes[i]).disabled = true;
         document.getElementById("probability_options").disabled = true;
@@ -602,7 +601,7 @@ function generate() {
         // Generate array A and display it on the web page interface inside of the DIV element whose id is "output".
         A = generate_array_A();
         document.getElementById("output").innerHTML = divider_line;
-        document.getElementById("output").innerHTML += p0 + "Array A: (colors according to selected frequencies)" + p1;
+        document.getElementById("output").innerHTML += p0 + "Array A (colors according to selected frequencies):" + p1;
         document.getElementById("output").innerHTML += generate_array_visual_representation(A);
         // Generate a textual description of the contents of A in terms of color value quantities and the probabilities which are dependent on such quantities.
         P = generate_initial_color_probabilities_list();
@@ -611,7 +610,7 @@ function generate() {
         // Generate array B and display it on the web page interface inside of the DIV element whose id is "output".
         B = generate_array_B(A);
         document.getElementById("output").innerHTML += divider_line;
-        document.getElementById("output").innerHTML += p0 + "Array B: (randomized version of A)" + p1;
+        document.getElementById("output").innerHTML += p0 + "Array B (randomized version of A):" + p1;
         document.getElementById("output").innerHTML += generate_array_visual_representation(B);
         // Display statistics about B (and those statistics are logically identical to A because B contains the same number of elements and color frequencies as A does).
         document.getElementById("output").innerHTML += p0 + "Array B Statistics:" + p1;
@@ -631,11 +630,12 @@ function generate() {
             P = return_object.B;
             document.getElementById("output").innerHTML += p0 + "Random Selection # " + (i + 1) + " of " + N + p1;
             document.getElementById("output").innerHTML += divider_line;
-            document.getElementById("output").innerHTML += p0 + "Array B: (after removing one randomly selected element)" + p1;
-            document.getElementById("output").innerHTML += p0 + "Value of Removed Element: " + return_object.C + p1;
-            document.getElementById("output").innerHTML += generate_array_visual_representation(B);
+            document.getElementById("output").innerHTML += p0 + "Array B (after removing one randomly selected element: " + return_object.C + "):" + p1;
+            if (B.length > 0) document.getElementById("output").innerHTML += generate_array_visual_representation(B);
+            else document.getElementById("output").innerHTML += p0 + "EMPTY" + p1;
             document.getElementById("output").innerHTML += p0 + "Array B Statistics:" + p1;
-            print_statistics_array(P);
+            if (P.length > 0 ) print_statistics_array(P);
+            else document.getElementById("output").innerHTML += p0 + "EMPTY" + p1;
             document.getElementById("output").innerHTML += divider_line;
         }
     }
