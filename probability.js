@@ -1,7 +1,7 @@
 /**
  * file: probability.js
  * type: JavaScript
- * date: 06_FEBRUARY_2023
+ * date: 08_FEBRUARY_2023
  * author: karbytes
  * license: PUBLIC_DOMAIN
  */
@@ -375,7 +375,7 @@ function validate_array_of_color_array_statistics(array) {
                 }
             }
             // Require that current_FREQUENCY be a natural number no larger than ten.
-            if ((current_FREQUENCY !== parseInt(current_FREQUENCY)) || (current_FREQUENCY < 1) || (current_FREQUENCY > 10)) throw "Error: current_FREQUENCY is required to be a natural number no larger than ten.";
+            if ((current_FREQUENCY !== parseInt(current_FREQUENCY)) || (current_FREQUENCY < 1) || (current_FREQUENCY > 50)) throw "Error: current_FREQUENCY is required to be a natural number no larger than fifty.";
             // Require that current_PROBABILITY be a nonnegative integer which is no larger than one.
             if ((current_PROBABILITY < 0) || (current_PROBABILITY > 1)) throw "Error: current_PROBABILITY is required to be a nonnegative integer no larger than one.";
         }
@@ -607,7 +607,7 @@ function generate() {
         let i = 0, N = 0, selected_probability_type = "", A = undefined, P = undefined, return_object = {};
         const p0 = '<' + 'p' + '>', p1 = '<' + '/' + 'p' + '>', html_color_codes = generate_color_values();
         const divider_line = p0 + "------------------------------------------------------------------" + p1;
-        const message = "The generate() function was called at time: " + generate_time_stamp();
+        let message = "The generate() function was called at time: " + generate_time_stamp();
         console.log(message);
         // Update the web page user interface such that the RESET button is the only interactive web page element.
         for (i = 0; i < html_color_codes.length; i += 1) document.getElementById(html_color_codes[i]).disabled = true;
@@ -655,6 +655,9 @@ function generate() {
             else document.getElementById("output").innerHTML += p0 + "EMPTY" + p1;
             document.getElementById("output").innerHTML += divider_line;
         }
+        message = "The generate() function finished running at time: " + generate_time_stamp();
+        console.log(message);
+        document.getElementById("events_log").innerHTML += p0 + message + p1;
     }
     catch(exception) {
         console.log("An exception to normal functioning occurred during the runtime of generate(): " + exception);
