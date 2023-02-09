@@ -538,7 +538,7 @@ function randomly_select_element_from_array(colors_array, statistics_array, prob
                 color_match_found = true;
             }
         }
-        if (!color_match_found) { // If the record for the new_color_array_element has been removed from the statsitics array, reinsert that record in its original position within the statistics array.
+        if (!color_match_found) { // If the record for the new_color_array_element has been removed from the statistics array, reinsert that record in its original position within the statistics array.
             for (i = 0; i < html_color_codes.length; i += 1) {
                 if (new_color_array_element === html_color_codes[i]) {
                     new_record.COLOR = new_color_array_element;
