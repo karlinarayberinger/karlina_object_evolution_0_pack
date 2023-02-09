@@ -100,7 +100,7 @@ td {
 <pre>/**
  * file: probability.js
  * type: JavaScript
- * date: 06_FEBRUARY_2023
+ * date: 08_FEBRUARY_2023
  * author: karbytes
  * license: PUBLIC_DOMAIN
  */
@@ -474,7 +474,7 @@ function validate_array_of_color_array_statistics(array) {
                 }
             }
             // Require that current_FREQUENCY be a natural number no larger than ten.
-            if ((current_FREQUENCY !== parseInt(current_FREQUENCY)) || (current_FREQUENCY &lt; 1) || (current_FREQUENCY &gt; 10)) throw "Error: current_FREQUENCY is required to be a natural number no larger than ten.";
+            if ((current_FREQUENCY !== parseInt(current_FREQUENCY)) || (current_FREQUENCY &lt; 1) || (current_FREQUENCY &gt; 50)) throw "Error: current_FREQUENCY is required to be a natural number no larger than fifty.";
             // Require that current_PROBABILITY be a nonnegative integer which is no larger than one.
             if ((current_PROBABILITY &lt; 0) || (current_PROBABILITY &gt; 1)) throw "Error: current_PROBABILITY is required to be a nonnegative integer no larger than one.";
         }
@@ -637,7 +637,7 @@ function randomly_select_element_from_array(colors_array, statistics_array, prob
                 color_match_found = true;
             }
         }
-        if (!color_match_found) { // If the record for the new_color_array_element has been removed from the statsitics array, reinsert that record in its original position within the statistics array.
+        if (!color_match_found) { // If the record for the new_color_array_element has been removed from the statistics array, reinsert that record in its original position within the statistics array.
             for (i = 0; i &lt; html_color_codes.length; i += 1) {
                 if (new_color_array_element === html_color_codes[i]) {
                     new_record.COLOR = new_color_array_element;
@@ -706,7 +706,7 @@ function generate() {
         let i = 0, N = 0, selected_probability_type = "", A = undefined, P = undefined, return_object = {};
         const p0 = '&lt;' + 'p' + '&gt;', p1 = '&lt;' + '/' + 'p' + '&gt;', html_color_codes = generate_color_values();
         const divider_line = p0 + "------------------------------------------------------------------" + p1;
-        const message = "The generate() function was called at time: " + generate_time_stamp();
+        let message = "The generate() function was called at time: " + generate_time_stamp();
         console.log(message);
         // Update the web page user interface such that the RESET button is the only interactive web page element.
         for (i = 0; i &lt; html_color_codes.length; i += 1) document.getElementById(html_color_codes[i]).disabled = true;
@@ -754,6 +754,9 @@ function generate() {
             else document.getElementById("output").innerHTML += p0 + "EMPTY" + p1;
             document.getElementById("output").innerHTML += divider_line;
         }
+        message = "The generate() function finished running at time: " + generate_time_stamp();
+        console.log(message);
+        document.getElementById("events_log").innerHTML += p0 + message + p1;
     }
     catch(exception) {
         console.log("An exception to normal functioning occurred during the runtime of generate(): " + exception);
@@ -776,11 +779,12 @@ function generate() {
 <hr>
 <p>The screenshot image below depicts what the PROBABILITY web page interface could look like after the &#8220;PROBABILITY_WITHOUT_REPLACEMENT&#8221; option is selected from the expandable menu whose id is &#8220;probability_options&#8221; and then the &#8220;GENERATE&#8221; button is clicked.</p>
 <p>(Notice that the &#8220;GENERATE&#8221; button is replaced with the &#8220;RESET&#8221; button after the &#8220;GENERATE&#8221; button is clicked. Note that clicking the &#8220;RESET&#8221; button causes the web page interface to be returned to its initial state).</p>
+<p><span style="background:#00ff00">(Note that, the larger the N value is, the longer the generate() function runtime is. One use case in which the user selected ten elements for each one of the five colors (and selected &#8220;PROBABILITY_WITHOUT_REPLACEMENT&#8221;) took approximately eight seconds for the web page interface to display program results after the user clicked the &#8220;GENERATE&#8221; button).</span></p>
 <p>Portable-Network-Graphics_image_link: <a style="background: #ff9000;color: #000000" href="https://raw.githubusercontent.com/karlinarayberinger/karlina_object_evolution_0_pack/main/probability_interface_PROBABILITY_WITHOUT_REPLACEMENT_example_screenshot.png" target="_blank" rel="noopener">https://raw.githubusercontent.com/karlinarayberinger/karlina_object_evolution_0_pack/main/probability_interface_PROBABILITY_WITHOUT_REPLACEMENT_example_screenshot.png</a></p>
 <hr>
 
 
-<figure class="wp-block-image size-full"><img data-attachment-id="20204" data-permalink="https://karlinaobject.wordpress.com/probability/probability_interface_probability_without_replacement_example_screenshot/" data-orig-file="https://karlinaobject.files.wordpress.com/2023/02/probability_interface_probability_without_replacement_example_screenshot.png" data-orig-size="832,5169" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="probability_interface_probability_without_replacement_example_screenshot" data-image-description="" data-image-caption="" data-medium-file="https://karlinaobject.files.wordpress.com/2023/02/probability_interface_probability_without_replacement_example_screenshot.png?w=48" data-large-file="https://karlinaobject.files.wordpress.com/2023/02/probability_interface_probability_without_replacement_example_screenshot.png?w=165" src="https://karlinaobject.files.wordpress.com/2023/02/probability_interface_probability_without_replacement_example_screenshot.png" alt="" class="wp-image-20204" /></figure>
+<figure class="wp-block-image size-full"><img data-attachment-id="20251" data-permalink="https://karlinaobject.wordpress.com/probability/probability_interface_probability_without_replacement_example_screenshot-1/" data-orig-file="https://karlinaobject.files.wordpress.com/2023/02/probability_interface_probability_without_replacement_example_screenshot-1.png" data-orig-size="837,5231" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="probability_interface_probability_without_replacement_example_screenshot-1" data-image-description="" data-image-caption="" data-medium-file="https://karlinaobject.files.wordpress.com/2023/02/probability_interface_probability_without_replacement_example_screenshot-1.png?w=48" data-large-file="https://karlinaobject.files.wordpress.com/2023/02/probability_interface_probability_without_replacement_example_screenshot-1.png?w=164" src="https://karlinaobject.files.wordpress.com/2023/02/probability_interface_probability_without_replacement_example_screenshot-1.png" alt="" class="wp-image-20251" /></figure>
 
 
 <hr>
@@ -788,13 +792,14 @@ function generate() {
 <hr>
 <p>The screenshot image below depicts what the PROBABILITY web page interface could look like after the &#8220;PROBABILITY_WITH_REPLACEMENT&#8221; option is selected from the expandable menu whose id is &#8220;probability_options&#8221; and then the &#8220;GENERATE&#8221; button is clicked.</p>
 <p>(Notice that the &#8220;GENERATE&#8221; button is replaced with the &#8220;RESET&#8221; button after the &#8220;GENERATE&#8221; button is clicked. Note that clicking the &#8220;RESET&#8221; button causes the web page interface to be returned to its initial state).</p>
+<p><span style="background:#00ff00">(Note that, the larger the N value is, the longer the generate() function runtime is. One use case in which the user selected ten elements for each one of the five colors (and selected &#8220;PROBABILITY_WITH_REPLACEMENT&#8221;) took approximately twelve seconds for the web page interface to display program results after the user clicked the &#8220;GENERATE&#8221; button).</span></p>
 <p>Portable-Network-Graphics_image_link: <a style="background: #ff9000;color: #000000" href="https://raw.githubusercontent.com/karlinarayberinger/karlina_object_evolution_0_pack/main/probability_interface_PROBABILITY_WITH_REPLACEMENT_example_screenshot.png" target="_blank" rel="noopener">https://raw.githubusercontent.com/karlinarayberinger/karlina_object_evolution_0_pack/main/probability_interface_PROBABILITY_WITH_REPLACEMENT_example_screenshot.png</a></p>
 <hr>
 
 
-<figure class="wp-block-image size-full"><img data-attachment-id="20200" data-permalink="https://karlinaobject.wordpress.com/probability/probability_interface_probability_with_replacement_example_screenshot/" data-orig-file="https://karlinaobject.files.wordpress.com/2023/02/probability_interface_probability_with_replacement_example_screenshot.png" data-orig-size="842,8844" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="probability_interface_probability_with_replacement_example_screenshot" data-image-description="" data-image-caption="" data-medium-file="https://karlinaobject.files.wordpress.com/2023/02/probability_interface_probability_with_replacement_example_screenshot.png?w=29" data-large-file="https://karlinaobject.files.wordpress.com/2023/02/probability_interface_probability_with_replacement_example_screenshot.png?w=97" src="https://karlinaobject.files.wordpress.com/2023/02/probability_interface_probability_with_replacement_example_screenshot.png" alt="" class="wp-image-20200" /></figure>
+<figure class="wp-block-image size-full"><img data-attachment-id="20249" data-permalink="https://karlinaobject.wordpress.com/probability/probability_interface_probability_with_replacement_example_screenshot-1/" data-orig-file="https://karlinaobject.files.wordpress.com/2023/02/probability_interface_probability_with_replacement_example_screenshot-1.png" data-orig-size="837,9022" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="probability_interface_probability_with_replacement_example_screenshot-1" data-image-description="" data-image-caption="" data-medium-file="https://karlinaobject.files.wordpress.com/2023/02/probability_interface_probability_with_replacement_example_screenshot-1.png?w=28" data-large-file="https://karlinaobject.files.wordpress.com/2023/02/probability_interface_probability_with_replacement_example_screenshot-1.png?w=95" src="https://karlinaobject.files.wordpress.com/2023/02/probability_interface_probability_with_replacement_example_screenshot-1.png" alt="" class="wp-image-20249" /></figure>
 
 
 <hr>
-<p>This web page was last updated on 06_FEBRUARY_2023. The content displayed on this web page is licensed as <a style="background:#000000;color:#ff9000" href="https://karlinaobject.wordpress.com/public_domain/" target="_blank" rel="noopener">PUBLIC_DOMAIN</a> intellectual property.</p>
-<hr>
+<p>This web page was last updated on 08_FEBRUARY_2023. The content displayed on this web page is licensed as <a style="background:#000000;color:#ff9000" href="https://karlinaobject.wordpress.com/public_domain/" target="_blank" rel="noopener">PUBLIC_DOMAIN</a> intellectual property.</p>
+<hr>	
