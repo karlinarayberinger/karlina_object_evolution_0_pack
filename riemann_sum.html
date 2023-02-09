@@ -1,0 +1,80 @@
+<!--
+/**
+ * file: riemann_sum.html
+ * type: Hyper-Text-Markup-Language
+ * author: karbytes
+ * date: 08_FEBRUARY_2023
+ * license: PUBLIC_DOMAIN
+ */
+ -->
+ <!DOCTYPE html>
+ <html>
+ <head>
+    <meta charset="UTF-8">
+    <title>RIEMANN_SUM</title>
+    <link rel="stylesheet" href="karbytes_aesthetic.css">
+    <script src="riemann_sum.js"></script>
+    <style>
+       div {
+            border-color: #ff00ff;
+            border-width: 2px;
+            border-style: solid;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 5px;
+       }
+    </style>
+ </head>
+ <body onload="initialize_application()">
+   <div>
+      <h1>RIEMANN_SUM</h1>
+   </div>
+   <div>
+      <p>STEP_0: Select a function, y = f(x), to graph on a two-dimensional Cartesian grid between x = A and x = B.</p>
+      <p id="f_menu_container" class="console">#f_menu_container</p>
+   </div>
+   <div>
+      <p>STEP_1: Select the number, N, of equally-sized partitions of the x-axis between x = A and x = B to produce.</p>
+      <p>
+         N rectangles will be drawn inside of each of those N partitions in order to approximate 
+         the area whose bounds are y = f(x), x = A, x = B, and y = 0.
+      </p>
+      <p id="p_menu_container" class="console">#p_menu_container</p>
+   </div>
+   <div>
+      <p>STEP_2: Select whether to use the left rule, the right rule, or else the midpoint rule.</p>
+      <p>
+         If the left rule is selected, then each rectangle's left side will overlap with 
+         the leftmost point of its respective x-axis partition.
+      </p>
+      <p>
+         If the right rule is selected, then each rectangle's right side will overlap with 
+         the rightmost point of its respective x-axis partition.
+      </p>
+      <p>
+         If the midpoint rule is selected, then each rectangle's vertical line of symmetry
+         will overlap with the middle point of its respective x-axis partition.
+      </p>
+      <p id="r_menu_container" class="console">#r_menu_container</p>
+   </div>
+   <div>
+      <p>
+         STEP_3: Click the GENERATE button to graph y = f(x) between x = A and x = B, 
+         to draw the N equal-width rectangles, to compute each rectangle's area,
+         to compute the sum of those areas, and to compute the actual area of the
+         region bound by y = f(x), x = A, x = B, and y = 0.
+      </p>
+      <p><input class="console" id="generate_button" type="button" value="GENERATE" onclick="generate()"></p>
+   </div>
+   <div>
+      <p>STEP_4: Click the RESET button to return the web page interface to its initial state.</p>
+      <p><input class="console" id="reset_button" type="button" value="RESET" onclick="initialize_application()"></p>
+   </div>
+   <div id="output">
+      <p>#output</p>
+   </div> 
+   <div id="events_log" class="console" >
+      <p>#events_log</p>
+   </div> 
+ </body>
+ </html>
