@@ -7,6 +7,25 @@
  */
 
 /**
+ * ATTENTION! ATTENTION!
+ * 
+ * Do not generate the Cartesian plane canvas until the user selects a function.
+ * 
+ * That way, the graph dimensions can match the function instead such that the 
+ * graph is most easy to visualize.
+ * 
+ * Tentative functions to graph:
+ * 
+ * A: y = f(x) := 2x - 3.
+ * 
+ * B: y = f(x) := 0.5(x * x) + 1.
+ * 
+ * C: y = f(x) := 0.5(x * x * x) + 1.
+ * 
+ * D: y = f(x) := sin(x).
+ */
+
+/**
  * Generate a white square-shaped canvas element whose id is "cartesian_plane" and whose side lengths are each 400 pixels and 
  * append that canvas element to the inner HTML content of the div element of defined in riemann_sum.html whose id is "output".
  * 
@@ -19,6 +38,7 @@
  * The line segment whose endpoints are the middle of the top edge of the canvas and the middle of the bottom edge of the 
  * canvas represents the y-axis (which is the vertical dimension) of a two-dimensional Cartesian grid.
  */
+/*
 function generate_blank_cartesian_grid() {
     try {
         let canvas = '<' + 'canvas id="cartesian_plane" width="400" height="400" style="background:#ffffff"' + '><' + '/' + 'canvas' + '>';
@@ -38,6 +58,7 @@ function generate_blank_cartesian_grid() {
         console.log("An exception to expected functioning occurred in generate_blank_cartesian_grid(): " + exception);
     }
 }
+*/
 
 /**
  */
@@ -45,7 +66,7 @@ function initialize_application() {
     try {
         let output_div = document.getElementById("output");
         output_div.innerHTML = "";
-        generate_blank_cartesian_grid();
+        // generate_blank_cartesian_grid();
     }
     catch(exception) {
         console.log("An exception to expected functioning occurred in initialize_application(): " + exception);
