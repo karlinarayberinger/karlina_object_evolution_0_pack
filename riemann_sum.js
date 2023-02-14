@@ -2,9 +2,30 @@
  * file: riemann_sum.js
  * type: JavaScript
  * author: karbytes
- * date: 13_FEBRUARY_2023
+ * date: 14_FEBRUARY_2023
  * license: PUBLIC_DOMAIN
  */
+
+/**
+ * Populate the paragraph element whose id is "f_menu_container" on the web page defined by riemann_sum.html
+ * with a SELECT menu whose OPTIONs each represent exactly one function to graph on a Cartesian plane.
+ * 
+ * The first OPTION is automatically selected if the user does not click on that SELECT menu.
+ */
+function populate_f_menu() {
+    try {
+        const paragraph_element = document.getElementById("f_menu_container");
+        let S = '<' + 'select id="f_menu"' + '>';
+        S += '<' + 'option value="f0" selected' + '>' + 'y = f(x) := (2 * x) + 3' + '<' + '/' + 'option' + '>';
+        S += '<' + 'option value="f1"' + '>' + 'y = f(x) := ((1/16) * (x * x)) + 1' + '<' + '/' + 'option' + '>';
+        S += '<' + 'option value="f2"' + '>' + 'y = f(x) := sin(x)' + '<' + '/' + 'option' + '>';
+        S += '<' + '/' + 'select' + '>';
+        paragraph_element.innerHTML = S;
+    }
+    catch(exception) {
+        console.log("An exception to normal functioning occurred during the runtime of populate_f_menu(): " + exception);
+    }
+}
 
 /**
  * ATTENTION! ATTENTION!
@@ -66,6 +87,7 @@ function initialize_application() {
     try {
         let output_div = document.getElementById("output");
         output_div.innerHTML = "";
+        populate_f_menu();
         // generate_blank_cartesian_grid();
     }
     catch(exception) {
