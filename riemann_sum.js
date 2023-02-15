@@ -28,6 +28,27 @@ function populate_f_menu() {
 }
 
 /**
+ * Populate the paragraph element whose id is "p_menu_container" on the web page defined by riemann_sum.html
+ * with a SELECT menu whose OPTIONs each represent exactly one natural number of equally-sized partitions of
+ * the x-axis between x = A and x = B to generate.
+ * 
+ * The first OPTION is automatically selected if the user does not click on that SELECT menu.
+ */
+function populate_p_menu() {
+    try {
+        const paragraph_element = document.getElementById("p_menu_container"), MAXIMUM_N = 10;
+        let N = 2, S = '<' + 'select id="p_menu"' + '>';
+        S += '<' + 'option value="1" selected' + '>' + 'N := 1' + '<' + '/' + 'option' + '>';
+        for (N = 2; N <= MAXIMUM_N; N += 1) S += '<' + 'option value="' + N + '"' + '>' + 'N := ' + N + '<' + '/' + 'option' + '>';
+        S += '<' + '/' + 'select' + '>';
+        paragraph_element.innerHTML = S;
+    }
+    catch(exception) {
+        console.log("An exception to normal functioning occurred during the runtime of populate_p_menu(): " + exception);
+    }
+}
+
+/**
  * ATTENTION! ATTENTION!
  * 
  * Do not generate the Cartesian plane canvas until the user selects a function.
@@ -88,6 +109,7 @@ function initialize_application() {
         let output_div = document.getElementById("output");
         output_div.innerHTML = "";
         populate_f_menu();
+        populate_p_menu();
         // generate_blank_cartesian_grid();
     }
     catch(exception) {
