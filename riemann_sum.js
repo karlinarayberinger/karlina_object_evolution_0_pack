@@ -8,7 +8,8 @@
 
 /**
  * Populate the paragraph element whose id is "f_menu_container" on the web page defined by riemann_sum.html
- * with a SELECT menu whose OPTIONs each represent exactly one function to graph on a Cartesian plane.
+ * with a SELECT menu whose id is "f_menu_container" and whose OPTIONs each represent exactly one function 
+ * to graph on a Cartesian plane.
  * 
  * The first OPTION is automatically selected if the user does not click on that SELECT menu.
  */
@@ -29,8 +30,8 @@ function populate_f_menu() {
 
 /**
  * Populate the paragraph element whose id is "p_menu_container" on the web page defined by riemann_sum.html
- * with a SELECT menu whose OPTIONs each represent exactly one natural number of equally-sized partitions of
- * the x-axis between x = A and x = B to generate.
+ * with a SELECT menu whose id is "p_menu" and whose OPTIONs each represent exactly one natural number, N, of 
+ * equally-sized partitions of the x-axis between x = A and x = B to generate.
  * 
  * The first OPTION is automatically selected if the user does not click on that SELECT menu.
  */
@@ -45,6 +46,45 @@ function populate_p_menu() {
     }
     catch(exception) {
         console.log("An exception to normal functioning occurred during the runtime of populate_p_menu(): " + exception);
+    }
+}
+
+/**
+ * Populate the paragraph element whose id is "r_menu_container" on the web page defined by riemann_sum.html
+ * with a SELECT menu whose id is "r_menu" and whose OPTIONs each represent exactly one type of rule for
+ * constructing N rectangles whose widths are each equal to each one of the N equally-sized partitions of
+ * the x-axis between x = A and x = B and whose heights depend on which rule is selected from the r_menu.
+ * 
+ * If left_rule is selected, then the ith rectangle's left side will overlap with the leftmost 
+ * point of the ith partition of the x-axis such that the height of the ith rectangle is f(xi) 
+ * (and xi is the left endpoint of the ith x-axis partition).
+ * 
+ * If right_rule is selected, then the ith rectangle's right side will overlap with the rightmost  
+ * point of the ith partition of the x-axis such that the height of the ith rectangle is f(x(i + 1)) 
+ * (and x(i + 1) is the right endpoint of the ith x-axis partition).
+ * 
+ * If midpoint_rule is selected, then the ith rectangle's right side will overlap with the middle  
+ * point of the ith partition of the x-axis such that the height of the ith rectangle is f( (xi + x(i + 1)) / 2 ) 
+ * (and ( (xi + x(i + 1)) / 2 ) is the point which is equidistant from the leftmost point and from 
+ * the rightmost point of the ith x-axis partition).
+ * 
+ * NOTE THAT THE TERMS xi, x(i + 1), and ( (xi + x(i + 1)) / 2 ) ARE INTENDED TO REPRESENT SINGLE POINTS
+ * ALONG THE X-AXIS AND ARE NOT MEANT TO BE INTERPRETED AS ARITHMETIC EQUATIONS.
+ * 
+ * The first OPTION is automatically selected if the user does not click on that SELECT menu.
+ */
+function populate_r_menu() {
+    try {
+        const paragraph_element = document.getElementById("r_menu_container");
+        let S = '<' + 'select id="r_menu"' + '>';
+        S += '<' + 'option value="left_rule" selected' + '>' + 'left_rule' + '<' + '/' + 'option' + '>';
+        S += '<' + 'option value="right_rule"' + '>' + 'right_rule' + '<' + '/' + 'option' + '>';
+        S += '<' + 'option value="midpoint_rule"' + '>' + 'midpoint_rule' + '<' + '/' + 'option' + '>';
+        S += '<' + '/' + 'select' + '>';
+        paragraph_element.innerHTML = S;
+    }
+    catch(exception) {
+        console.log("An exception to normal functioning occurred during the runtime of populate_r_menu(): " + exception);
     }
 }
 
@@ -110,6 +150,7 @@ function initialize_application() {
         output_div.innerHTML = "";
         populate_f_menu();
         populate_p_menu();
+        populate_r_menu();
         // generate_blank_cartesian_grid();
     }
     catch(exception) {
