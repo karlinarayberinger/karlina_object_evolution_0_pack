@@ -65,8 +65,8 @@ function populate_p_menu() {
  * 
  * If midpoint_rule is selected, then the ith rectangle's right side will overlap with the middle  
  * point of the ith partition of the x-axis such that the height of the ith rectangle is f( (xi + x(i + 1)) / 2 ) 
- * (and ( (xi + x(i + 1)) / 2 ) is the point which is equidistant from the leftmost point and from 
- * the rightmost point of the ith x-axis partition).
+ * (and ( (xi + x(i + 1)) / 2 ) is the point which is the same distance from the leftmost point of the ith 
+ * partition of the x-axis as it is from the rightmost point of the ith partition of the x-axis).
  * 
  * NOTE THAT THE TERMS xi, x(i + 1), and ( (xi + x(i + 1)) / 2 ) ARE EACH INTENDED TO REPRESENT A SINGLE 
  * POINT ALONG THE X-AXIS WHICH IS NO SMALLER THAN A AND NO LARGER THAN B AND WHICH IS NOT MEANT TO BE 
