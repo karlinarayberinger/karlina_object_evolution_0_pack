@@ -97,7 +97,6 @@ function initialize_application() {
         populate_f_menu();
         populate_p_menu();
         populate_r_menu();
-        // generate_blank_cartesian_grid();
     }
     catch(exception) {
         console.log("An exception to expected functioning occurred in initialize_application(): " + exception);
