@@ -68,8 +68,9 @@ function populate_p_menu() {
  * (and ( (xi + x(i + 1)) / 2 ) is the point which is equidistant from the leftmost point and from 
  * the rightmost point of the ith x-axis partition).
  * 
- * NOTE THAT THE TERMS xi, x(i + 1), and ( (xi + x(i + 1)) / 2 ) ARE INTENDED TO REPRESENT SINGLE POINTS
- * ALONG THE X-AXIS AND ARE NOT MEANT TO BE INTERPRETED AS ARITHMETIC EQUATIONS.
+ * NOTE THAT THE TERMS xi, x(i + 1), and ( (xi + x(i + 1)) / 2 ) ARE EACH INTENDED TO REPRESENT A SINGLE 
+ * POINT ALONG THE X-AXIS WHICH IS NO SMALLER THAN A AND NO LARGER THAN B AND WHICH IS NOT MEANT TO BE 
+ * INTERPRETED AS AN ARITHMETIC EQUATION.
  * 
  * The first OPTION is automatically selected if the user does not click on that SELECT menu.
  */
