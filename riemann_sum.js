@@ -99,7 +99,58 @@ function populate_r_menu() {
  */
 function generate_blank_canvas() {
     return '<' + 'canvas id="rectangular_canvas" width="750" height="400" style="background:#ffffff;"' + '><' + '/' + 'canvas' + '>';
+}
 
+/**
+ * Draw a line segment whose thickness is one pixel and whose color is black from of the left edge of the HTML canvas 
+ * whose id is "rectangular_canvas" on the web page defined by riemann_sum.html to the right edge of that canvas and 
+ * such that the line segment drawn by this function is parallel to the top and bottom edges of that canvas.
+ * 
+ * The line segment drawn by this function is supposed to represent the x-axis of a two-dimensional Cartesian grid.
+ * 
+ * Assume that the canvas is 750 pixels wide and 400 pixels tall.
+ */
+function draw_horizontal_cartesian_plane_axis() {
+    let canvas = undefined, context = undefined;
+    try {
+        canvas = document.getElementById("rectangular_canvas");
+        context = canvas.getContext("2d");
+        context.strokeStyle = "#000000"; 
+        context.lineWidth = 1;
+        context.beginPath();
+        context.moveTo(0, 350); // point at the left edge of the canvas
+        context.lineTo(750, 350); // point at the right edge of the canvas
+        context.stroke();
+    }
+    catch(exception) {
+        console.log("An exception to expected functioning occurred in draw_horizontal_cartesian_plane_axis(): " + exception);    
+    }
+}
+
+/**
+ * Draw a line segment whose thickness is one pixel and whose color is black from of the top edge of the HTML canvas 
+ * whose id is "rectangular_canvas" on the web page defined by riemann_sum.html to the bottom edge of that canvas and 
+ * such that the line segment drawn by this function is parallel to the left and right edges of that canvas.
+ * 
+ * The line segment drawn by this function is supposed to represent the y-axis of a two-dimensional Cartesian grid.
+ * 
+ * Assume that the canvas is 750 pixels wide and 400 pixels tall.
+ */
+function draw_vertical_cartesian_plane_axis() {
+    let canvas = undefined, context = undefined;
+    try {
+        canvas = document.getElementById("rectangular_canvas");
+        context = canvas.getContext("2d");
+        context.strokeStyle = "#000000"; 
+        context.lineWidth = 1;
+        context.beginPath();
+        context.moveTo(50, 0); // point at the top edge of the canvas
+        context.lineTo(50, 400); // point at the bottom edge of the canvas
+        context.stroke();
+    }
+    catch(exception) {
+        console.log("An exception to expected functioning occurred in draw_vertical_cartesian_plane_axis(): " + exception);    
+    }
 }
 
 /**
@@ -108,6 +159,8 @@ function initialize_application() {
     try {
         let output_div = document.getElementById("output");
         output_div.innerHTML = generate_blank_canvas();
+        draw_vertical_cartesian_plane_axis();
+        draw_horizontal_cartesian_plane_axis();
         populate_f_menu();
         populate_p_menu();
         populate_r_menu();
