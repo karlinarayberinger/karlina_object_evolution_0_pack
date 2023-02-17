@@ -2,7 +2,7 @@
  * file: riemann_sum.js
  * type: JavaScript
  * author: karbytes
- * date: 14_FEBRUARY_2023
+ * date: 16_FEBRUARY_2023
  * license: PUBLIC_DOMAIN
  */
 
@@ -90,11 +90,24 @@ function populate_r_menu() {
 }
 
 /**
+ * Generate HTML code which defines a white rectangular region inside of the DIV element whose id is "output"
+ * on the web page defined by riemann_sum.html.
+ * 
+ * The returned string defines an HTML CANVAS whose id is "rectangular_canvas", whose width is 750 pixels, and whose height is 400 pixels.
+ * 
+ * @return {String} HTML code which defines a rectangular CANVAS whose background color is white and whose width is longer than its height.
+ */
+function generate_blank_canvas() {
+    return '<' + 'canvas id="rectangular_canvas" width="750" height="400" style="background:#ffffff;"' + '><' + '/' + 'canvas' + '>';
+
+}
+
+/**
  */
 function initialize_application() {
     try {
         let output_div = document.getElementById("output");
-        output_div.innerHTML = "";
+        output_div.innerHTML = generate_blank_canvas();
         populate_f_menu();
         populate_p_menu();
         populate_r_menu();
