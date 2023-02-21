@@ -36,6 +36,7 @@ function generate_paragraph_html_element(inner_html) {
     const opening_paragraph_tag = '<' + 'p' + '>', closing_paragraph_tag = '<' + '/' + 'p' + '>;'
     try {
         if (typeof inner_html.length === "number") throw "(typeof inner_html.length === "number") was evaluated as false";
+        return opening_paragraph_tag + inner_html + closing_paragraph_tag;
     }
     catch(exception) {
         console.log("An exception to normal functioning occurred during the runtime of generate_paragraph_html_element(inner_html): " + exception);
