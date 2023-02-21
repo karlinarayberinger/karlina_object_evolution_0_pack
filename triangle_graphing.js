@@ -19,6 +19,29 @@ function generate_time_stamp() {
     return milliseconds_elapsed_since_unix_epoch + " milliseconds since midnight on 01_JANUARY_1970.";
 }
 
+/**
+ * Return a String type value which is used to instantiate a paragraph type web page element such that
+ * the String type value which is passed into this function's only input is that paragraph element's 
+ * inner HTML content.
+ * 
+ * Note that the String type constant variable values are broken up into single-character String type values 
+ * to avoid causing the WordPress web page editor to interpret HTML tags in the web page body with 
+ * source code which is hosted on that web page inside of PRE (preformatted) web page elements.
+ * 
+ * @param {String} inner_HTML is assumed to be plain text or HTML content.
+ * 
+ * @return {String} a sequence of text characters which is used to instantiate a paragraph (P) web page element.
+ */
+function generate_paragraph_html_element(inner_html) {
+    const opening_paragraph_tag = '<' + 'p' + '>', closing_paragraph_tag = '<' + '/' + 'p' + '>;'
+    try {
+        if (typeof inner_html.length === "number") throw "(typeof inner_html.length === "number") was evaluated as false";
+    }
+    catch(exception) {
+        console.log("An exception to normal functioning occurred during the runtime of generate_paragraph_html_element(inner_html): " + exception);
+    }
+}
+
 function initialize_application() {
     let time_stamped_message = "", initial_output_message = "",
     let output_div = undefined, events_log_div = undefined, generate_button_container_paragraph = undefined;
