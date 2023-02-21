@@ -51,7 +51,7 @@ function initialize_application() {
     let c_x_menu_container_paragraph = undefined, c_y_menu_container_paragraph = undefined;
     try {
         // Populate the "event_log" div with a time stamped message indicating that this function was called.
-        time_stamped_message = generate_paragraph_html_element(generate_time_stamp());
+        time_stamped_message = generate_paragraph_html_element("The function named initialize_application() was called at time: " + generate_time_stamp());
         events_log_div = document.getElementById("events_log");
         events_log_div.innerHTML = time_stamped_message;
     }
