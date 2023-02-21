@@ -35,7 +35,7 @@ function generate_time_stamp() {
 function generate_paragraph_html_element(inner_html) {
     const opening_paragraph_tag = ('<' + 'p' + '>'), closing_paragraph_tag = ('<' + '/' + 'p' + '>');
     try {
-        if (typeof inner_html.length === "number") throw '(typeof inner_html.length === "number") was evaluated as false.';
+        if (typeof inner_html.length !== "number") throw '(typeof inner_html.length !== "number") was evaluated as true.';
         return opening_paragraph_tag + inner_html + closing_paragraph_tag;
     }
     catch(exception) {
@@ -44,13 +44,16 @@ function generate_paragraph_html_element(inner_html) {
 }
 
 function initialize_application() {
-    let time_stamped_message = "", initial_output_message = "",
+    let time_stamped_message = "", initial_output_message = "";
     let output_div = undefined, events_log_div = undefined, generate_button_container_paragraph = undefined;
     let a_x_menu_container_paragraph = undefined, a_y_menu_container_paragraph = undefined;
     let b_x_menu_container_paragraph = undefined, b_y_menu_container_paragraph = undefined;
     let c_x_menu_container_paragraph = undefined, c_y_menu_container_paragraph = undefined;
     try {
-        console.log("test");
+        // Populate the "event_log" div with a time stamped message indicating that this function was called.
+        time_stamped_message = generate_paragraph_html_element(generate_time_stamp());
+        events_log_div = document.getElementById("events_log");
+        events_log_div.innerHTML = time_stamped_message;
     }
     catch(exception) {
         console.log("An exception to normal functioning occurred during the runtime of initialize_application(): " + exception);
