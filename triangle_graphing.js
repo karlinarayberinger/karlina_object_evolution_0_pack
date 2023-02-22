@@ -239,6 +239,12 @@ function generate_triangle_using_input_coordinates() {
     let select_menu_container_paragraph = undefined;
     let reset_button = undefined;
     try {
+        // Append the bottom of the content inside of the "event_log" div with a time stamped message indicating that this function was called.
+        time_stamped_message = ("The function named generate_triangle_using_input_coordinates() was called at time: " + generate_time_stamp());
+        console.log(time_stamped_message);
+        time_stamped_message = generate_paragraph_html_element(time_stamped_message);
+        events_log_div = document.getElementById("events_log");
+        events_log_div.innerHTML += time_stamped_message;
         // Transform the first input select menu (for A.X) into plain text displaying its selected option.
         select_menu_container_paragraph = document.getElementById("a_x_menu_container");
         selected_menu_option_value = get_selected_menu_option_value("a_x_menu");
