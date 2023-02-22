@@ -43,7 +43,11 @@ function generate_paragraph_html_element(inner_html) {
     }
 }
 
+/**
+ * ... (reverse abstract to concrete) ...
+ */
 function initialize_application() {
+    let cartesian_plane_canvas = "";
     let time_stamped_message = "", initial_output_message = "";
     let output_div = undefined, events_log_div = undefined, generate_button_container_paragraph = undefined;
     let a_x_menu_container_paragraph = undefined, a_y_menu_container_paragraph = undefined;
@@ -54,6 +58,11 @@ function initialize_application() {
         time_stamped_message = generate_paragraph_html_element("The function named initialize_application() was called at time: " + generate_time_stamp());
         events_log_div = document.getElementById("events_log");
         events_log_div.innerHTML = time_stamped_message;
+        // Populate the "output" div with a canvas web page element.
+        cartesian_plane_canvas = (('<' + 'canvas id="cartesian_plane" width="750" height="750" style="background:#ffffff">') + ('<' + '/' + '>'));
+        output_div = document.getElementById("output");
+        output_div.innerHTML = cartesian_plane_canvas
+        //... ... (reverse abstract to concrete) ...
     }
     catch(exception) {
         console.log("An exception to normal functioning occurred during the runtime of initialize_application(): " + exception);
