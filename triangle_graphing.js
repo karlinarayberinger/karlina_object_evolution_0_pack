@@ -258,11 +258,17 @@ function generate_triangle_using_input_coordinates() {
         selected_menu_option_value = get_selected_menu_option_value("b_x_menu");
         console.log("selected_menu_option_value := " + selected_menu_option_value + '.');
         select_menu_container_paragraph.innerHTML = ('B.X := ' + selected_menu_option_value + '. // horizontal position of two-dimensional POINT labeled B.'); 
+        // Store the selected menu option as its corresponding POINT property.
+        B.X = parseInt(selected_menu_option_value);
+        console.log("B.X = parseInt(selected_menu_option_value); // B.X is " + B.X + '.');
         // Transform the fourth input select menu (for B.Y) into plain text displaying its selected option.
         select_menu_container_paragraph = document.getElementById("b_y_menu_container");
         selected_menu_option_value = get_selected_menu_option_value("b_y_menu");
         console.log("selected_menu_option_value := " + selected_menu_option_value + '.');
         select_menu_container_paragraph.innerHTML = ('B.Y := ' + selected_menu_option_value + '. // vertical position of two-dimensional POINT labeled B.'); 
+        // Store the selected menu option as its corresponding POINT property.
+        B.Y = parseInt(selected_menu_option_value);
+        console.log("B.Y = parseInt(selected_menu_option_value); // B.Y is " + B.Y + '.');
         // Transform the fifth input select menu (for C.X) into plain text displaying its selected option.
         select_menu_container_paragraph = document.getElementById("c_x_menu_container");
         selected_menu_option_value = get_selected_menu_option_value("c_x_menu");
