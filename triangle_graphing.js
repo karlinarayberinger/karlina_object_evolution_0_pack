@@ -72,7 +72,7 @@ function generate_coordinate_menu_select_html_element(select_id) {
         throw 'select_id must either be "a_x_menu_container" or else "a_y_menu_container" or ' + 
                'else "b_x_menu_container" or else "b_y_menu_container" or ' + 
                'else "c_x_menu_container" or else "c_y_menu_container".';
-        select_menu = ('<' + 'select id="' + select_id + '">');
+        select_menu = ('<' + 'select id="' + select_id + '" style="text-align:center"' + '>');
         for (i = -100; i <= 100; i += 1) {
             if (i === 0) option = ('<' + 'option value="0" selected' + '>');
             else option = ('<' + 'option value="' + i + '"' + '>');
@@ -158,6 +158,7 @@ function initialize_application() {
     let a_x_menu_container_paragraph = undefined, a_y_menu_container_paragraph = undefined;
     let b_x_menu_container_paragraph = undefined, b_y_menu_container_paragraph = undefined;
     let c_x_menu_container_paragraph = undefined, c_y_menu_container_paragraph = undefined;
+    let generate_button_container = "";
     try {
         // Populate the "event_log" div with a time stamped message indicating that this function was called.
         time_stamped_message = generate_paragraph_html_element("The function named initialize_application() was called at time: " + generate_time_stamp());
@@ -189,6 +190,9 @@ function initialize_application() {
         // Populate the "C_y_menu_container" paragraph element with a select menu for choosing an integer value for the Y property of POINT object B.
         c_y_menu_container_paragraph = document.getElementById("c_y_menu_container");
         c_y_menu_container_paragraph.innerHTML = ('C.Y := ' + generate_coordinate_menu_select_html_element("c_y_menu_container") + '. // vertical position of two-dimensional POINT labeled C.'); 
+        // Populate the "generate_button_container" paragraph element with a button input web page element which calls the function named generate_triangle_using_input_coordinates().
+        generate_button_container = document.getElementById("generate_button_container");
+        generate_button_container.innerHTML = ('<' + 'input id="generate_button" value="GENERATE" style="text-align:center" onclick="generate_triangle_using_input_coordinates()"' + '/' + '>');
         //...    
     }
     catch(exception) {
