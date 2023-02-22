@@ -192,10 +192,31 @@ function initialize_application() {
         c_y_menu_container_paragraph.innerHTML = ('C.Y := ' + generate_coordinate_menu_select_html_element("c_y_menu_container") + '. // vertical position of two-dimensional POINT labeled C.'); 
         // Populate the "generate_button_container" paragraph element with a button input web page element which calls the function named generate_triangle_using_input_coordinates().
         generate_button_container = document.getElementById("generate_button_container");
-        generate_button_container.innerHTML = ('<' + 'input id="generate_button" value="GENERATE" style="text-align:center" onclick="generate_triangle_using_input_coordinates()"' + '/' + '>');
+        generate_button_container.innerHTML = ('<' + 'input type="button" id="generate_button" value="GENERATE" style="text-align:center" onclick="generate_triangle_using_input_coordinates()"' + '/' + '>');
         //...    
     }
     catch(exception) {
         console.log("An exception to normal functioning occurred during the runtime of initialize_application(): " + exception);
+    }
+}
+
+/**
+ */
+function generate_triangle_using_input_coordinates() {
+    let cartesian_plane_canvas = "";
+    let time_stamped_message = "", final_output_message = "";
+    let output_div = undefined, events_log_div = undefined, generate_button_container_paragraph = undefined;
+    let a_x_menu_container_paragraph = undefined, a_y_menu_container_paragraph = undefined;
+    let b_x_menu_container_paragraph = undefined, b_y_menu_container_paragraph = undefined;
+    let c_x_menu_container_paragraph = undefined, c_y_menu_container_paragraph = undefined;
+    let reset_button = undefined;
+    try {
+        // Transform each of the six input select menus into plain text displaying its selected option.
+        a_x_menu_container_paragraph = document.getElementById("a_x_menu_container");
+        a_x_menu_container_paragraph.innerHTML = "test";
+        //...    
+    }
+    catch(exception) {
+        console.log("An exception to normal functioning occurred during the runtime of generate_triangle_using_input_coordinates(): " + exception);
     }
 }
