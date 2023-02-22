@@ -321,9 +321,7 @@ function compute_distance_between_two_planar_points(A, B) {
  * Respond to the event of the GENERATE button being clicked.
  */
 function generate_triangle_using_input_coordinates() {
-    let POINT = { X : 0, Y : 0, DISTANCE : function(_POINT) { return compute_distance_between_two_planar_points(this, _POINT) } };
-    let TRIANGLE = { A : POINT, B : POINT, C : POINT, AB_LENGTH : 0 };
-    let A = POINT, B = POINT, C = POINT;
+    let A = {}, B = {}, C = {}, TRIANGLE = {}; // Instantiate four empty Object type variables.
     let cartesian_plane_canvas = "";
     let time_stamped_message = "", selected_menu_option_value = 0;
     let output_div = undefined, events_log_div = undefined, generate_button_container_paragraph = undefined;
@@ -388,10 +386,15 @@ function generate_triangle_using_input_coordinates() {
         reset_button = ('<' + 'input type="button" value="RESET" style="text-align:center" onclick="initialize_application()"' + '/' + '>');
         generate_button_container_paragraph = document.getElementById("generate_button_container");
         generate_button_container_paragraph.innerHTML = reset_button;
-        // Append plain text paragraphs describing the TRIANGLE which is comprised of POINT objects A, B, and C represent.
-        // (TRIANGLE is an "emergent property" of three POINT instances which each represent unique whole number coordinate pairs in relation to each of the other two coordinate pairs).
-        TRIANGLE.A.X = A.X;
-        TRIANGLE.A.Y = A.Y;
+        // Append plain text paragraphs describing the TRIANGLe object which is comprised of the POINT objects labeled A, B, and C.
+        TRIANGLE.A = A;
+        TRIANGLE.B = B;
+        TRIANGLE.C = C;
+        console.log("TRIANGLE.A.X := " + TRIANGLE.A.X  + '.');
+        /*
+        T = { A : A, B : B, C : C };
+        console.log("T.A.X := " + T.A.X + '.');
+        Object.assign(TRIANGLE.A, A);
         TRIANGLE.B.X = B.X;
         TRIANGLE.B.Y = B.Y;
         TRIANGLE.C.X = C.X;
@@ -412,6 +415,7 @@ function generate_triangle_using_input_coordinates() {
         output_div.innerHTML += generate_paragraph_html_element("TRIANGLE.C.Y := " + TRIANGLE.C.Y + '.');
         console.log("TRIANGLE.A.DISTANCE(B) := " + TRIANGLE.A.DISTANCE(TRIANGLE.B) + '.');
         output_div.innerHTML += generate_paragraph_html_element("TRIANGLE.A.DISTANCE(TRIANGLE.B) := " + TRIANGLE.A.DISTANCE(TRIANGLE.B) + '.');
+        */
         //...    
     }
     catch(exception) {
