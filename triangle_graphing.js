@@ -21,7 +21,7 @@ function generate_time_stamp() {
 
 /**
  * Return a String type value which is used to instantiate a paragraph type web page element such that
- * the String type value which is passed into this function's only input is that paragraph element's 
+ * the String type value which is passed into this function as its only input is that paragraph element's 
  * inner HTML content.
  * 
  * Note that the String type constant variable values are broken up into single-character String type values 
@@ -44,6 +44,43 @@ function generate_paragraph_html_element(inner_html) {
 }
 
 /**
+ * Return a String type value which is used to instantiate a select type web page element such that
+ * the String type value which is passed into this function as its only input is that select menu element's
+ * id property value.
+ * 
+ * When clicked on, the select menu interface element will expand to display a list of all integers which are
+ * no smaller than -100 and no larger than 100 in ascending order (with the smallest integer option at the top
+ * of the list).
+ * 
+ * @param {String} select_id is assumed to be either 
+ *                 "a_x_menu_container" or else
+ *                 "a_y_menu_container" or else
+ *                 "b_x_menu_container" or else
+ *                 "b_y_menu_container" or else
+ *                 "c_x_menu_container" or else
+ *                 "c_y_menu_container". 
+ * 
+ * @return {String} a sequence of text characters which is used to instantiate an expandable list menu (SELECT) web page element.
+ */
+function generate_coordinate_menu_select_html_element(select_id) {
+    let select_menu = '', i = 0;
+    try {
+        if (typeof select_id.length !== "number") throw '(typeof select_id.length !== "number") was evaluated as true.';
+        if ((select_id !== "a_x_menu_container") && (select_id !== "a_y_menu_container") && 
+            (select_id !== "b_x_menu_container") && (select_id !== "b_y_menu_container") &&
+            (select_id !== "c_x_menu_container") && (select_id !== "c_y_menu_container"))
+        throw 'select_id must either be "a_x_menu_container" or else "a_y_menu_container" or ' + 
+               'else "b_x_menu_container" or else "b_y_menu_container" or ' + 
+               'else "c_x_menu_container" or else "c_y_menu_container".';
+        //...
+
+    }
+    catch(exception) {
+        console.log("An exception to normal functioning occurred during the runtime of generate_coordinate_menu_select_html_element(select_id): " + exception);
+    } 
+}
+
+/**
  * ... (reverse abstract to concrete) ...
  */
 function initialize_application() {
@@ -63,6 +100,7 @@ function initialize_application() {
         output_div = document.getElementById("output");
         output_div.innerHTML = cartesian_plane_canvas
         //... ... (reverse abstract to concrete) ...
+        console.log(generate_coordinate_menu_select_html_element("thing"));
     }
     catch(exception) {
         console.log("An exception to normal functioning occurred during the runtime of initialize_application(): " + exception);
