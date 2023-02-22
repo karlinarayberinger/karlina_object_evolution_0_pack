@@ -229,6 +229,8 @@ function initialize_application() {
 /**
  */
 function generate_triangle_using_input_coordinates() {
+    const POINT = { X : 0, Y : 0 };
+    let A = POINT, B = POINT, C = POINT;
     let cartesian_plane_canvas = "";
     let time_stamped_message = "", final_output_message = "", selected_menu_option_value = 0;
     let output_div = undefined, events_log_div = undefined, generate_button_container_paragraph = undefined;
@@ -240,11 +242,17 @@ function generate_triangle_using_input_coordinates() {
         selected_menu_option_value = get_selected_menu_option_value("a_x_menu");
         console.log("selected_menu_option_value := " + selected_menu_option_value + '.');
         select_menu_container_paragraph.innerHTML = ('A.X := ' + selected_menu_option_value + '. // horizontal position of two-dimensional POINT labeled A.'); 
+        // Store the selected menu option as its corresponding POINT property.
+        A.X = parseInt(selected_menu_option_value);
+        console.log("A.X = parseInt(selected_menu_option_value); // A.X is " + A.X + '.');
         // Transform the second input select menu (for A.Y) into plain text displaying its selected option.
         select_menu_container_paragraph = document.getElementById("a_y_menu_container");
         selected_menu_option_value = get_selected_menu_option_value("a_y_menu");
         console.log("selected_menu_option_value := " + selected_menu_option_value + '.');
         select_menu_container_paragraph.innerHTML = ('A.Y := ' + selected_menu_option_value + '. // vertical position of two-dimensional POINT labeled A.'); 
+        // Store the selected menu option as its corresponding POINT property.
+        A.Y = parseInt(selected_menu_option_value);
+        console.log("A.Y = parseInt(selected_menu_option_value); // A.Y is " + A.Y + '.');
         // Transform the third input select menu (for B.X) into plain text displaying its selected option.
         select_menu_container_paragraph = document.getElementById("b_x_menu_container");
         selected_menu_option_value = get_selected_menu_option_value("b_x_menu");
