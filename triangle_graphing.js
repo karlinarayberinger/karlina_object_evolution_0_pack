@@ -63,7 +63,7 @@ function generate_paragraph_html_element(inner_html) {
  * @return {String} a sequence of text characters which is used to instantiate an expandable list menu (SELECT) web page element.
  */
 function generate_coordinate_menu_select_html_element(select_id) {
-    let select_menu = '', i = 0;
+    let select_menu = '', option = '', i = 0;
     try {
         if (typeof select_id.length !== "number") throw '(typeof select_id.length !== "number") was evaluated as true.';
         if ((select_id !== "a_x_menu_container") && (select_id !== "a_y_menu_container") && 
@@ -72,7 +72,15 @@ function generate_coordinate_menu_select_html_element(select_id) {
         throw 'select_id must either be "a_x_menu_container" or else "a_y_menu_container" or ' + 
                'else "b_x_menu_container" or else "b_y_menu_container" or ' + 
                'else "c_x_menu_container" or else "c_y_menu_container".';
-        //...
+        select_menu = ('<' + 'select id="' + select_id + '">');
+        for (i = -100; i <= 100; i += 1) {
+            if (i === 0) option = ('<' + 'option value="0" selected' + '>');
+            else option = ('<' + 'option value="' + i + '"' + '>');
+            option += (i + ('<' + '/' + 'option' + '>'));
+            select_menu += option;
+        }
+        select_menu += ('<' + '/' + 'select' + '>');
+        return select_menu;
 
     }
     catch(exception) {
