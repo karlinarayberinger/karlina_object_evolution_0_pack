@@ -232,7 +232,7 @@ function initialize_application() {
  * Respond to the event of the GENERATE button being clicked.
  */
 function generate_triangle_using_input_coordinates() {
-    const POINT = { X : 0, Y : 0 };
+    const POINT = { X : 0, Y : 0 }, TRIANGLE = { A : POINT, B : POINT, C : POINT };
     let A = POINT, B = POINT, C = POINT;
     let cartesian_plane_canvas = "";
     let time_stamped_message = "", final_output_message = "", selected_menu_option_value = 0;
@@ -300,6 +300,15 @@ function generate_triangle_using_input_coordinates() {
         generate_button_container_paragraph.innerHTML = reset_button;
         // Append plain text paragraphs describing the TRIANGLE which is comprised of POINT objects A, B, and C represent.
         // (TRIANGLE is an "emergent property" of three POINT instances which each represent unique whole number coordinate pairs in relation to each of the other two coordinate pairs).
+        TRIANGLE.A = A;
+        TRIANGLE.B = B;
+        TRIANGLE.C = C;
+        console.log("TRIANGLE.A.X := " + TRIANGLE.A.X + '.');
+        console.log("TRIANGLE.A.Y := " + TRIANGLE.A.Y + '.');
+        console.log("TRIANGLE.B.X := " + TRIANGLE.B.X + '.');
+        console.log("TRIANGLE.B.Y := " + TRIANGLE.B.Y + '.');
+        console.log("TRIANGLE.C.X := " + TRIANGLE.C.X + '.');
+        console.log("TRIANGLE.C.Y := " + TRIANGLE.C.Y + '.');
         //...    
     }
     catch(exception) {
