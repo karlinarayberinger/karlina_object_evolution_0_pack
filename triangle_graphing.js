@@ -228,8 +228,61 @@ function initialize_application() {
     }
 }
 
-function test(_POINT) {
-    return 2 * _POINT.X;
+/**
+ * Compute the approximate square root of input such that the output has an arbitrary number of significant digits.
+ * The product, approximate_square_root(input) * approximate_square_root(input), is approximately equal to input. 
+ * 
+ * @param {Number} input is assumed to be a nonnegative integer.
+ * 
+ * @return {Number} the approximate square root of input.
+ */
+function approximate_square_root(input) {
+    let n = 0, a = 0, b = 0, c = 0;
+    try {
+        if (arguments.length !== 1) throw "exactly one function argument is required.";
+        if (typeof arguments[0] !== "number") throw "the function argument must be a Number type value.";
+        if (input < 0) throw "the function argument must be no smaller than zero.";
+        n = input;
+        a = n;
+        b = 1;
+        c = 0.000000001; // precision control
+        while ((a - b) > c) { 
+            a = (a + b) / 2;
+            b = n / a;
+        }
+        return a;
+    }
+    catch(exception) {
+        console.log("An exception to expected functioning occurred in approximate_square_root(input): " + exception);
+        return 0;
+    }
+}
+
+/**
+ * Determine whether or not a given input value is a valid planar point object (as defined in the generate_triangle_using_input_coordinates() function).
+ * 
+ * @param {Object} input is assumed to be an Object type data value with the following properties: 
+ *        {Number} X is assumed to be an integer no smaller than -100 and no larger than 100.
+ *        {Number} Y is assumed to be an integer no smaller than -100 and no larger than 100.
+ * 
+ * @return {Boolean} true if input satisfies the conditions defined above; false otherwise.
+ */
+function is_point(input) {
+    try {
+        if (arguments.length !== 1) throw "exactly one function argument (labeled input) is required.";
+        if (typeof input !== "object") throw "input must be an Object type value.";
+        if (typeof input.X !== "number") throw "the X property of input must be a Number type value.";
+        if (typeof input.Y !== "number") throw "the Y property of input must be a Number type value.";
+        if (Math.floor(input.X) !== input.X) throw "the X property of the input object must be a whole number value.";
+        if (Math.floor(input.Y) !== input.Y) throw "the Y property of the input object must be a whole number value.";
+        if ((input.X < -100) || (input.X > 100)) throw "the X of the input object must be no smaller than -100 and no larger than 100.";
+        if ((input.Y < -100) || (input.Y > 100)) throw "the X of the input object must be no smaller than -100 and no larger than 100.";
+        return true;
+    }
+    catch(exception) {
+        console.log("An exception to expected functioning occurred in is_point(input): " + exception);
+        return false;
+    }
 }
 
 /**
