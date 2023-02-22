@@ -53,12 +53,12 @@ function generate_paragraph_html_element(inner_html) {
  * of the list).
  * 
  * @param {String} select_id is assumed to be either 
- *                 "a_x_menu_container" or else
- *                 "a_y_menu_container" or else
- *                 "b_x_menu_container" or else
- *                 "b_y_menu_container" or else
- *                 "c_x_menu_container" or else
- *                 "c_y_menu_container". 
+ *                 "a_x_menu" or else
+ *                 "a_y_menu" or else
+ *                 "b_x_menu" or else
+ *                 "b_y_menu" or else
+ *                 "c_x_menu" or else
+ *                 "c_y_menu". 
  * 
  * @return {String} a sequence of text characters which is used to instantiate an expandable list menu (SELECT) web page element.
  */
@@ -66,12 +66,12 @@ function generate_coordinate_menu_select_html_element(select_id) {
     let select_menu = '', option = '', i = 0;
     try {
         if (typeof select_id.length !== "number") throw 'The expression (typeof select_id.length !== "number") was evaluated to be true.';
-        if ((select_id !== "a_x_menu_container") && (select_id !== "a_y_menu_container") && 
-            (select_id !== "b_x_menu_container") && (select_id !== "b_y_menu_container") &&
-            (select_id !== "c_x_menu_container") && (select_id !== "c_y_menu_container"))
-        throw 'select_id must either be "a_x_menu_container" or else "a_y_menu_container" or ' + 
-               'else "b_x_menu_container" or else "b_y_menu_container" or ' + 
-               'else "c_x_menu_container" or else "c_y_menu_container".';
+        if ((select_id !== "a_x_menu") && (select_id !== "a_y_menu") && 
+            (select_id !== "b_x_menu") && (select_id !== "b_y_menu") &&
+            (select_id !== "c_x_menu") && (select_id !== "c_y_menu"))
+        throw 'select_id must either be "a_x_menu" or else "a_y_menu" or ' + 
+               'else "b_x_menu" or else "b_y_menu" or ' + 
+               'else "c_x_menu" or else "c_y_menu".';
         select_menu = ('<' + 'select id="' + select_id + '" style="text-align:center"' + '>');
         for (i = -100; i <= 100; i += 1) {
             if (i === 0) option = ('<' + 'option value="0" selected' + '>');
@@ -86,6 +86,32 @@ function generate_coordinate_menu_select_html_element(select_id) {
     catch(exception) {
         console.log("An exception to normal functioning occurred during the runtime of generate_coordinate_menu_select_html_element(select_id): " + exception);
     } 
+}
+
+/**
+ * Return the String type value of the selected menu option of a SELECT menu element.
+ * 
+ * Assume that select_menu_identifier is a String type value and the id of an existing select HTML element.
+ * 
+ * @param {String} select_menu_identififier is assumed to be the id of an existing SELECT menu web page element.
+ * 
+ * @return {String} value of an OPTION of the SELECT whose id is select_menu_identifier.
+ */
+function get_selected_menu_option_value(select_menu_identifier) {
+    try {
+        let menu_object = {}, options_array = [], selected_option_index = 0, selected_option_object = {}, selected_option_value;
+        if (arguments.length !== 1) throw "Error: exactly one function input is required.";
+        if (typeof arguments[0] !== "string") throw "Error: select_menu_identifier is required to be a String type data value.";
+        menu_object = document.getElementById(select_menu_identifier);
+        options_array = menu_object.options;
+        selected_option_index = menu_object.selectedIndex;
+        selected_option_object = options_array[selected_option_index];
+        selected_option_value = selected_option_object.value
+        return selected_option_value;
+    }
+    catch(exception) {
+        console.log("An exception to normal functioning occurred during the runtime of get_selected_menu_option(select_menu_identifier): " + exception);
+    }
 }
 
 /**
@@ -174,22 +200,22 @@ function initialize_application() {
         draw_vertical_line_through_middle_of_canvas();
         // Populate the "a_x_menu_container" paragraph element with a select menu for choosing an integer value for the X property of POINT object A.
         a_x_menu_container_paragraph = document.getElementById("a_x_menu_container");
-        a_x_menu_container_paragraph.innerHTML = ('A.X := ' + generate_coordinate_menu_select_html_element("a_x_menu_container") + '. // horizontal position of two-dimensional POINT labeled A.'); 
+        a_x_menu_container_paragraph.innerHTML = ('A.X := ' + generate_coordinate_menu_select_html_element("a_x_menu") + '. // horizontal position of two-dimensional POINT labeled A.'); 
         // Populate the "a_y_menu_container" paragraph element with a select menu for choosing an integer value for the Y property of POINT object A.
         a_y_menu_container_paragraph = document.getElementById("a_y_menu_container");
-        a_y_menu_container_paragraph.innerHTML = ('A.Y := ' + generate_coordinate_menu_select_html_element("a_y_menu_container") + '. // vertical position of two-dimensional POINT labeled A.');   
+        a_y_menu_container_paragraph.innerHTML = ('A.Y := ' + generate_coordinate_menu_select_html_element("a_y_menu") + '. // vertical position of two-dimensional POINT labeled A.');   
         // Populate the "b_x_menu_container" paragraph element with a select menu for choosing an integer value for the X property of POINT object B.
         b_x_menu_container_paragraph = document.getElementById("b_x_menu_container");
-        b_x_menu_container_paragraph.innerHTML = ('B.X := ' + generate_coordinate_menu_select_html_element("b_x_menu_container") + '. // horizontal position of two-dimensional POINT labeled B.'); 
+        b_x_menu_container_paragraph.innerHTML = ('B.X := ' + generate_coordinate_menu_select_html_element("b_x_menu") + '. // horizontal position of two-dimensional POINT labeled B.'); 
         // Populate the "B_y_menu_container" paragraph element with a select menu for choosing an integer value for the Y property of POINT object B.
         b_y_menu_container_paragraph = document.getElementById("b_y_menu_container");
-        b_y_menu_container_paragraph.innerHTML = ('B.Y := ' + generate_coordinate_menu_select_html_element("b_y_menu_container") + '. // vertical position of two-dimensional POINT labeled B.');  
+        b_y_menu_container_paragraph.innerHTML = ('B.Y := ' + generate_coordinate_menu_select_html_element("b_y_menu") + '. // vertical position of two-dimensional POINT labeled B.');  
         // Populate the "c_x_menu_container" paragraph element with a select menu for choosing an integer value for the X property of POINT object C.
         c_x_menu_container_paragraph = document.getElementById("c_x_menu_container");
-        c_x_menu_container_paragraph.innerHTML = ('C.X := ' + generate_coordinate_menu_select_html_element("c_x_menu_container") + '. // horizontal position of two-dimensional POINT labeled C.'); 
+        c_x_menu_container_paragraph.innerHTML = ('C.X := ' + generate_coordinate_menu_select_html_element("c_x_menu") + '. // horizontal position of two-dimensional POINT labeled C.'); 
         // Populate the "C_y_menu_container" paragraph element with a select menu for choosing an integer value for the Y property of POINT object B.
         c_y_menu_container_paragraph = document.getElementById("c_y_menu_container");
-        c_y_menu_container_paragraph.innerHTML = ('C.Y := ' + generate_coordinate_menu_select_html_element("c_y_menu_container") + '. // vertical position of two-dimensional POINT labeled C.'); 
+        c_y_menu_container_paragraph.innerHTML = ('C.Y := ' + generate_coordinate_menu_select_html_element("c_y_menu") + '. // vertical position of two-dimensional POINT labeled C.'); 
         // Populate the "generate_button_container" paragraph element with a button input web page element which calls the function named generate_triangle_using_input_coordinates().
         generate_button_container = document.getElementById("generate_button_container");
         generate_button_container.innerHTML = ('<' + 'input type="button" id="generate_button" value="GENERATE" style="text-align:center" onclick="generate_triangle_using_input_coordinates()"' + '/' + '>');
@@ -213,7 +239,7 @@ function generate_triangle_using_input_coordinates() {
     try {
         // Transform each of the six input select menus into plain text displaying its selected option.
         a_x_menu_container_paragraph = document.getElementById("a_x_menu_container");
-        a_x_menu_container_paragraph.innerHTML = "test";
+        a_x_menu_container_paragraph.innerHTML = ('A.X := ' + get_selected_menu_option_value("a_x_menu") + '. // horizontal position of two-dimensional POINT labeled A.'); 
         //...    
     }
     catch(exception) {
