@@ -89,7 +89,7 @@ function generate_coordinate_menu_select_html_element(select_id) {
 }
 
 /**
- * ... (reverse abstract to concrete) ...
+ * ...
  */
 function initialize_application() {
     let cartesian_plane_canvas = "";
@@ -109,7 +109,23 @@ function initialize_application() {
         output_div.innerHTML = cartesian_plane_canvas
         // Populate the "a_x_menu_container" paragraph element with a select menu for choosing an integer value for the X property of POINT object A.
         a_x_menu_container_paragraph = document.getElementById("a_x_menu_container");
-        a_x_menu_container_paragraph.innerHTML = generate_coordinate_menu_select_html_element("a_x_menu_container");        
+        a_x_menu_container_paragraph.innerHTML = ('A.X := ' + generate_coordinate_menu_select_html_element("a_x_menu_container") + '. // horizontal position of two-dimensional POINT labeled A.'); 
+        // Populate the "a_y_menu_container" paragraph element with a select menu for choosing an integer value for the Y property of POINT object A.
+        a_y_menu_container_paragraph = document.getElementById("a_y_menu_container");
+        a_y_menu_container_paragraph.innerHTML = ('A.Y := ' + generate_coordinate_menu_select_html_element("a_y_menu_container") + '. // vertical position of two-dimensional POINT labeled A.');   
+        // Populate the "b_x_menu_container" paragraph element with a select menu for choosing an integer value for the X property of POINT object B.
+        b_x_menu_container_paragraph = document.getElementById("b_x_menu_container");
+        b_x_menu_container_paragraph.innerHTML = ('B.X := ' + generate_coordinate_menu_select_html_element("b_x_menu_container") + '. // horizontal position of two-dimensional POINT labeled B.'); 
+        // Populate the "B_y_menu_container" paragraph element with a select menu for choosing an integer value for the Y property of POINT object B.
+        b_y_menu_container_paragraph = document.getElementById("b_y_menu_container");
+        b_y_menu_container_paragraph.innerHTML = ('B.Y := ' + generate_coordinate_menu_select_html_element("b_y_menu_container") + '. // vertical position of two-dimensional POINT labeled B.');  
+        // Populate the "c_x_menu_container" paragraph element with a select menu for choosing an integer value for the X property of POINT object C.
+        c_x_menu_container_paragraph = document.getElementById("c_x_menu_container");
+        c_x_menu_container_paragraph.innerHTML = ('C.X := ' + generate_coordinate_menu_select_html_element("c_x_menu_container") + '. // horizontal position of two-dimensional POINT labeled C.'); 
+        // Populate the "C_y_menu_container" paragraph element with a select menu for choosing an integer value for the Y property of POINT object B.
+        c_y_menu_container_paragraph = document.getElementById("c_y_menu_container");
+        c_y_menu_container_paragraph.innerHTML = ('C.Y := ' + generate_coordinate_menu_select_html_element("c_y_menu_container") + '. // vertical position of two-dimensional POINT labeled C.'); 
+        //...    
     }
     catch(exception) {
         console.log("An exception to normal functioning occurred during the runtime of initialize_application(): " + exception);
