@@ -235,7 +235,7 @@ function generate_triangle_using_input_coordinates() {
     const POINT = { X : 0, Y : 0 }, TRIANGLE = { A : POINT, B : POINT, C : POINT };
     let A = POINT, B = POINT, C = POINT;
     let cartesian_plane_canvas = "";
-    let time_stamped_message = "", final_output_message = "", selected_menu_option_value = 0;
+    let time_stamped_message = "", selected_menu_option_value = 0;
     let output_div = undefined, events_log_div = undefined, generate_button_container_paragraph = undefined;
     let select_menu_container_paragraph = undefined;
     let reset_button = undefined;
@@ -309,6 +309,12 @@ function generate_triangle_using_input_coordinates() {
         console.log("TRIANGLE.B.Y := " + TRIANGLE.B.Y + '.');
         console.log("TRIANGLE.C.X := " + TRIANGLE.C.X + '.');
         console.log("TRIANGLE.C.Y := " + TRIANGLE.C.Y + '.');
+        // Append the bottom of the content inside of the "output" div with information about TRIANGLE whose properties are the POINT instances labeled A, B, and C.
+        output_div = document.getElementById("output");
+        output_div.innerHTML += generate_paragraph_html_element("TRIANGLE.A.X := " + TRIANGLE.A.X + '.');
+        output_div.innerHTML += generate_paragraph_html_element("TRIANGLE.A.Y := " + TRIANGLE.A.Y + '.');
+        output_div.innerHTML += generate_paragraph_html_element("TRIANGLE.B.X := " + TRIANGLE.B.X + '.');
+        output_div.innerHTML += generate_paragraph_html_element("TRIANGLE.B.Y := " + TRIANGLE.B.Y + '.');
         //...    
     }
     catch(exception) {
