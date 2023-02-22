@@ -107,8 +107,9 @@ function initialize_application() {
         cartesian_plane_canvas = (('<' + 'canvas id="cartesian_plane" width="750" height="750" style="background:#ffffff">') + ('<' + '/' + '>'));
         output_div = document.getElementById("output");
         output_div.innerHTML = cartesian_plane_canvas
-        //... ... (reverse abstract to concrete) ...
-        console.log(generate_coordinate_menu_select_html_element("thing"));
+        // Populate the "a_x_menu_container" paragraph element with a select menu for choosing an integer value for the X property of POINT object A.
+        a_x_menu_container_paragraph = document.getElementById("a_x_menu_container");
+        a_x_menu_container_paragraph.innerHTML = generate_coordinate_menu_select_html_element("a_x_menu_container");        
     }
     catch(exception) {
         console.log("An exception to normal functioning occurred during the runtime of initialize_application(): " + exception);
