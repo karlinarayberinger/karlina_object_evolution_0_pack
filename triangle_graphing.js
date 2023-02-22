@@ -35,7 +35,7 @@ function generate_time_stamp() {
 function generate_paragraph_html_element(inner_html) {
     const opening_paragraph_tag = ('<' + 'p' + '>'), closing_paragraph_tag = ('<' + '/' + 'p' + '>');
     try {
-        if (typeof inner_html.length !== "number") throw '(typeof inner_html.length !== "number") was evaluated as true.';
+        if (typeof inner_html.length !== "number") throw 'The expression (typeof inner_html.length !== "number") was evaluated to be true.';
         return opening_paragraph_tag + inner_html + closing_paragraph_tag;
     }
     catch(exception) {
@@ -65,7 +65,7 @@ function generate_paragraph_html_element(inner_html) {
 function generate_coordinate_menu_select_html_element(select_id) {
     let select_menu = '', option = '', i = 0;
     try {
-        if (typeof select_id.length !== "number") throw '(typeof select_id.length !== "number") was evaluated as true.';
+        if (typeof select_id.length !== "number") throw 'The expression (typeof select_id.length !== "number") was evaluated to be true.';
         if ((select_id !== "a_x_menu_container") && (select_id !== "a_y_menu_container") && 
             (select_id !== "b_x_menu_container") && (select_id !== "b_y_menu_container") &&
             (select_id !== "c_x_menu_container") && (select_id !== "c_y_menu_container"))
@@ -89,6 +89,36 @@ function generate_coordinate_menu_select_html_element(select_id) {
 }
 
 /**
+ * Draw a line segment whose thickness is one pixel and whose color is black from the middle point of the left edge 
+ * of the HTML canvas whose id is "cartesian_plane" to the middle of the right edge of that canvas.
+ * 
+ * Assume that the length of each one of the four sides of that canvas is 750 pixels.
+ */
+function draw_horizontal_line_through_middle_of_canvas() {
+    const CANVAS_SIDE_LENGTH = 750;
+    let canvas = undefined, context = undefined, canvas_midpoint = 0;
+    try {
+        canvas = document.getElementById("cartesian_plane");
+        if (canvas.width !== canvas.height) throw "The expression (canvas.width !== canvas.height) was evaluated to be true.";
+        if (canvas.width !== CANVAS_SIDE_LENGTH) throw "The expression (canvas.width !== CANVAS_SIDE_LENGTH) was evaluated to be true.";
+        canvas_midpoint = (canvas.width / 2);
+        console.log("canvas_midpoint = (canvas.width / 2); // evaluates to " + canvas_midpoint);
+        canvas_midpoint = parseInt(canvas_midpoint);
+        console.log("canvas_midpoint = parseInt(canvas_midpoint); // evaluates to " + canvas_midpoint);
+        context = canvas.getContext("2d");
+        context.strokeStyle = "#000000"; 
+        context.lineWidth = 1;
+        context.beginPath();
+        context.moveTo(0, canvas_midpoint); // the middle point of the left edge of the square canvas
+        context.lineTo((canvas_midpoint * 2), canvas_midpoint); // the middle point of right edge of the square canvas
+        context.stroke();
+    }
+    catch(exception) {
+        console.log("An exception to expected functioning occurred in draw_horizontal_line_through_middle_of_canvas(): " + exception);
+    }
+}
+
+/**
  * ...
  */
 function initialize_application() {
@@ -107,6 +137,8 @@ function initialize_application() {
         cartesian_plane_canvas = (('<' + 'canvas id="cartesian_plane" width="750" height="750" style="background:#ffffff">') + ('<' + '/' + '>'));
         output_div = document.getElementById("output");
         output_div.innerHTML = cartesian_plane_canvas
+        // Draw the horizontal axis of a Cartesian plane through the center of the square canvas.
+        draw_horizontal_line_through_middle_of_canvas();
         // Populate the "a_x_menu_container" paragraph element with a select menu for choosing an integer value for the X property of POINT object A.
         a_x_menu_container_paragraph = document.getElementById("a_x_menu_container");
         a_x_menu_container_paragraph.innerHTML = ('A.X := ' + generate_coordinate_menu_select_html_element("a_x_menu_container") + '. // horizontal position of two-dimensional POINT labeled A.'); 
