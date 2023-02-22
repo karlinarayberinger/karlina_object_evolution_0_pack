@@ -298,6 +298,8 @@ function generate_triangle_using_input_coordinates() {
         reset_button = ('<' + 'input type="button" value="RESET" style="text-align:center" onclick="initialize_application()"' + '/' + '>');
         generate_button_container_paragraph = document.getElementById("generate_button_container");
         generate_button_container_paragraph.innerHTML = reset_button;
+        // Append plain text paragraphs describing the TRIANGLE which is comprised of POINT objects A, B, and C represent.
+        // (TRIANGLE is an "emergent property" of three POINT instances which each represent unique whole number coordinate pairs in relation to each of the other two coordinate pairs).
         //...    
     }
     catch(exception) {
