@@ -230,16 +230,41 @@ function initialize_application() {
  */
 function generate_triangle_using_input_coordinates() {
     let cartesian_plane_canvas = "";
-    let time_stamped_message = "", final_output_message = "";
+    let time_stamped_message = "", final_output_message = "", selected_menu_option_value = 0;
     let output_div = undefined, events_log_div = undefined, generate_button_container_paragraph = undefined;
-    let a_x_menu_container_paragraph = undefined, a_y_menu_container_paragraph = undefined;
-    let b_x_menu_container_paragraph = undefined, b_y_menu_container_paragraph = undefined;
-    let c_x_menu_container_paragraph = undefined, c_y_menu_container_paragraph = undefined;
+    let select_menu_container_paragraph = undefined;
     let reset_button = undefined;
     try {
-        // Transform each of the six input select menus into plain text displaying its selected option.
-        a_x_menu_container_paragraph = document.getElementById("a_x_menu_container");
-        a_x_menu_container_paragraph.innerHTML = ('A.X := ' + get_selected_menu_option_value("a_x_menu") + '. // horizontal position of two-dimensional POINT labeled A.'); 
+        // Transform the first input select menu (for A.X) into plain text displaying its selected option.
+        select_menu_container_paragraph = document.getElementById("a_x_menu_container");
+        selected_menu_option_value = get_selected_menu_option_value("a_x_menu");
+        console.log("selected_menu_option_value := " + selected_menu_option_value + '.');
+        select_menu_container_paragraph.innerHTML = ('A.X := ' + selected_menu_option_value + '. // horizontal position of two-dimensional POINT labeled A.'); 
+        // Transform the second input select menu (for A.Y) into plain text displaying its selected option.
+        select_menu_container_paragraph = document.getElementById("a_y_menu_container");
+        selected_menu_option_value = get_selected_menu_option_value("a_y_menu");
+        console.log("selected_menu_option_value := " + selected_menu_option_value + '.');
+        select_menu_container_paragraph.innerHTML = ('A.Y := ' + selected_menu_option_value + '. // vertical position of two-dimensional POINT labeled A.'); 
+        // Transform the third input select menu (for B.X) into plain text displaying its selected option.
+        select_menu_container_paragraph = document.getElementById("b_x_menu_container");
+        selected_menu_option_value = get_selected_menu_option_value("b_x_menu");
+        console.log("selected_menu_option_value := " + selected_menu_option_value + '.');
+        select_menu_container_paragraph.innerHTML = ('B.X := ' + selected_menu_option_value + '. // horizontal position of two-dimensional POINT labeled B.'); 
+        // Transform the fourth input select menu (for B.Y) into plain text displaying its selected option.
+        select_menu_container_paragraph = document.getElementById("b_y_menu_container");
+        selected_menu_option_value = get_selected_menu_option_value("b_y_menu");
+        console.log("selected_menu_option_value := " + selected_menu_option_value + '.');
+        select_menu_container_paragraph.innerHTML = ('B.Y := ' + selected_menu_option_value + '. // vertical position of two-dimensional POINT labeled B.'); 
+        // Transform the fifth input select menu (for C.X) into plain text displaying its selected option.
+        select_menu_container_paragraph = document.getElementById("c_x_menu_container");
+        selected_menu_option_value = get_selected_menu_option_value("c_x_menu");
+        console.log("selected_menu_option_value := " + selected_menu_option_value + '.');
+        select_menu_container_paragraph.innerHTML = ('C.X := ' + selected_menu_option_value + '. // horizontal position of two-dimensional POINT labeled C.'); 
+        // Transform the sixth input select menu (for C.Y) into plain text displaying its selected option.
+        select_menu_container_paragraph = document.getElementById("c_y_menu_container");
+        selected_menu_option_value = get_selected_menu_option_value("c_y_menu");
+        console.log("selected_menu_option_value := " + selected_menu_option_value + '.');
+        select_menu_container_paragraph.innerHTML = ('C.Y := ' + selected_menu_option_value + '. // vertical position of two-dimensional POINT labeled C.'); 
         //...    
     }
     catch(exception) {
