@@ -218,7 +218,7 @@ function initialize_application() {
         c_y_menu_container_paragraph.innerHTML = ('C.Y := ' + generate_coordinate_menu_select_html_element("c_y_menu") + '. // vertical position of two-dimensional POINT labeled C.'); 
         // Populate the "generate_button_container" paragraph element with a button input web page element which calls the function named generate_triangle_using_input_coordinates().
         generate_button_container = document.getElementById("generate_button_container");
-        generate_button_container.innerHTML = ('<' + 'input type="button" id="generate_button" value="GENERATE" style="text-align:center" onclick="generate_triangle_using_input_coordinates()"' + '/' + '>');
+        generate_button_container.innerHTML = ('<' + 'input type="button" value="GENERATE" style="text-align:center" onclick="generate_triangle_using_input_coordinates()"' + '/' + '>');
         //...    
     }
     catch(exception) {
@@ -285,6 +285,10 @@ function generate_triangle_using_input_coordinates() {
         // Store the selected menu option as its corresponding POINT property.
         C.Y = parseInt(selected_menu_option_value);
         console.log("C.Y = parseInt(selected_menu_option_value); // C.Y is " + C.Y + '.');
+        // Replace the GENERATE button with a RESET button.
+        reset_button = ('<' + 'input type="button" value="RESET" style="text-align:center" onclick="initialize_application()"' + '/' + '>');
+        generate_button_container_paragraph = document.getElementById("generate_button_container");
+        generate_button_container_paragraph.innerHTML = reset_button;
         //...    
     }
     catch(exception) {
