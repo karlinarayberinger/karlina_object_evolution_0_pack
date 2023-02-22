@@ -285,11 +285,43 @@ function is_point(input) {
     }
 }
 
+
+/**
+ * Use the Distance Formula to calculate the nonnegative real number distance between planar points A and B.
+ * 
+ * distance_formula(A, B) = square_root( ((A.x - B.x) ^ 2) + ((A.y - B.y) ^ 2) )
+ * 
+ * @param {Object} A is assumed to be an object with the following properties: 
+ *        {Number} x_coordinate is assumed to be an integer no smaller than -200 and no larger than 200.
+ *        {Number} y_coordinate is assumed to be an integer no smaller than -200 and no larger than 200.
+ *
+ * @param {Object} B is assumed to be an object with the following properties: 
+ *        {Number} x_coordinate is assumed to be an integer no smaller than -200 and no larger than 200.
+ *        {Number} y_coordinate is assumed to be an integer no smaller than -200 and no larger than 200.
+ * 
+ * @return {Number} the length of the shortest path between planar points A and B.
+ */
+function compute_distance_between_two_planar_points(A, B) {
+    let horizontal_difference = 0, vertical_difference = 0;
+    try {
+        if (arguments.length !== 2) throw "exactly two function arguments are required.";
+        if (!is_point(A)) throw "A must be an object whose properties are as follows: { x_coordinate : integer in range [-200,200], y_coordinate : integer in range [-200,200] }.";
+        if (!is_point(B)) throw "B must be an object whose properties are as follows: { x_coordinate : integer in range [-200,200], y_coordinate : integer in range [-200,200] }.";
+        horizontal_difference = A.X - B.X
+        vertical_difference = A.Y - B.Y;
+        return approximate_square_root((horizontal_difference * horizontal_difference) + (vertical_difference * vertical_difference));
+    }
+    catch(exception) {
+        console.log("An exception to expected functioning occurred in compute_distance_between_two_planar_points(A, B): " + exception);
+        return 0;
+    }
+}
+
 /**
  * Respond to the event of the GENERATE button being clicked.
  */
 function generate_triangle_using_input_coordinates() {
-    const POINT = { X : 0, Y : 0, DISTANCE : function(_POINT) { return 2 * _POINT.X; } };
+    const POINT = { X : 0, Y : 0, DISTANCE : function(_POINT) { return compute_distance_between_two_planar_points(this, _POINT) } };
     const TRIANGLE = { A : POINT, B : POINT, C : POINT, AB_LENGTH : 0 };
     let A = POINT, B = POINT, C = POINT;
     let cartesian_plane_canvas = "";
@@ -375,6 +407,7 @@ function generate_triangle_using_input_coordinates() {
         output_div.innerHTML += generate_paragraph_html_element("TRIANGLE.B.Y := " + TRIANGLE.B.Y + '.');
         output_div.innerHTML += generate_paragraph_html_element("TRIANGLE.C.X := " + TRIANGLE.C.X + '.');
         output_div.innerHTML += generate_paragraph_html_element("TRIANGLE.C.Y := " + TRIANGLE.C.Y + '.');
+        console.log("TRIANGLE.A.DISTANCE(B) := " + TRIANGLE.A.DISTANCE(B) + '.');
         //...    
     }
     catch(exception) {
