@@ -228,11 +228,16 @@ function initialize_application() {
     }
 }
 
+function test(_POINT) {
+    return 2 * _POINT.X;
+}
+
 /**
  * Respond to the event of the GENERATE button being clicked.
  */
 function generate_triangle_using_input_coordinates() {
-    const POINT = { X : 0, Y : 0 }, TRIANGLE = { A : POINT, B : POINT, C : POINT };
+    const POINT = { X : 0, Y : 0, DISTANCE : function(_POINT) { return 2 * _POINT.X; } };
+    const TRIANGLE = { A : POINT, B : POINT, C : POINT, AB_LENGTH : 0 };
     let A = POINT, B = POINT, C = POINT;
     let cartesian_plane_canvas = "";
     let time_stamped_message = "", selected_menu_option_value = 0;
