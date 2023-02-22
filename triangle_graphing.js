@@ -2,7 +2,7 @@
  * file: triangle_graphing.js
  * type: JavaScript
  * author: karbytes
- * date: 21_FEBRUARY_2023
+ * date: 22_FEBRUARY_2023
  * license: PUBLIC_DOMAIN
  */
 
@@ -390,9 +390,12 @@ function generate_triangle_using_input_coordinates() {
         generate_button_container_paragraph.innerHTML = reset_button;
         // Append plain text paragraphs describing the TRIANGLE which is comprised of POINT objects A, B, and C represent.
         // (TRIANGLE is an "emergent property" of three POINT instances which each represent unique whole number coordinate pairs in relation to each of the other two coordinate pairs).
-        TRIANGLE.A = A;
-        TRIANGLE.B = B;
-        TRIANGLE.C = C;
+        TRIANGLE.A.X = A.X;
+        TRIANGLE.A.Y = A.Y;
+        TRIANGLE.B.X = B.X;
+        TRIANGLE.B.Y = B.Y;
+        TRIANGLE.C.X = C.X;
+        TRIANGLE.C.Y = C.Y;
         console.log("TRIANGLE.A.X := " + TRIANGLE.A.X + '.');
         console.log("TRIANGLE.A.Y := " + TRIANGLE.A.Y + '.');
         console.log("TRIANGLE.B.X := " + TRIANGLE.B.X + '.');
