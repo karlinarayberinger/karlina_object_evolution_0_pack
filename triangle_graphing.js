@@ -175,7 +175,7 @@ function draw_vertical_line_through_middle_of_canvas() {
 }
 
 /**
- * ...
+ * Respond to the event of the RESET button being clicked or the web page being loaded by a web browser.
  */
 function initialize_application() {
     let cartesian_plane_canvas = "";
@@ -229,6 +229,7 @@ function initialize_application() {
 }
 
 /**
+ * Respond to the event of the GENERATE button being clicked.
  */
 function generate_triangle_using_input_coordinates() {
     const POINT = { X : 0, Y : 0 };
