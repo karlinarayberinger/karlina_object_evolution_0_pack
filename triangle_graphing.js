@@ -315,6 +315,8 @@ function generate_triangle_using_input_coordinates() {
         output_div.innerHTML += generate_paragraph_html_element("TRIANGLE.A.Y := " + TRIANGLE.A.Y + '.');
         output_div.innerHTML += generate_paragraph_html_element("TRIANGLE.B.X := " + TRIANGLE.B.X + '.');
         output_div.innerHTML += generate_paragraph_html_element("TRIANGLE.B.Y := " + TRIANGLE.B.Y + '.');
+        output_div.innerHTML += generate_paragraph_html_element("TRIANGLE.C.X := " + TRIANGLE.C.X + '.');
+        output_div.innerHTML += generate_paragraph_html_element("TRIANGLE.C.Y := " + TRIANGLE.C.Y + '.');
         //...    
     }
     catch(exception) {
