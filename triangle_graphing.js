@@ -187,7 +187,9 @@ function initialize_application() {
     let generate_button_container = "";
     try {
         // Populate the "event_log" div with a time stamped message indicating that this function was called.
-        time_stamped_message = generate_paragraph_html_element("The function named initialize_application() was called at time: " + generate_time_stamp());
+        time_stamped_message = ("The function named initialize_application() was called at time: " + generate_time_stamp());
+        console.log(time_stamped_message);
+        time_stamped_message = generate_paragraph_html_element(time_stamped_message);
         events_log_div = document.getElementById("events_log");
         events_log_div.innerHTML = time_stamped_message;
         // Populate the "output" div with a canvas web page element.
