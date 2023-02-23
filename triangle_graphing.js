@@ -128,9 +128,7 @@ function draw_horizontal_line_through_middle_of_canvas() {
         if (canvas.width !== canvas.height) throw "The expression (canvas.width !== canvas.height) was evaluated to be true.";
         if (canvas.width !== CANVAS_SIDE_LENGTH) throw "The expression (canvas.width !== CANVAS_SIDE_LENGTH) was evaluated to be true.";
         canvas_midpoint = (canvas.width / 2);
-        console.log("canvas_midpoint = (canvas.width / 2); // evaluates to " + canvas_midpoint);
         canvas_midpoint = parseInt(canvas_midpoint);
-        console.log("canvas_midpoint = parseInt(canvas_midpoint); // evaluates to " + canvas_midpoint);
         context = canvas.getContext("2d");
         context.strokeStyle = "#000000"; 
         context.lineWidth = 1;
@@ -158,9 +156,7 @@ function draw_vertical_line_through_middle_of_canvas() {
         if (canvas.width !== canvas.height) throw "The expression (canvas.width !== canvas.height) was evaluated to be true.";
         if (canvas.width !== CANVAS_SIDE_LENGTH) throw "The expression (canvas.width !== CANVAS_SIDE_LENGTH) was evaluated to be true.";
         canvas_midpoint = (canvas.width / 2);
-        console.log("canvas_midpoint = (canvas.width / 2); // evaluates to " + canvas_midpoint);
         canvas_midpoint = parseInt(canvas_midpoint);
-        console.log("canvas_midpoint = parseInt(canvas_midpoint); // evaluates to " + canvas_midpoint);
         context = canvas.getContext("2d");
         context.strokeStyle = "#000000"; 
         context.lineWidth = 1;
@@ -259,34 +255,6 @@ function approximate_square_root(input) {
 }
 
 /**
- * Determine whether or not a given input value is a valid planar point object (as defined in the generate_triangle_using_input_coordinates() function).
- * 
- * @param {Object} input is assumed to be an Object type data value with the following properties: 
- *        {Number} X is assumed to be an integer no smaller than -100 and no larger than 100.
- *        {Number} Y is assumed to be an integer no smaller than -100 and no larger than 100.
- * 
- * @return {Boolean} true if input satisfies the conditions defined above; false otherwise.
- */
-function is_point(input) {
-    try {
-        if (arguments.length !== 1) throw "exactly one function argument (labeled input) is required.";
-        if (typeof input !== "object") throw "input must be an Object type value.";
-        if (typeof input.X !== "number") throw "the X property of input must be a Number type value.";
-        if (typeof input.Y !== "number") throw "the Y property of input must be a Number type value.";
-        if (Math.floor(input.X) !== input.X) throw "the X property of the input object must be a whole number value.";
-        if (Math.floor(input.Y) !== input.Y) throw "the Y property of the input object must be a whole number value.";
-        if ((input.X < -100) || (input.X > 100)) throw "the X of the input object must be no smaller than -100 and no larger than 100.";
-        if ((input.Y < -100) || (input.Y > 100)) throw "the X of the input object must be no smaller than -100 and no larger than 100.";
-        return true;
-    }
-    catch(exception) {
-        console.log("An exception to expected functioning occurred in is_point(input): " + exception);
-        return false;
-    }
-}
-
-
-/**
  * Use the Distance Formula to calculate the nonnegative real number distance between planar points A and B.
  * 
  * distance_formula(A, B) = square_root( ((A.x - B.x) ^ 2) + ((A.y - B.y) ^ 2) )
@@ -318,18 +286,56 @@ function compute_distance_between_two_planar_points(A, B) {
     }
 }
 
-function test(S,T) {
-    console.log("S.X := " + S.X + '.');
-    return S.X;
+/**
+ * Determine whether or not a given input value is a valid planar point object (as defined in the generate_triangle_using_input_coordinates() function).
+ * 
+ * @param {Object} input is assumed to be an Object type data value with the following properties: 
+ *        {Number} X is assumed to be an integer no smaller than -100 and no larger than 100.
+ *        {Number} Y is assumed to be an integer no smaller than -100 and no larger than 100.
+ * 
+ * @return {Boolean} true if input satisfies the conditions defined above; false otherwise.
+ */
+function is_point(input) {
+    let properties = undefined, count = 0;
+    try {
+        if (arguments.length !== 1) throw "exactly one function argument (labeled input) is required.";
+        if (typeof input !== "object") throw "input must be an Object type value.";
+        if (typeof input.X !== "number") throw "the X property of input must be a Number type value.";
+        if (typeof input.Y !== "number") throw "the Y property of input must be a Number type value.";
+        if (Math.floor(input.X) !== input.X) throw "the X property of the input object must be a whole number value.";
+        if (Math.floor(input.Y) !== input.Y) throw "the Y property of the input object must be a whole number value.";
+        if ((input.X < -100) || (input.X > 100)) throw "the X of the input object must be no smaller than -100 and no larger than 100.";
+        if ((input.Y < -100) || (input.Y > 100)) throw "the X of the input object must be no smaller than -100 and no larger than 100.";
+        for (let properties in input) count += 1;
+        if (count !== 2) throw "input must be an object consisting of exactly two properties.";
+        return true;
+    }
+    catch(exception) {
+        console.log("An exception to expected functioning occurred in is_point(input): " + exception);
+        return false;
+    }
+}
+
+/**
+ */
+function POINT(X,Y) {
+    try {
+        if (arguments.length !== 2) throw "exactly two function arguments are required.";
+        if (is_point({X:X,Y:Y})) return {X:X,Y:Y};
+        else throw "The expression (is_point({X:X,Y:Y})) was evaluated to be false.";
+    }
+    catch(exception) {
+        console.log("An exception to expected functioning occurred in POINT(X,Y): " + exception);
+        return { X : 0, Y : 0 };
+    }
 }
 
 /**
  * Respond to the event of the GENERATE button being clicked.
  */
 function generate_triangle_using_input_coordinates() {
-    let A = {}, B = {}, C = {}, TRIANGLE = {}; // Instantiate four empty Object type variables.
     let cartesian_plane_canvas = "";
-    let time_stamped_message = "", selected_menu_option_value = 0;
+    let time_stamped_message = "", selected_menu_option_value = 0, x_coordinate_value = 0, y_coordinate_value = 0;
     let output_div = undefined, events_log_div = undefined, generate_button_container_paragraph = undefined;
     let select_menu_container_paragraph = undefined;
     let reset_button = undefined;
@@ -342,19 +348,20 @@ function generate_triangle_using_input_coordinates() {
         events_log_div.innerHTML += time_stamped_message;
         // Transform the first input select menu (for A.X) into plain text displaying its selected option.
         select_menu_container_paragraph = document.getElementById("a_x_menu_container");
-        selected_menu_option_value = get_selected_menu_option_value("a_x_menu");
-        console.log("selected_menu_option_value := " + selected_menu_option_value + '.');
-        select_menu_container_paragraph.innerHTML = ('A.X := ' + selected_menu_option_value + '. // horizontal position of two-dimensional POINT labeled A.'); 
-        // Store the selected menu option as its corresponding POINT property.
-        A.X = parseInt(selected_menu_option_value);
-        console.log("A.X = parseInt(selected_menu_option_value); // A.X is " + A.X + '.');
+        selected_menu_option_value = parseInt(get_selected_menu_option_value("a_x_menu"));
+        select_menu_container_paragraph.innerHTML = ('A.X := ' + selected_menu_option_value + '. // horizontal position of two-dimensional POINT labeled A.');
+        // Store the selected menu option in a variable to be used later as its corresponding POINT property (as the property labeled X of the object labeled A).
+        x_coordinate_value = selected_menu_option_value; 
         // Transform the second input select menu (for A.Y) into plain text displaying its selected option.
         select_menu_container_paragraph = document.getElementById("a_y_menu_container");
-        selected_menu_option_value = get_selected_menu_option_value("a_y_menu");
-        console.log("selected_menu_option_value := " + selected_menu_option_value + '.');
+        selected_menu_option_value = parseInt(get_selected_menu_option_value("a_y_menu"));
         select_menu_container_paragraph.innerHTML = ('A.Y := ' + selected_menu_option_value + '. // vertical position of two-dimensional POINT labeled A.'); 
-        // Store the selected menu option as its corresponding POINT property.
-        A.Y = parseInt(selected_menu_option_value);
+        // Store the selected menu option in a variable to be used later as its corresponding POINT property (as the property labeled Y of the object labeled A).
+        y_coordinate_value = selected_menu_option_value; 
+        // Generate an immutable Object type variable for representing the two-dimensional point labeled A.
+        const A = POINT(x_coordinate_value, y_coordinate_value);
+        console.log("A := (" + A.X + "," + A.Y + ").");
+        /*
         console.log("A.Y = parseInt(selected_menu_option_value); // A.Y is " + A.Y + '.');
         // Transform the third input select menu (for B.X) into plain text displaying its selected option.
         select_menu_container_paragraph = document.getElementById("b_x_menu_container");
@@ -416,7 +423,6 @@ function generate_triangle_using_input_coordinates() {
         console.log(TRIANGLE.DATA_STRING());
         output_div.innerHTML += generate_paragraph_html_element(TRIANGLE.DATA_STRING());
         // console.log("A.DISTANCE(B) := " + A.DISTANCE(B) + '.')
-        /*
         T = { A : A, B : B, C : C };
         console.log("T.A.X := " + T.A.X + '.');
         Object.assign(TRIANGLE.A, A);
