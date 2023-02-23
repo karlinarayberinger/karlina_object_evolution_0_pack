@@ -304,6 +304,7 @@ function is_point(input) {
 function compute_distance_between_two_planar_points(A, B) {
     let horizontal_difference = 0, vertical_difference = 0;
     try {
+        console.log("test A.X := " + A.X + '.');
         if (arguments.length !== 2) throw "exactly two function arguments are required.";
         if (!is_point(A)) throw "A must be an object whose data properties are as follows: { X : integer in range [-100,100], Y : integer in range [-100,100] }.";
         if (!is_point(B)) throw "B must be an object whose data properties are as follows: { X : integer in range [-100,100], Y : integer in range [-100,100] }.";
@@ -315,6 +316,11 @@ function compute_distance_between_two_planar_points(A, B) {
         console.log("An exception to expected functioning occurred in compute_distance_between_two_planar_points(A, B): " + exception);
         return 0;
     }
+}
+
+function test(S,T) {
+    console.log("S.X := " + S.X + '.');
+    return S.X;
 }
 
 /**
@@ -386,11 +392,30 @@ function generate_triangle_using_input_coordinates() {
         reset_button = ('<' + 'input type="button" value="RESET" style="text-align:center" onclick="initialize_application()"' + '/' + '>');
         generate_button_container_paragraph = document.getElementById("generate_button_container");
         generate_button_container_paragraph.innerHTML = reset_button;
-        // Append plain text paragraphs describing the TRIANGLe object which is comprised of the POINT objects labeled A, B, and C.
+        // Append the bottom of the content inside of the "output" div with paragraphs describing the TRIANGLE object which is comprised of the POINT objects labeled A, B, and C.
         TRIANGLE.A = A;
         TRIANGLE.B = B;
         TRIANGLE.C = C;
         console.log("TRIANGLE.A.X := " + TRIANGLE.A.X  + '.');
+        console.log("TRIANGLE.A.Y := " + TRIANGLE.A.Y  + '.');
+        console.log("TRIANGLE.B.X := " + TRIANGLE.B.X  + '.');
+        console.log("TRIANGLE.B.Y := " + TRIANGLE.B.Y  + '.');
+        console.log("TRIANGLE.C.X := " + TRIANGLE.C.X  + '.');
+        console.log("TRIANGLE.C.Y := " + TRIANGLE.C.Y  + '.');
+        output_div = document.getElementById("output");
+        output_div.innerHTML += generate_paragraph_html_element("TRIANGLE.A.X := " + TRIANGLE.A.X + '.');
+        output_div.innerHTML += generate_paragraph_html_element("TRIANGLE.A.Y := " + TRIANGLE.A.Y + '.');
+        output_div.innerHTML += generate_paragraph_html_element("TRIANGLE.B.X := " + TRIANGLE.B.X + '.');
+        output_div.innerHTML += generate_paragraph_html_element("TRIANGLE.B.Y := " + TRIANGLE.B.Y + '.');
+        output_div.innerHTML += generate_paragraph_html_element("TRIANGLE.C.X := " + TRIANGLE.C.X + '.');
+        output_div.innerHTML += generate_paragraph_html_element("TRIANGLE.C.Y := " + TRIANGLE.C.Y + '.');
+        // Add a function property to the Object named TRIANGLE which generates a String type value describing the data attributes of TRIANGLE.
+        TRIANGLE.DATA_STRING = function() { 
+            return 'TRIANGLE := { A := POINT(' + A.X + ',' + A.Y + '), B := POINT(' + B.X + ',' + B.Y + '), C := POINT(' + C.X + ',' + C.Y + ') }.';
+        };
+        console.log(TRIANGLE.DATA_STRING());
+        output_div.innerHTML += generate_paragraph_html_element(TRIANGLE.DATA_STRING());
+        // console.log("A.DISTANCE(B) := " + A.DISTANCE(B) + '.')
         /*
         T = { A : A, B : B, C : C };
         console.log("T.A.X := " + T.A.X + '.');
