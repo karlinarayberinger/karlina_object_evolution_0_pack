@@ -420,6 +420,10 @@ function generate_triangle_using_input_coordinates() {
         // Store the selected menu option in a variable to be used later as its corresponding POINT property (as the property labeled Y of the object labeled A).
         y_coordinate_value = selected_menu_option_value; 
         // Store an Object type value for representing the two-dimensional point labeled A.
+        A = POINT(x_coordinate_value,y_coordinate_value);
+        /**
+         * The following is a series of tests whose results are viewable in the web browser console (developer tools).
+         * 
         A = POINT(0, 0);
         B = POINT(1,-1);
         console.log("A := (" + A.X + "," + A.Y + ").");
@@ -434,92 +438,21 @@ function generate_triangle_using_input_coordinates() {
         console.log("B.SLOPE(B) := " + B.SLOPE(B) + ".");
         console.log("A.DEFINITION() := " + A.DEFINITION() + ".");
         console.log("B.DEFINITION() := " + B.DEFINITION() + ".");
-        /*
-        console.log("A.Y = parseInt(selected_menu_option_value); // A.Y is " + A.Y + '.');
-        // Transform the third input select menu (for B.X) into plain text displaying its selected option.
-        select_menu_container_paragraph = document.getElementById("b_x_menu_container");
-        selected_menu_option_value = get_selected_menu_option_value("b_x_menu");
-        console.log("selected_menu_option_value := " + selected_menu_option_value + '.');
-        select_menu_container_paragraph.innerHTML = ('B.X := ' + selected_menu_option_value + '. // horizontal position of two-dimensional POINT labeled B.'); 
-        // Store the selected menu option as its corresponding POINT property.
-        B.X = parseInt(selected_menu_option_value);
-        console.log("B.X = parseInt(selected_menu_option_value); // B.X is " + B.X + '.');
-        // Transform the fourth input select menu (for B.Y) into plain text displaying its selected option.
-        select_menu_container_paragraph = document.getElementById("b_y_menu_container");
-        selected_menu_option_value = get_selected_menu_option_value("b_y_menu");
-        console.log("selected_menu_option_value := " + selected_menu_option_value + '.');
-        select_menu_container_paragraph.innerHTML = ('B.Y := ' + selected_menu_option_value + '. // vertical position of two-dimensional POINT labeled B.'); 
-        // Store the selected menu option as its corresponding POINT property.
-        B.Y = parseInt(selected_menu_option_value);
-        console.log("B.Y = parseInt(selected_menu_option_value); // B.Y is " + B.Y + '.');
-        // Transform the fifth input select menu (for C.X) into plain text displaying its selected option.
-        select_menu_container_paragraph = document.getElementById("c_x_menu_container");
-        selected_menu_option_value = get_selected_menu_option_value("c_x_menu");
-        console.log("selected_menu_option_value := " + selected_menu_option_value + '.');
-        select_menu_container_paragraph.innerHTML = ('C.X := ' + selected_menu_option_value + '. // horizontal position of two-dimensional POINT labeled C.'); 
-        // Store the selected menu option as its corresponding POINT property.
-        C.X = parseInt(selected_menu_option_value);
-        console.log("C.X = parseInt(selected_menu_option_value); // C.X is " + C.X + '.');
-        // Transform the sixth input select menu (for C.Y) into plain text displaying its selected option.
-        select_menu_container_paragraph = document.getElementById("c_y_menu_container");
-        selected_menu_option_value = get_selected_menu_option_value("c_y_menu");
-        console.log("selected_menu_option_value := " + selected_menu_option_value + '.');
-        select_menu_container_paragraph.innerHTML = ('C.Y := ' + selected_menu_option_value + '. // vertical position of two-dimensional POINT labeled C.'); 
-        // Store the selected menu option as its corresponding POINT property.
-        C.Y = parseInt(selected_menu_option_value);
-        console.log("C.Y = parseInt(selected_menu_option_value); // C.Y is " + C.Y + '.');
-        // Replace the GENERATE button with a RESET button.
-        reset_button = ('<' + 'input type="button" value="RESET" style="text-align:center" onclick="initialize_application()"' + '/' + '>');
-        generate_button_container_paragraph = document.getElementById("generate_button_container");
-        generate_button_container_paragraph.innerHTML = reset_button;
-        // Append the bottom of the content inside of the "output" div with paragraphs describing the TRIANGLE object which is comprised of the POINT objects labeled A, B, and C.
-        TRIANGLE.A = A;
-        TRIANGLE.B = B;
-        TRIANGLE.C = C;
-        console.log("TRIANGLE.A.X := " + TRIANGLE.A.X  + '.');
-        console.log("TRIANGLE.A.Y := " + TRIANGLE.A.Y  + '.');
-        console.log("TRIANGLE.B.X := " + TRIANGLE.B.X  + '.');
-        console.log("TRIANGLE.B.Y := " + TRIANGLE.B.Y  + '.');
-        console.log("TRIANGLE.C.X := " + TRIANGLE.C.X  + '.');
-        console.log("TRIANGLE.C.Y := " + TRIANGLE.C.Y  + '.');
-        output_div = document.getElementById("output");
-        output_div.innerHTML += generate_paragraph_html_element("TRIANGLE.A.X := " + TRIANGLE.A.X + '.');
-        output_div.innerHTML += generate_paragraph_html_element("TRIANGLE.A.Y := " + TRIANGLE.A.Y + '.');
-        output_div.innerHTML += generate_paragraph_html_element("TRIANGLE.B.X := " + TRIANGLE.B.X + '.');
-        output_div.innerHTML += generate_paragraph_html_element("TRIANGLE.B.Y := " + TRIANGLE.B.Y + '.');
-        output_div.innerHTML += generate_paragraph_html_element("TRIANGLE.C.X := " + TRIANGLE.C.X + '.');
-        output_div.innerHTML += generate_paragraph_html_element("TRIANGLE.C.Y := " + TRIANGLE.C.Y + '.');
-        // Add a function property to the Object named TRIANGLE which generates a String type value describing the data attributes of TRIANGLE.
-        TRIANGLE.DATA_STRING = function() { 
-            return 'TRIANGLE := { A := POINT(' + A.X + ',' + A.Y + '), B := POINT(' + B.X + ',' + B.Y + '), C := POINT(' + C.X + ',' + C.Y + ') }.';
-        };
-        console.log(TRIANGLE.DATA_STRING());
-        output_div.innerHTML += generate_paragraph_html_element(TRIANGLE.DATA_STRING());
-        // console.log("A.DISTANCE(B) := " + A.DISTANCE(B) + '.')
-        T = { A : A, B : B, C : C };
-        console.log("T.A.X := " + T.A.X + '.');
-        Object.assign(TRIANGLE.A, A);
-        TRIANGLE.B.X = B.X;
-        TRIANGLE.B.Y = B.Y;
-        TRIANGLE.C.X = C.X;
-        TRIANGLE.C.Y = C.Y;
-        console.log("TRIANGLE.A.X := " + TRIANGLE.A.X + '.');
-        console.log("TRIANGLE.A.Y := " + TRIANGLE.A.Y + '.');
-        console.log("TRIANGLE.B.X := " + TRIANGLE.B.X + '.');
-        console.log("TRIANGLE.B.Y := " + TRIANGLE.B.Y + '.');
-        console.log("TRIANGLE.C.X := " + TRIANGLE.C.X + '.');
-        console.log("TRIANGLE.C.Y := " + TRIANGLE.C.Y + '.');
-        // Append the bottom of the content inside of the "output" div with information about TRIANGLE whose properties are the POINT instances labeled A, B, and C.
-        output_div = document.getElementById("output");
-        output_div.innerHTML += generate_paragraph_html_element("TRIANGLE.A.X := " + TRIANGLE.A.X + '.');
-        output_div.innerHTML += generate_paragraph_html_element("TRIANGLE.A.Y := " + TRIANGLE.A.Y + '.');
-        output_div.innerHTML += generate_paragraph_html_element("TRIANGLE.B.X := " + TRIANGLE.B.X + '.');
-        output_div.innerHTML += generate_paragraph_html_element("TRIANGLE.B.Y := " + TRIANGLE.B.Y + '.');
-        output_div.innerHTML += generate_paragraph_html_element("TRIANGLE.C.X := " + TRIANGLE.C.X + '.');
-        output_div.innerHTML += generate_paragraph_html_element("TRIANGLE.C.Y := " + TRIANGLE.C.Y + '.');
-        console.log("TRIANGLE.A.DISTANCE(B) := " + TRIANGLE.A.DISTANCE(TRIANGLE.B) + '.');
-        output_div.innerHTML += generate_paragraph_html_element("TRIANGLE.A.DISTANCE(TRIANGLE.B) := " + TRIANGLE.A.DISTANCE(TRIANGLE.B) + '.');
         */
+        // Transform the second input select menu (for B.X) into plain text displaying its selected option.
+        select_menu_container_paragraph = document.getElementById("b_x_menu_container");
+        selected_menu_option_value = parseInt(get_selected_menu_option_value("b_x_menu"));
+        select_menu_container_paragraph.innerHTML = ('B.X := ' + selected_menu_option_value + '. // horizontal position of two-dimensional POINT labeled B.');
+        // Store the selected menu option in a variable to be used later as its corresponding POINT property (as the property labeled X of the object labeled B).
+        x_coordinate_value = selected_menu_option_value; 
+        // Transform the second input select menu (for A.Y) into plain text displaying its selected option.
+        select_menu_container_paragraph = document.getElementById("b_y_menu_container");
+        selected_menu_option_value = parseInt(get_selected_menu_option_value("b_y_menu"));
+        select_menu_container_paragraph.innerHTML = ('B.Y := ' + selected_menu_option_value + '. // vertical position of two-dimensional POINT labeled B.'); 
+        // Store the selected menu option in a variable to be used later as its corresponding POINT property (as the property labeled Y of the object labeled B).
+        y_coordinate_value = selected_menu_option_value; 
+        // Store an Object type value for representing the two-dimensional point labeled A.
+        B = POINT(x_coordinate_value,y_coordinate_value);
         //...    
     }
     catch(exception) {
