@@ -272,7 +272,6 @@ function approximate_square_root(input) {
 function compute_distance_between_two_planar_points(A, B) {
     let horizontal_difference = 0, vertical_difference = 0;
     try {
-        console.log("test A.X := " + A.X + '.');
         if (arguments.length !== 2) throw "exactly two function arguments are required.";
         if (!is_point(A)) throw "A must be an object whose data properties are as follows: { X : integer in range [-100,100], Y : integer in range [-100,100] }.";
         if (!is_point(B)) throw "B must be an object whose data properties are as follows: { X : integer in range [-100,100], Y : integer in range [-100,100] }.";
@@ -287,6 +286,49 @@ function compute_distance_between_two_planar_points(A, B) {
 }
 
 /**
+ * Compute the rate at which the y-value changes in relation to the x-value in the function whose graph
+ * is the line which completely overlaps the line segment whose endpoints are A and B.
+ * 
+ * // y := f(x), 
+ * // b := f(0), 
+ * // f is a function whose input is an x-axis position and whose output is a y-axis position.
+ * y := mx + b.
+ * 
+ * // m is a constant which represents the rate at which y changes in relation to x changing.
+ * m := (y - b) / x. 
+ * 
+ * // m represents the difference of the two y-values divided by the difference of the two x-values.
+ * m := (A.Y - B.Y) / (A.X - B.X).
+ * 
+ * @param {Object} A is assumed to be an Object type data value with the following properties: 
+ *        {Number} X is assumed to be an integer no smaller than -100 and no larger than 100.
+ *        {Number} Y is assumed to be an integer no smaller than -100 and no larger than 100.
+ *
+ * @param {Object} B is assumed to be an Object type data value with the following properties: 
+ *        {Number} X is assumed to be an integer no smaller than -100 and no larger than 100.
+ *        {Number} Y is assumed to be an integer no smaller than -100 and no larger than 100.
+ * 
+ * @return {Number} the slope of the shortest path between planar points A and B.
+ */
+function get_slope_of_line_segment(A, B) {
+    let vertical_difference = 0, horizontal_difference = 0;
+    try {
+        if (arguments.length !== 2) throw "exactly two function arguments are required.";
+        if (!is_point(A)) throw "A must be an object whose data properties are as follows: { X : integer in range [-100,100], Y : integer in range [-100,100] }.";
+        if (!is_point(B)) throw "B must be an object whose data properties are as follows: { X : integer in range [-100,100], Y : integer in range [-100,100] }.";
+        horizontal_difference = A.X - B.X;
+        vertical_difference = A.Y - B.Y;
+        console.log("horizontal_difference := " + horizontal_difference + '.');
+        console.log("vertical_difference := " + vertical_difference + '.');
+        return (vertical_difference / horizontal_difference);
+    }
+    catch(exception) {
+        console.log("An exception to expected functioning occurred in get_slope_of_line_segment(A, B): " + exception);
+        return 0;
+    }
+}
+
+/**
  * Determine whether or not a given input value is a valid planar point object (as defined in the generate_triangle_using_input_coordinates() function).
  * 
  * @param {Object} input is assumed to be an Object type data value with the following properties: 
@@ -296,7 +338,7 @@ function compute_distance_between_two_planar_points(A, B) {
  * @return {Boolean} true if input satisfies the conditions defined above; false otherwise.
  */
 function is_point(input) {
-    let properties = undefined, count = 0;
+    // let properties = undefined, count = 0;
     try {
         if (arguments.length !== 1) throw "exactly one function argument (labeled input) is required.";
         if (typeof input !== "object") throw "input must be an Object type value.";
@@ -306,8 +348,11 @@ function is_point(input) {
         if (Math.floor(input.Y) !== input.Y) throw "the Y property of the input object must be a whole number value.";
         if ((input.X < -100) || (input.X > 100)) throw "the X of the input object must be no smaller than -100 and no larger than 100.";
         if ((input.Y < -100) || (input.Y > 100)) throw "the X of the input object must be no smaller than -100 and no larger than 100.";
+        /*
+        // This is commented out due to the fact that karbytes wanted to allow indefinitely many function properties to be added to POINT "type" objects.
         for (let properties in input) count += 1;
         if (count !== 2) throw "input must be an object consisting of exactly two properties.";
+        */
         return true;
     }
     catch(exception) {
@@ -328,14 +373,16 @@ function is_point(input) {
  * @return {Object} an object consisting of exactly two key-value pairs named X and Y.
  */
 function POINT(X,Y) {
+    let distance = function(P) { return compute_distance_between_two_planar_points(this, P) };
+    let slope = function(P) { return get_slope_of_line_segment(this, P) };
     try {
         if (arguments.length !== 2) throw "exactly two function arguments are required.";
-        if (is_point({X:X,Y:Y})) return {X:X,Y:Y};
+        if (is_point({X:X,Y:Y})) return {X:X, Y:Y, DISTANCE:distance, SLOPE:slope};
         else throw "The expression (is_point({X:X,Y:Y})) was evaluated to be false.";
     }
     catch(exception) {
         console.log("An exception to expected functioning occurred in POINT(X,Y): " + exception);
-        return { X : 0, Y : 0 };
+        return {X:0, Y:0, DISTANCE:distance, SLOPE:slope};
     }
 }
 
@@ -344,6 +391,7 @@ function POINT(X,Y) {
  */
 function generate_triangle_using_input_coordinates() {
     let cartesian_plane_canvas = "";
+    let A = {}, B = {}, C = {}, T = {};
     let time_stamped_message = "", selected_menu_option_value = 0, x_coordinate_value = 0, y_coordinate_value = 0;
     let output_div = undefined, events_log_div = undefined, generate_button_container_paragraph = undefined;
     let select_menu_container_paragraph = undefined;
@@ -367,9 +415,19 @@ function generate_triangle_using_input_coordinates() {
         select_menu_container_paragraph.innerHTML = ('A.Y := ' + selected_menu_option_value + '. // vertical position of two-dimensional POINT labeled A.'); 
         // Store the selected menu option in a variable to be used later as its corresponding POINT property (as the property labeled Y of the object labeled A).
         y_coordinate_value = selected_menu_option_value; 
-        // Generate an immutable Object type variable for representing the two-dimensional point labeled A.
-        const A = POINT(x_coordinate_value, y_coordinate_value);
+        // Store an Object type value for representing the two-dimensional point labeled A.
+        A = POINT(0, 0);
+        B = POINT(1,-1);
         console.log("A := (" + A.X + "," + A.Y + ").");
+        console.log("B := (" + B.X + "," + B.Y + ").");
+        console.log("A.DISTANCE(B) := " + A.DISTANCE(B) + ".");
+        console.log("B.DISTANCE(A) := " + B.DISTANCE(A) + ".");
+        console.log("A.DISTANCE(A) := " + A.DISTANCE(A) + ".");
+        console.log("B.DISTANCE(B) := " + B.DISTANCE(B) + ".");
+        console.log("A.SLOPE(B) := " + A.SLOPE(B) + ".");
+        console.log("B.SLOPE(A) := " + B.SLOPE(A) + ".");
+        console.log("A.SLOPE(A) := " + A.SLOPE(A) + ".");
+        console.log("B.SLOPE(B) := " + B.SLOPE(B) + ".");
         /*
         console.log("A.Y = parseInt(selected_menu_option_value); // A.Y is " + A.Y + '.');
         // Transform the third input select menu (for B.X) into plain text displaying its selected option.
