@@ -317,6 +317,15 @@ function is_point(input) {
 }
 
 /**
+ * Generate an Object type data value which represents a position on a two-dimensional Cartesian grid.
+ * 
+ * If an exception is thrown while the try-catch block is being executed, return a POINT whose coordinate values are both zero.
+ * 
+ * @param {Number} X is assumed to be an integer no smaller than -100 and no larger than 100.
+ * 
+ * @param {Number} Y is assumed to be an integer no smaller than -100 and no larger than 100.
+ * 
+ * @return {Object} an object consisting of exactly two key-value pairs named X and Y.
  */
 function POINT(X,Y) {
     try {
