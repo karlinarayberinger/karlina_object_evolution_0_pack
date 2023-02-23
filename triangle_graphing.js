@@ -432,6 +432,8 @@ function generate_triangle_using_input_coordinates() {
         console.log("B.SLOPE(A) := " + B.SLOPE(A) + ".");
         console.log("A.SLOPE(A) := " + A.SLOPE(A) + ".");
         console.log("B.SLOPE(B) := " + B.SLOPE(B) + ".");
+        console.log("A.DEFINITION() := " + A.DEFINITION() + ".");
+        console.log("B.DEFINITION() := " + B.DEFINITION() + ".");
         /*
         console.log("A.Y = parseInt(selected_menu_option_value); // A.Y is " + A.Y + '.');
         // Transform the third input select menu (for B.X) into plain text displaying its selected option.
