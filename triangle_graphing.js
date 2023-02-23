@@ -375,14 +375,18 @@ function is_point(input) {
 function POINT(X,Y) {
     let distance = function(P) { return compute_distance_between_two_planar_points(this, P) };
     let slope = function(P) { return get_slope_of_line_segment(this, P) };
+    let definition = function() { 
+        string_type_value = ('POINT(' + this.X + ',' + this.Y + ')');
+        return string_type_value;
+    };
     try {
         if (arguments.length !== 2) throw "exactly two function arguments are required.";
-        if (is_point({X:X,Y:Y})) return {X:X, Y:Y, DISTANCE:distance, SLOPE:slope};
+        if (is_point({X:X,Y:Y})) return {X:X, Y:Y, DISTANCE:distance, SLOPE:slope, DEFINITION:definition};
         else throw "The expression (is_point({X:X,Y:Y})) was evaluated to be false.";
     }
     catch(exception) {
         console.log("An exception to expected functioning occurred in POINT(X,Y): " + exception);
-        return {X:0, Y:0, DISTANCE:distance, SLOPE:slope};
+        return {X:0, Y:0, DISTANCE:distance, SLOPE:slope, DEFINITION:definition};
     }
 }
 
