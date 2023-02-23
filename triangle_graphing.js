@@ -439,13 +439,13 @@ function generate_triangle_using_input_coordinates() {
         console.log("A.DEFINITION() := " + A.DEFINITION() + ".");
         console.log("B.DEFINITION() := " + B.DEFINITION() + ".");
         */
-        // Transform the second input select menu (for B.X) into plain text displaying its selected option.
+        // Transform the third input select menu (for B.X) into plain text displaying its selected option.
         select_menu_container_paragraph = document.getElementById("b_x_menu_container");
         selected_menu_option_value = parseInt(get_selected_menu_option_value("b_x_menu"));
         select_menu_container_paragraph.innerHTML = ('B.X := ' + selected_menu_option_value + '. // horizontal position of two-dimensional POINT labeled B.');
         // Store the selected menu option in a variable to be used later as its corresponding POINT property (as the property labeled X of the object labeled B).
         x_coordinate_value = selected_menu_option_value; 
-        // Transform the second input select menu (for A.Y) into plain text displaying its selected option.
+        // Transform the fourth input select menu (for B.Y) into plain text displaying its selected option.
         select_menu_container_paragraph = document.getElementById("b_y_menu_container");
         selected_menu_option_value = parseInt(get_selected_menu_option_value("b_y_menu"));
         select_menu_container_paragraph.innerHTML = ('B.Y := ' + selected_menu_option_value + '. // vertical position of two-dimensional POINT labeled B.'); 
@@ -453,6 +453,23 @@ function generate_triangle_using_input_coordinates() {
         y_coordinate_value = selected_menu_option_value; 
         // Store an Object type value for representing the two-dimensional point labeled A.
         B = POINT(x_coordinate_value,y_coordinate_value);
+        /**
+         * 
+         */
+        // Transform the fifth input select menu (for C.X) into plain text displaying its selected option.
+        select_menu_container_paragraph = document.getElementById("c_x_menu_container");
+        selected_menu_option_value = parseInt(get_selected_menu_option_value("c_x_menu"));
+        select_menu_container_paragraph.innerHTML = ('C.X := ' + selected_menu_option_value + '. // horizontal position of two-dimensional POINT labeled C.');
+        // Store the selected menu option in a variable to be used later as its corresponding POINT property (as the property labeled X of the object labeled C).
+        x_coordinate_value = selected_menu_option_value; 
+        // Transform the second input select menu (for C.Y) into plain text displaying its selected option.
+        select_menu_container_paragraph = document.getElementById("c_y_menu_container");
+        selected_menu_option_value = parseInt(get_selected_menu_option_value("c_y_menu"));
+        select_menu_container_paragraph.innerHTML = ('C.Y := ' + selected_menu_option_value + '. // vertical position of two-dimensional POINT labeled C.'); 
+        // Store the selected menu option in a variable to be used later as its corresponding POINT property (as the property labeled Y of the object labeled C).
+        y_coordinate_value = selected_menu_option_value; 
+        // Store an Object type value for representing the two-dimensional point labeled A.
+        C = POINT(x_coordinate_value,y_coordinate_value);
         //...    
     }
     catch(exception) {
