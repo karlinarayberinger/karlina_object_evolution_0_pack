@@ -415,9 +415,9 @@ function TRIANGLE(A,B,C) {
     let angle_a = function() {};
     let angle_b = function() {};
     let angle_c = function() {};
-    let length_AB = function() {};
-    let length_BC = function() {};
-    let length_CA = function() {};
+    let length_AB = function() { return A.DISTANCE(B); };
+    let length_BC = function() { return B.DISTANCE(C); };
+    let length_CA = function() { return C.DISTANCE(A); };
     let _A = {}, _B = {}, _C = {};
     let triangle = {};
     try {
@@ -467,24 +467,6 @@ function generate_triangle_using_input_coordinates() {
         y_coordinate_value = selected_menu_option_value; 
         // Store an Object type value for representing the two-dimensional point labeled A.
         A = POINT(x_coordinate_value,y_coordinate_value);
-        /**
-         * The following is a series of tests whose results are viewable in the web browser console (developer tools).
-         * 
-        A = POINT(0, 0);
-        B = POINT(1,-1);
-        console.log("A := (" + A.X + "," + A.Y + ").");
-        console.log("B := (" + B.X + "," + B.Y + ").");
-        console.log("A.DISTANCE(B) := " + A.DISTANCE(B) + ".");
-        console.log("B.DISTANCE(A) := " + B.DISTANCE(A) + ".");
-        console.log("A.DISTANCE(A) := " + A.DISTANCE(A) + ".");
-        console.log("B.DISTANCE(B) := " + B.DISTANCE(B) + ".");
-        console.log("A.SLOPE(B) := " + A.SLOPE(B) + ".");
-        console.log("B.SLOPE(A) := " + B.SLOPE(A) + ".");
-        console.log("A.SLOPE(A) := " + A.SLOPE(A) + ".");
-        console.log("B.SLOPE(B) := " + B.SLOPE(B) + ".");
-        console.log("A.DEFINITION() := " + A.DEFINITION() + ".");
-        console.log("B.DEFINITION() := " + B.DEFINITION() + ".");
-        */
         // Transform the third input select menu (for B.X) into plain text displaying its selected option.
         select_menu_container_paragraph = document.getElementById("b_x_menu_container");
         selected_menu_option_value = parseInt(get_selected_menu_option_value("b_x_menu"));
@@ -499,9 +481,6 @@ function generate_triangle_using_input_coordinates() {
         y_coordinate_value = selected_menu_option_value; 
         // Store an Object type value for representing the two-dimensional point labeled A.
         B = POINT(x_coordinate_value,y_coordinate_value);
-        /**
-         * 
-         */
         // Transform the fifth input select menu (for C.X) into plain text displaying its selected option.
         select_menu_container_paragraph = document.getElementById("c_x_menu_container");
         selected_menu_option_value = parseInt(get_selected_menu_option_value("c_x_menu"));
@@ -516,6 +495,8 @@ function generate_triangle_using_input_coordinates() {
         y_coordinate_value = selected_menu_option_value; 
         // Store an Object type value for representing the two-dimensional point labeled A.
         C = POINT(x_coordinate_value,y_coordinate_value);
+        // Generate a TRIANGLE object using the POINT objects A, B, and C as the inputs to that "constructor" function.
+        T = TRIANGLE(A,B,C);
         //...    
     }
     catch(exception) {
