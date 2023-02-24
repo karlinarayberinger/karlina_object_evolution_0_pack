@@ -176,7 +176,7 @@ function draw_vertical_line_through_middle_of_canvas() {
 function initialize_application() {
     let cartesian_plane_canvas = "";
     let time_stamped_message = "", initial_output_message = "";
-    let output_div = undefined, events_log_div = undefined, generate_button_container_paragraph = undefined;
+    let canvas_container_div = undefined, output_div = undefined, events_log_div = undefined, generate_button_container_paragraph = undefined;
     let a_x_menu_container_paragraph = undefined, a_y_menu_container_paragraph = undefined;
     let b_x_menu_container_paragraph = undefined, b_y_menu_container_paragraph = undefined;
     let c_x_menu_container_paragraph = undefined, c_y_menu_container_paragraph = undefined;
@@ -188,10 +188,13 @@ function initialize_application() {
         time_stamped_message = generate_paragraph_html_element(time_stamped_message);
         events_log_div = document.getElementById("events_log");
         events_log_div.innerHTML = time_stamped_message;
-        // Populate the "output" div with a canvas web page element.
-        cartesian_plane_canvas = (('<' + 'canvas id="cartesian_plane" width="750" height="750" style="background:#ffffff">') + ('<' + '/' + '>'));
+        // Populate the "output" div with placeholder text.
         output_div = document.getElementById("output");
-        output_div.innerHTML = cartesian_plane_canvas
+        output_div.innerHTML = generate_paragraph_html_element("This sentence will disappear as a result of the GENERATE button being clicked.");
+        // Populate the "canvas_container" div with a canvas web page element.
+        cartesian_plane_canvas = (('<' + 'canvas id="cartesian_plane" width="750" height="750" style="background:#ffffff">') + ('<' + '/' + '>'));
+        canvas_container_div = document.getElementById("canvas_container");
+        canvas_container_div.innerHTML = generate_paragraph_html_element(cartesian_plane_canvas);
         // Draw the horizontal axis of a Cartesian plane through the center of the square canvas.
         draw_horizontal_line_through_middle_of_canvas();
         // Draw the vertical axis of a Cartesian plane through the center of the square canvas.
@@ -457,6 +460,9 @@ function generate_triangle_using_input_coordinates() {
         time_stamped_message = generate_paragraph_html_element(time_stamped_message);
         events_log_div = document.getElementById("events_log");
         events_log_div.innerHTML += time_stamped_message;
+        // Replace the GENERATE button with a RESET button.
+        generate_button_container_paragraph = document.getElementById("generate_button_container");
+        generate_button_container_paragraph.innerHTML = ('<' + 'input type="button" value="RESET" onclick="initialize_application()"' + '/' + '>');
         // Transform the first input select menu (for A.X) into plain text displaying its selected option.
         select_menu_container_paragraph = document.getElementById("a_x_menu_container");
         selected_menu_option_value = parseInt(get_selected_menu_option_value("a_x_menu"));
@@ -503,7 +509,11 @@ function generate_triangle_using_input_coordinates() {
         T = TRIANGLE(A,B,C);
         // Print the attributes of TRIANGLE as text inside of the div element whose id is "output". (Append those paragraphs to the bottom of the content in the output div).
         output_div = document.getElementById("output");
-        output_div.innerHTML += generate_paragraph_html_element(T.DEFINITION());
+        events_log.innerHTML += generate_paragraph_html_element(T.DEFINITION());
+        // Draw the horizontal axis of a Cartesian plane through the center of the square canvas.
+        draw_horizontal_line_through_middle_of_canvas();
+        // Draw the vertical axis of a Cartesian plane through the center of the square canvas.
+        draw_vertical_line_through_middle_of_canvas();
         //...    
     }
     catch(exception) {
