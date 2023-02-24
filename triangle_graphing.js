@@ -424,6 +424,9 @@ function TRIANGLE(A,B,C) {
         _A = POINT(A.X,A.Y);
         _B = POINT(B.X,B.Y);
         _C = POINT(C.X,C.Y);
+        if ((_A.X === _B.X) && (_A.Y === _B.Y)) throw "A and B appear to represent the same planar coordinates.";
+        if ((_A.X === _C.X) && (_A.Y === _C.Y)) throw "A and C appear to represent the same planar coordinates.";
+        if ((_C.X === _B.X) && (_C.Y === _B.Y)) throw "C and B appear to represent the same planar coordinates.";
         //;;; num num
     }
     catch(exception) {
