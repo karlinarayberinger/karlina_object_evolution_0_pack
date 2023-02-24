@@ -391,7 +391,8 @@ function POINT(X,Y) {
 }
 
 /**
- * Generate an Object type data value which represents a position on a two-dimensional Cartesian grid.
+ * Generate an Object type data value which represents the trianglular region of space whose corners
+ * are points represented by input POINT instances A, B, and C.
  * 
  * If an exception is thrown while the try-catch block is being executed, return a POINT whose coordinate values are both zero.
  * 
@@ -410,6 +411,11 @@ function POINT(X,Y) {
  */
 function TRIANGLE(A,B,C) {
     try {
+        let perimeter = function() {};
+        let area = function() {};
+        let angle_a = function() {};
+        let angle_b = function() {};
+        let angle_c = function() {};
         //;;; num num
     }
     catch(exception) {
