@@ -370,14 +370,14 @@ function is_point(input) {
  * 
  * @param {Number} Y is assumed to be an integer no smaller than -100 and no larger than 100.
  * 
- * @return {Object} an object consisting of exactly two key-value pairs named X and Y.
+ * @return {Object} an object consisting of exactly two key-value pairs named X and Y and
+ *                  exactly three functions named distance, slope, and definition.
  */
 function POINT(X,Y) {
     let distance = function(P) { return compute_distance_between_two_planar_points(this, P) };
     let slope = function(P) { return get_slope_of_line_segment(this, P) };
     let definition = function() { 
-        string_type_value = ('POINT(' + this.X + ',' + this.Y + ')');
-        return string_type_value;
+        return ('POINT(' + this.X + ',' + this.Y + ')');
     };
     try {
         if (arguments.length !== 2) throw "exactly two function arguments are required.";
@@ -407,9 +407,12 @@ function POINT(X,Y) {
  * 
  * @param {Object} C is assumed to be a value returned by the function POINT(X,Y).
  * 
- * @return {Object} an object consisting of exactly two key-value pairs named X and Y.
+ * @return {Object} an object consisting of exactly three data attributes named A, B, and C 
+ *                  and exactly nine function attributes named perimeter, area, angle_a, angle_b, angle,
+ *                  length_ab, length_bc, length_ca, and definition.
  */
 function TRIANGLE(A,B,C) {
+    let _A = {}, _B = {}, _C = {};
     let perimeter = function() { return 0; };
     let area = function() { return 0; };
     let angle_a = function() { return 0; };
@@ -418,7 +421,9 @@ function TRIANGLE(A,B,C) {
     let length_ab = function(A,B) { return A.DISTANCE(B); };
     let length_bc = function(B,C) { return B.DISTANCE(C); };
     let length_ca = function(C,A) { return C.DISTANCE(A); };
-    let _A = {}, _B = {}, _C = {};
+    let definition = function() { 
+        return ('TRIANGLE(' + this.A.definition() + ',' + this.B.definition() + ',' + this.C.definition() + ')');
+    };
     try {
         if (arguments.length !== 3) throw "exactly three function arguments are required.";
         _A = POINT(A.X,A.Y);
@@ -427,11 +432,11 @@ function TRIANGLE(A,B,C) {
         if ((_A.X === _B.X) && (_A.Y === _B.Y)) throw "A and B appear to represent the same planar coordinates.";
         if ((_A.X === _C.X) && (_A.Y === _C.Y)) throw "A and C appear to represent the same planar coordinates.";
         if ((_C.X === _B.X) && (_C.Y === _B.Y)) throw "C and B appear to represent the same planar coordinates.";
-        return {A:_A, B:_B, C:_C, PERIMETER:perimeter, AREA:area, ANGLE_A:angle_a, ANGLE_B:angle_b, ANGLE_C:angle_c, LENGTH_AB:length_ab, LENGTH_BC:length_bc, LENGTH_CA:length_ca};
+        return {A:_A, B:_B, C:_C, PERIMETER:perimeter, AREA:area, ANGLE_A:angle_a, ANGLE_B:angle_b, ANGLE_C:angle_c, LENGTH_AB:length_ab, LENGTH_BC:length_bc, LENGTH_CA:length_ca, DEFINITION:definition};
     }
     catch(exception) {
         console.log("An exception to expected functioning occurred in TRIANGLE(A,B,C): " + exception);
-        return {A:POINT(0,0), B:POINT(1,1), C:POINT(0,1), PERIMETER:perimeter, AREA:area, ANGLE_A:angle_a, ANGLE_B:angle_b, ANGLE_C:angle_c, LENGTH_AB:length_ab, LENGTH_BC:length_bc, LENGTH_CA:length_ca};
+        return {A:POINT(0,0), B:POINT(1,1), C:POINT(0,1), PERIMETER:perimeter, AREA:area, ANGLE_A:angle_a, ANGLE_B:angle_b, ANGLE_C:angle_c, LENGTH_AB:length_ab, LENGTH_BC:length_bc, LENGTH_CA:length_ca, DEFINITION:definition};
     }
 }
 
