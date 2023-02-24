@@ -415,6 +415,9 @@ function TRIANGLE(A,B,C) {
     let angle_a = function() {};
     let angle_b = function() {};
     let angle_c = function() {};
+    let length_AB = function() {};
+    let length_BC = function() {};
+    let length_CA = function() {};
     let _A = {}, _B = {}, _C = {};
     try {
         if (arguments.length !== 3) throw "exactly three function arguments are required.";
@@ -425,7 +428,7 @@ function TRIANGLE(A,B,C) {
     }
     catch(exception) {
         console.log("An exception to expected functioning occurred in TRIANGLE(A,B,C): " + exception);
-        return {A:POINT(0,0) B:POINT(1,1), C:POINT(0,1), PERIMETER:perimeter, AREA:area, ANGLE_A:angle_a, ANGLE_B:angle_b, ANGLE_C:angle_c};
+        return {A:POINT(0,0) B:POINT(1,1), C:POINT(0,1), PERIMETER:perimeter, AREA:area, ANGLE_A:angle_a, ANGLE_B:angle_b, ANGLE_C:angle_c, LENGTH_AB:length_ab, LENGTH_BC:length_bc, LENGTH_CA:length_ca};
     }
 }
 
