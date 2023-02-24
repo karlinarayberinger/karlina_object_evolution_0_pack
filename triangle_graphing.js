@@ -422,7 +422,7 @@ function TRIANGLE(A,B,C) {
     let length_bc = function(B,C) { return B.DISTANCE(C); };
     let length_ca = function(C,A) { return C.DISTANCE(A); };
     let definition = function() { 
-        return ('TRIANGLE(' + this.A.definition() + ',' + this.B.definition() + ',' + this.C.definition() + ')');
+        return ('TRIANGLE( A := ' + this.A.DEFINITION() + ', B:= ' + this.B.DEFINITION() + ', C := ' + this.C.DEFINITION() + ')');
     };
     try {
         if (arguments.length !== 3) throw "exactly three function arguments are required.";
@@ -501,6 +501,9 @@ function generate_triangle_using_input_coordinates() {
         C = POINT(x_coordinate_value,y_coordinate_value);
         // Generate a TRIANGLE object using the POINT objects A, B, and C as the inputs to that "constructor" function.
         T = TRIANGLE(A,B,C);
+        // Print the attributes of TRIANGLE as text inside of the div element whose id is "output". (Append those paragraphs to the bottom of the content in the output div).
+        output_div = document.getElementById("output");
+        output_div.innerHTML += generate_paragraph_html_element(T.DEFINITION());
         //...    
     }
     catch(exception) {
