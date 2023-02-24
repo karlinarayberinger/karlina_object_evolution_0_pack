@@ -391,7 +391,7 @@ function POINT(X,Y) {
 }
 
 /**
- * Generate an Object type data value which represents the trianglular region of space whose corners
+ * Generate an Object type data value which represents the triangular region of space whose corners
  * are points represented by input POINT instances A, B, and C.
  * 
  * If an exception is thrown while the try-catch block is being executed, return a POINT whose coordinate values are both zero.
@@ -410,12 +410,17 @@ function POINT(X,Y) {
  * @return {Object} an object consisting of exactly two key-value pairs named X and Y.
  */
 function TRIANGLE(A,B,C) {
+    let perimeter = function() {};
+    let area = function() {};
+    let angle_a = function() {};
+    let angle_b = function() {};
+    let angle_c = function() {};
+    let _A = {}, _B = {}, _C = {};
     try {
-        let perimeter = function() {};
-        let area = function() {};
-        let angle_a = function() {};
-        let angle_b = function() {};
-        let angle_c = function() {};
+        if (arguments.length !== 3) throw "exactly three function arguments are required.";
+        _A = POINT(A.X,A.Y);
+        _B = POINT(B.X,B.Y);
+        _C = POINT(C.X,C.Y);
         //;;; num num
     }
     catch(exception) {
