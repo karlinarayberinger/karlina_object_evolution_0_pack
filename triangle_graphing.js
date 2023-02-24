@@ -2,7 +2,7 @@
  * file: triangle_graphing.js
  * type: JavaScript
  * author: karbytes
- * date: 22_FEBRUARY_2023
+ * date: 23_FEBRUARY_2023
  * license: PUBLIC_DOMAIN
  */
 
@@ -387,6 +387,34 @@ function POINT(X,Y) {
     catch(exception) {
         console.log("An exception to expected functioning occurred in POINT(X,Y): " + exception);
         return {X:0, Y:0, DISTANCE:distance, SLOPE:slope, DEFINITION:definition};
+    }
+}
+
+/**
+ * Generate an Object type data value which represents a position on a two-dimensional Cartesian grid.
+ * 
+ * If an exception is thrown while the try-catch block is being executed, return a POINT whose coordinate values are both zero.
+ * 
+ * A, B, and C are assumed to represent unique points in two-dimensional space. 
+ * 
+ * The area of the two-dimensional space whose boundaries are the shortest paths between points A, B, and C 
+ * is assumed to be a positive real number quantity.
+ * 
+ * @param {Object} A is assumed to be a value returned by the function POINT(X,Y).
+ * 
+ * @param {Object} B is assumed to be a value returned by the function POINT(X,Y).
+ * 
+ * @param {Object} C is assumed to be a value returned by the function POINT(X,Y).
+ * 
+ * @return {Object} an object consisting of exactly two key-value pairs named X and Y.
+ */
+function TRIANGLE(A,B,C) {
+    try {
+        //;;; num num
+    }
+    catch(exception) {
+        console.log("An exception to expected functioning occurred in TRIANGLE(A,B,C): " + exception);
+        return {A:POINT(0,0) B:POINT(1,1), C:POINT(0,1), PERIMETER:perimeter, AREA:area, ANGLE_A:angle_a, ANGLE_B:angle_b, ANGLE_C:angle_c};
     }
 }
 
