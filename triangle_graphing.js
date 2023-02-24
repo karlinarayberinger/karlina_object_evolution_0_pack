@@ -410,17 +410,17 @@ function POINT(X,Y) {
  * @return {Object} an object consisting of exactly two key-value pairs named X and Y.
  */
 function TRIANGLE(A,B,C) {
-    let perimeter = function() {};
-    let area = function() {};
-    let angle_a = function() {};
-    let angle_b = function() {};
-    let angle_c = function() {};
-    let length_AB = function() { return A.DISTANCE(B); };
-    let length_BC = function() { return B.DISTANCE(C); };
-    let length_CA = function() { return C.DISTANCE(A); };
+    let perimeter = function() { return 0; };
+    let area = function() { return 0; };
+    let angle_a = function() { return 0; };
+    let angle_b = function() { return 0; };
+    let angle_c = function() { return 0; };
+    let length_AB = function(A,B) { return A.DISTANCE(B); };
+    let length_BC = function(B,C) { return B.DISTANCE(C); };
+    let length_CA = function(C,A) { return C.DISTANCE(A); };
     let _A = {}, _B = {}, _C = {};
-    let triangle = {};
     try {
+        /*
         if (arguments.length !== 3) throw "exactly three function arguments are required.";
         _A = POINT(A.X,A.Y);
         _B = POINT(B.X,B.Y);
@@ -428,11 +428,14 @@ function TRIANGLE(A,B,C) {
         if ((_A.X === _B.X) && (_A.Y === _B.Y)) throw "A and B appear to represent the same planar coordinates.";
         if ((_A.X === _C.X) && (_A.Y === _C.Y)) throw "A and C appear to represent the same planar coordinates.";
         if ((_C.X === _B.X) && (_C.Y === _B.Y)) throw "C and B appear to represent the same planar coordinates.";
-        triangle = {A:_A, B:_B, C:_C, PERIMETER:perimeter, AREA:area, ANGLE_A:angle_a, ANGLE_B:angle_b, ANGLE_C:angle_c, LENGTH_AB:length_ab, LENGTH_BC:length_bc, LENGTH_CA:length_ca};
+        return {A:_A, B:_B, C:_C, PERIMETER:perimeter, AREA:area, ANGLE_A:angle_a, ANGLE_B:angle_b, ANGLE_C:angle_c, LENGTH_AB:length_ab, LENGTH_BC:length_bc, LENGTH_CA:length_ca};
+        */
     }
     catch(exception) {
         console.log("An exception to expected functioning occurred in TRIANGLE(A,B,C): " + exception);
+        /*
         return {A:POINT(0,0) B:POINT(1,1), C:POINT(0,1), PERIMETER:perimeter, AREA:area, ANGLE_A:angle_a, ANGLE_B:angle_b, ANGLE_C:angle_c, LENGTH_AB:length_ab, LENGTH_BC:length_bc, LENGTH_CA:length_ca};
+        */
     }
 }
 
