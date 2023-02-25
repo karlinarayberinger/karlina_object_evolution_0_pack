@@ -425,7 +425,7 @@ function TRIANGLE(A,B,C) {
     let length_bc = function(B,C) { return B.DISTANCE(C); };
     let length_ca = function(C,A) { return C.DISTANCE(A); };
     let definition = function() { 
-        return ('TRIANGLE( A := ' + this.A.DEFINITION() + ', B:= ' + this.B.DEFINITION() + ', C := ' + this.C.DEFINITION() + ')');
+        return ('TRIANGLE( A := ' + this.A.DEFINITION() + ', B:= ' + this.B.DEFINITION() + ', C := ' + this.C.DEFINITION() + ' )');
     };
     try {
         if (arguments.length !== 3) throw "exactly three function arguments are required.";
@@ -509,7 +509,7 @@ function generate_triangle_using_input_coordinates() {
         T = TRIANGLE(A,B,C);
         // Print the attributes of TRIANGLE as text inside of the div element whose id is "output". (Append those paragraphs to the bottom of the content in the output div).
         output_div = document.getElementById("output");
-        events_log.innerHTML += generate_paragraph_html_element(T.DEFINITION());
+        output_div.innerHTML = generate_paragraph_html_element("T.DEFINITION := " + T.DEFINITION() + ".");
         // Draw the horizontal axis of a Cartesian plane through the center of the square canvas.
         draw_horizontal_line_through_middle_of_canvas();
         // Draw the vertical axis of a Cartesian plane through the center of the square canvas.
