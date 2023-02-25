@@ -510,10 +510,6 @@ function generate_triangle_using_input_coordinates() {
         // Print the attributes of TRIANGLE as text inside of the div element whose id is "output". (Append those paragraphs to the bottom of the content in the output div).
         output_div = document.getElementById("output");
         output_div.innerHTML = generate_paragraph_html_element("T.DEFINITION := " + T.DEFINITION() + ".");
-        // Draw the horizontal axis of a Cartesian plane through the center of the square canvas.
-        draw_horizontal_line_through_middle_of_canvas();
-        // Draw the vertical axis of a Cartesian plane through the center of the square canvas.
-        draw_vertical_line_through_middle_of_canvas();
         //...    
     }
     catch(exception) {
