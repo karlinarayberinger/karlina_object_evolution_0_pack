@@ -2,7 +2,7 @@
  * file: triangle_graphing.js
  * type: JavaScript
  * author: karbytes
- * date: 24_FEBRUARY_2023
+ * date: 25_FEBRUARY_2023
  * license: PUBLIC_DOMAIN
  */
 
@@ -374,22 +374,22 @@ function is_point(input) {
  * @param {Number} Y is assumed to be an integer no smaller than -100 and no larger than 100.
  * 
  * @return {Object} an object consisting of exactly two key-value pairs named X and Y and
- *                  exactly three functions named distance, slope, and definition.
+ *                  exactly three functions named distance, slope, and description.
  */
 function POINT(X,Y) {
     let distance = function(P) { return compute_distance_between_two_planar_points(this, P) };
     let slope = function(P) { return get_slope_of_line_segment(this, P) };
-    let definition = function() { 
+    let description = function() { 
         return ('POINT(' + this.X + ',' + this.Y + ')');
     };
     try {
         if (arguments.length !== 2) throw "exactly two function arguments are required.";
-        if (is_point({X:X,Y:Y})) return {X:X, Y:Y, DISTANCE:distance, SLOPE:slope, DEFINITION:definition};
+        if (is_point({X:X,Y:Y})) return {X:X, Y:Y, DISTANCE:distance, SLOPE:slope, DESCRIPTION:description};
         else throw "The expression (is_point({X:X,Y:Y})) was evaluated to be false.";
     }
     catch(exception) {
         console.log("An exception to expected functioning occurred in POINT(X,Y): " + exception);
-        return {X:0, Y:0, DISTANCE:distance, SLOPE:slope, DEFINITION:definition};
+        return {X:0, Y:0, DISTANCE:distance, SLOPE:slope, DESCRIPTION:description};
     }
 }
 
@@ -402,7 +402,7 @@ function POINT(X,Y) {
  * A, B, and C are assumed to represent unique points in two-dimensional space. 
  * 
  * The area of the two-dimensional space whose boundaries are the shortest paths between points A, B, and C 
- * is assumed to be a positive real number quantity.
+ * is assumed to be a positive real number quantity. (Therefore, A, B, and C are required to not be located on the same line).
  * 
  * @param {Object} A is assumed to be a value returned by the function POINT(X,Y).
  * 
@@ -412,7 +412,7 @@ function POINT(X,Y) {
  * 
  * @return {Object} an object consisting of exactly three data attributes named A, B, and C 
  *                  and exactly nine function attributes named perimeter, area, angle_a, angle_b, angle,
- *                  length_ab, length_bc, length_ca, and definition.
+ *                  length_ab, length_bc, length_ca, and description.
  */
 function TRIANGLE(A,B,C) {
     let _A = {}, _B = {}, _C = {};
@@ -424,8 +424,8 @@ function TRIANGLE(A,B,C) {
     let length_ab = function(A,B) { return A.DISTANCE(B); };
     let length_bc = function(B,C) { return B.DISTANCE(C); };
     let length_ca = function(C,A) { return C.DISTANCE(A); };
-    let definition = function() { 
-        return ('TRIANGLE( A := ' + this.A.DEFINITION() + ', B:= ' + this.B.DEFINITION() + ', C := ' + this.C.DEFINITION() + ' )');
+    let description = function() { 
+        return ('TRIANGLE(A := ' + this.A.DESCRIPTION() + ', B:= ' + this.B.DESCRIPTION() + ', C := ' + this.C.DESCRIPTION() + ')');
     };
     try {
         if (arguments.length !== 3) throw "exactly three function arguments are required.";
@@ -435,11 +435,11 @@ function TRIANGLE(A,B,C) {
         if ((_A.X === _B.X) && (_A.Y === _B.Y)) throw "A and B appear to represent the same planar coordinates.";
         if ((_A.X === _C.X) && (_A.Y === _C.Y)) throw "A and C appear to represent the same planar coordinates.";
         if ((_C.X === _B.X) && (_C.Y === _B.Y)) throw "C and B appear to represent the same planar coordinates.";
-        return {A:_A, B:_B, C:_C, PERIMETER:perimeter, AREA:area, ANGLE_A:angle_a, ANGLE_B:angle_b, ANGLE_C:angle_c, LENGTH_AB:length_ab, LENGTH_BC:length_bc, LENGTH_CA:length_ca, DEFINITION:definition};
+        return {A:_A, B:_B, C:_C, PERIMETER:perimeter, AREA:area, ANGLE_A:angle_a, ANGLE_B:angle_b, ANGLE_C:angle_c, LENGTH_AB:length_ab, LENGTH_BC:length_bc, LENGTH_CA:length_ca, DESCRIPTION:description};
     }
     catch(exception) {
         console.log("An exception to expected functioning occurred in TRIANGLE(A,B,C): " + exception);
-        return {A:POINT(0,0), B:POINT(1,1), C:POINT(0,1), PERIMETER:perimeter, AREA:area, ANGLE_A:angle_a, ANGLE_B:angle_b, ANGLE_C:angle_c, LENGTH_AB:length_ab, LENGTH_BC:length_bc, LENGTH_CA:length_ca, DEFINITION:definition};
+        return {A:POINT(0,0), B:POINT(1,1), C:POINT(0,1), PERIMETER:perimeter, AREA:area, ANGLE_A:angle_a, ANGLE_B:angle_b, ANGLE_C:angle_c, LENGTH_AB:length_ab, LENGTH_BC:length_bc, LENGTH_CA:length_ca, DESCRIPTION:description};
     }
 }
 
@@ -509,7 +509,7 @@ function generate_triangle_using_input_coordinates() {
         T = TRIANGLE(A,B,C);
         // Print the attributes of TRIANGLE as text inside of the div element whose id is "output". (Append those paragraphs to the bottom of the content in the output div).
         output_div = document.getElementById("output");
-        output_div.innerHTML = generate_paragraph_html_element("T.DEFINITION := " + T.DEFINITION() + ".");
+        output_div.innerHTML = generate_paragraph_html_element("T.DESCRIPTION() := " + T.DESCRIPTION() + ".");
         //...    
     }
     catch(exception) {
