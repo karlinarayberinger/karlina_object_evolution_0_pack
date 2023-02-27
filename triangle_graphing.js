@@ -417,7 +417,14 @@ function POINT(X,Y) {
 function TRIANGLE(A,B,C) {
     let _A = {}, _B = {}, _C = {};
     let perimeter = function() { return (this.LENGTH_AB() + this.LENGTH_BC() + this.LENGTH_CA()); };
-    let area = function() { return 0; };
+    let area = function() { 
+        let s = 0.0, a = 0.0, b = 0.0, c = 0.0;
+        s = this.PERIMETER() / 2; // s is technically referred to as the semiperimter of the triangle which the caller TRIANGLE object of this function represents.
+        a = this.LENGTH_BC(); // a represents the length of the line segment whose endpoints are this.B and this.C.
+        b = this.LENGTH_CA(); // b represents the length of the line segment whose endpoints are this.C and this.A.
+        c = this.LENGTH_AB(); // c represents the length of the line segment whose endpoints are this.A and this.B.
+        return Math.sqrt(s * (s - a) * (s - b) * (s - c)); // Use Heron's Formula to compute the area of the triangle whose points are A, B, and C (and which are points of the caller TRIANGLE object of this function represents).
+    };
     let angle_a = function() { 
         let a = 0.0, b = 0.0, c = 0.0, angle_opposite_of_a = 0.0, angle_opposite_of_b = 0.0, angle_opposite_of_c = 0.0;
         a = this.LENGTH_BC(); // a represents the length of the line segment whose endpoints are this.B and this.C.
@@ -545,6 +552,7 @@ function generate_triangle_using_input_coordinates() {
         output_div.innerHTML += generate_paragraph_html_element("T.ANGLE_B() := " + T.ANGLE_B() + ". // in degrees (acute between AB and BC)");
         output_div.innerHTML += generate_paragraph_html_element("T.ANGLE_C() := " + T.ANGLE_C() + ". // in degrees (acute between BC and CA)");
         output_div.innerHTML += generate_paragraph_html_element("((T.ANGLE_A() + T.ANGLE_B()) + T.ANGLE_C()) = " + ((T.ANGLE_A() + T.ANGLE_B()) + T.ANGLE_C())  + ". // in degrees");
+        output_div.innerHTML += generate_paragraph_html_element("T.AREA() := " + T.AREA() + ". // in Cartesian grid unit square areas");
         //...    
     }
     catch(exception) {
