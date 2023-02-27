@@ -530,11 +530,11 @@ function generate_triangle_using_input_coordinates() {
         // Print the attributes of TRIANGLE as text inside of the div element whose id is "output". (Append those paragraphs to the bottom of the content in the output div).
         output_div = document.getElementById("output");
         output_div.innerHTML = generate_paragraph_html_element("T.DESCRIPTION() := " + T.DESCRIPTION() + ".");
-        output_div.innerHTML += generate_paragraph_html_element("T.LENGTH_AB() := " + T.LENGTH_AB() + ".");
-        output_div.innerHTML += generate_paragraph_html_element("T.LENGTH_BC() := " + T.LENGTH_BC() + ".");
-        output_div.innerHTML += generate_paragraph_html_element("T.LENGTH_CA() := " + T.LENGTH_CA() + ".");
-        output_div.innerHTML += generate_paragraph_html_element("T.PERIMETER() := " + T.PERIMETER() + ".");
-        output_div.innerHTML += generate_paragraph_html_element("T.ANGLE_A() := " + T.ANGLE_A() + ".");
+        output_div.innerHTML += generate_paragraph_html_element("T.LENGTH_AB() := " + T.LENGTH_AB() + ". // in Cartesian grid unit lengths");
+        output_div.innerHTML += generate_paragraph_html_element("T.LENGTH_BC() := " + T.LENGTH_BC() + ". // in Cartesian grid unit lengths");
+        output_div.innerHTML += generate_paragraph_html_element("T.LENGTH_CA() := " + T.LENGTH_CA() + ". // in Cartesian grid unit lengths");
+        output_div.innerHTML += generate_paragraph_html_element("T.PERIMETER() := " + T.PERIMETER() + ". // in Cartesian grid unit lengths");
+        output_div.innerHTML += generate_paragraph_html_element("T.ANGLE_A() := " + T.ANGLE_A() + ". // in degrees (CA to AB via A)");
         //...    
     }
     catch(exception) {
