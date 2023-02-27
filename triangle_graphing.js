@@ -393,17 +393,6 @@ function POINT(X,Y) {
     }
 }
 
-function get_interior_angle_ABC() {
-    let a = 0.0, b = 0.0, c = 0.0, angle_opposite_of_a = 0.0, angle_opposite_of_b = 0.0, angle_opposite_of_c = 0.0;
-    a = this.LENGTH_BC(); // a represents the length of the line segment whose endpoints are B and C.
-    b = this.LENGTH_CA(); // b represents the length of the line segment whose endpoints are C and A.
-    c = this.LENGTH_AB(); // c represents the length of the line segment whose endpoints are A and B.
-    angle_opposite_of_a = acos(((b * b) + (c * c) - (a * a)) / (2 * b * c)) * (180 / PI);
-    angle_opposite_of_b = acos(((a * a) + (c * c) - (b * b)) / (2 * a * c)) * (180 / PI);
-    angle_opposite_of_c = acos(((a * a) + (b * b) - (c * c)) / (2 * a * b)) * (180 / PI);
-    return angle_opposite_of_b;
-}
-
 /**
  * Generate an Object type data value which represents the triangular region of space whose corners
  * are points represented by input POINT instances A, B, and C.
@@ -429,7 +418,16 @@ function TRIANGLE(A,B,C) {
     let _A = {}, _B = {}, _C = {};
     let perimeter = function() { return (this.LENGTH_AB() + this.LENGTH_BC() + this.LENGTH_CA()); };
     let area = function() { return 0; };
-    let angle_a = function() { return 0; };
+    let angle_a = function() { 
+        let a = 0.0, b = 0.0, c = 0.0, angle_opposite_of_a = 0.0, angle_opposite_of_b = 0.0, angle_opposite_of_c = 0.0;
+        a = this.LENGTH_BC(); // a represents the length of the line segment whose endpoints are this.B and this.C.
+        b = this.LENGTH_CA(); // b represents the length of the line segment whose endpoints are this.C and this.A.
+        c = this.LENGTH_AB(); // c represents the length of the line segment whose endpoints are this.A and this.B.
+        angle_opposite_of_a = Math.cos(((b * b) + (c * c) - (a * a)) / (2 * b * c)) * (180 / Math.PI);
+        angle_opposite_of_b = Math.cos(((a * a) + (c * c) - (b * b)) / (2 * a * c)) * (180 / Math.PI);
+        angle_opposite_of_c = Math.cos(((a * a) + (b * b) - (c * c)) / (2 * a * b)) * (180 / Math.PI);
+        return angle_opposite_of_a;
+    };
     let angle_b = function() { 
         let a = 0.0, b = 0.0, c = 0.0, angle_opposite_of_a = 0.0, angle_opposite_of_b = 0.0, angle_opposite_of_c = 0.0;
         a = this.LENGTH_BC(); // a represents the length of the line segment whose endpoints are this.B and this.C.
@@ -534,6 +532,7 @@ function generate_triangle_using_input_coordinates() {
         output_div.innerHTML += generate_paragraph_html_element("T.LENGTH_BC() := " + T.LENGTH_BC() + ". // in Cartesian grid unit lengths");
         output_div.innerHTML += generate_paragraph_html_element("T.LENGTH_CA() := " + T.LENGTH_CA() + ". // in Cartesian grid unit lengths");
         output_div.innerHTML += generate_paragraph_html_element("T.PERIMETER() := " + T.PERIMETER() + ". // in Cartesian grid unit lengths");
+        output_div.innerHTML += generate_paragraph_html_element("T.ANGLE_A() := " + T.ANGLE_A() + ". // in degrees (acute between CA and AB)");
         output_div.innerHTML += generate_paragraph_html_element("T.ANGLE_B() := " + T.ANGLE_B() + ". // in degrees (acute between AB and BC)");
         //...    
     }
