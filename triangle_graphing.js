@@ -2,7 +2,7 @@
  * file: triangle_graphing.js
  * type: JavaScript
  * author: karbytes
- * date: 25_FEBRUARY_2023
+ * date: 26_FEBRUARY_2023
  * license: PUBLIC_DOMAIN
  */
 
@@ -416,14 +416,14 @@ function POINT(X,Y) {
  */
 function TRIANGLE(A,B,C) {
     let _A = {}, _B = {}, _C = {};
-    let perimeter = function() { return 0; };
+    let perimeter = function() { return (this.LENGTH_AB() + this.LENGTH_BC() + this.LENGTH_CA()); };
     let area = function() { return 0; };
     let angle_a = function() { return 0; };
     let angle_b = function() { return 0; };
     let angle_c = function() { return 0; };
-    let length_ab = function(A,B) { return A.DISTANCE(B); };
-    let length_bc = function(B,C) { return B.DISTANCE(C); };
-    let length_ca = function(C,A) { return C.DISTANCE(A); };
+    let length_ab = function(A,B) { return this.A.DISTANCE(this.B); };
+    let length_bc = function(B,C) { return this.B.DISTANCE(this.C); };
+    let length_ca = function(C,A) { return this.C.DISTANCE(this.A); };
     let description = function() { 
         return ('TRIANGLE(A := ' + this.A.DESCRIPTION() + ', B:= ' + this.B.DESCRIPTION() + ', C := ' + this.C.DESCRIPTION() + ')');
     };
