@@ -438,7 +438,16 @@ function TRIANGLE(A,B,C) {
         angle_opposite_of_c = Math.cos(((a * a) + (b * b) - (c * c)) / (2 * a * b)) * (180 / Math.PI);
         return angle_opposite_of_b;
     };
-    let angle_c = function() { return 0; };
+    let angle_c = function() { 
+        let a = 0.0, b = 0.0, c = 0.0, angle_opposite_of_a = 0.0, angle_opposite_of_b = 0.0, angle_opposite_of_c = 0.0;
+        a = this.LENGTH_BC(); // a represents the length of the line segment whose endpoints are this.B and this.C.
+        b = this.LENGTH_CA() // b represents the length of the line segment whose endpoints are this.C and this.A.
+        c = this.LENGTH_AB(); // c represents the length of the line segment whose endpoints are this.A and this.B.
+        angle_opposite_of_a = Math.cos(((b * b) + (c * c) - (a * a)) / (2 * b * c)) * (180 / Math.PI);
+        angle_opposite_of_b = Math.cos(((a * a) + (c * c) - (b * b)) / (2 * a * c)) * (180 / Math.PI);
+        angle_opposite_of_c = Math.cos(((a * a) + (b * b) - (c * c)) / (2 * a * b)) * (180 / Math.PI);
+        return angle_opposite_of_c;
+    };
     let length_ab = function(A,B) { return this.A.DISTANCE(this.B); };
     let length_bc = function(B,C) { return this.B.DISTANCE(this.C); };
     let length_ca = function(C,A) { return this.C.DISTANCE(this.A); };
@@ -534,6 +543,8 @@ function generate_triangle_using_input_coordinates() {
         output_div.innerHTML += generate_paragraph_html_element("T.PERIMETER() := " + T.PERIMETER() + ". // in Cartesian grid unit lengths");
         output_div.innerHTML += generate_paragraph_html_element("T.ANGLE_A() := " + T.ANGLE_A() + ". // in degrees (acute between CA and AB)");
         output_div.innerHTML += generate_paragraph_html_element("T.ANGLE_B() := " + T.ANGLE_B() + ". // in degrees (acute between AB and BC)");
+        output_div.innerHTML += generate_paragraph_html_element("T.ANGLE_C() := " + T.ANGLE_C() + ". // in degrees (acute between BC and CA)");
+        output_div.innerHTML += generate_paragraph_html_element("((T.ANGLE_A() + T.ANGLE_B()) + T.ANGLE_C()) = " + ((T.ANGLE_A() + T.ANGLE_B()) + T.ANGLE_C())  + ". // in degrees");
         //...    
     }
     catch(exception) {
