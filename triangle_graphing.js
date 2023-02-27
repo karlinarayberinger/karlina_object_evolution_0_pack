@@ -423,30 +423,30 @@ function TRIANGLE(A,B,C) {
         a = this.LENGTH_BC(); // a represents the length of the line segment whose endpoints are this.B and this.C.
         b = this.LENGTH_CA(); // b represents the length of the line segment whose endpoints are this.C and this.A.
         c = this.LENGTH_AB(); // c represents the length of the line segment whose endpoints are this.A and this.B.
-        angle_opposite_of_a = Math.cos(((b * b) + (c * c) - (a * a)) / (2 * b * c)) * (180 / Math.PI);
-        angle_opposite_of_b = Math.cos(((a * a) + (c * c) - (b * b)) / (2 * a * c)) * (180 / Math.PI);
-        angle_opposite_of_c = Math.cos(((a * a) + (b * b) - (c * c)) / (2 * a * b)) * (180 / Math.PI);
-        return angle_opposite_of_a;
+        angle_opposite_of_a = Math.acos(((b * b) + (c * c) - (a * a)) / (2 * b * c)) * (180 / Math.PI); // acos implies inverse of cosine (and Math.acos() returns a nonnegative number of radians)
+        angle_opposite_of_b = Math.acos(((a * a) + (c * c) - (b * b)) / (2 * a * c)) * (180 / Math.PI); // acos implies inverse of cosine (and Math.acos() returns a nonnegative number of radians)
+        angle_opposite_of_c = Math.acos(((a * a) + (b * b) - (c * c)) / (2 * a * b)) * (180 / Math.PI); // acos implies inverse of cosine (and Math.acos() returns a nonnegative number of radians)
+        return angle_opposite_of_a; // in degrees (instead of in radians)
     };
     let angle_b = function() { 
         let a = 0.0, b = 0.0, c = 0.0, angle_opposite_of_a = 0.0, angle_opposite_of_b = 0.0, angle_opposite_of_c = 0.0;
         a = this.LENGTH_BC(); // a represents the length of the line segment whose endpoints are this.B and this.C.
         b = this.LENGTH_CA() // b represents the length of the line segment whose endpoints are this.C and this.A.
         c = this.LENGTH_AB(); // c represents the length of the line segment whose endpoints are this.A and this.B.
-        angle_opposite_of_a = Math.cos(((b * b) + (c * c) - (a * a)) / (2 * b * c)) * (180 / Math.PI);
-        angle_opposite_of_b = Math.cos(((a * a) + (c * c) - (b * b)) / (2 * a * c)) * (180 / Math.PI);
-        angle_opposite_of_c = Math.cos(((a * a) + (b * b) - (c * c)) / (2 * a * b)) * (180 / Math.PI);
-        return angle_opposite_of_b;
+        angle_opposite_of_a = Math.acos(((b * b) + (c * c) - (a * a)) / (2 * b * c)) * (180 / Math.PI); // acos implies inverse of cosine (and Math.acos() returns a nonnegative number of radians)
+        angle_opposite_of_b = Math.acos(((a * a) + (c * c) - (b * b)) / (2 * a * c)) * (180 / Math.PI); // acos implies inverse of cosine (and Math.acos() returns a nonnegative number of radians)
+        angle_opposite_of_c = Math.acos(((a * a) + (b * b) - (c * c)) / (2 * a * b)) * (180 / Math.PI); // acos implies inverse of cosine (and Math.acos() returns a nonnegative number of radians)
+        return angle_opposite_of_b; // in degrees (instead of in radians)
     };
     let angle_c = function() { 
         let a = 0.0, b = 0.0, c = 0.0, angle_opposite_of_a = 0.0, angle_opposite_of_b = 0.0, angle_opposite_of_c = 0.0;
         a = this.LENGTH_BC(); // a represents the length of the line segment whose endpoints are this.B and this.C.
         b = this.LENGTH_CA() // b represents the length of the line segment whose endpoints are this.C and this.A.
         c = this.LENGTH_AB(); // c represents the length of the line segment whose endpoints are this.A and this.B.
-        angle_opposite_of_a = Math.cos(((b * b) + (c * c) - (a * a)) / (2 * b * c)) * (180 / Math.PI);
-        angle_opposite_of_b = Math.cos(((a * a) + (c * c) - (b * b)) / (2 * a * c)) * (180 / Math.PI);
-        angle_opposite_of_c = Math.cos(((a * a) + (b * b) - (c * c)) / (2 * a * b)) * (180 / Math.PI);
-        return angle_opposite_of_c;
+        angle_opposite_of_a = Math.acos(((b * b) + (c * c) - (a * a)) / (2 * b * c)) * (180 / Math.PI); // acos implies inverse of cosine (and Math.acos() returns a nonnegative number of radians)
+        angle_opposite_of_b = Math.acos(((a * a) + (c * c) - (b * b)) / (2 * a * c)) * (180 / Math.PI); // acos implies inverse of cosine (and Math.acos() returns a nonnegative number of radians)
+        angle_opposite_of_c = Math.acos(((a * a) + (b * b) - (c * c)) / (2 * a * b)) * (180 / Math.PI); // acos implies inverse of cosine (and Math.acos() returns a nonnegative number of radians)
+        return angle_opposite_of_c; // in degrees (instead of in radians)
     };
     let length_ab = function(A,B) { return this.A.DISTANCE(this.B); };
     let length_bc = function(B,C) { return this.B.DISTANCE(this.C); };
