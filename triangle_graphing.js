@@ -429,7 +429,16 @@ function TRIANGLE(A,B,C) {
     let _A = {}, _B = {}, _C = {};
     let perimeter = function() { return (this.LENGTH_AB() + this.LENGTH_BC() + this.LENGTH_CA()); };
     let area = function() { return 0; };
-    let angle_a = function() { return get_interior_angle_ABC(); };
+    let angle_a = function() { 
+        let a = 0.0, b = 0.0, c = 0.0, angle_opposite_of_a = 0.0, angle_opposite_of_b = 0.0, angle_opposite_of_c = 0.0;
+        a = this.B.DISTANCE(this.C);; // a represents the length of the line segment whose endpoints are B and C.
+        b = this.C.DISTANCE(this.A); // b represents the length of the line segment whose endpoints are C and A.
+        c = this.A.DISTANCE(this.B); // c represents the length of the line segment whose endpoints are A and B.
+        angle_opposite_of_a = Math.cos(((b * b) + (c * c) - (a * a)) / (2 * b * c)) * (180 / Math.PI);
+        angle_opposite_of_b = Math.cos(((a * a) + (c * c) - (b * b)) / (2 * a * c)) * (180 / Math.PI);
+        angle_opposite_of_c = Math.cos(((a * a) + (b * b) - (c * c)) / (2 * a * b)) * (180 / Math.PI);
+        return angle_opposite_of_b;
+    };
     let angle_b = function() { return 0; };
     let angle_c = function() { return 0; };
     let length_ab = function(A,B) { return this.A.DISTANCE(this.B); };
@@ -525,6 +534,7 @@ function generate_triangle_using_input_coordinates() {
         output_div.innerHTML += generate_paragraph_html_element("T.LENGTH_BC() := " + T.LENGTH_BC() + ".");
         output_div.innerHTML += generate_paragraph_html_element("T.LENGTH_CA() := " + T.LENGTH_CA() + ".");
         output_div.innerHTML += generate_paragraph_html_element("T.PERIMETER() := " + T.PERIMETER() + ".");
+        output_div.innerHTML += generate_paragraph_html_element("T.ANGLE_A() := " + T.ANGLE_A() + ".");
         //...    
     }
     catch(exception) {
