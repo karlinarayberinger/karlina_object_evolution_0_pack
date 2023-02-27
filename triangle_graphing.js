@@ -510,6 +510,10 @@ function generate_triangle_using_input_coordinates() {
         // Print the attributes of TRIANGLE as text inside of the div element whose id is "output". (Append those paragraphs to the bottom of the content in the output div).
         output_div = document.getElementById("output");
         output_div.innerHTML = generate_paragraph_html_element("T.DESCRIPTION() := " + T.DESCRIPTION() + ".");
+        output_div.innerHTML += generate_paragraph_html_element("T.LENGTH_AB() := " + T.LENGTH_AB() + ".");
+        output_div.innerHTML += generate_paragraph_html_element("T.LENGTH_BC() := " + T.LENGTH_BC() + ".");
+        output_div.innerHTML += generate_paragraph_html_element("T.LENGTH_BC() := " + T.LENGTH_BC() + ".");
+        output_div.innerHTML += generate_paragraph_html_element("T.PERIMETER() := " + T.PERIMETER() + ".");
         //...    
     }
     catch(exception) {
