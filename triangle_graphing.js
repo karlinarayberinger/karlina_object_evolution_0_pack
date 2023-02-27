@@ -431,9 +431,9 @@ function TRIANGLE(A,B,C) {
     let area = function() { return 0; };
     let angle_a = function() { 
         let a = 0.0, b = 0.0, c = 0.0, angle_opposite_of_a = 0.0, angle_opposite_of_b = 0.0, angle_opposite_of_c = 0.0;
-        a = this.B.DISTANCE(this.C);; // a represents the length of the line segment whose endpoints are B and C.
-        b = this.C.DISTANCE(this.A); // b represents the length of the line segment whose endpoints are C and A.
-        c = this.A.DISTANCE(this.B); // c represents the length of the line segment whose endpoints are A and B.
+        a = this.LENGTH_BC(); // a represents the length of the line segment whose endpoints are B and C.
+        b = this.LENGTH_CA() // b represents the length of the line segment whose endpoints are C and A.
+        c = this.LENGTH_AB(); // c represents the length of the line segment whose endpoints are A and B.
         angle_opposite_of_a = Math.cos(((b * b) + (c * c) - (a * a)) / (2 * b * c)) * (180 / Math.PI);
         angle_opposite_of_b = Math.cos(((a * a) + (c * c) - (b * b)) / (2 * a * c)) * (180 / Math.PI);
         angle_opposite_of_c = Math.cos(((a * a) + (b * b) - (c * c)) / (2 * a * b)) * (180 / Math.PI);
