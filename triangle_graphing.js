@@ -2,7 +2,7 @@
  * file: triangle_graphing.js
  * type: JavaScript
  * author: karbytes
- * date: 26_FEBRUARY_2023
+ * date: 27_FEBRUARY_2023
  * license: PUBLIC_DOMAIN
  */
 
@@ -167,6 +167,36 @@ function draw_vertical_line_through_middle_of_canvas() {
     }
     catch(exception) {
         console.log("An exception to expected functioning occurred in draw_vertical_line_through_middle_of_canvas(): " + exception);
+    }
+}
+
+/**
+ * Draw twenty line segments whose thickness is each one pixel and whose color is each light blue the left edge 
+ * of the HTML canvas whose id is "cartesian_plane" to the right edge of that canvas such that each of those line 
+ * segments is spaced 20% of the height of the canvas apart from its neighboring line segments.
+ */
+function draw_horizontal_grid_lines_through_cartesian_plane_canvas() {
+    //... #046ff0
+    try {
+        //...
+    }
+    catch(exception) {
+        console.log("An exception to expected functioning occurred in draw_vertical_grid_lines_through_cartesian_plane_canvas(): " + exception);
+    }
+}
+
+/**
+ * Draw twenty line segments whose thickness is each one pixel and whose color is each light blue the top edge 
+ * of the HTML canvas whose id is "cartesian_plane" to the bottom edge of that canvas such that each of those line 
+ * segments is spaced 20% of the width of the canvas apart from its neighboring line segments.
+ */
+function draw_vertical_grid_lines_through_cartesian_plane_canvas() {
+    //... #046ff0
+    try {
+        //...
+    }
+    catch(exception) {
+        console.log("An exception to expected functioning occurred in draw_vertical_grid_lines_through_cartesian_plane_canvas(): " + exception);
     }
 }
 
