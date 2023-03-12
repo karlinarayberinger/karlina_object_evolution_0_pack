@@ -525,7 +525,8 @@ function POINT_coordinate_to_HTML_canvas_coordinate(input_POINT, canvas_id) {
     let minimum_input_x_value = -100, maximum_input_x_value = 100;
     let minimum_input_y_value = -100, maximum_input_y_value = 100;
     let minimum_output_x_value = -100, maximum_output_x_value = 100;
-    let minimum_output_y_value = -100, maximum_output_y_value = 100;    
+    let minimum_output_y_value = -100, maximum_output_y_value = 100;  
+    let output_x_value = 0, output_y_value = 0;  
     let output_origin_x_value = 0, output_origin_y_value = 0;
     const CANVAS_SIDE_LENGTH = 750;
     try {
@@ -544,9 +545,12 @@ function POINT_coordinate_to_HTML_canvas_coordinate(input_POINT, canvas_id) {
         if (canvas_width !== canvas_height) throw "The canvas_width and canvas_height values are required to be identical values.";
         if (canvas_width !== CANVAS_SIDE_LENGTH) throw "The canvas side lengths are each required to be exactly 750 pixels.";
         output_origin_x_value = parseInt((canvas.width / 2));
-        output_origin_y_value = parseInt((canvas.height / 2));
-        output_canvas_coordinate_pair.push();
-        output_canvas_coordinate_pair.push();
+        output_origin_y_value = parseInt((canvas.height / 2)); 
+        if (input_POINT.X === 0) output_x_value = output_origin_x_value;
+        if (input_POINT.Y === 0) output_y_value = output_origin_y_value;
+        //...
+        output_canvas_coordinate_pair.push(output_x_value);
+        output_canvas_coordinate_pair.push(output_y_value);
         return output_canvas_coordinate_pair;
     }
     catch(exception) {
