@@ -564,10 +564,11 @@ function POINT_coordinate_to_HTML_canvas_coordinate(input_POINT, canvas_id) {
 
 /**
  */
-function plot_red_POINT_pixel_on_canvas(input_POINT, canvas_id), {
+function plot_red_POINT_pixel_on_canvas(input_POINT, canvas_id) {
     try {
+        /*
         canvas = document.getElementById("cartesian_plane");
-        context =  canvas.getContext("2d");
+        context = canvas.getContext("2d");*/
     }
     catch(exception) {
         console.log("An exception to normal functioning occurred during the runtime of POINT_coordinate_to_HTML_canvas_coordinate(input_POINT, canvas_id): " + exception);
@@ -653,7 +654,7 @@ function generate_triangle_using_input_coordinates() {
         output_div.innerHTML += generate_paragraph_html_element("T.AREA() := " + T.AREA() + ". // in Cartesian grid unit square areas");
         //...    
         console.log("testing POINT_coordinate_to_HTML_canvas_coordinate(input_POINT, canvas_id)...");
-        console.log('POINT_coordinate_to_HTML_canvas_coordinate(T.A, "this") := ' + POINT_coordinate_to_HTML_canvas_coordinate(T.A, "this") + '.');
+        console.log('POINT_coordinate_to_HTML_canvas_coordinate(POINT(0,0) "cartesian_plane") := ' + POINT_coordinate_to_HTML_canvas_coordinate(POINT(0,0), "cartesian_plane") + '.');
     }
     catch(exception) {
         console.log("An exception to normal functioning occurred during the runtime of generate_triangle_using_input_coordinates(): " + exception);
