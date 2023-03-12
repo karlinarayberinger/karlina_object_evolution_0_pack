@@ -548,6 +548,8 @@ function POINT_coordinate_to_HTML_canvas_coordinate(input_POINT, canvas_id) {
         output_origin_y_value = parseInt((canvas.height / 2)); 
         if (input_POINT.X === 0) output_x_value = output_origin_x_value;
         if (input_POINT.Y === 0) output_y_value = output_origin_y_value;
+        if (input_POINT.X > 0) output_x_value = (output_origin_x_value + input_POINT.X);
+        if (input_POINT.Y > 0) output_y_value = (output_origin_y_value + input_POINT.Y);
         //...
         output_canvas_coordinate_pair.push(output_x_value);
         output_canvas_coordinate_pair.push(output_y_value);
