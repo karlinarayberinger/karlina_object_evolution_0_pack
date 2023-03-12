@@ -522,15 +522,16 @@ function POINT_coordinate_to_HTML_canvas_coordinate(input_POINT, canvas_id) {
     let the_canvas, canvas_width = 0, canvas_height = 0, canvas_midpoint = 0, output_scalar_value = 0;
     try {
         if (arguments.length !== 2) throw "exactly two (2) function inputs value are required.";
-        if (typeof arguments[0].X !== "number") throw "X is required to be a Number type value.";
-        if (typeof arguments[0].Y !== "number") throw "Y is required to be a Number type value.";
+        if (typeof arguments[0].X !== "number") throw "input_POINT.X is required to be a Number type value.";
+        if (typeof arguments[0].Y !== "number") throw "input_POINT.Y is required to be a Number type value.";
         if (typeof arguments[1] !== "string") throw "canvas_id is required to be a String type value.";
-        if (Math.floor(scalar_value) !== scalar_value) throw "scalar_value is required to be a whole number (i.e. integer) value.";
+        if (Math.floor(input_POINT.X) !== input_POINT.X) throw "input_POINT.X is required to be a whole number (i.e. integer) value.";
+        if (Math.floor(input_POINT.Y) !== input_POINT.Y) throw "input_POINT.Y is required to be a whole number (i.e. integer) value.";
         if (canvas_id.length < 1) throw "canvas_id is required to be a sequence of one (1) or more text characters.";
         the_canvas = document.getElementById(canvas_id);
         canvas_width = the_canvas.width;
         canvas_height = the_canvas.height;
-
+        console.log("made it this far");
         //...
         return output_scalar_value;
     }
