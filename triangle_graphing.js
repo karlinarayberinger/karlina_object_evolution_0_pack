@@ -572,7 +572,7 @@ function plot_red_POINT_pixel_on_canvas(input_POINT) {
         context = canvas.getContext("2d");
         output_canvas_coordinate_pair = POINT_coordinate_to_HTML_canvas_coordinate(input_POINT, "cartesian_plane");
         context.beginPath();
-        context.rect(input_POINT.X, input_POINT.Y, 1, 1); // 1 pixel has a width of 1 and a height of 1
+        context.rect(output_canvas_coordinate_pair[0], output_canvas_coordinate_pair[1], 1, 1); // 1 pixel has a width of 1 and a height of 1
         context.strokeStyle = "#ff0000"; // HTML color code for red.
         context.stroke();
     }
@@ -660,9 +660,9 @@ function generate_triangle_using_input_coordinates() {
         output_div.innerHTML += generate_paragraph_html_element("T.AREA() := " + T.AREA() + ". // in Cartesian grid unit square areas");
         //...    
         console.log("testing POINT_coordinate_to_HTML_canvas_coordinate(input_POINT, canvas_id)...");
-        console.log('POINT_coordinate_to_HTML_canvas_coordinate(POINT(0,0) "cartesian_plane") := ' + POINT_coordinate_to_HTML_canvas_coordinate(POINT(0,0), "cartesian_plane") + '.');
+        console.log('POINT_coordinate_to_HTML_canvas_coordinate(POINT(20,20) "cartesian_plane") := ' + POINT_coordinate_to_HTML_canvas_coordinate(POINT(20,20), "cartesian_plane") + '.');
         console.log("testing plot_red_POINT_pixel_on_canvas(input_POINT)...");
-        plot_red_POINT_pixel_on_canvas(POINT(0,0));
+        plot_red_POINT_pixel_on_canvas(POINT(20,20));
     }
     catch(exception) {
         console.log("An exception to normal functioning occurred during the runtime of generate_triangle_using_input_coordinates(): " + exception);
