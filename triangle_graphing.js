@@ -562,7 +562,12 @@ function POINT_coordinate_to_HTML_canvas_coordinate(input_POINT, canvas_id) {
     }
 }
 
-/**
+/** 
+ * Plot a red pixel-sized dot on the canvas whose identifier (id) is "cartesian_plane" on the web page named triangle_graphing.html
+ * such that the horizontal position of the red pixel visually depicts the x-value coordinate value represented by input_POINT
+ * and such that the vertical position of the red pixel visually depicts the y-value cordinate value represented by input_POINT
+ * 
+ * @param {Object} input_POINT is assumed to be an object whose abstracted properties are identical to objects returned by the function named POINT(X,Y).
  */
 function plot_red_POINT_pixel_on_canvas(input_POINT) {
     let canvas, context;
