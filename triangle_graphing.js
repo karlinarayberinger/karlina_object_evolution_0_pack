@@ -541,6 +541,7 @@ function POINT_coordinate_to_HTML_canvas_coordinate(input_POINT, canvas_id) {
         canvas_width = the_canvas.width;
         canvas_height = the_canvas.height;
         if (canvas_width !== canvas_height) throw "The canvas_width and canvas_height values are required to be identical values.";
+        if (canvas_width !== CANVAS_SIDE_LENGTH) throw "The canvas side lengths are each required to be exactly 750 pixels.";
         output_canvas_coordinate_pair.push();
         output_canvas_coordinate_pair.push();
         return output_canvas_coordinate_pair;
