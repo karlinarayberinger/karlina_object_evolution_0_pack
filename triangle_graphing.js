@@ -564,11 +564,17 @@ function POINT_coordinate_to_HTML_canvas_coordinate(input_POINT, canvas_id) {
 
 /**
  */
-function plot_red_POINT_pixel_on_canvas(input_POINT, canvas_id) {
+function plot_red_POINT_pixel_on_canvas(input_POINT) {
+    let canvas, context;
+    let output_canvas_coordinate_pair = [];
     try {
-        /*
         canvas = document.getElementById("cartesian_plane");
-        context = canvas.getContext("2d");*/
+        context = canvas.getContext("2d");
+        output_canvas_coordinate_pair = POINT_coordinate_to_HTML_canvas_coordinate(input_POINT, "cartesian_plane");
+        context.beginPath();
+        context.rect(pixel.x, pixel.y, 1, 1); // 1 pixel has a width of 1 and a height of 1
+        context.strokeStyle = "#ff0000"; // HTML color code for red.
+        context.stroke();
     }
     catch(exception) {
         console.log("An exception to normal functioning occurred during the runtime of POINT_coordinate_to_HTML_canvas_coordinate(input_POINT, canvas_id): " + exception);
@@ -655,6 +661,8 @@ function generate_triangle_using_input_coordinates() {
         //...    
         console.log("testing POINT_coordinate_to_HTML_canvas_coordinate(input_POINT, canvas_id)...");
         console.log('POINT_coordinate_to_HTML_canvas_coordinate(POINT(0,0) "cartesian_plane") := ' + POINT_coordinate_to_HTML_canvas_coordinate(POINT(0,0), "cartesian_plane") + '.');
+        console.log("testing plot_red_POINT_pixel_on_canvas(input_POINT)...");
+        plot_red_POINT_pixel_on_canvas(POINT(0,0));
     }
     catch(exception) {
         console.log("An exception to normal functioning occurred during the runtime of generate_triangle_using_input_coordinates(): " + exception);
