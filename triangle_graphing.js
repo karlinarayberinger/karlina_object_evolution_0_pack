@@ -512,6 +512,8 @@ function TRIANGLE(A,B,C) {
  * such that the POINT object can be graphically depicted as a two-dimensional Cartesian grid "spaceless" location precisely located on that grid
  * (displayed inside of an HTML5 canvas element on the corresponding web page graphical user interface).
  * 
+ * Assume that the relevant canvas element is square shaped and has a side length of exactly 750 pixels.
+ * 
  * @param {Object} input_POINT is assumed to be an object whose abstracted properties are identical to objects returned by the function named POINT(X,Y).
  * 
  * @param {String} canvas_id is assumed to be a sequence of text characters which represents the identifier (id) of the relevant HTML canvas element.
@@ -524,6 +526,7 @@ function POINT_coordinate_to_HTML_canvas_coordinate(input_POINT, canvas_id) {
     let minimum_input_y_value = -100, maximum_input_y_value = 100;
     let minimum_output_x_value = -100, maximum_output_x_value = 100;
     let minimum_output_y_value = -100, maximum_output_y_value = 100;    
+    const CANVAS_SIDE_LENGTH = 750;
     try {
         if (arguments.length !== 2) throw "exactly two (2) function inputs value are required.";
         if (typeof arguments[0].X !== "number") throw "input_POINT.X is required to be a Number type value.";
@@ -531,12 +534,13 @@ function POINT_coordinate_to_HTML_canvas_coordinate(input_POINT, canvas_id) {
         if (typeof arguments[1] !== "string") throw "canvas_id is required to be a String type value.";
         if (Math.floor(input_POINT.X) !== input_POINT.X) throw "input_POINT.X is required to be a whole number (i.e. integer) value.";
         if (Math.floor(input_POINT.Y) !== input_POINT.Y) throw "input_POINT.Y is required to be a whole number (i.e. integer) value.";
-        if ((input_POINT.X < minimum_input_x_value) || (input_POINT.X > maximum_input_x_value)) throw "input_POINT.X must be an integer value inside the set [100,100].";
-        if ((input_POINT.Y < minimum_input_y_value) || (input_POINT.Y > maximum_input_y_value)) throw "input_POINT.Y must be an integer value inside the set [100,100].";
+        if ((input_POINT.X < minimum_input_x_value) || (input_POINT.X > maximum_input_x_value)) throw "input_POINT.X must be an integer value inside the set [-100,100].";
+        if ((input_POINT.Y < minimum_input_y_value) || (input_POINT.Y > maximum_input_y_value)) throw "input_POINT.Y must be an integer value inside the set [-100,100].";
         if (canvas_id.length < 1) throw "canvas_id is required to be a sequence of one (1) or more text characters.";
         the_canvas = document.getElementById(canvas_id);
         canvas_width = the_canvas.width;
         canvas_height = the_canvas.height;
+        if (canvas_width !== canvas_height) throw "The canvas_width and canvas_height values are required to be identical values.";
         output_canvas_coordinate_pair.push();
         output_canvas_coordinate_pair.push();
         return output_canvas_coordinate_pair;
