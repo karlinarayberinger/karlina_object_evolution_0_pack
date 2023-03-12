@@ -514,14 +514,19 @@ function TRIANGLE(A,B,C) {
  * 
  * @param {Number} scalar_value is assumed to be an integer value which represents either the x-coordinate value or else the y-coordinate value of a two-dimensional point on a Cartesian plane.
  * 
+ * @param {Number} canvas_id is assumed to be a sequence of text characters which represents the identifier (id) of the relevant HTML canvas element.
+ * 
  * @return {Number} a nonnegative integer assumed to be no larger than the width and no larger than the height of the relevant HTML canvas element.
  */
-function POINT_coordinate_to_HTML_canvas_coordinate(scalar_value) {
+function POINT_coordinate_to_HTML_canvas_coordinate(scalar_value, canvas_id) {
     try {
+        if (arguments.length !== 2) throw "exactly two (2) function inputs value are required.";
+        if (typeof arguments[0] !== "number") throw "scalar_value is required to be a Number type value.";
+        if (Math.floor(scalar_value) !== scalar_value) throw "scalar_value is required to be a whole number (i.e. integer) value.";
 
     }
     catch(error) {
-        console.log("An exception to normal functioning occurred during the runtime of POINT_coordinate_to_HTML_canvas_coordinate()scalar_value: " + exception);
+        console.log("An exception to normal functioning occurred during the runtime of POINT_coordinate_to_HTML_canvas_coordinate(scalar_value, canvas_id): " + exception);
         return 0;
     }
 }
