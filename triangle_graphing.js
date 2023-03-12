@@ -522,8 +522,9 @@ function POINT_coordinate_to_HTML_canvas_coordinate(scalar_value, canvas_id) {
     try {
         if (arguments.length !== 2) throw "exactly two (2) function inputs value are required.";
         if (typeof arguments[0] !== "number") throw "scalar_value is required to be a Number type value.";
+        if (typeof arguments[1] !== "string") throw "canvas_id is required to be a String type value.";
         if (Math.floor(scalar_value) !== scalar_value) throw "scalar_value is required to be a whole number (i.e. integer) value.";
-
+        if (canvas_id.length < 1) throw "canvas_id is required to be a sequence of one (1) or more text characters.";
     }
     catch(error) {
         console.log("An exception to normal functioning occurred during the runtime of POINT_coordinate_to_HTML_canvas_coordinate(scalar_value, canvas_id): " + exception);
