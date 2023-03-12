@@ -508,30 +508,34 @@ function TRIANGLE(A,B,C) {
 }
 
 /**
- * Translate a POINT coordiante value to its corresponding HTML canvas value (which is a nonnegative integer number of pixels)
- * such that the POINT object can be graphically depicted as a two-dimensional Cartesian plane point displayed inside of an
- * HTML5 canvas element on a web page.
+ * Translate a POINT object's coordinate pair to its corresponding HTML canvas coordinates (which are each a nonnegative integer number of pixels)
+ * such that the POINT object can be graphically depicted as a two-dimensional Cartesian grid "spaceless" location precisely located on that grid
+ * (displayed inside of an HTML5 canvas element on the corresponding web page graphical user interface).
  * 
- * @param {Number} scalar_value is assumed to be an integer value which represents either the x-coordinate value or else the y-coordinate value of a two-dimensional point on a Cartesian plane.
+ * @param {Object} input_POINT is assumed to be an object whose abstracted properties are identical to objects returned by the function named POINT(X,Y).
  * 
- * @param {Number} canvas_id is assumed to be a sequence of text characters which represents the identifier (id) of the relevant HTML canvas element.
+ * @param {String} canvas_id is assumed to be a sequence of text characters which represents the identifier (id) of the relevant HTML canvas element.
  * 
- * @return {Number} a nonnegative integer assumed to be no larger than the width and no larger than the height of the relevant HTML canvas element.
+ * @return {Object} an array whose elements are exactly two nonnegative integers.
  */
-function POINT_coordinate_to_HTML_canvas_coordinate(scalar_value, canvas_id) {
-    let the_canvas, output_scalar_value = 0;
+function POINT_coordinate_to_HTML_canvas_coordinate(input_POINT, canvas_id) {
+    let the_canvas, canvas_width = 0, canvas_height = 0, canvas_midpoint = 0, output_scalar_value = 0;
     try {
         if (arguments.length !== 2) throw "exactly two (2) function inputs value are required.";
-        if (typeof arguments[0] !== "number") throw "scalar_value is required to be a Number type value.";
+        if (typeof arguments[0].X !== "number") throw "X is required to be a Number type value.";
+        if (typeof arguments[0].Y !== "number") throw "Y is required to be a Number type value.";
         if (typeof arguments[1] !== "string") throw "canvas_id is required to be a String type value.";
         if (Math.floor(scalar_value) !== scalar_value) throw "scalar_value is required to be a whole number (i.e. integer) value.";
         if (canvas_id.length < 1) throw "canvas_id is required to be a sequence of one (1) or more text characters.";
         the_canvas = document.getElementById(canvas_id);
+        canvas_width = the_canvas.width;
+        canvas_height = the_canvas.height;
+
         //...
         return output_scalar_value;
     }
     catch(error) {
-        console.log("An exception to normal functioning occurred during the runtime of POINT_coordinate_to_HTML_canvas_coordinate(scalar_value, canvas_id): " + exception);
+        console.log("An exception to normal functioning occurred during the runtime of POINT_coordinate_to_HTML_canvas_coordinate(input_POINT, canvas_id): " + exception);
         return 0;
     }
 }
