@@ -508,13 +508,20 @@ function TRIANGLE(A,B,C) {
 }
 
 /**
+ * Translate a POINT coordiante value to its corresponding HTML canvas value (which is a nonnegative integer number of pixels)
+ * such that the POINT object can be graphically depicted as a two-dimensional Cartesian plane point displayed inside of an
+ * HTML5 canvas element on a web page.
+ * 
+ * @param {Number} scalar_value is assumed to be an integer value which represents either the x-coordinate value or else the y-coordinate value of a two-dimensional point on a Cartesian plane.
+ * 
+ * @return {Number} a nonnegative integer assumed to be no larger than the width and no larger than the height of the relevant HTML canvas element.
  */
-function POINT_coordinate_to_HTML_canvas_coordinate() {
+function POINT_coordinate_to_HTML_canvas_coordinate(scalar_value) {
     try {
 
     }
     catch(error) {
-        console.log("An exception to normal functioning occurred during the runtime of POINT_coordinate_to_HTML_canvas_coordinate(): " + exception);
+        console.log("An exception to normal functioning occurred during the runtime of POINT_coordinate_to_HTML_canvas_coordinate()scalar_value: " + exception);
         return 0;
     }
 }
