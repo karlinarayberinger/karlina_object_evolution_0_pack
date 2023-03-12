@@ -563,6 +563,19 @@ function POINT_coordinate_to_HTML_canvas_coordinate(input_POINT, canvas_id) {
 }
 
 /**
+ */
+function plot_red_POINT_pixel_on_canvas(input_POINT, canvas_id), {
+    try {
+        canvas = document.getElementById("cartesian_plane");
+        context =  canvas.getContext("2d");
+    }
+    catch(exception) {
+        console.log("An exception to normal functioning occurred during the runtime of POINT_coordinate_to_HTML_canvas_coordinate(input_POINT, canvas_id): " + exception);
+        return 0;
+    }
+}
+
+/**
  * Respond to the event of the GENERATE button being clicked.
  */
 function generate_triangle_using_input_coordinates() {
