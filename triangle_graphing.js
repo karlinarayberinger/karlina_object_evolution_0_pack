@@ -544,8 +544,8 @@ function POINT_coordinate_to_HTML_canvas_coordinate(input_POINT, canvas_id) {
         canvas_height = the_canvas.height;
         if (canvas_width !== canvas_height) throw "The canvas_width and canvas_height values are required to be identical values.";
         if (canvas_width !== CANVAS_SIDE_LENGTH) throw "The canvas side lengths are each required to be exactly 750 pixels.";
-        output_origin_x_value = parseInt((canvas.width / 2));
-        output_origin_y_value = parseInt((canvas.height / 2)); 
+        output_origin_x_value = parseInt((the_canvas.width / 2));
+        output_origin_y_value = parseInt((the_canvas.height / 2)); 
         if (input_POINT.X === 0) output_x_value = output_origin_x_value;
         if (input_POINT.Y === 0) output_y_value = output_origin_y_value;
         if (input_POINT.X > 0) output_x_value = (output_origin_x_value + input_POINT.X);
@@ -572,7 +572,7 @@ function plot_red_POINT_pixel_on_canvas(input_POINT) {
         context = canvas.getContext("2d");
         output_canvas_coordinate_pair = POINT_coordinate_to_HTML_canvas_coordinate(input_POINT, "cartesian_plane");
         context.beginPath();
-        context.rect(pixel.x, pixel.y, 1, 1); // 1 pixel has a width of 1 and a height of 1
+        context.rect(input_POINT.X, input_POINT.Y, 1, 1); // 1 pixel has a width of 1 and a height of 1
         context.strokeStyle = "#ff0000"; // HTML color code for red.
         context.stroke();
     }
