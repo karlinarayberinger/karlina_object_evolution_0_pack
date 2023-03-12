@@ -519,8 +519,11 @@ function TRIANGLE(A,B,C) {
  * @return {Object} an array whose elements are exactly two nonnegative integers.
  */
 function POINT_coordinate_to_HTML_canvas_coordinate(input_POINT, canvas_id) {
-    let the_canvas, canvas_width = 0, canvas_height = 0, output_canvas_coordinate_pair = [], minimum_output_x_value = -100, maximum_output_y_value = 100;
-    try {
+    let the_canvas, canvas_width = 0, canvas_height = 0, output_canvas_coordinate_pair = [];
+    let minimum_input_x_value = -100, maximum_input_x_value = 100;
+    let minimum_input_y_value = -100, maximum_input_y_value = 100;
+    let minimum_output_x_value = -100, maximum_output_x_value = 100;
+    let minimum_output_y_value = -100, maximum_output_y_value = 100;    try {
         if (arguments.length !== 2) throw "exactly two (2) function inputs value are required.";
         if (typeof arguments[0].X !== "number") throw "input_POINT.X is required to be a Number type value.";
         if (typeof arguments[0].Y !== "number") throw "input_POINT.Y is required to be a Number type value.";
