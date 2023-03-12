@@ -2,7 +2,7 @@
  * file: triangle_graphing.js
  * type: JavaScript
  * author: karbytes
- * date: 27_FEBRUARY_2023
+ * date: 12_MARCH_2023
  * license: PUBLIC_DOMAIN
  */
 
@@ -508,6 +508,18 @@ function TRIANGLE(A,B,C) {
 }
 
 /**
+ */
+function POINT_coordinate_to_HTML_canvas_coordinate() {
+    try {
+
+    }
+    catch(error) {
+        console.log("An exception to normal functioning occurred during the runtime of POINT_coordinate_to_HTML_canvas_coordinate(): " + exception);
+        return 0;
+    }
+}
+
+/**
  * Respond to the event of the GENERATE button being clicked.
  */
 function generate_triangle_using_input_coordinates() {
@@ -578,9 +590,9 @@ function generate_triangle_using_input_coordinates() {
         output_div.innerHTML += generate_paragraph_html_element("T.LENGTH_BC() := " + T.LENGTH_BC() + ". // in Cartesian grid unit lengths");
         output_div.innerHTML += generate_paragraph_html_element("T.LENGTH_CA() := " + T.LENGTH_CA() + ". // in Cartesian grid unit lengths");
         output_div.innerHTML += generate_paragraph_html_element("T.PERIMETER() := " + T.PERIMETER() + ". // in Cartesian grid unit lengths");
-        output_div.innerHTML += generate_paragraph_html_element("T.ANGLE_A() := " + T.ANGLE_A() + ". // in degrees (acute between CA and AB)");
-        output_div.innerHTML += generate_paragraph_html_element("T.ANGLE_B() := " + T.ANGLE_B() + ". // in degrees (acute between AB and BC)");
-        output_div.innerHTML += generate_paragraph_html_element("T.ANGLE_C() := " + T.ANGLE_C() + ". // in degrees (acute between BC and CA)");
+        output_div.innerHTML += generate_paragraph_html_element("T.ANGLE_A() := " + T.ANGLE_A() + ". // in degrees (non-obtuse between CA and AB)");
+        output_div.innerHTML += generate_paragraph_html_element("T.ANGLE_B() := " + T.ANGLE_B() + ". // in degrees (non-obtuse between AB and BC)");
+        output_div.innerHTML += generate_paragraph_html_element("T.ANGLE_C() := " + T.ANGLE_C() + ". // in degrees (non-obtuse between BC and CA)");
         output_div.innerHTML += generate_paragraph_html_element("((T.ANGLE_A() + T.ANGLE_B()) + T.ANGLE_C()) = " + ((T.ANGLE_A() + T.ANGLE_B()) + T.ANGLE_C())  + ". // in degrees");
         output_div.innerHTML += generate_paragraph_html_element("T.AREA() := " + T.AREA() + ". // in Cartesian grid unit square areas");
         //...    
