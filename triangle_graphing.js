@@ -523,13 +523,16 @@ function POINT_coordinate_to_HTML_canvas_coordinate(input_POINT, canvas_id) {
     let minimum_input_x_value = -100, maximum_input_x_value = 100;
     let minimum_input_y_value = -100, maximum_input_y_value = 100;
     let minimum_output_x_value = -100, maximum_output_x_value = 100;
-    let minimum_output_y_value = -100, maximum_output_y_value = 100;    try {
+    let minimum_output_y_value = -100, maximum_output_y_value = 100;    
+    try {
         if (arguments.length !== 2) throw "exactly two (2) function inputs value are required.";
         if (typeof arguments[0].X !== "number") throw "input_POINT.X is required to be a Number type value.";
         if (typeof arguments[0].Y !== "number") throw "input_POINT.Y is required to be a Number type value.";
         if (typeof arguments[1] !== "string") throw "canvas_id is required to be a String type value.";
         if (Math.floor(input_POINT.X) !== input_POINT.X) throw "input_POINT.X is required to be a whole number (i.e. integer) value.";
         if (Math.floor(input_POINT.Y) !== input_POINT.Y) throw "input_POINT.Y is required to be a whole number (i.e. integer) value.";
+        if ((input_POINT.X < minimum_input_x_value) || (input_POINT.X > maximum_input_x_value)) throw "input_POINT.X must be an integer value inside the set [100,100].";
+        if ((input_POINT.Y < minimum_input_y_value) || (input_POINT.Y > maximum_input_y_value)) throw "input_POINT.Y must be an integer value inside the set [100,100].";
         if (canvas_id.length < 1) throw "canvas_id is required to be a sequence of one (1) or more text characters.";
         the_canvas = document.getElementById(canvas_id);
         canvas_width = the_canvas.width;
