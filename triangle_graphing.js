@@ -519,7 +519,7 @@ function TRIANGLE(A,B,C) {
  * @return {Object} an array whose elements are exactly two nonnegative integers.
  */
 function POINT_coordinate_to_HTML_canvas_coordinate(input_POINT, canvas_id) {
-    let the_canvas, canvas_width = 0, canvas_height = 0, canvas_midpoint = 0, output_scalar_value = 0;
+    let the_canvas, canvas_width = 0, canvas_height = 0, output_canvas_coordinate_pair = [];
     try {
         if (arguments.length !== 2) throw "exactly two (2) function inputs value are required.";
         if (typeof arguments[0].X !== "number") throw "input_POINT.X is required to be a Number type value.";
@@ -533,9 +533,9 @@ function POINT_coordinate_to_HTML_canvas_coordinate(input_POINT, canvas_id) {
         canvas_height = the_canvas.height;
         console.log("made it this far");
         //...
-        return output_scalar_value;
+        return output_canvas_coordinate_pair;
     }
-    catch(error) {
+    catch(exception) {
         console.log("An exception to normal functioning occurred during the runtime of POINT_coordinate_to_HTML_canvas_coordinate(input_POINT, canvas_id): " + exception);
         return 0;
     }
