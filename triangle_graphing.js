@@ -581,7 +581,7 @@ function draw_red_line_segment_on_canvas(input_POINT_0, input_POINT_1) {
         canvas = document.getElementById("cartesian_plane");
         context = canvas.getContext("2d");
         context.strokeStyle = "#ff0000"; 
-        context.lineWidth = 1;
+        context.lineWidth = 10;
         context.beginPath();
         context.moveTo(ip0x, ip0y); 
         context.lineTo(ip1x, ip1y); 
@@ -678,10 +678,16 @@ function generate_triangle_using_input_coordinates() {
         plot_red_POINT_pixel_on_canvas(T.A);
         plot_red_POINT_pixel_on_canvas(T.B);
         plot_red_POINT_pixel_on_canvas(T.C);
+        //...
+        console.log("testing draw_red_line_segment_on_canvas(input_POINT_0, input_POINT_1)...");
+        console.log("testing draw_red_line_segment_on_canvas(POINT(0,0), POINT(100,100))...");
+        draw_red_line_segment_on_canvas(POINT(0,0), POINT(100,100));
         // Draw red line segments which are each one pixel thick and whose endpoints are each of the points in the TRIANGLE object.
+        /*
         draw_red_line_segment_on_canvas(T.A, T.B);
         draw_red_line_segment_on_canvas(T.B, T.C);
         draw_red_line_segment_on_canvas(T.C, T.A);
+        */
     }
     catch(exception) {
         console.log("An exception to normal functioning occurred during the runtime of generate_triangle_using_input_coordinates(): " + exception);
