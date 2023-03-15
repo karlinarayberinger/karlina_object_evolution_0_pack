@@ -171,36 +171,6 @@ function draw_vertical_line_through_middle_of_canvas() {
 }
 
 /**
- * Draw twenty line segments whose thickness is each one pixel and whose color is each light blue the left edge 
- * of the HTML canvas whose id is "cartesian_plane" to the right edge of that canvas such that each of those line 
- * segments is spaced 20% of the height of the canvas apart from its neighboring line segments.
- */
-function draw_horizontal_grid_lines_through_cartesian_plane_canvas() {
-    //... #046ff0
-    try {
-        //...
-    }
-    catch(exception) {
-        console.log("An exception to expected functioning occurred in draw_vertical_grid_lines_through_cartesian_plane_canvas(): " + exception);
-    }
-}
-
-/**
- * Draw twenty line segments whose thickness is each one pixel and whose color is each light blue the top edge 
- * of the HTML canvas whose id is "cartesian_plane" to the bottom edge of that canvas such that each of those line 
- * segments is spaced 20% of the width of the canvas apart from its neighboring line segments.
- */
-function draw_vertical_grid_lines_through_cartesian_plane_canvas() {
-    //... #046ff0
-    try {
-        //...
-    }
-    catch(exception) {
-        console.log("An exception to expected functioning occurred in draw_vertical_grid_lines_through_cartesian_plane_canvas(): " + exception);
-    }
-}
-
-/**
  * Respond to the event of the RESET button being clicked or the web page being loaded by a web browser.
  */
 function initialize_application() {
@@ -599,7 +569,27 @@ function plot_red_POINT_pixel_on_canvas(input_POINT) {
  * @param {Object} input_POINT_1 is assumed to be an object whose abstracted properties are identical to objects returned by the function named POINT(X,Y).
  */
 function draw_red_line_segment_on_canvas(input_POINT_0, input_POINT_1) {
-
+    let canvas, context;
+    let placeholder_array = [], ip0x = 0, ip0y = 0, ip1x = 0, ip1y = 0;
+    try {
+        placeholder_array = POINT_coordinate_to_HTML_canvas_coordinate(input_POINT_0, "cartesian_plane");
+        ip0x = placeholder_array[0];
+        ip0x = placeholder_array[1];
+        placeholder_array = POINT_coordinate_to_HTML_canvas_coordinate(input_POINT_1, "cartesian_plane");
+        ip1x = placeholder_array[0];
+        ip1x = placeholder_array[1];
+        canvas = document.getElementById("cartesian_plane");
+        context = canvas.getContext("2d");
+        context.strokeStyle = "#ff0000"; 
+        context.lineWidth = 1;
+        context.beginPath();
+        context.moveTo(ip0x, ip0y); 
+        context.lineTo(ip1x, ip1y); 
+        context.stroke();
+    }
+    catch(exception) {
+        console.log("An exception to expected functioning occurred in draw_vertical_line_through_middle_of_canvas(): " + exception);
+    }
 }
 
 /**
