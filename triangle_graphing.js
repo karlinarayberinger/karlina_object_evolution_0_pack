@@ -2,7 +2,7 @@
  * file: triangle_graphing.js
  * type: JavaScript
  * author: karbytes
- * date: 12_MARCH_2023
+ * date: 14_MARCH_2023
  * license: PUBLIC_DOMAIN
  */
 
@@ -548,7 +548,7 @@ function POINT_coordinate_to_HTML_canvas_coordinate(input_POINT, canvas_id) {
         output_origin_y_value = parseInt((the_canvas.height / 2)); 
         if (input_POINT.X === 0) output_x_value = output_origin_x_value;
         if (input_POINT.Y === 0) output_y_value = output_origin_y_value;
-        if (input_POINT.X > 0) output_x_value = (output_origin_x_value + input_POINT.X);
+        if (input_POINT.X > 0) output_x_value = (output_origin_x_value + (input_POINT.X * (canvas_width / (Math.abs(minimum_input_x_value) + Math.abs(maximum_input_x_value)))));
         if (input_POINT.Y > 0) output_y_value = (output_origin_y_value + input_POINT.Y);
         if (input_POINT.X < 0) output_x_value = input_POINT.X;
         if (input_POINT.Y < 0) output_y_value = input_POINT.Y;
@@ -665,9 +665,9 @@ function generate_triangle_using_input_coordinates() {
         output_div.innerHTML += generate_paragraph_html_element("T.AREA() := " + T.AREA() + ". // in Cartesian grid unit square areas");
         //...    
         console.log("testing POINT_coordinate_to_HTML_canvas_coordinate(input_POINT, canvas_id)...");
-        console.log('POINT_coordinate_to_HTML_canvas_coordinate(POINT(20,20) "cartesian_plane") := ' + POINT_coordinate_to_HTML_canvas_coordinate(POINT(20,20), "cartesian_plane") + '.');
+        console.log('POINT_coordinate_to_HTML_canvas_coordinate(POINT(0,0) "cartesian_plane") := ' + POINT_coordinate_to_HTML_canvas_coordinate(POINT(0,0), "cartesian_plane") + '.');
         console.log("testing plot_red_POINT_pixel_on_canvas(input_POINT)...");
-        plot_red_POINT_pixel_on_canvas(POINT(20,20));
+        plot_red_POINT_pixel_on_canvas(POINT(0,0));
     }
     catch(exception) {
         console.log("An exception to normal functioning occurred during the runtime of generate_triangle_using_input_coordinates(): " + exception);
