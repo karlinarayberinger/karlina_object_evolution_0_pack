@@ -591,6 +591,17 @@ function plot_red_POINT_pixel_on_canvas(input_POINT) {
     }
 }
 
+/** 
+ * Draw a red line segment which is one pixel thick on the canvas whose identifier (id) is "cartesian_plane" on the web page named triangle_graphing.html.
+ * 
+ * @param {Object} input_POINT_0 is assumed to be an object whose abstracted properties are identical to objects returned by the function named POINT(X,Y).
+ * 
+ * @param {Object} input_POINT_1 is assumed to be an object whose abstracted properties are identical to objects returned by the function named POINT(X,Y).
+ */
+function draw_red_line_segment_on_canvas(input_POINT_0, input_POINT_1) {
+
+}
+
 /**
  * Respond to the event of the GENERATE button being clicked.
  */
@@ -655,7 +666,7 @@ function generate_triangle_using_input_coordinates() {
         C = POINT(x_coordinate_value,y_coordinate_value);
         // Generate a TRIANGLE object using the POINT objects A, B, and C as the inputs to that "constructor" function.
         T = TRIANGLE(A,B,C);
-        // Print the attributes of TRIANGLE as text inside of the div element whose id is "output". (Append those paragraphs to the bottom of the content in the output div).
+        // Print the attributes of the TRIANGLE object as text inside of the div element whose id is "output". (Append those paragraphs to the bottom of the content in the output div).
         output_div = document.getElementById("output");
         output_div.innerHTML = generate_paragraph_html_element("T.DESCRIPTION() := " + T.DESCRIPTION() + ".");
         output_div.innerHTML += generate_paragraph_html_element("T.LENGTH_AB() := " + T.LENGTH_AB() + ". // in Cartesian grid unit lengths");
@@ -673,10 +684,11 @@ function generate_triangle_using_input_coordinates() {
         console.log("testing plot_red_POINT_pixel_on_canvas(POINT(-20,-20))...");
         plot_red_POINT_pixel_on_canvas(POINT(-20,-20));
         */
-        // Plot the three points of TRIANGLE as red pixel-sized dots on the canvas element whose id is "cartesian_plane".
+        // Plot the three points of the TRIANGLE object as red pixel-sized dots on the canvas element whose id is "cartesian_plane".
         plot_red_POINT_pixel_on_canvas(T.A);
         plot_red_POINT_pixel_on_canvas(T.B);
         plot_red_POINT_pixel_on_canvas(T.C);
+        // Draw red line segments which are each one pixel thick and whose endpoints are each of the points in the TRIANGLE object.
     }
     catch(exception) {
         console.log("An exception to normal functioning occurred during the runtime of generate_triangle_using_input_coordinates(): " + exception);
