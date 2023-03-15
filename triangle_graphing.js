@@ -549,7 +549,7 @@ function POINT_coordinate_to_HTML_canvas_coordinate(input_POINT, canvas_id) {
         if (input_POINT.X === 0) output_x_value = output_origin_x_value;
         if (input_POINT.Y === 0) output_y_value = output_origin_y_value;
         if (input_POINT.X > 0) output_x_value = (output_origin_x_value + (input_POINT.X * (canvas_width / (Math.abs(minimum_input_x_value) + Math.abs(maximum_input_x_value)))));
-        if (input_POINT.Y > 0) output_y_value = (output_origin_y_value + input_POINT.Y);
+        if (input_POINT.Y > 0) output_y_value = (output_origin_y_value + (input_POINT.Y * (canvas_height / (Math.abs(minimum_input_y_value) + Math.abs(maximum_input_y_value)))));
         if (input_POINT.X < 0) output_x_value = input_POINT.X;
         if (input_POINT.Y < 0) output_y_value = input_POINT.Y;
         output_canvas_coordinate_pair.push(output_x_value);
@@ -577,8 +577,8 @@ function plot_red_POINT_pixel_on_canvas(input_POINT) {
         context = canvas.getContext("2d");
         output_canvas_coordinate_pair = POINT_coordinate_to_HTML_canvas_coordinate(input_POINT, "cartesian_plane");
         context.beginPath();
-        context.rect(output_canvas_coordinate_pair[0], output_canvas_coordinate_pair[1], 1, 1); // 1 pixel has a width of 1 and a height of 1
-        context.strokeStyle = "#ff0000"; // HTML color code for red.
+        context.rect(output_canvas_coordinate_pair[0], output_canvas_coordinate_pair[1], 10, 10); // 1 pixel has a width of 1 and a height of 1
+        context.strokeStyle = "#ff0000"; // HTML color code for red
         context.stroke();
     }
     catch(exception) {
@@ -665,9 +665,9 @@ function generate_triangle_using_input_coordinates() {
         output_div.innerHTML += generate_paragraph_html_element("T.AREA() := " + T.AREA() + ". // in Cartesian grid unit square areas");
         //...    
         console.log("testing POINT_coordinate_to_HTML_canvas_coordinate(input_POINT, canvas_id)...");
-        console.log('POINT_coordinate_to_HTML_canvas_coordinate(POINT(0,0) "cartesian_plane") := ' + POINT_coordinate_to_HTML_canvas_coordinate(POINT(0,0), "cartesian_plane") + '.');
+        console.log('POINT_coordinate_to_HTML_canvas_coordinate(POINT(20,20) "cartesian_plane") := ' + POINT_coordinate_to_HTML_canvas_coordinate(POINT(20,20), "cartesian_plane") + '.');
         console.log("testing plot_red_POINT_pixel_on_canvas(input_POINT)...");
-        plot_red_POINT_pixel_on_canvas(POINT(0,0));
+        plot_red_POINT_pixel_on_canvas(POINT(20,20));
     }
     catch(exception) {
         console.log("An exception to normal functioning occurred during the runtime of generate_triangle_using_input_coordinates(): " + exception);
