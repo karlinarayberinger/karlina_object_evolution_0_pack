@@ -489,7 +489,7 @@ function TRIANGLE(A,B,C) {
  * 
  * @return {Object} an array whose elements are exactly two nonnegative integers.
  */
-function POINT_coordinate_to_HTML_canvas_coordinate(input_POINT, canvas_id) {
+function convert_POINT_coordinate_to_HTML_canvas_coordinate(input_POINT, canvas_id) {
     let the_canvas, canvas_width = 0, canvas_height = 0, output_canvas_coordinate_pair = [];
     let minimum_input_x_value = -100, maximum_input_x_value = 100;
     let minimum_input_y_value = -100, maximum_input_y_value = 100;
@@ -531,7 +531,7 @@ function POINT_coordinate_to_HTML_canvas_coordinate(input_POINT, canvas_id) {
         return output_canvas_coordinate_pair;
     }
     catch(exception) {
-        console.log("An exception to normal functioning occurred during the runtime of POINT_coordinate_to_HTML_canvas_coordinate(input_POINT, canvas_id): " + exception);
+        console.log("An exception to normal functioning occurred during the runtime of convert_POINT_coordinate_to_HTML_canvas_coordinate(input_POINT, canvas_id): " + exception);
         return 0;
     }
 }
@@ -549,14 +549,14 @@ function plot_red_POINT_pixel_on_canvas(input_POINT) {
     try {
         canvas = document.getElementById("cartesian_plane");
         context = canvas.getContext("2d");
-        output_canvas_coordinate_pair = POINT_coordinate_to_HTML_canvas_coordinate(input_POINT, "cartesian_plane");
+        output_canvas_coordinate_pair = convert_POINT_coordinate_to_HTML_canvas_coordinate(input_POINT, "cartesian_plane");
         context.beginPath();
         context.rect(output_canvas_coordinate_pair[0], output_canvas_coordinate_pair[1], 1, 1); // 1 pixel has a width of 1 and a height of 1
         context.strokeStyle = "#ff0000"; // HTML color code for red
         context.stroke();
     }
     catch(exception) {
-        console.log("An exception to normal functioning occurred during the runtime of POINT_coordinate_to_HTML_canvas_coordinate(input_POINT, canvas_id): " + exception);
+        console.log("An exception to normal functioning occurred during the runtime of plot_red_POINT_pixel_on_canvas(input_POINT): " + exception);
         return 0;
     }
 }
@@ -572,10 +572,10 @@ function draw_red_line_segment_on_canvas(input_POINT_0, input_POINT_1) {
     let canvas, context;
     let placeholder_array = [], ip0x = 0, ip0y = 0, ip1x = 0, ip1y = 0;
     try {
-        placeholder_array = POINT_coordinate_to_HTML_canvas_coordinate(input_POINT_0, "cartesian_plane");
+        placeholder_array = convert_POINT_coordinate_to_HTML_canvas_coordinate(input_POINT_0, "cartesian_plane");
         ip0x = placeholder_array[0];
         ip0y = placeholder_array[1];
-        placeholder_array = POINT_coordinate_to_HTML_canvas_coordinate(input_POINT_1, "cartesian_plane");
+        placeholder_array = convert_POINT_coordinate_to_HTML_canvas_coordinate(input_POINT_1, "cartesian_plane");
         ip1x = placeholder_array[0];
         ip1y = placeholder_array[1];
         canvas = document.getElementById("cartesian_plane");
@@ -588,7 +588,7 @@ function draw_red_line_segment_on_canvas(input_POINT_0, input_POINT_1) {
         context.stroke();
     }
     catch(exception) {
-        console.log("An exception to expected functioning occurred in draw_vertical_line_through_middle_of_canvas(): " + exception);
+        console.log("An exception to expected functioning occurred in draw_red_line_segment_on_canvas(input_POINT_0, input_POINT_1): " + exception);
     }
 }
 
@@ -678,15 +678,15 @@ function generate_triangle_using_input_coordinates() {
         plot_red_POINT_pixel_on_canvas(T.A);
         plot_red_POINT_pixel_on_canvas(T.B);
         plot_red_POINT_pixel_on_canvas(T.C);
-        /*
+        //...
         console.log("testing draw_red_line_segment_on_canvas(input_POINT_0, input_POINT_1)...");
         console.log("testing draw_red_line_segment_on_canvas(POINT(0,0), POINT(100,100))...");
         draw_red_line_segment_on_canvas(POINT(0,0), POINT(100,100));
-        */
         // Draw red line segments which are each one pixel thick and whose endpoints are each of the points in the TRIANGLE object.
         draw_red_line_segment_on_canvas(T.A, T.B);
         draw_red_line_segment_on_canvas(T.B, T.C);
         draw_red_line_segment_on_canvas(T.C, T.A);
+        // Draw a green triangular area inside of the red line segments which were previously drawn.
     }
     catch(exception) {
         console.log("An exception to normal functioning occurred during the runtime of generate_triangle_using_input_coordinates(): " + exception);
