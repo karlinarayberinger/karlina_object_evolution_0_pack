@@ -593,6 +593,42 @@ function draw_red_line_segment_on_canvas(input_POINT_0, input_POINT_1) {
 }
 
 /**
+ * Draw a "light green" filled triangle which visually represents input_TRIANGLE on the canvas whose identifier (id) is "cartesian_plane"
+ * on the web page named triangle_graphing.html.
+ * 
+ * @param {Object} input_TRIANGLE is assumed to be an object whose abstracted properties are identical to objects returned by the function named TRIANGLE(A,B,C).
+ */
+function draw_green_filled_triangle(input_TRIANGLE) {
+    let canvas, context;
+    let placeholder_array = [], ax = 0, ay = 0, bx = 0, by = 0, cx = 0, cy = 0;
+    try {
+        placeholder_array = convert_POINT_coordinate_to_HTML_canvas_coordinate(input_TRIANGLE.A, "cartesian_plane");
+        ax = placeholder_array[0];
+        ay = placeholder_array[1];
+        placeholder_array = convert_POINT_coordinate_to_HTML_canvas_coordinate(input_TRIANGLE.B, "cartesian_plane");
+        bx = placeholder_array[0];
+        by = placeholder_array[1];
+        placeholder_array = convert_POINT_coordinate_to_HTML_canvas_coordinate(input_TRIANGLE.C, "cartesian_plane");
+        cx = placeholder_array[0];
+        cy = placeholder_array[1];
+        canvas = document.getElementById("cartesian_plane");
+        context = canvas.getContext("2d");
+        context.strokeStyle = "#ff0000"; 
+        context.lineWidth = 1;
+        context.fillStyle = "#c2fab4"; // HTML color code for a particular shade of "light green"
+        context.beginPath();
+        context.moveTo(ax, ay); // point 0  
+        context.lineTo(bx, by); // point 1
+        context.lineTo(cx, cy); // point 2
+        context.closePath(); // go back to point 0
+        context.fill();
+    }
+    catch(exception) {
+        console.log("An exception to expected functioning occurred in draw_red_line_segment_on_canvas(input_POINT_0, input_POINT_1): " + exception);
+    }
+}
+
+/**
  * Respond to the event of the GENERATE button being clicked.
  */
 function generate_triangle_using_input_coordinates() {
@@ -687,6 +723,7 @@ function generate_triangle_using_input_coordinates() {
         draw_red_line_segment_on_canvas(T.B, T.C);
         draw_red_line_segment_on_canvas(T.C, T.A);
         // Draw a green triangular area inside of the red line segments which were previously drawn.
+        draw_green_filled_triangle(T);
     }
     catch(exception) {
         console.log("An exception to normal functioning occurred during the runtime of generate_triangle_using_input_coordinates(): " + exception);
