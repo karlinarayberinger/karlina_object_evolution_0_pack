@@ -555,7 +555,8 @@ function POINT_coordinate_to_HTML_canvas_coordinate(input_POINT, canvas_id) {
         if (input_POINT.Y > 0) output_y_value = (output_origin_y_value - (input_POINT.Y * (canvas_height / (Math.abs(minimum_input_y_value) + Math.abs(maximum_input_y_value)))));
         // Determine whether or not the input_POINT is located on the right side of the y-axis of a Cartesian plane.
         if (input_POINT.X < 0) output_x_value = output_origin_x_value - (Math.abs(input_POINT.X) * (canvas_width / (Math.abs(minimum_input_x_value) + Math.abs(maximum_input_x_value))));
-        if (input_POINT.Y < 0) output_y_value = input_POINT.Y;
+        // Determine whether or not the input_POINT is located on the top side of the x-axis of a Cartesian plane.
+        if (input_POINT.Y < 0) output_y_value = output_origin_y_value + (Math.abs(input_POINT.Y) * (canvas_width / (Math.abs(minimum_input_y_value) + Math.abs(maximum_input_y_value))));
         output_canvas_coordinate_pair.push(output_x_value);
         output_canvas_coordinate_pair.push(output_y_value);
         return output_canvas_coordinate_pair;
@@ -666,17 +667,11 @@ function generate_triangle_using_input_coordinates() {
         output_div.innerHTML += generate_paragraph_html_element("T.ANGLE_B() := " + T.ANGLE_B() + ". // in degrees (non-obtuse between AB and BC)");
         output_div.innerHTML += generate_paragraph_html_element("T.ANGLE_C() := " + T.ANGLE_C() + ". // in degrees (non-obtuse between BC and CA)");
         output_div.innerHTML += generate_paragraph_html_element("((T.ANGLE_A() + T.ANGLE_B()) + T.ANGLE_C()) = " + ((T.ANGLE_A() + T.ANGLE_B()) + T.ANGLE_C())  + ". // in degrees");
-        output_div.innerHTML += generate_paragraph_html_element("T.AREA() := " + T.AREA() + ". // in Cartesian grid unit square areas");
-        /* 
+        output_div.innerHTML += generate_paragraph_html_element("T.AREA() := " + T.AREA() + ". // in Cartesian grid unit square areas"); 
         console.log("testing POINT_coordinate_to_HTML_canvas_coordinate(input_POINT, canvas_id)...");
-        console.log('POINT_coordinate_to_HTML_canvas_coordinate(POINT(20,20) "cartesian_plane") := ' + POINT_coordinate_to_HTML_canvas_coordinate(POINT(20,20), "cartesian_plane") + '.');
+        console.log('POINT_coordinate_to_HTML_canvas_coordinate(POINT(20,-20) "cartesian_plane") := ' + POINT_coordinate_to_HTML_canvas_coordinate(POINT(20,-20), "cartesian_plane") + '.');
         console.log("testing plot_red_POINT_pixel_on_canvas(input_POINT)...");
-        plot_red_POINT_pixel_on_canvas(POINT(20,20));
-        */
-        console.log("testing POINT_coordinate_to_HTML_canvas_coordinate(input_POINT, canvas_id)...");
-        console.log('POINT_coordinate_to_HTML_canvas_coordinate(POINT(-20,20) "cartesian_plane") := ' + POINT_coordinate_to_HTML_canvas_coordinate(POINT(-20,20), "cartesian_plane") + '.');
-        console.log("testing plot_red_POINT_pixel_on_canvas(input_POINT)...");
-        plot_red_POINT_pixel_on_canvas(POINT(-20,20));
+        plot_red_POINT_pixel_on_canvas(POINT(20,-20));
     }
     catch(exception) {
         console.log("An exception to normal functioning occurred during the runtime of generate_triangle_using_input_coordinates(): " + exception);
