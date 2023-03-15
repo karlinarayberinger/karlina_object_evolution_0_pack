@@ -249,8 +249,7 @@ function initialize_application() {
         c_y_menu_container_paragraph.innerHTML = ('C.Y := ' + generate_coordinate_menu_select_html_element("c_y_menu") + '. // vertical position of two-dimensional POINT labeled C.'); 
         // Populate the "generate_button_container" paragraph element with a button input web page element which calls the function named generate_triangle_using_input_coordinates().
         generate_button_container = document.getElementById("generate_button_container");
-        generate_button_container.innerHTML = ('<' + 'input type="button" value="GENERATE" style="text-align:center" onclick="generate_triangle_using_input_coordinates()"' + '/' + '>');
-        //...    
+        generate_button_container.innerHTML = ('<' + 'input type="button" value="GENERATE" style="text-align:center" onclick="generate_triangle_using_input_coordinates()"' + '/' + '>'); 
     }
     catch(exception) {
         console.log("An exception to normal functioning occurred during the runtime of initialize_application(): " + exception);
@@ -674,8 +673,7 @@ function generate_triangle_using_input_coordinates() {
         console.log("testing plot_red_POINT_pixel_on_canvas(POINT(-20,-20))...");
         plot_red_POINT_pixel_on_canvas(POINT(-20,-20));
         */
-        // Plot the three points of TRIANGLE as red pixel-sized dots on the canvas element whose is is "cartesian_plane".
-        console.log(typeof T.A);
+        // Plot the three points of TRIANGLE as red pixel-sized dots on the canvas element whose id is "cartesian_plane".
         plot_red_POINT_pixel_on_canvas(T.A);
         plot_red_POINT_pixel_on_canvas(T.B);
         plot_red_POINT_pixel_on_canvas(T.C);
