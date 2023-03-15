@@ -613,8 +613,6 @@ function draw_green_filled_triangle(input_TRIANGLE) {
         cy = placeholder_array[1];
         canvas = document.getElementById("cartesian_plane");
         context = canvas.getContext("2d");
-        context.strokeStyle = "#ff0000"; 
-        context.lineWidth = 1;
         context.fillStyle = "#c2fab4"; // HTML color code for a particular shade of "light green"
         context.beginPath();
         context.moveTo(ax, ay); // point 0  
