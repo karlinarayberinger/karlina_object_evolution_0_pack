@@ -679,6 +679,9 @@ function generate_triangle_using_input_coordinates() {
         plot_red_POINT_pixel_on_canvas(T.B);
         plot_red_POINT_pixel_on_canvas(T.C);
         // Draw red line segments which are each one pixel thick and whose endpoints are each of the points in the TRIANGLE object.
+        draw_red_line_segment_on_canvas(T.A, T.B);
+        draw_red_line_segment_on_canvas(T.B, T.C);
+        draw_red_line_segment_on_canvas(T.C, T.A);
     }
     catch(exception) {
         console.log("An exception to normal functioning occurred during the runtime of generate_triangle_using_input_coordinates(): " + exception);
