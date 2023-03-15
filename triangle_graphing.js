@@ -574,14 +574,14 @@ function draw_red_line_segment_on_canvas(input_POINT_0, input_POINT_1) {
     try {
         placeholder_array = POINT_coordinate_to_HTML_canvas_coordinate(input_POINT_0, "cartesian_plane");
         ip0x = placeholder_array[0];
-        ip0x = placeholder_array[1];
+        ip0y = placeholder_array[1];
         placeholder_array = POINT_coordinate_to_HTML_canvas_coordinate(input_POINT_1, "cartesian_plane");
         ip1x = placeholder_array[0];
-        ip1x = placeholder_array[1];
+        ip1y = placeholder_array[1];
         canvas = document.getElementById("cartesian_plane");
         context = canvas.getContext("2d");
         context.strokeStyle = "#ff0000"; 
-        context.lineWidth = 10;
+        context.lineWidth = 1;
         context.beginPath();
         context.moveTo(ip0x, ip0y); 
         context.lineTo(ip1x, ip1y); 
