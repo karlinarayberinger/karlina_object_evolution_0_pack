@@ -1,0 +1,60 @@
+<!--
+/**
+ * file: function_graphing.html
+ * type: Hyper-Text-Markup-Language
+ * author: karbytes
+ * date: 17_MARCH_2023
+ * license: PUBLIC_DOMAIN
+ */
+ -->
+  <!DOCTYPE html>
+ <html>
+ <head>
+    <meta charset="UTF-8">
+    <title>FUNCTION_GRAPHING</title>
+    <link rel="stylesheet" href="karbytes_aesthetic.css">
+    <script src="function_graphing.js"></script>
+    <style>
+       div {
+            border-color: #e8c123;
+            border-width: 2px;
+            border-style: solid;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 10px;
+       }
+    </style>
+ </head>
+ <body onload="initialize_application()">
+   <div>
+      <h1>FUNCTION_GRAPHING</h1>
+      <p>
+         Select one of multiple functions to graph on a Cartesian grid and to display a 
+         table of input and corresponding output values for.
+      </p>
+      <p>(Note that the x-axis and y-axis grid line values may vary depending on which function is selected).</p>
+   </div>
+   <!-- input field # 1 of 2 -->
+   <div>
+      <p>STEP_0: Select a function, y = f(x), from the list below.</p>
+      <p id="function_menu_container" class="console">#function_menu_container</p>
+   </div>
+   <!-- input field # 2 of 2 -->
+   <div>
+      <p>STEP_1: Click the GENERATE button to graph the selected function on the canvas below.</p>
+      <p id="generate_button_container" class="console">#generate_button_container</p>
+   </div>
+   <!-- output field # 1 of 3 -->
+   <div id="canvas_container">
+      <p>#canvas_container</p>
+   </div>
+   <!-- output field # 2 of 3 -->
+   <div id="output">
+      <p>#output</p> <!-- // table of input (i.e. x) and corresponding output (i.e. y) values -->
+   </div> 
+   <!-- output field # 3 of 3 -->
+   <div id="events_log" class="console" >
+      <p>#events_log</p> <!-- // time-stamped events -->
+   </div> 
+ </body>
+ </html>
