@@ -26,7 +26,7 @@ function initialize_application() {
         // Populate the "generate_button_container" paragraph element with a button input web page element which calls the function named generate_triangle_using_input_coordinates().
         generate_button_container = document.getElementById("generate_button_container");
         generate_button_container.innerHTML = '<' + 'input type="button" value="GENERATE" style="text-align:center" onclick="generate_triangle_using_input_coordinates()"' + '/' + '>';
-        // Populate the "canvas_container" div with a canvas web page element (which is a rectangular area 750 pixels in horizontal length and 450 pixels in vertical length).
+        // Populate the "canvas_container" div with a canvas web page element (and the canvas is a rectangular area 750 pixels in horizontal length and 450 pixels in vertical length).
         cartesian_plane_canvas = '<' + 'canvas id="cartesian_plane" width="750" height="450" style="background:#ffffff">' + '<' + '/' + '>';
         canvas_container_div = document.getElementById("canvas_container");
         canvas_container_div.innerHTML = generate_paragraph_html_element(cartesian_plane_canvas);
