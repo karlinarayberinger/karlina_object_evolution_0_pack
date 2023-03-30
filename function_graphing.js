@@ -12,7 +12,7 @@
  * (Note that the RESET button replaces the GENERATE button after the GENERATE button is clicked).
  */
 function initialize_application() {
-    let time_stamped_message, events_log_div, output_div, canvas_container_div, generate_button_container_paragraph, function_menu_container_paragraph;
+    let time_stamped_message, events_log_div, output_div, canvas_container, cartesian_plane_canvas, generate_button_container_paragraph, function_menu_container_paragraph;
     try {
         // Populate the "events_log" div with a time stamped message indicating that this function was called.
         time_stamped_message = "The function named initialize_application() was called at time: " + generate_time_stamp();
@@ -25,7 +25,11 @@ function initialize_application() {
         output_div.innerHTML = generate_paragraph_html_element("This sentence will disappear as a result of the GENERATE button being clicked.");
         // Populate the "generate_button_container" paragraph element with a button input web page element which calls the function named generate_triangle_using_input_coordinates().
         generate_button_container = document.getElementById("generate_button_container");
-        generate_button_container.innerHTML = ('<' + 'input type="button" value="GENERATE" style="text-align:center" onclick="generate_triangle_using_input_coordinates()"' + '/' + '>')
+        generate_button_container.innerHTML = '<' + 'input type="button" value="GENERATE" style="text-align:center" onclick="generate_triangle_using_input_coordinates()"' + '/' + '>';
+        // Populate the "canvas_container" div with a canvas web page element.
+        cartesian_plane_canvas = '<' + 'canvas id="cartesian_plane" width="750" height="450" style="background:#ffffff">' + '<' + '/' + '>';
+        canvas_container_div = document.getElementById("canvas_container");
+        canvas_container_div.innerHTML = generate_paragraph_html_element(cartesian_plane_canvas);
     }
     catch(exception) {
         console.log("An exception to normal functioning occurred during the runtime of initialize_application(): " + exception);
