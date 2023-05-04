@@ -16,8 +16,14 @@
 */
 
 /* function prototypes */
+int power(int base, int exponent);
+double approximate_eulers_number(int number_of_iterations);
+
+/* function prototypes */
+/*
 unsigned long long int compute_factorial_of_N_using_iteration(int N);
 long double e(int N, std::ostream & output);
+*/
 
 /**
  * Compute N factorial using an iterative algorithm.
