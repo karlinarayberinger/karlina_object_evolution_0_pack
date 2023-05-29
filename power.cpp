@@ -1,7 +1,7 @@
 /**
  * file: power.cpp
  * type: C++ (source file)
- * date: 13_MAY_2023
+ * date: 28_MAY_2023
  * author: karbytes
  * license: PUBLIC_DOMAIN
  */
@@ -16,6 +16,7 @@
 */
 
 /* function prototypes */
+bool is_whole_number(double input);
 double power(double base, double exponent);
 
 /**
@@ -29,7 +30,16 @@ int main()
 
 /**
  */
+bool is_whole_number(double input) 
+{
+    return true;
+}
+
+/**
+ */
 double power(double base, double exponent) 
 {
+    if (exponent == 0) return 1;
+    if (exponent == 1) return base;
     return 0.0;
 }
