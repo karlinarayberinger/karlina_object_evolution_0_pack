@@ -8,87 +8,87 @@ N := 65. // int type variable
 
 number_of_bytes(int) := 4.
 
-memory_address_of(N) = (&N) := 0x7fff0780522c. // & is a reference operator
+memory_address_of(N) = (&N) := 0x7ffeb9c5f17c. // & is a reference operator
 
 number_of_bytes(long double) := 16.
 
 A := 1. // long double type variable
 
-memory_address_of(N) = (&A) := 0x7fff07805230. // & is a reference operator
+memory_address_of(N) = (&A) := 0x7ffeb9c5f180. // & is a reference operator
 
 number_of_bytes(unsigned long long int) := 8.
 
-memory_address_of(T) = (&T) := 0x7fff078051d8.// & is a reference operator
+memory_address_of(T) = (&T) := 0x7ffeb9c5f128.// & is a reference operator
 
-T := 0x55b886bd68c0. // pointer to unsigned long long int type variable
+T := 0x55d0360028c0. // pointer to unsigned long long int type variable
 
-(*T) := 23010503638. // dereferenced pointer to unsigned long long int type variable 
+(*T) := 23035338754. // dereferenced pointer to unsigned long long int type variable 
 
-(&T[0]) := 0x55b886bd68c0. // memory address of T[0]
-(&T[1]) := 0x55b886bd68c8. // memory address of T[1]
-(&T[2]) := 0x55b886bd68d0. // memory address of T[2]
-(&T[3]) := 0x55b886bd68d8. // memory address of T[3]
-(&T[4]) := 0x55b886bd68e0. // memory address of T[4]
-(&T[5]) := 0x55b886bd68e8. // memory address of T[5]
-(&T[6]) := 0x55b886bd68f0. // memory address of T[6]
-(&T[7]) := 0x55b886bd68f8. // memory address of T[7]
-(&T[8]) := 0x55b886bd6900. // memory address of T[8]
-(&T[9]) := 0x55b886bd6908. // memory address of T[9]
-(&T[10]) := 0x55b886bd6910. // memory address of T[10]
-(&T[11]) := 0x55b886bd6918. // memory address of T[11]
-(&T[12]) := 0x55b886bd6920. // memory address of T[12]
-(&T[13]) := 0x55b886bd6928. // memory address of T[13]
-(&T[14]) := 0x55b886bd6930. // memory address of T[14]
-(&T[15]) := 0x55b886bd6938. // memory address of T[15]
-(&T[16]) := 0x55b886bd6940. // memory address of T[16]
-(&T[17]) := 0x55b886bd6948. // memory address of T[17]
-(&T[18]) := 0x55b886bd6950. // memory address of T[18]
-(&T[19]) := 0x55b886bd6958. // memory address of T[19]
-(&T[20]) := 0x55b886bd6960. // memory address of T[20]
-(&T[21]) := 0x55b886bd6968. // memory address of T[21]
-(&T[22]) := 0x55b886bd6970. // memory address of T[22]
-(&T[23]) := 0x55b886bd6978. // memory address of T[23]
-(&T[24]) := 0x55b886bd6980. // memory address of T[24]
-(&T[25]) := 0x55b886bd6988. // memory address of T[25]
-(&T[26]) := 0x55b886bd6990. // memory address of T[26]
-(&T[27]) := 0x55b886bd6998. // memory address of T[27]
-(&T[28]) := 0x55b886bd69a0. // memory address of T[28]
-(&T[29]) := 0x55b886bd69a8. // memory address of T[29]
-(&T[30]) := 0x55b886bd69b0. // memory address of T[30]
-(&T[31]) := 0x55b886bd69b8. // memory address of T[31]
-(&T[32]) := 0x55b886bd69c0. // memory address of T[32]
-(&T[33]) := 0x55b886bd69c8. // memory address of T[33]
-(&T[34]) := 0x55b886bd69d0. // memory address of T[34]
-(&T[35]) := 0x55b886bd69d8. // memory address of T[35]
-(&T[36]) := 0x55b886bd69e0. // memory address of T[36]
-(&T[37]) := 0x55b886bd69e8. // memory address of T[37]
-(&T[38]) := 0x55b886bd69f0. // memory address of T[38]
-(&T[39]) := 0x55b886bd69f8. // memory address of T[39]
-(&T[40]) := 0x55b886bd6a00. // memory address of T[40]
-(&T[41]) := 0x55b886bd6a08. // memory address of T[41]
-(&T[42]) := 0x55b886bd6a10. // memory address of T[42]
-(&T[43]) := 0x55b886bd6a18. // memory address of T[43]
-(&T[44]) := 0x55b886bd6a20. // memory address of T[44]
-(&T[45]) := 0x55b886bd6a28. // memory address of T[45]
-(&T[46]) := 0x55b886bd6a30. // memory address of T[46]
-(&T[47]) := 0x55b886bd6a38. // memory address of T[47]
-(&T[48]) := 0x55b886bd6a40. // memory address of T[48]
-(&T[49]) := 0x55b886bd6a48. // memory address of T[49]
-(&T[50]) := 0x55b886bd6a50. // memory address of T[50]
-(&T[51]) := 0x55b886bd6a58. // memory address of T[51]
-(&T[52]) := 0x55b886bd6a60. // memory address of T[52]
-(&T[53]) := 0x55b886bd6a68. // memory address of T[53]
-(&T[54]) := 0x55b886bd6a70. // memory address of T[54]
-(&T[55]) := 0x55b886bd6a78. // memory address of T[55]
-(&T[56]) := 0x55b886bd6a80. // memory address of T[56]
-(&T[57]) := 0x55b886bd6a88. // memory address of T[57]
-(&T[58]) := 0x55b886bd6a90. // memory address of T[58]
-(&T[59]) := 0x55b886bd6a98. // memory address of T[59]
-(&T[60]) := 0x55b886bd6aa0. // memory address of T[60]
-(&T[61]) := 0x55b886bd6aa8. // memory address of T[61]
-(&T[62]) := 0x55b886bd6ab0. // memory address of T[62]
-(&T[63]) := 0x55b886bd6ab8. // memory address of T[63]
-(&T[64]) := 0x55b886bd6ac0. // memory address of T[64]
+(&T[0]) := 0x55d0360028c0. // memory address of T[0]
+(&T[1]) := 0x55d0360028c8. // memory address of T[1]
+(&T[2]) := 0x55d0360028d0. // memory address of T[2]
+(&T[3]) := 0x55d0360028d8. // memory address of T[3]
+(&T[4]) := 0x55d0360028e0. // memory address of T[4]
+(&T[5]) := 0x55d0360028e8. // memory address of T[5]
+(&T[6]) := 0x55d0360028f0. // memory address of T[6]
+(&T[7]) := 0x55d0360028f8. // memory address of T[7]
+(&T[8]) := 0x55d036002900. // memory address of T[8]
+(&T[9]) := 0x55d036002908. // memory address of T[9]
+(&T[10]) := 0x55d036002910. // memory address of T[10]
+(&T[11]) := 0x55d036002918. // memory address of T[11]
+(&T[12]) := 0x55d036002920. // memory address of T[12]
+(&T[13]) := 0x55d036002928. // memory address of T[13]
+(&T[14]) := 0x55d036002930. // memory address of T[14]
+(&T[15]) := 0x55d036002938. // memory address of T[15]
+(&T[16]) := 0x55d036002940. // memory address of T[16]
+(&T[17]) := 0x55d036002948. // memory address of T[17]
+(&T[18]) := 0x55d036002950. // memory address of T[18]
+(&T[19]) := 0x55d036002958. // memory address of T[19]
+(&T[20]) := 0x55d036002960. // memory address of T[20]
+(&T[21]) := 0x55d036002968. // memory address of T[21]
+(&T[22]) := 0x55d036002970. // memory address of T[22]
+(&T[23]) := 0x55d036002978. // memory address of T[23]
+(&T[24]) := 0x55d036002980. // memory address of T[24]
+(&T[25]) := 0x55d036002988. // memory address of T[25]
+(&T[26]) := 0x55d036002990. // memory address of T[26]
+(&T[27]) := 0x55d036002998. // memory address of T[27]
+(&T[28]) := 0x55d0360029a0. // memory address of T[28]
+(&T[29]) := 0x55d0360029a8. // memory address of T[29]
+(&T[30]) := 0x55d0360029b0. // memory address of T[30]
+(&T[31]) := 0x55d0360029b8. // memory address of T[31]
+(&T[32]) := 0x55d0360029c0. // memory address of T[32]
+(&T[33]) := 0x55d0360029c8. // memory address of T[33]
+(&T[34]) := 0x55d0360029d0. // memory address of T[34]
+(&T[35]) := 0x55d0360029d8. // memory address of T[35]
+(&T[36]) := 0x55d0360029e0. // memory address of T[36]
+(&T[37]) := 0x55d0360029e8. // memory address of T[37]
+(&T[38]) := 0x55d0360029f0. // memory address of T[38]
+(&T[39]) := 0x55d0360029f8. // memory address of T[39]
+(&T[40]) := 0x55d036002a00. // memory address of T[40]
+(&T[41]) := 0x55d036002a08. // memory address of T[41]
+(&T[42]) := 0x55d036002a10. // memory address of T[42]
+(&T[43]) := 0x55d036002a18. // memory address of T[43]
+(&T[44]) := 0x55d036002a20. // memory address of T[44]
+(&T[45]) := 0x55d036002a28. // memory address of T[45]
+(&T[46]) := 0x55d036002a30. // memory address of T[46]
+(&T[47]) := 0x55d036002a38. // memory address of T[47]
+(&T[48]) := 0x55d036002a40. // memory address of T[48]
+(&T[49]) := 0x55d036002a48. // memory address of T[49]
+(&T[50]) := 0x55d036002a50. // memory address of T[50]
+(&T[51]) := 0x55d036002a58. // memory address of T[51]
+(&T[52]) := 0x55d036002a60. // memory address of T[52]
+(&T[53]) := 0x55d036002a68. // memory address of T[53]
+(&T[54]) := 0x55d036002a70. // memory address of T[54]
+(&T[55]) := 0x55d036002a78. // memory address of T[55]
+(&T[56]) := 0x55d036002a80. // memory address of T[56]
+(&T[57]) := 0x55d036002a88. // memory address of T[57]
+(&T[58]) := 0x55d036002a90. // memory address of T[58]
+(&T[59]) := 0x55d036002a98. // memory address of T[59]
+(&T[60]) := 0x55d036002aa0. // memory address of T[60]
+(&T[61]) := 0x55d036002aa8. // memory address of T[61]
+(&T[62]) := 0x55d036002ab0. // memory address of T[62]
+(&T[63]) := 0x55d036002ab8. // memory address of T[63]
+(&T[64]) := 0x55d036002ac0. // memory address of T[64]
 
 T[0] := 65 = (65 - 0).
 T[1] := 64 = (65 - 1).
@@ -613,7 +613,7 @@ A := A + (1 / (65 - 64)!)
    = 1.71828182845904525017331765379680064143030904233455657958984375 + 1
    = 2.71828182845904525017331765379680064143030904233455657958984375.
 
-A = e(N) := 2.71828182845904525017331765379680064143030904233455657958984375.
+A = eulers_number_approximation(N) := 2.71828182845904525017331765379680064143030904233455657958984375.
 
 --------------------------------
 END OF PROGRAM

@@ -11,11 +11,11 @@
 #include <fstream> // file input and output
 
 #include <cmath> // power function (e.g. 8 = pow(2,3))
-#define MAXIMUM_N 65 // constant which represents maximum N value
+#define MAXIMUM_N 65 // constant which represents maximum N value 
 
 /* function prototypes */
 unsigned long long int compute_factorial_of_N_using_iteration(int N);
-long double e(int N, std::ostream & output);
+long double eulers_number_approximation(int N, std::ostream & output);
 
 /**
  * Compute N factorial (N!) using an iterative algorithm.
@@ -64,9 +64,14 @@ unsigned long long int compute_factorial_of_N_using_iteration(int N)
 /**
  * Generate an approximation of the the mathematical constant named e (i.e. Euler’s Number).
  * 
+ * N is assumed to be a natural number.
+ * 
+ * The approximate value of Euler's Number is computed by adding N unique terms 
+ * (and each of those N terms is 1 divided by factorial n (and n is a natural number which is smaller than or equal to N)).
+ * 
  * The value returned by this function is a floating-point number value.
  */
-long double e(int N, std::ostream & output)
+long double eulers_number_approximation(int N, std::ostream & output)
 {
 	// Declare a long double type variable (i.e. a variable for storing floating-point number values) named A. 
 	// Set the intial value which is stored in A to one.
@@ -264,16 +269,16 @@ int main()
 
 	// Compute the Nth approximation of Euler's Number and store the result in A.
 	// Print the steps involved in generating an approximation of Euler's Number to the command line terminal.
-	A = e(N, std::cout);
+	A = eulers_number_approximation(N, std::cout);
 
 	// Print the steps involved in generating an approximation of Euler's Number to the file output stream.
-	e(N, file);
+	eulers_number_approximation(N, file);
 
-	// Print "A = e(N) := {e(N)}." to the command line terminal.
-	std::cout << "\n\nA = e(N) := " << A << ".";
+	// Print "A = eulers_number_approximation(N) := {eulers_number_approximation(N)}." to the command line terminal.
+	std::cout << "\n\nA = eulers_number_approximation(N) := " << A << ".";
 
-	// Print "A = e(N) := {e(N)}." to the file output stream.
-	file << "\n\nA = e(N) := " << A << ".";
+	// Print "A = eulers_number_approximation(N) := {eulers_number_approximation(N)}." to the file output stream.
+	file << "\n\nA = eulers_number_approximation(N) := " << A << ".";
 
 	// Print a closing message to the command line terminal.
 	std::cout << "\n\n--------------------------------";
