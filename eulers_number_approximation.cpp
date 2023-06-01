@@ -1,7 +1,7 @@
 /**
  * file: eulers_number_approximation.cpp
  * type: C++ (source file)
- * date: 04_MAY_2023
+ * date: 01_JUNE_2023
  * author: karbytes
  * license: PUBLIC_DOMAIN
  */
@@ -10,23 +10,15 @@
 #include <iostream> // command line user interface input and output
 #include <fstream> // file input and output
 
-/*
 #include <cmath> // power function (e.g. 8 = pow(2,3))
 #define MAXIMUM_N 65 // constant which represents maximum N value
-*/
 
 /* function prototypes */
-int power(int base, int exponent);
-double approximate_eulers_number(int number_of_iterations);
-
-/* function prototypes */
-/*
 unsigned long long int compute_factorial_of_N_using_iteration(int N);
 long double e(int N, std::ostream & output);
-*/
 
 /**
- * Compute N factorial using an iterative algorithm.
+ * Compute N factorial (N!) using an iterative algorithm.
  * 
  * If N is a natural number, then N! is the product of exactly one instance 
  * of each unique natural number which is less than or equal to N. 
@@ -41,11 +33,11 @@ unsigned long long int compute_factorial_of_N_using_iteration(int N)
 	// Set the intial value which is stored in i to zero.
 	int i = 0;
 
-	// Declare an unsigned long long int type variable (i.e. a variable for storing integer values) named F. 
+	// Declare an unsigned long long int type variable (i.e. a variable for storing nonnegative integer values) named F. 
 	// Set the intial value which is stored in F to zero.
 	unsigned long long int F = 0; 
 
-	// If N is larger than zero and if N is no larger than MAXIMUM_N, set i to N. 
+	// If N is larger than zero and if N is not larger than MAXIMUM_N, set i to N. 
 	// Otherwise, set i to 0.
 	i = ((N > 0) && (N <= MAXIMUM_N)) ? N : 0; 
 
@@ -53,7 +45,7 @@ unsigned long long int compute_factorial_of_N_using_iteration(int N)
 	// Otherwise, set F to 1.
 	F = (N > 0) ? N : 1; 
 
-	// While i is larger than zero:
+	// While i is larger than zero: execute the code block enclosed by the following curly braces.
 	while (i > 0) 
 	{
 		// If i is larger than 1, multiply F by (i - 1).
@@ -63,8 +55,10 @@ unsigned long long int compute_factorial_of_N_using_iteration(int N)
 		i -= 1; 
 	}
 
-	// Return the value stored in F (i.e. factorial N (i.e. N!)).
-	return F;
+	// Return the value stored in F.
+	// The value stored in F is factorial N.
+	// Factorial N is denoted by N followed by the exclamation mark.
+	return F; // Return the value represented by N!
 }
 
 /**
@@ -83,10 +77,14 @@ long double e(int N, std::ostream & output)
 	int i = 0;
 
 	// Declare a pointer to an unsigned long long int type variable named T.
+	// A pointer variable stores 0 or else the memory address of a variable of the corresponding data type.
+	// The value stored in a pointer is a sixteen-character memory address which denotes the first memory cell in a chunk of contiguous memory cells
+	// (and that chunk of contiguous memory cells is exactly as large as a variable of the pointer's corresponding data type).
+	// Note that each memory cell has a data capacity of one byte.
 	unsigned long long int * T;
 
 	// If N is smaller than zero or if N is larger than MAXIMUM_N, set N to one. 
-	N = ((N < 0) || (N > MAXIMUM_N)) ? 1 : N;
+	if ((N < 0) || (N > MAXIMUM_N)) N = 1;
 
 	// Allocate N contiguous unsigned long long int sized chunks of memory to an array for storing N floating-point values.
 	// Store the memory address of the first element of that array in T.
@@ -104,7 +102,7 @@ long double e(int N, std::ostream & output)
 	// Print "(*T) := {*T}." to the output stream.
 	output << "\n\n(*T) := " << (*T) << ". // dereferenced pointer to unsigned long long int type variable \n";
 
-	// For each integer value represented by i starting at 0 and ending at N in and in ascending order: 
+	// For each integer value represented by i (starting with 0 and ending with N in ascending order): 
 	// print the memory address of the ith element of the unsigned long long int type array represented by T to the output stream.
 	for (i = 0; i < N; i += 1) 
 	{
@@ -115,10 +113,10 @@ long double e(int N, std::ostream & output)
 	// Print a newline character to the output stream.
 	output << '\n';
 
-	// For each integer value represented by i starting at 0 and ending at N in and in ascending order:
-	// set value of the ith element of the unsigned long long int type array represented by T to (N - i) and
+	// For each integer value represented by i (starting with 0 and ending with N in ascending order):
+	// set the value of the ith element of the unsigned long long int type array represented by T to (N - i) and
 	// print the data value which is stored in the ith element of the array to the output stream.
-	for (i = 0; i < N; i += 1) 
+	for (i = 0; i < N; i++) // (The expression "N++" is essentially identical to the expression "N += 1").
 	{
 		// Store the result of the arithmetic expression (N - i) in T[i].
 		T[i] = N - i;
@@ -130,8 +128,8 @@ long double e(int N, std::ostream & output)
 	// Print a newline character to the output stream.
 	output << '\n';
 
-	// For each integer value represented by i starting at 0 and ending at N in and in ascending order:
-	// set value of the ith element of the unsigned long long int type array represented by T to (N - i)! and
+	// For each integer value represented by i (starting with 0 and ending with N in ascending order):
+	// set the value of the ith element of the unsigned long long int type array represented by T to (N - i)! and
 	// print the data value which is stored in the ith element of the array to the output stream.
 	for (i = 0; i < N; i += 1) 
 	{
@@ -148,12 +146,12 @@ long double e(int N, std::ostream & output)
 	// Print a newline character to the output stream.
 	output << '\n';
 
-	// For each integer value represented by i starting at 0 and ending at N in and in ascending order:
+	// For each integer value represented by i (starting with 0 and ending with N in ascending order):
 	// print the value of (1 / (N - i)!) to the output stream.
 	for (i = 0; i < N; i += 1) output << "\n(1 / T[" << i << "]) = (1 / " << T[i] << ") = " << (long double) 1 / T[i] << ".";
 
-	// For each integer value represented by i starting at 0 and ending at N in and in ascending order:
-	// add the value of (1 / (N - i)!) to A and print the contents of A to the output stream.
+	// For each integer value represented by i (starting with 0 and ending with N in ascending order):
+	// add the value of (1 / (N - i)!) to A and print the data value which is stored in A to the output stream.
 	for (i = 0; i < N; i += 1) 
 	{
 		output << "\n\nA := A + (1 / (" << N << " - " << i << ")!)";
@@ -184,16 +182,16 @@ int main()
 	// Set the intial value which is stored in A to one.
 	long double A = 1.0;
 
-    // Set the number of digits of floating-point numbers which are printed to the command line terminal to 50 digits.
+    // Set the number of digits of floating-point numbers which are printed to the command line terminal to 100 digits.
     std::cout.precision(100);
 
-    // Set the number of digits of floating-point numbers which are printed to the file output stream to 50 digits.
+    // Set the number of digits of floating-point numbers which are printed to the file output stream to 100 digits.
     file.precision(100);
 
 	/**
-	 * If the file named eulers_number_approximation_output.txt does not already exist inside of the same 
-	 * file directory as does the file named eulers_number_approximation.cpp, 
-	 * create a new file named eulers_number_approximation_output.txt.
+	 * If the file named eulers_number_approximation_output.txt does not already exist 
+	 * inside of the same file directory as the file named eulers_number_approximation.cpp, 
+	 * create a new file named eulers_number_approximation_output.txt in that directory.
 	 * 
 	 * Open the plain-text file named eulers_number_approximation_output.txt 
 	 * and set that file to be overwritten with program data.
@@ -226,7 +224,7 @@ int main()
 	file << N;
 
 	// If N is smaller than zero or if N is larger than MAXIMUM_N, set N to one.
-	N = ((N < 0) || (N > MAXIMUM_N)) ? 1 : N;
+	if ((N < 0) || (N > MAXIMUM_N)) N = 1;
 
 	// Print "N := {N}." to the command line terminal.
 	std::cout << "\n\nN := " << N << ". // int type variable";
