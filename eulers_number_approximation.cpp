@@ -1,7 +1,7 @@
 /**
  * file: eulers_number_approximation.cpp
  * type: C++ (source file)
- * date: 01_JUNE_2023
+ * date: 02_JUNE_2023
  * author: karbytes
  * license: PUBLIC_DOMAIN
  */
@@ -73,7 +73,7 @@ unsigned long long int compute_factorial_of_N_using_iteration(int N)
  * Note that the actual value of e is a limit which cannot be determined using 
  * a finite number of additions as described in the previous sentence. Instead, 
  * the actual value of e is defined as the sum of every unique instance of 
- * (1/(n!)) such that n is a natural number.
+ * (1/(n!)) such that n is a nonnegative integer.
  * 
  * The value returned by this function is a floating-point number value.
  */
