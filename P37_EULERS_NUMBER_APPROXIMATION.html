@@ -7,13 +7,13 @@
 
 
 <hr>
-<p>Portable-Network-Graphics_image_link: <a style="background:#ff9000;color:#000000" href="https://raw.githubusercontent.com/karlinarayberinger/karlina_object_evolution_0_pack/main/eulers_number_approximation_output.txt" target="_blank" rel="noopener">https://raw.githubusercontent.com/karlinarayberinger/karlina_object_evolution_0_pack/main/eulers_number_approximation_output.txt</a></p>
+<p>Portable-Network-Graphics_image_link: <a style="background:#ff9000;color:#000000" href="https://raw.githubusercontent.com/karlinarayberinger/karlina_object_evolution_0_pack/main/e_mathematical_constant.png" target="_blank" rel="noopener">https://raw.githubusercontent.com/karlinarayberinger/karlina_object_evolution_0_pack/main/e_mathematical_constant.png</a></p>
 <hr>
-<p><span style="background:#ffff00">The C++ program featured in this tutorial web page generates an approximation of the the mathematical constant named <strong>e</strong> (i.e. <a style="background:#ff9000;color:#000000" href="https://en.wikipedia.org/wiki/E_(mathematical_constant)" target="_blank" rel="noopener">Euler’s Number</a>). The program user is prompted to enter a natural number to store in a variable named N. Then the approximate value of e is computed by adding N unique terms (and each of those N terms is 1 divided by <a style="background:#000000;color:#00ff00" href="https://karlinaobject.wordpress.com/factorial/" target="_blank" rel="noopener">factorial</a> n (and n is a natural number which is smaller than or equal to N)).</span></p>
+<p><span style="background:#ffff00">The C++ program featured in this tutorial web page generates an approximation of the the mathematical constant named <strong>e</strong> (i.e. <a style="background:#ff9000;color:#000000" href="https://en.wikipedia.org/wiki/E_(mathematical_constant)" target="_blank" rel="noopener">Euler’s Number</a>). The program user is prompted to enter a natural number to store in a variable named N. Then the approximate value of e is computed by adding N unique terms (and each of those N terms is 1 divided by <a style="background:#000000;color:#00ff00" href="https://karlinaobject.wordpress.com/factorial/" target="_blank" rel="noopener">factorial</a> n (and n is a nonnegative integer which is smaller than or equal to N)). Note that the actual value of e is a limit which cannot be determined using a finite number of additions as described in the previous sentence. Instead, the actual value of <u>e is defined as the sum of every unique instance of (1/(n!)) such that n is a natural number.</u></span></p>
 <p><span style="background:#00ff00">To view hidden text inside of the preformatted text boxes below, scroll horizontally.</span></p>
 <pre>Let E be 0.
 Let N be a natural number.
-For each natural number n (starting with 1 and ending with N):
+For each natural number n (starting with 0 and ending with N):
   Add (1/n!) to E.
 End For.
 // E represents the approximate value of Euler's Number.
@@ -115,7 +115,13 @@ unsigned long long int compute_factorial_of_N_using_iteration(int N)
  * N is assumed to be a natural number.
  * 
  * The approximate value of Euler's Number is computed by adding N unique terms 
- * (and each of those N terms is 1 divided by factorial n (and n is a natural number which is smaller than or equal to N)).
+ * (and each of those N terms is 1 divided by factorial n 
+ * (and n is a nonnegative integer which is smaller than or equal to N)).
+ * 
+ * Note that the actual value of e is a limit which cannot be determined using 
+ * a finite number of additions as described in the previous sentence. Instead, 
+ * the actual value of e is defined as the sum of every unique instance of 
+ * (1/(n!)) such that n is a natural number.
  * 
  * The value returned by this function is a floating-point number value.
  */
@@ -343,8 +349,7 @@ int main()
 
 	// Exit the program.
 	return 0;
-}
-</pre>
+}</pre>
 <hr>
 <p><strong>SAMPLE_PROGRAM_OUTPUT</strong></p>
 <hr>
