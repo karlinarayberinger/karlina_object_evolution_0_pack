@@ -67,7 +67,13 @@ unsigned long long int compute_factorial_of_N_using_iteration(int N)
  * N is assumed to be a natural number.
  * 
  * The approximate value of Euler's Number is computed by adding N unique terms 
- * (and each of those N terms is 1 divided by factorial n (and n is a natural number which is smaller than or equal to N)).
+ * (and each of those N terms is 1 divided by factorial n 
+ * (and n is a nonnegative integer which is smaller than or equal to N)).
+ * 
+ * Note that the actual value of e is a limit which cannot be determined using 
+ * a finite number of additions as described in the previous sentence. Instead, 
+ * the actual value of <u>e is defined as the sum of every unique instance of 
+ * (1/(n!)) such that n is a natural number.
  * 
  * The value returned by this function is a floating-point number value.
  */
