@@ -13,7 +13,6 @@
 // remove later
 #include <cmath>
 
-
 /*
 #include <cmath> // power function (e.g. 8 = pow(2,3))
 #define MAXIMUM_N 65 // constant which represents maximum N value
@@ -78,6 +77,10 @@ double power(double base, double exponent)
             //...
         }
         return result;
+    }
+    else // if (exponent < 0)
+    {
+        //...
     }
     return 0.0;
 }
