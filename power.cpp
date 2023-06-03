@@ -23,6 +23,9 @@ bool is_whole_number(double input);
 double absolute_value(double input);
 double power(double base, double exponent);
 
+// remove later
+double Power(double base, double exponent);
+
 /**
  * Program Entry Point 
  */
@@ -32,6 +35,7 @@ int main()
     std::cout << "\n\npower(2, 3) := " << power(2, 3) << ".";
     std::cout << "\n\npow(2, 3) := " << pow(2, 3) << ".";
     std::cout << "\n\npow(2, 0.5) := " << pow(2, 0.5) << ".";
+    std::cout << "\n\nPower(2, 0.5) := " << Power(2, 0.5) << ".";
     // Program Exit Point
     return 0;
 }
@@ -52,6 +56,24 @@ double absolute_value(double input)
     if (input < 0) input *= -1; // "input *= -1" is identical to "input = input * -1" is identical to "input = input * (-1)".
     return input;
 }
+
+/**
+ * chatGPT wrote this function
+ */
+double Power(double base, double exponent)  
+{  
+    // Base case  
+    if (exponent == 0)  
+        return 1;  
+  
+    // Initializing power 
+    double power = 1;
+    for (int i=1; i<=exponent; i++)  
+        power = power * base;  
+  
+    // return result  
+    return power;  
+} 
 
 /**
  */
