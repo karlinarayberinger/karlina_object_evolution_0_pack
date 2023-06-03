@@ -7,11 +7,51 @@
  */
 
 /* preprocessing directives */
+/*
 #include <iostream> // command line input and command line output operations
 #include <fstream> // file input and file output operations
+*/
 
 // remove later
-#include <cmath>
+//#include <cmath>
+
+/* chatGPT code start */
+#include <iostream> 
+  
+double pow(double x, double y) 
+{ 
+    // Base case 
+    if (y == 0) 
+      return 1; 
+
+    //Specialization 
+    if (y == 1) 
+        return x; 
+          
+    //Use exponentiation by squaring 
+    double res = 1;   
+    while (y > 0) 
+    { 
+        if (y & 1) 
+            res = res * x; 
+        y = y >> 1; 
+        x = x * x;   
+    } 
+    return res; 
+} 
+
+int main() 
+{ 
+    double x, y;
+  
+    std::cout << "Enter base & exponent\n"; 
+    std::cin >> x >> y; 
+    
+    double result = pow(x, y); 
+    std::cout << x << "^" << y << " = " << result; 
+    return 0; 
+}
+/* chatGPT code end */
 
 /*
 #include <cmath> // power function (e.g. 8 = pow(2,3))
@@ -19,47 +59,56 @@
 */
 
 /* function prototypes */
+/*
 bool is_whole_number(double input);
 double absolute_value(double input);
 double power(double base, double exponent);
+*/
 
 // remove later
-double Power(double base, double exponent);
+//double Power(double base, double exponent);
 
 /**
  * Program Entry Point 
  */
+/*
 int main() 
 {
     // temp test:
     std::cout << "\n\npower(2, 3) := " << power(2, 3) << ".";
     std::cout << "\n\npow(2, 3) := " << pow(2, 3) << ".";
     std::cout << "\n\npow(2, 0.5) := " << pow(2, 0.5) << ".";
-    std::cout << "\n\nPower(2, 0.5) := " << Power(2, 0.5) << ".";
+    std::cout << "\n\n(double) Power(2, 0.5) := " << (double) Power(2, 0.5) << ".";
     // Program Exit Point
     return 0;
 }
+*/
 
 /**
  */
+/*
 bool is_whole_number(double input) 
 {
     //...
     return true;
 }
+*/
 
 /**
  * Assume that input is a real number value whose absolute value is no larger than MAXIMUM_N.
  */
+/*
 double absolute_value(double input) 
 {
     if (input < 0) input *= -1; // "input *= -1" is identical to "input = input * -1" is identical to "input = input * (-1)".
     return input;
 }
+*/
 
 /**
  * chatGPT wrote this function
  */
+/*
 double Power(double base, double exponent)  
 {  
     // Base case  
@@ -74,9 +123,11 @@ double Power(double base, double exponent)
     // return result  
     return power;  
 } 
+*/
 
 /**
  */
+/*
 double power(double base, double exponent) 
 {
     int i = 0;
@@ -103,3 +154,4 @@ double power(double base, double exponent)
     }
     return 0.0;
 }
+*/
