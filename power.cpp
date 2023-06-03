@@ -1,7 +1,7 @@
 /**
  * file: power.cpp
  * type: C++ (source file)
- * date: 28_MAY_2023
+ * date: 03_JUNE_2023
  * author: karbytes
  * license: PUBLIC_DOMAIN
  */
@@ -24,6 +24,8 @@ double power(double base, double exponent);
  */
 int main() 
 {
+    // temp test:
+    std::cout << "\n\npower(2, 3) := " << power(2, 3) << ".\n\n";
     // Program Exit Point
     return 0;
 }
@@ -32,6 +34,7 @@ int main()
  */
 bool is_whole_number(double input) 
 {
+    //...
     return true;
 }
 
@@ -39,7 +42,24 @@ bool is_whole_number(double input)
  */
 double power(double base, double exponent) 
 {
-    if (exponent == 0) return 1;
-    if (exponent == 1) return base;
+    int i = 0;
+    double result = 1.0;
+    if (exponent == 0) return 1; // Any real number to the power of zero is one.
+    if (exponent == 1) return base; // Any real number X to the power of one is X.
+    if (exponent > 1) 
+    {
+        if (is_whole_number(exponent))
+        {
+            i = exponent;
+            while (i > 0) 
+            {
+                result = result * base;
+                i = i - 1;
+            }
+            return result;
+        }
+        //...
+        return result;
+    }
     return 0.0;
 }
