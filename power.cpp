@@ -95,9 +95,16 @@ long double eulers_number_approximation(int N)
 }
 
 /**
- * This function computes the natural log of a some real number x (and the base of natural log is e) 
+ * This function computes the natural log (ln) of a some real number x (and the base of natural log is e) 
  * by iteratively dividing x by e until the x is smaller than e 
  * and by incrementing an output natural log value by one each iteration. 
+ * 
+ * Natural Log Example: 
+ * ln(x) = y.
+ * ln(5) = 1.60944.
+ * 1.60944 ^ e = 5. 
+ * y ^ e = x.
+ * power(y,e) = x.
  * 
  * The value returned by this function represents the number of times the input value was divided by e.
  * 
