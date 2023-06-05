@@ -237,8 +237,8 @@ int main()
 	// Print {N} to the file output stream.
 	file << N;
 
-	// If N is smaller than zero or if N is larger than MAXIMUM_N, set N to one.
-	if ((N < 0) || (N > MAXIMUM_N)) N = 1;
+	// If N is smaller than one or if N is larger than MAXIMUM_N, set N to one.
+	if ((N < 1) || (N > MAXIMUM_N)) N = 1;
 
 	// Print "N := {N}." to the command line terminal.
 	std::cout << "\n\nN := " << N << ". // int type variable";
