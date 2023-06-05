@@ -220,23 +220,36 @@ long double eulers_number_approximation(int N)
 }
 
 /**
- * This function computes the natural log (ln) of a some real number x (and the base of natural log is e) 
+ * This function computes the base-two logarithm of a some real number x 
  * by iteratively dividing x by e each iteration 
- * and by incrementing an output natural log value by one each iteration
+ * and by incrementing an output log value by one each iteration
  * until the x is smaller than e.
  * 
- * Natural Log Example: 
- * ln(x) = y.
- * ln(5) = 1.60944.
- * 1.60944 ^ e = 5. 
- * y ^ e = x.
- * power(y, e) = x.
+ * A logarithm base can be any number greater than 0, such as 10, e (Euler's Number), or any other positive number.
+ * 
+ * Logarithm Formula:
+ * log(x) = y. // power(base, y) = x.
+ * 
+ * Base-2 Log Examples: 
+ * log(8) = 3. // power(2, 3) = 8. // 2 ^ 3 = 2 * 2 * 2 = 8.
+ * log(2) = 1. // power(2, 1) = 2. // 2 ^ 1 = 2.
+ * log(1) = 0. // power(2, 0) = 1. // 2 ^ 0 = 1
+ * log(0.5) = -1. // power(2, -1) = 1 / 2.
+ * log(0) = undefined.
+ * 
+ * Note that a the base of a natural log (ln) is Euler's Number (e).
+ * 
+ * Natural Logarithm Formula:
+ * ln(x) = y. // power(e, y) = x.
+ * 
+ * Natural Log Examples: 
+ * ln(5) = ~1.60944. // power(e, 5) = ~1.60944.
  * 
  * The value returned by this function represents the number of times the input value was divided by e.
  * 
- * Assume that x is a real number which is no smaller than MINIMUM_INPUT and no larger than MAXIMUM_INPUT.
+ * Assume that x is a positive number which is no smaller than MINIMUM_INPUT and no larger than MAXIMUM_INPUT.
  */
-long double natural_log(float x)
+long double log(float x)
 {
     long double e = eulers_number_approximation(65);
     long double log_x = 0; 
