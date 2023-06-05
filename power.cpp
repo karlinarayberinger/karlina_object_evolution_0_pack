@@ -9,8 +9,8 @@
 /* preprocessing directives */
 #include <iostream> // command line input and command line output operations
 #include <fstream> // file input and file output operations
-#define MAXIMUM_INPUT 1000.0 // constant which represents maximum value of either base or exponent.
-#define MINIMUM_INPUT -1000.0 // constant which represents minimum value of either base or exponent.
+#define MAXIMUM_INPUT 100.0 // constant which represents maximum value of either base or exponent.
+#define MINIMUM_INPUT -100.0 // constant which represents minimum value of either base or exponent.
 
 /* function prototypes */
 unsigned long long int compute_factorial_of_N_using_iteration(int N);
@@ -24,11 +24,95 @@ long double power(float base, float exponent);
  */
 int main() 
 {
-    // temp test:
-    std::cout << "\n\npower(2, 3) := " << power(2, 3) << ".";
-    std::cout << "\n\npow(2, 3) := " << pow(2, 3) << ".";
-    std::cout << "\n\npow(2, 0.5) := " << pow(2, 0.5) << ".";
-    // Program Exit Point
+    // Declare a file output stream object named file.
+    std::ofstream file;
+
+    // Declare two float type variables named base and exponent and initial each of their values to zero.
+    // A float type variable in C++ occupies 4 bytes of memory.
+    float base = 0.0, exponent = 0.0;
+
+    // Declare a long double type variable named result and initialize its value to zero.
+    // A long double type variable in C++ occupies 8 bytes of memory.
+    long double result = 0.0;
+
+    // Set the number of digits of floating-point numbers which are printed to the command line terminal to 100 digits.
+    std::cout.precision(100);
+
+    // Set the number of digits of floating-point numbers which are printed to the file output stream to 100 digits.
+    file.precision(100);
+
+    /**
+     * If the file named power_output.txt does not already exist 
+     * inside of the same file directory as the file named power.cpp, 
+     * create a new file named power_output.txt in that directory.
+     * 
+     * Open the plain-text file named power_output.txt 
+     * and set that file to be overwritten with program data.
+     */
+    file.open("power_output.txt");
+
+    // Print an opening message to the command line terminal.
+    std::cout << "\n\n--------------------------------";
+    std::cout << "\nSTART OF PROGRAM";
+    std::cout << "\n--------------------------------";
+
+    // Print an opening message to the file output stream.
+    file << "--------------------------------";
+    file << "\nSTART OF PROGRAM";
+    file << "\n--------------------------------";
+
+    /***********************************/
+    /* STEP_0: Input a value for base. */
+    /***********************************/
+
+    // Print "Enter a real number to store in a variable named base which is no larger than {MAXIMUM_INPUT} and no smaller than {MINIMUM_INPUT}: " to the command line terminal.
+    std::cout << "\n\nEnter a real number to store in a variable named base which is no larger than " << MAXIMUM_INPUT << " and no smaller than " << MINIMUM_INPUT << ": ";
+
+    // Print "Enter a real number to store in a variable named base which is no larger than {MAXIMUM_INPUT} and no smaller than {MINIMUM_INPUT}: " to the file output stream.
+    file << "\n\nEnter a real number to store in a variable named base which is no larger than " << MAXIMUM_INPUT << " and no smaller than " << MINIMUM_INPUT << ": ";
+
+    // Scan the command line terminal for the most recent keyboard input value and store that value in base.
+    std::cin >> base;
+
+    // Print the value stored in base to the command line terminal.
+    std::cout << base;
+
+    // Print the value stored in base to the file output stream.
+    file << base;
+
+    /***************************************/
+    /* STEP_1: Input a value for exponent. */
+    /***************************************/
+
+    // Print "Enter a real number to store in a variable named exponent which is no larger than {MAXIMUM_INPUT} and no smaller than {MINIMUM_INPUT}: " to the command line terminal.
+    std::cout << "\n\nEnter a real number to store in a variable named exponent which is no larger than " << MAXIMUM_INPUT << " and no smaller than " << MINIMUM_INPUT << ": ";
+
+    // Print "Enter a real number to store in a variable named exponent which is no larger than {MAXIMUM_INPUT} and no smaller than {MINIMUM_INPUT}: " to the file output stream.
+    file << "\n\nEnter a real number to store in a variable named exponent which is no larger than " << MAXIMUM_INPUT << " and no smaller than " << MINIMUM_INPUT << ": ";
+
+    // Scan the command line terminal for the most recent keyboard input value and store that value in exponent.
+    std::cin >> exponent;
+
+    // Print the value stored in exponent to the command line terminal.
+    std::cout << exponent;
+
+    // Print the value stored in exponent to the file output stream.
+    file << exponent;
+
+    // Print a closing message to the command line terminal.
+    std::cout << "\n\n--------------------------------";
+    std::cout << "\nEND OF PROGRAM";
+    std::cout << "\n--------------------------------\n\n";
+
+    // Print a closing message to the file output stream.
+    file << "\n\n--------------------------------";
+    file << "\nEND OF PROGRAM";
+    file << "\n--------------------------------";
+
+    // Close the file output stream.
+    file.close();
+
+    // Exit the program.
     return 0;
 }
 
@@ -153,6 +237,13 @@ long double exponential(float x)
  * Reverse engineer the pow() function (which is defined in the cmath C++ library).
  * 
  * If exponent is a natural number, then the returned value is base multiplied by itself exponent times.
+ * 
+ * Power Example:
+ * power(2, 3) = 8. // 8 = 2 * 2 * 2.
+ * power(2, -3) = 0.125. // 0.125 = 1 / 8 = 1 / (2 * 2 * 2).
+ * power(8, 0.25) = 2. // 0.25 = 1 / 4 = (1 / 2) / 2.
+ * power(8, -0.25) = 0.5. 
+ * powet(-2, 3) = -8. // -8 = -2 * -2 * -2.
  * 
  * The value returned by this function represents the result of base raised to the power of exponent (i.e. base ^ exponent).
  * 
