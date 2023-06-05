@@ -135,7 +135,7 @@ long double eulers_number_approximation(int N, std::ostream &amp; output)
 	long double A = 1.0;
 
 	// Declare an int type variable (i.e. a variable for storing integer values) named i. 
-	// Set the initial value which is stored in i to zero.
+	// Set the intiial value which is stored in i to zero.
 	int i = 0;
 
 	// Declare a pointer to an unsigned long long int type variable named T.
@@ -285,8 +285,8 @@ int main()
 	// Print {N} to the file output stream.
 	file &lt;&lt; N;
 
-	// If N is smaller than zero or if N is larger than MAXIMUM_N, set N to one.
-	if ((N &lt; 0) || (N &gt; MAXIMUM_N)) N = 1;
+	// If N is smaller than one or if N is larger than MAXIMUM_N, set N to one.
+	if ((N &lt; 1) || (N &gt; MAXIMUM_N)) N = 1;
 
 	// Print "N := {N}." to the command line terminal.
 	std::cout &lt;&lt; "\n\nN := " &lt;&lt; N &lt;&lt; ". // int type variable";
