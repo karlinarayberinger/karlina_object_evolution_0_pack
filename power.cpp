@@ -196,7 +196,7 @@ long double eulers_number_approximation(int N)
     long double A = 1.0;
     int i = 0;
     unsigned long long int * T;
-    if ((N < 0) || (N > MAXIMUM_N)) N = 1;
+    if ((N < 0) || (N > 65)) N = 1;
     T = new unsigned long long int [N];
     for (i = 0; i < N; i++) T[i] = N - i;
     for (i = 0; i < N; i += 1) T[i] = compute_factorial_of_N_using_iteration(T[i]);
