@@ -80,6 +80,15 @@ int main()
     // Print the value stored in base to the file output stream.
     file << base;
 
+    // If base is smaller than MINIMUM_INPUT or if base is larger than MAXIMUM_INPUT, set base to zero.
+    if ((base < MINIMUM_INPUT) || (base > MAXIMUM_INPUT)) base = 0;
+
+    // Print "base := {base}." to the command line terminal.
+    std::cout << "\n\nbase := " << base << ".";
+
+    // Print "base := {base}." to the file output stream.
+    file << "\n\nbase := " << base << ".";
+
     /***************************************/
     /* STEP_1: Input a value for exponent. */
     /***************************************/
@@ -215,6 +224,7 @@ long double natural_log(float x);
  * power(e,x) = y.
  * power(e, ln(x)) = x.
  * power(e, 5) = 148.41316.
+ * power(e, 0) = 1. 
  * 
  * The value returned by this function represents the number of times e was multiplied by itself.
  * 
@@ -243,7 +253,11 @@ long double exponential(float x)
  * power(2, -3) = 0.125. // 0.125 = 1 / 8 = 1 / (2 * 2 * 2).
  * power(8, 0.25) = 2. // 0.25 = 1 / 4 = (1 / 2) / 2.
  * power(8, -0.25) = 0.5. 
- * powet(-2, 3) = -8. // -8 = -2 * -2 * -2.
+ * power(-2, 3) = -8. // -8 = -2 * -2 * -2.
+ * power(0, 1) = 0.
+ * power(1, 0) = 1.
+ * power(2, 1) = 2.
+ * power(2, 0) = 1.
  * 
  * The value returned by this function represents the result of base raised to the power of exponent (i.e. base ^ exponent).
  * 
