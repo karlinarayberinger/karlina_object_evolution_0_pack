@@ -24,6 +24,7 @@ long double power(float base, float exponent);
  */
 int main() 
 {
+    /*
     // Declare a file output stream object named file.
     std::ofstream file;
 
@@ -34,12 +35,13 @@ int main()
     // Declare a long double type variable named result and initialize its value to zero.
     // A long double type variable in C++ occupies 8 bytes of memory.
     long double result = 0.0;
+    */
 
     // Set the number of digits of floating-point numbers which are printed to the command line terminal to 100 digits.
     std::cout.precision(100);
 
     // Set the number of digits of floating-point numbers which are printed to the file output stream to 100 digits.
-    file.precision(100);
+    // file.precision(100);
 
     /**
      * If the file named power_output.txt does not already exist 
@@ -49,8 +51,9 @@ int main()
      * Open the plain-text file named power_output.txt 
      * and set that file to be overwritten with program data.
      */
-    file.open("power_output.txt");
+    //file.open("power_output.txt");
 
+    /*
     // Print an opening message to the command line terminal.
     std::cout << "\n\n--------------------------------";
     std::cout << "\nSTART OF PROGRAM";
@@ -60,11 +63,17 @@ int main()
     file << "--------------------------------";
     file << "\nSTART OF PROGRAM";
     file << "\n--------------------------------";
+    */
+
+    // temp tests
+    std::cout << "\n\neulers_number_approximation(65) := " << eulers_number_approximation(65) << ".";
+    std::cout << "\n\n";
 
     /***********************************/
     /* STEP_0: Input a value for base. */
     /***********************************/
 
+    /*
     // Print "Enter a real number to store in a variable named base which is no larger than {MAXIMUM_INPUT} and no smaller than {MINIMUM_INPUT}: " to the command line terminal.
     std::cout << "\n\nEnter a real number to store in a variable named base which is no larger than " << MAXIMUM_INPUT << " and no smaller than " << MINIMUM_INPUT << ": ";
 
@@ -88,11 +97,13 @@ int main()
 
     // Print "base := {base}." to the file output stream.
     file << "\n\nbase := " << base << ".";
+    */
 
     /***************************************/
     /* STEP_1: Input a value for exponent. */
     /***************************************/
-
+ 
+    /*
     // Print "Enter a real number to store in a variable named exponent which is no larger than {MAXIMUM_INPUT} and no smaller than {MINIMUM_INPUT}: " to the command line terminal.
     std::cout << "\n\nEnter a real number to store in a variable named exponent which is no larger than " << MAXIMUM_INPUT << " and no smaller than " << MINIMUM_INPUT << ": ";
 
@@ -116,11 +127,13 @@ int main()
 
     // Print "exponent := {exponent}." to the file output stream.
     file << "\n\nexponent := " << exponent << ".";
+    */
 
     /***************************************************************/
     /* STEP_2: Output the value returned by power(base, exponent). */
     /***************************************************************/
 
+    /*
     // Compute base raised to the power of exponent and save the value obtained by that computation in result.
     result = power(base, exponent);
 
@@ -129,7 +142,7 @@ int main()
 
     // Print "result := power(base, exponent) = power({base}, {exponent}) = {result}." to the file output stream.
     file << "\n\nresult := power(base, exponent) = power(" << base << ", " << exponent << ") = " << result << ".";
-
+    
     // Print a closing message to the command line terminal.
     std::cout << "\n\n--------------------------------";
     std::cout << "\nEND OF PROGRAM";
@@ -142,6 +155,7 @@ int main()
 
     // Close the file output stream.
     file.close();
+    */
 
     // Exit the program.
     return 0;
