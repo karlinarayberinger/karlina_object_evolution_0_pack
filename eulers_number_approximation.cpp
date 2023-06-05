@@ -33,11 +33,11 @@ long double eulers_number_approximation(int N, std::ostream & output);
 unsigned long long int compute_factorial_of_N_using_iteration(int N)
 {
 	// Declare an int type variable (i.e. a variable for storing integer values) named i. 
-	// Set the intial value which is stored in i to zero.
+	// Set the initial value which is stored in i to zero.
 	int i = 0;
 
 	// Declare an unsigned long long int type variable (i.e. a variable for storing nonnegative integer values) named F. 
-	// Set the intial value which is stored in F to zero.
+	// Set the initial value which is stored in F to zero.
 	unsigned long long int F = 0; 
 
 	// If N is larger than negative one and if N is not larger than MAXIMUM_N, set i to N. 
@@ -83,11 +83,11 @@ unsigned long long int compute_factorial_of_N_using_iteration(int N)
 long double eulers_number_approximation(int N, std::ostream & output)
 {
 	// Declare a long double type variable (i.e. a variable for storing floating-point number values) named A. 
-	// Set the intial value which is stored in A to one.
+	// Set the initial value which is stored in A to one.
 	long double A = 1.0;
 
 	// Declare an int type variable (i.e. a variable for storing integer values) named i. 
-	// Set the intial value which is stored in i to zero.
+	// Set the intiial value which is stored in i to zero.
 	int i = 0;
 
 	// Declare a pointer to an unsigned long long int type variable named T.
@@ -97,7 +97,7 @@ long double eulers_number_approximation(int N, std::ostream & output)
 	// Note that each memory cell has a data capacity of one byte.
 	unsigned long long int * T;
 
-	// If N is smaller than onr or if N is larger than MAXIMUM_N, set N to one. 
+	// If N is smaller than one or if N is larger than MAXIMUM_N, set N to one. 
 	if ((N < 1) || (N > MAXIMUM_N)) N = 1;
 
 	// Allocate N contiguous unsigned long long int sized chunks of memory to an array for storing N floating-point values.
@@ -189,11 +189,11 @@ int main()
 	std::ofstream file;
 
 	// Declare an int type variable (i.e. a variable for storing integer values) named N. 
-	// Set the intial value which is stored in N to one.
+	// Set the initial value which is stored in N to one.
 	int N = 1;
 
 	// Declare a long double type variable (i.e. a variable for storing floating-point number values) named A. 
-	// Set the intial value which is stored in A to one.
+	// Set the initial value which is stored in A to one.
 	long double A = 1.0;
 
     // Set the number of digits of floating-point numbers which are printed to the command line terminal to 100 digits.
