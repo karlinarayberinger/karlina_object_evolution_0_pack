@@ -150,34 +150,15 @@ long double exponential(float x)
 }
 
 /**
+ * Reverse engineer the pow() function (which is defined in the cmath C++ library).
+ * 
+ * If exponent is a natural number, then the returned value is base multiplied by itself exponent times.
+ * 
+ * The value returned by this function represents the result of base raised to the power of exponent (i.e. base ^ exponent).
+ * 
+ * Assume that x is a real number which is no smaller than MINIMUM_INPUT and no larger than MAXIMUM_INPUT.
  */
-double power(double base, double exponent) 
+long double power(float base, float exponent) 
 {
-    int i = 0;
-    double result = 1.0;
-    if (exponent == 0) return 1; // Any real number to the power of zero is one.
-    if (exponent == 1) return base; // Any real number X to the power of one is X.
-    if (exponent > 1) 
-    {
-        if (is_whole_number(exponent))
-        {
-            i = exponent;
-            while (i > 0) 
-            {
-                result = result * base;
-                i = i - 1;
-            }
-            return result;
-        }
-        else 
-        {
-            //...
-        }
-        return result;
-    }
-    else // if (exponent < 0)
-    {
-        //...
-    }
-    return 0.0;
+    return exponential(natural_log(base) * exponent);
 }
