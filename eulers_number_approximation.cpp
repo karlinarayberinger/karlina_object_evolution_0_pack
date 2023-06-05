@@ -1,7 +1,7 @@
 /**
  * file: eulers_number_approximation.cpp
  * type: C++ (source file)
- * date: 02_JUNE_2023
+ * date: 05_JUNE_2023
  * author: karbytes
  * license: PUBLIC_DOMAIN
  */
@@ -25,6 +25,10 @@ long double eulers_number_approximation(int N, std::ostream & output);
  * 
  * If N is zero, then N! is one.
  * 0! := 1.
+ * 
+ * The value returned by this function is a nonnegative integer (which is N factorial).
+ * 
+ * Assume that N is a nonnegative integer no larger than MAXIMUM_N.
  */
 unsigned long long int compute_factorial_of_N_using_iteration(int N)
 {
@@ -36,9 +40,9 @@ unsigned long long int compute_factorial_of_N_using_iteration(int N)
 	// Set the intial value which is stored in F to zero.
 	unsigned long long int F = 0; 
 
-	// If N is larger than zero and if N is not larger than MAXIMUM_N, set i to N. 
+	// If N is larger than negative one and if N is not larger than MAXIMUM_N, set i to N. 
 	// Otherwise, set i to 0.
-	i = ((N > 0) && (N <= MAXIMUM_N)) ? N : 0; 
+	i = ((N > -1) && (N <= MAXIMUM_N)) ? N : 0; 
 
 	// If N is larger than zero, set F to N.
 	// Otherwise, set F to 1.
@@ -63,8 +67,6 @@ unsigned long long int compute_factorial_of_N_using_iteration(int N)
 /**
  * Generate an approximation of the the mathematical constant named e (i.e. Euler’s Number).
  * 
- * N is assumed to be a natural number.
- * 
  * The approximate value of Euler's Number is computed by adding N unique terms 
  * (and each of those N terms is 1 divided by factorial n 
  * (and n is a nonnegative integer which is smaller than or equal to N)).
@@ -74,7 +76,9 @@ unsigned long long int compute_factorial_of_N_using_iteration(int N)
  * the actual value of e is defined as the sum of every unique instance of 
  * (1/(n!)) such that n is a nonnegative integer.
  * 
- * The value returned by this function is a floating-point number value.
+ * The value returned by this function is a positive floating-point number (which is the Nth approximation of Euler's Number).
+ * 
+ * Assume that N is a natural number no larger than 65.
  */
 long double eulers_number_approximation(int N, std::ostream & output)
 {
@@ -93,8 +97,8 @@ long double eulers_number_approximation(int N, std::ostream & output)
 	// Note that each memory cell has a data capacity of one byte.
 	unsigned long long int * T;
 
-	// If N is smaller than zero or if N is larger than MAXIMUM_N, set N to one. 
-	if ((N < 0) || (N > MAXIMUM_N)) N = 1;
+	// If N is smaller than onr or if N is larger than MAXIMUM_N, set N to one. 
+	if ((N < 1) || (N > MAXIMUM_N)) N = 1;
 
 	// Allocate N contiguous unsigned long long int sized chunks of memory to an array for storing N floating-point values.
 	// Store the memory address of the first element of that array in T.
