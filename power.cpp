@@ -17,11 +17,7 @@ unsigned long long int compute_factorial_of_N_using_iteration(int N);
 long double eulers_number_approximation(int N);
 long double natural_log(float x);
 long double exponential(float x);
-
-
-bool is_whole_number(double input);
-double absolute_value(double input);
-double power(double base, double exponent);
+long double power(float base, float exponent);
 
 /**
  * Program Entry Point 
@@ -96,15 +92,16 @@ long double eulers_number_approximation(int N)
 
 /**
  * This function computes the natural log (ln) of a some real number x (and the base of natural log is e) 
- * by iteratively dividing x by e until the x is smaller than e 
- * and by incrementing an output natural log value by one each iteration. 
+ * by iteratively dividing x by e each iteration 
+ * and by incrementing an output natural log value by one each iteration
+ * until the x is smaller than e.
  * 
  * Natural Log Example: 
  * ln(x) = y.
  * ln(5) = 1.60944.
  * 1.60944 ^ e = 5. 
  * y ^ e = x.
- * power(y,e) = x.
+ * power(y, e) = x.
  * 
  * The value returned by this function represents the number of times the input value was divided by e.
  * 
@@ -125,8 +122,15 @@ long double natural_log(float x);
 
 /**
  * This function computes the exponential of some real number x
- * by iteratively multiplying an output exp_x value by e (and e is the base of natural log)
+ * by iteratively multiplying an output exp_x value by e (and e is the base of natural log) each iteration
+ * and by decrementing x by one each iteration
  * until x is zero. 
+ * 
+ * Exponential Example:
+ * e ^ x = y.
+ * power(e,x) = y.
+ * power(e, ln(x)) = x.
+ * power(e, 5) = 148.41316.
  * 
  * The value returned by this function represents the number of times e was multiplied by itself.
  * 
@@ -140,25 +144,9 @@ long double exponential(float x)
     while(x > 0)
     { 
         exp_x *= e; 
-        x--; 
+        x -= 1; 
     } 
     return exp_x;
-}
-
-/**
- */
-bool is_whole_number(double input) 
-{
-    //...
-    return true;
-}
-
-/**
- */
-double absolute_value(double input) 
-{
-    if (input < 0) input *= -1; // "input *= -1" is identical to "input = input * -1" is identical to "input = input * (-1)".
-    return input;
 }
 
 /**
