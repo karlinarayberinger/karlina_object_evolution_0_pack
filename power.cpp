@@ -222,7 +222,7 @@ long double eulers_number_approximation(int N)
  * 
  * Assume that x is a real number which is no smaller than MINIMUM_INPUT and no larger than MAXIMUM_INPUT.
  */
-long double natural_log(float x); 
+long double natural_log(float x)
 {
     long double e = eulers_number_approximation(65);
     long double log_x = 0; 
