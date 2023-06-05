@@ -1,5 +1,5 @@
 // test_power.cpp was written by chatGPT on 03_JUNE_2023
-
+/*
 #include<iostream>
 #include<iomanip>
 #include <cmath>
@@ -41,6 +41,42 @@ int main(){
 	
 	//Reverse engineer the pow() function
 	result = exp(log(base) * exponent);
+	
+	//Output result with precision similar to Pythons pow()
+	cout << fixed;
+	cout << setprecision(20);
+	cout << "Result is: " << result << endl;
+	
+	return 0;
+	
+}*/
+
+#include<iostream>
+#include<iomanip>
+
+using namespace std;
+
+int main(){
+	
+	//Declare required variables
+	long double base;
+	long double exponent;
+	long double result;
+	
+	//Get user input
+	cout << "Input Base (e.g. 2): ";
+	cin >> base;
+	cout << "Input Exponent (e.g 0.5): ";
+	cin >> exponent;
+	
+	//Calculate the result
+	result = 1;
+	for (int i = 0; i < abs(exponent); ++i){
+		result *= base;
+	}
+    if (exponent < 0){
+        result = 1 / result;
+    }
 	
 	//Output result with precision similar to Pythons pow()
 	cout << fixed;
