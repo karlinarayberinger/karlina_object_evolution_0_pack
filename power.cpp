@@ -9,11 +9,13 @@
 /* preprocessing directives */
 #include <iostream> // command line input and command line output operations
 #include <fstream> // file input and file output operations
+#define MAXIMUM_INPUT 1000.0 // constant which represents maximum value of either base or exponent.
+#define MINIMUM_INPUT -1000.0 // constant which represents minimum value of either base or exponent.
 
 /* function prototypes */
 unsigned long long int compute_factorial_of_N_using_iteration(int N);
 long double eulers_number_approximation(int N);
-long double log(float x);
+long double natural_log(float x);
 double exp(float x);
 
 
@@ -65,8 +67,6 @@ unsigned long long int compute_factorial_of_N_using_iteration(int N)
 /**
  * Generate an approximation of the the mathematical constant named e (i.e. Euler’s Number).
  * 
- * N is assumed to be a natural number.
- * 
  * The approximate value of Euler's Number is computed by adding N unique terms 
  * (and each of those N terms is 1 divided by factorial n 
  * (and n is a nonnegative integer which is smaller than or equal to N)).
@@ -78,7 +78,7 @@ unsigned long long int compute_factorial_of_N_using_iteration(int N)
  * 
  * The value returned by this function is a positive floating-point number (which is the Nth approximation of Euler's Number).
  * 
- * Assume that N is a nonnegative integer no larger than 65.
+ * Assume that N is a natural number no larger than 65.
  */
 long double eulers_number_approximation(int N)
 {
@@ -95,13 +95,20 @@ long double eulers_number_approximation(int N)
 }
 
 /**
+ * This function computes the natural log of a some real number x (and the base of natural log is e) 
+ * by iteratively dividing x by e until the x is smaller than e 
+ * and by incrementing an output natural log value by one each iteration. 
+ * 
+ * The value returned by this function represents the number of times the input value was divided by e.
+ * 
+ * Assume that x is a real number which is no smaller than MINIMUM_INPUT and no larger than MAXIMUM_INPUT.
  */
-long double log(double x) 
+long double natural_log(float x); 
 {
     long double e = eulers_number_approximation(65);
     long double log_x = 0; 
     while(x > e){
-        log_X = 1;
+        log_x += 1;
         x /= e;
     }
     return log_x;
