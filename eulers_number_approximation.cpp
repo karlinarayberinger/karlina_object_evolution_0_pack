@@ -78,7 +78,7 @@ unsigned long long int compute_factorial_of_N_using_iteration(int N)
  * 
  * The value returned by this function is a positive floating-point number (which is the Nth approximation of Euler's Number).
  * 
- * Assume that N is a natural number no larger than 65.
+ * Assume that N is a natural number no larger than MAXIMUM_N.
  */
 long double eulers_number_approximation(int N, std::ostream & output)
 {
