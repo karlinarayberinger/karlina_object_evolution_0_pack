@@ -9,14 +9,14 @@
 /* preprocessing directives */
 #include <iostream> // command line input and command line output operations
 #include <fstream> // file input and file output operations
-#include <cmath>
+#include <cmath> // log and exp functions
 #define MAXIMUM_INPUT 100.0 // constant which represents maximum value of either base or exponent.
 #define MINIMUM_INPUT -100.0 // constant which represents minimum value of either base or exponent.
 
 /* function prototypes */
 unsigned long long int compute_factorial_of_N_using_iteration(int N);
 long double eulers_number_approximation(int N);
-//long double log(double x);
+//double log(double x);
 //double exp(double x);
 double power(double base, double exponent);
 
@@ -28,8 +28,11 @@ int main()
     // Declare a file output stream object named file.
     std::ofstream file;
 
-    // Declare 3 double type variables named base, exponent, and result.
-    double base, exponent, result;
+    // Declare 2 float type variables named base and exponent.
+    float base, exponent;
+
+    // Declare 1 long double variable named result.
+    long double result;
 
     // Set the number of digits of floating-point numbers which are printed to the command line terminal to 20 digits.
     std::cout.precision(20);
@@ -125,7 +128,7 @@ int main()
 
     // Print "result := power(base, exponent) = power({base}, {exponent}) = {result}." to the file output stream.
     file << "\n\nresult := power(base, exponent) = power(" << base << ", " << exponent << ") = " << result << ".";
-    
+
     // Print a closing message to the command line terminal.
     std::cout << "\n\n--------------------------------";
     std::cout << "\nEND OF PROGRAM";
@@ -234,7 +237,7 @@ long double eulers_number_approximation(int N)
 /*
 double log(double x)
 {
-    double e = 2.71828;
+    double e = eulers_number_approximation(65);
     double log_x = 0; 
     if ((x < MINIMUM_INPUT) || (x > MAXIMUM_INPUT)) x = 0;
     while(x > e)
@@ -243,8 +246,7 @@ double log(double x)
         x /= e;
     }
     return log_x;
-}
-*/
+}*/
 
 /**
  * This function computes the exponential of some real number x
@@ -264,19 +266,15 @@ double log(double x)
  * Assume that x is a real number which is no smaller than MINIMUM_INPUT and no larger than MAXIMUM_INPUT.
  */
 /*
-long double exp(float x)
-{
-    long double e = eulers_number_approximation(65);
-    double exp_x = 1; 
-    if ((x < MINIMUM_INPUT) || (x > MAXIMUM_INPUT)) x = 0;
-    while(x > 0)
-    { 
-        exp_x *= e; 
-        x -= 1; 
-    } 
-    return exp_x;
-}
-*/
+double log(double x){
+  double e = 2.71828;
+  double log_x = 0; 
+  while(x > e){
+    log_x++;
+    x /= e;
+  }
+  return log_x;
+}*/
 
 /**
  * Reverse engineer the pow() function (which is defined in the cmath C++ library).
