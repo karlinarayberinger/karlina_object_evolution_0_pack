@@ -108,6 +108,28 @@ int main()
     // Print the value stored in exponent to the file output stream.
     file << exponent;
 
+    // If exponent is smaller than MINIMUM_INPUT or if base is larger than MAXIMUM_INPUT, set exponent to zero.
+    if ((exponent < MINIMUM_INPUT) || (exponent > MAXIMUM_INPUT)) exponent = 0;
+
+    // Print "exponent := {exponent}." to the command line terminal.
+    std::cout << "\n\nexponent := " << exponent << ".";
+
+    // Print "exponent := {exponent}." to the file output stream.
+    file << "\n\nexponent := " << exponent << ".";
+
+    /***************************************************************/
+    /* STEP_2: Output the value returned by power(base, exponent). */
+    /***************************************************************/
+
+    // Compute base raised to the power of exponent and save the value obtained by that computation in result.
+    result = power(base, exponent);
+
+    // Print "result := power(base, exponent) = power({base}, {exponent}) = {result}." to the command line terminal.
+    std::cout << "\n\nresult := power(base, exponent) = power(" << base << ", " << exponent << ") = " << result << ".";
+
+    // Print "result := power(base, exponent) = power({base}, {exponent}) = {result}." to the file output stream.
+    file << "\n\nresult := power(base, exponent) = power(" << base << ", " << exponent << ") = " << result << ".";
+
     // Print a closing message to the command line terminal.
     std::cout << "\n\n--------------------------------";
     std::cout << "\nEND OF PROGRAM";
