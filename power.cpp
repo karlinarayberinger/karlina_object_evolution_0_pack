@@ -15,8 +15,8 @@
 /* function prototypes */
 unsigned long long int compute_factorial_of_N_using_iteration(int N);
 long double eulers_number_approximation(int N);
-long double natural_log(float x);
-long double exponential(float x);
+long double log(float x);
+long double exp(float x);
 long double power(float base, float exponent);
 
 /**
@@ -67,6 +67,7 @@ int main()
 
     // temp tests
     std::cout << "\n\neulers_number_approximation(65) := " << eulers_number_approximation(65) << ".";
+    std::cout << "\n\nlog(5) := " << log(5) << ".";
     std::cout << "\n\n";
 
     /***********************************/
@@ -251,8 +252,9 @@ long double eulers_number_approximation(int N)
  */
 long double log(float x)
 {
-    long double e = eulers_number_approximation(65);
-    long double log_x = 0; 
+    double e = (double) eulers_number_approximation(65);
+    double log_x = 0; 
+    x = (double) x;
     if ((x < MINIMUM_INPUT) || (x > MAXIMUM_INPUT)) x = 0;
     while(x > e)
     {
@@ -279,7 +281,7 @@ long double log(float x)
  * 
  * Assume that x is a real number which is no smaller than MINIMUM_INPUT and no larger than MAXIMUM_INPUT.
  */
-long double exponential(float x)
+long double exp(float x)
 {
     long double e = eulers_number_approximation(65);
     double exp_x = 1; 
@@ -314,5 +316,5 @@ long double exponential(float x)
  */
 long double power(float base, float exponent) 
 {
-    return exponential(natural_log(base) * exponent);
+    return exp(log(base) * exponent);
 }
