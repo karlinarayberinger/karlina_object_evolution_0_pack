@@ -243,7 +243,7 @@ long double eulers_number_approximation(int N)
  * ln(x) = y. // power(e, y) = x.
  * 
  * Natural Log Examples: 
- * ln(5) = ~1.60944. // power(e, 5) = ~1.60944.
+ * ln(5) = (approximately) 1.60944. // power(e, (approximately) 1.60944) = 5.
  * 
  * The value returned by this function represents the number of times the input value was divided by e.
  * 
