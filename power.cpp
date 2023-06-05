@@ -16,7 +16,7 @@
 unsigned long long int compute_factorial_of_N_using_iteration(int N);
 long double eulers_number_approximation(int N);
 long double natural_log(float x);
-double exp(float x);
+long double exponential(float x);
 
 
 bool is_whole_number(double input);
@@ -114,11 +114,35 @@ long double natural_log(float x);
 {
     long double e = eulers_number_approximation(65);
     long double log_x = 0; 
-    while(x > e){
+    if ((x < MINIMUM_INPUT) || (x > MAXIMUM_INPUT)) x = 0;
+    while(x > e)
+    {
         log_x += 1;
         x /= e;
     }
     return log_x;
+}
+
+/**
+ * This function computes the exponential of some real number x
+ * by iteratively multiplying an output exp_x value by e (and e is the base of natural log)
+ * until x is zero. 
+ * 
+ * The value returned by this function represents the number of times e was multiplied by itself.
+ * 
+ * Assume that x is a real number which is no smaller than MINIMUM_INPUT and no larger than MAXIMUM_INPUT.
+ */
+long double exponential(float x)
+{
+    long double e = eulers_number_approximation(65);
+    double exp_x = 1; 
+    if ((x < MINIMUM_INPUT) || (x > MAXIMUM_INPUT)) x = 0;
+    while(x > 0)
+    { 
+        exp_x *= e; 
+        x--; 
+    } 
+    return exp_x;
 }
 
 /**
