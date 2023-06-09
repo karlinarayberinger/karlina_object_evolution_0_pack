@@ -15,7 +15,7 @@
 
 /* function prototypes */
 bool is_whole_number(double d);
-double ln(double x);
+// double naturalLog(double value);
 //double power(double base, double exponent);
 
 int main() {
@@ -27,7 +27,7 @@ int main() {
     std::cout << "\n\nis_whole_number(9) = " <<  is_whole_number(3) << ".";
     std::cout << "\n\nis_whole_number(12.008) = " <<  is_whole_number(0.125) << ".";
     */
-    std::cout << "\n\nln(8) = " <<  ln(8) << ".";
+    std::cout << "\n\nnaturalLog(8) = " <<  naturalLog(8) << ".";
     return 0;
 }
 
@@ -36,26 +36,29 @@ bool is_whole_number(double d)
     return (d == (long int)d); 
 }
 
-//Taylor series convergence method to calculate natural log of a number
-double ln(double x)
+/*****************************************************************************
+ * Power Rule of Natural Logarithms: ln(x ^ y) = y * ln(x)
+ *****************************************************************************/
+
+// This function uses an algorithm to calculate the natural log of a number
+// this function does not work.
+/*
+double naturalLog(double value)
 {
-    double term = (x - 1) / (x + 1);
-    double temp = term;
-    double sum = term;
-    double epsilon = 0.000000001;
-         
-    int i = 3;
-    while(true)
+    double result = 0.0; // This value will hold the natural log result
+
+    // Calculate the natural log using a Taylor Series.
+    // The series is truncated after 15 terms.
+    for(int i = 1; i <= 15; i++)
     {
-        temp = temp * (x - 1) / (x + 1);
-        temp *= term * term;
-        sum += temp / (i * i);
-        if(fabs(temp / (i * i)) < epsilon)
-            break;
-        i += 2;
+        double numerator = pow(-1, i - 1) * pow(value - 1, i);
+        double denominator = i * pow(value, i);
+        result += numerator / denominator; 
     }
-    return (sum * 2);
-}
+
+    // Return the result
+    return result;
+}*/
 
 /**
  * Program Entry Point 
