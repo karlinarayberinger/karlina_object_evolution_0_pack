@@ -15,7 +15,7 @@
 
 /* function prototypes */
 bool is_whole_number(double d);
-// double naturalLog(double value);
+double naturalLog(double value);
 //double power(double base, double exponent);
 
 int main() {
@@ -39,6 +39,11 @@ bool is_whole_number(double d)
 /*****************************************************************************
  * Power Rule of Natural Logarithms: ln(x ^ y) = y * ln(x)
  *****************************************************************************/
+
+double naturalLog(double value)
+{
+    return log(value);
+}
 
 // This function uses an algorithm to calculate the natural log of a number
 // this function does not work.
