@@ -1,7 +1,7 @@
 /**
  * file: power.cpp
  * type: C++ (source file)
- * date: 05_JUNE_2023
+ * date: 09_JUNE_2023
  * author: karbytes
  * license: PUBLIC_DOMAIN
  */
@@ -9,26 +9,52 @@
 /* preprocessing directives */
 #include <iostream> // command line input and command line output operations
 #include <fstream> // file input and file output operations
+#include <cmath> // just for fabs, will remove after absolute value function is added
 #define MAXIMUM_INPUT 100 // constant which represents maximum value of base and maximum value of exponent.
 #define MINIMUM_INPUT -100 // constant which represents minimum value of base and minimum value of exponent.
 
 /* function prototypes */
 bool is_whole_number(double d);
+double ln(double x);
 //double power(double base, double exponent);
 
 int main() {
+    /*
     std::cout << "\n\nis_whole_number(3.3) = " <<  is_whole_number(3.3) << ".";
     std::cout << "\n\nis_whole_number(3) = " <<  is_whole_number(3) << ".";
     std::cout << "\n\nis_whole_number(0.125) = " <<  is_whole_number(0.125) << ".";
     std::cout << "\n\nis_whole_number(-6) = " <<  is_whole_number(3.3) << ".";
     std::cout << "\n\nis_whole_number(9) = " <<  is_whole_number(3) << ".";
     std::cout << "\n\nis_whole_number(12.008) = " <<  is_whole_number(0.125) << ".";
+    */
+    std::cout << "\n\nln(8) = " <<  ln(8) << ".";
     return 0;
 }
 
 bool is_whole_number(double d)
 {
     return (d == (long int)d); 
+}
+
+//Taylor series convergence method to calculate natural log of a number
+double ln(double x)
+{
+    double term = (x - 1) / (x + 1);
+    double temp = term;
+    double sum = term;
+    double epsilon = 0.000000001;
+         
+    int i = 3;
+    while(true)
+    {
+        temp = temp * (x - 1) / (x + 1);
+        temp *= term * term;
+        sum += temp / (i * i);
+        if(fabs(temp / (i * i)) < epsilon)
+            break;
+        i += 2;
+    }
+    return (sum * 2);
 }
 
 /**
