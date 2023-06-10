@@ -11,6 +11,9 @@
 #include <cmath>
 
 // function prototypes
+bool is_whole_number(double x);
+bool is_even_number(double x);
+double absolute_value(double x);
 double power(double base, double exponent);
 
 /**
@@ -38,12 +41,31 @@ int main()
 }
 
 /**
+ * If x is determined to be a whole number, return true.
+ * Otherwise, return false.
+ */
+bool is_whole_number(double x)
+{
+    return (x == (long int) x); 
+}
+
+/**
+ * Return the absolute value of a real number input, x.
+ */
+double absolute_value(double x)
+{
+    if (x < 0) return -1 * x;
+    return x;
+}
+
+/**
  * Reverse engineer the cmath pow() function 
  * using the following property of natural logarithms:
  * 
  * ln(x ^ y) = y * ln(x)
  * 
- * A relevant property of logarithms in general is the following:
+ * A potentially useful property of logarithms in general 
+ * is the following:
  * 
  * For a log of any positive number base, b,
  * log(x) = ln(x) / ln(b).
@@ -64,6 +86,23 @@ int main()
  */
 double power(double base, double exponent)
 {
+    double output = 1.0;
+    if (is_whole_number(base) && is_whole_number(exponent) && (exponent > 0))
+    {
+        while (exponent > 0) 
+        {
+            output *= base;
+            exponent -= 1;
+        }
+        return output;
+    }
+    /*
+    if (base != absolute_value(base))
+    {
+        output = exp(log(absolute_value(base)) * exponent);
+    }
     // Return e ^ (ln(base) * exponent).
     return exp(log(base) * exponent);
+    */
+    return 666;
 }
