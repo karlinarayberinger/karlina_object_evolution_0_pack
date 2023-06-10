@@ -1,7 +1,7 @@
 /**
  * file: karbytes_test.cpp
  * type: C++ (source file)
- * date: 09_JUNE_2023
+ * date: 10_JUNE_2023
  * author: karbytes
  * license: PUBLIC_DOMAIN
  */
@@ -70,9 +70,11 @@ double absolute_value(double x)
 
 /**
  * Reverse engineer the cmath pow() function 
- * using the following property of natural logarithms:
+ * using the following properties of natural logarithms:
  * 
- * ln(x ^ y) = y * ln(x)
+ * ln(x ^ y) = y * ln(x).
+ * 
+ * ln(e ^ x) = x. // e is approximately Euler's Number.
  * 
  * A potentially useful property of logarithms in general 
  * is the following:
@@ -81,8 +83,7 @@ double absolute_value(double x)
  * log(x) = ln(x) / ln(b).
  * 
  * Note that the base of the logarithmic function 
- * used by the cmath log() function is 
- * (approximately) Euler's Number.
+ * used by the cmath log() function is e.
  * 
  * Hence, log(x) is approximately the 
  * natural log of x (i.e. ln(x)).
@@ -140,13 +141,6 @@ double power(double base, double exponent)
             return 1 / output;
         }
     }
-    /*
-    if (base < 0) 
-    {
-        output = exp(log(absolute_value(base)) * exponent);
-        if (is_even_number(exponent)) return output;
-        else return -1 * output;
-    }
-    */
     return exp(log(base) * exponent); // Return e ^ (ln(base) * exponent).
+    // return -666; // Technically this line of code should never be executed.
 }
