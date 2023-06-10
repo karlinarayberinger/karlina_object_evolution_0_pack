@@ -98,10 +98,20 @@ double absolute_value(double x)
  * 
  * Hence, exp(x) is approcimately 
  * x ^ e (where e is approximately Euler's Number).
+ * 
+ * Note that any number raised to the power of 0 is 1.
+ * 
+ * Note that any number, x, raised to the power of 1 is x.
+ * 
+ * Note that any real number, x, 
+ * raised to the power of a negative exponent, y, 
+ * is 1 / (x ^ -y).
  */
 double power(double base, double exponent)
 {
     double output = 1.0;
+    if (exponent == 0) return 1; 
+    if (exponent == 1) return base;
     if (is_whole_number(exponent) && (exponent > 0))
     {
         while (exponent > 0) 
@@ -116,7 +126,7 @@ double power(double base, double exponent)
     {
         output = exp(log(absolute_value(base)) * exponent);
        if (exponent )
-    }
+    }*/
     /*
     // Return e ^ (ln(base) * exponent).
     return exp(log(base) * exponent);
