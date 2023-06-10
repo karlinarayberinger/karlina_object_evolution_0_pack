@@ -40,7 +40,10 @@ int main()
     std::cout << "\n\nis_even_number(24) = " << is_even_number(24) << ".";
     std::cout << "\n\nis_even_number(23) = " << is_even_number(23) << ".";
     std::cout << "\n\nis_even_number(0) = " << is_even_number(0) << ".";
-    std::cout << "\n\nis_even_number(-1) = " << is_even_number(24) << ".";
+    std::cout << "\n\nis_even_number(-1) = " << is_even_number(-1) << ".";
+    std::cout << "\n\nis_even_number(-2) = " << is_even_number(-2) << ".";
+    std::cout << "\n\nis_even_number(2.4) = " << is_even_number(2.4) << ".";
+    std::cout << "\n\nis_even_number(2.0) = " << is_even_number(2.0) << ".";
 
     // program exit point
     return 0;
@@ -61,7 +64,8 @@ bool is_whole_number(double x)
  */
 bool is_even_number(double x)
 {
-    return (is_whole_number(x) && (0 == (x % 2)));
+    if (!is_whole_number(x)) return false;
+    return (0 == ((long int) x % 2));
 }
 
 /**
@@ -130,6 +134,15 @@ double power(double base, double exponent)
             exponent -= 1;
         }
         return output;
+    }
+    if (is_whole_number(exponent) && (exponent < 0))
+    {
+        while (exponent > 0) 
+        {
+            output *= base;
+            exponent -= 1;
+        }
+        return 1 / output;
     }
     /*
     if (base < 0) 
