@@ -99,13 +99,23 @@ double absolute_value(double x)
  * Hence, exp(x) is approcimately 
  * x ^ e (where e is approximately Euler's Number).
  * 
- * Note that any number raised to the power of 0 is 1.
+ * Note that any number, x, raised to the power of 0 is 1.
+ * In more succinct terms, x ^ 0 = 1.
  * 
  * Note that any number, x, raised to the power of 1 is x.
+ * In more succinct terms, x ^ 1 = x.
+ * 
+ * Note that any real number, x, 
+ * raised to the power of a positive whole number exponent, y, 
+ * is x multiplied by itself y times.
+ * For example, if x is 2 and y is 3, 
+ * 2 ^ 3 = power(2,3) = 2 * 2 * 2 = 8.
  * 
  * Note that any real number, x, 
  * raised to the power of a negative exponent, y, 
  * is 1 / (x ^ -y).
+ * For example, if x is 2 and y is -3,
+ * 2 ^ -3 = power(2,-3) = 1 / (2 * 2 * 2) = 1/8 = 0.125.
  */
 double power(double base, double exponent)
 {
