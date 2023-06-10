@@ -141,6 +141,7 @@ double power(double base, double exponent)
             return 1 / output;
         }
     }
-    return exp(log(base) * exponent); // Return e ^ (ln(base) * exponent).
-    // return -666; // Technically this line of code should never be executed.
+    if (exponent > 0) return exp(log(base) * exponent); // Return e ^ (ln(base) * exponent).
+    output = exp(log(base) * absolute_value(exponent));
+    return 1 / output;
 }
