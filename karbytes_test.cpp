@@ -117,7 +117,8 @@ double power(double base, double exponent)
     double output = 1.0;
     if (exponent == 0) return 1; 
     if (exponent == 1) return base;
-    if (is_whole_number(exponent) && (absolute_value(exponent) > 0))
+    if ((base == 0) && (exponent < 0)) return -666; // Technically 0 raised to the power of some negative exponent is undefined (i.e. not a number).
+    if (is_whole_number(exponent))
     {
         if (exponent > 0)
         {
@@ -143,11 +144,9 @@ double power(double base, double exponent)
     if (base < 0) 
     {
         output = exp(log(absolute_value(base)) * exponent);
-       if (exponent )
-    }*/
-    /*
-    // Return e ^ (ln(base) * exponent).
-    return exp(log(base) * exponent);
+        if (is_even_number(exponent)) return output;
+        else return -1 * output;
+    }
     */
-    return 666;
+    return exp(log(base) * exponent); // Return e ^ (ln(base) * exponent).
 }
