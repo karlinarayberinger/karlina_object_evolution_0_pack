@@ -24,6 +24,8 @@ int main()
     // Declare required variables.
     double base, exponent, result;
 
+    std::cout << "\n\npow(0.5,-0,5) = " << pow(0.5, -0.5) << ".";
+
     // Get user input.
     std::cout << "\n\nInput Base: ";
     std::cin >> base;
@@ -141,7 +143,9 @@ double power(double base, double exponent)
             return 1 / output;
         }
     }
-    if (exponent > 0) return exp(log(base) * exponent); // Return e ^ (ln(base) * exponent).
-    output = exp(log(base) * absolute_value(exponent));
-    return 1 / output;
+    if (exponent > 0) return exp(log(base) * exponent); // Return e ^ (ln(base) * exponent). For example, power(0.5,0.5) outputs (approximately) 0.707107 (which is mathematically correct).
+    std::cout << "\n\nthis line has been reached\n\n";
+    return 1.0 / pow(base, absolute_value(exponent));
+    //return pow(base,exponent); // due to the fact that exp(log(0.5) * -0.5) evaluates to 1.41421 (approximately) instead of the mathematically correct answer 2.
+    // https://stackoverflow.com/questions/4518011/algorithm-for-powfloat-float
 }
