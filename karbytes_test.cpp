@@ -24,7 +24,6 @@ int main()
     // Declare required variables.
     double base, exponent, result;
 
-    /*
     // Get user input.
     std::cout << "\n\nInput Base: ";
     std::cin >> base;
@@ -36,14 +35,6 @@ int main()
 
     // Output result.
     std::cout << "\n\nResult is: " << result << "\n\n";
-    */
-    std::cout << "\n\nis_even_number(24) = " << is_even_number(24) << ".";
-    std::cout << "\n\nis_even_number(23) = " << is_even_number(23) << ".";
-    std::cout << "\n\nis_even_number(0) = " << is_even_number(0) << ".";
-    std::cout << "\n\nis_even_number(-1) = " << is_even_number(-1) << ".";
-    std::cout << "\n\nis_even_number(-2) = " << is_even_number(-2) << ".";
-    std::cout << "\n\nis_even_number(2.4) = " << is_even_number(2.4) << ".";
-    std::cout << "\n\nis_even_number(2.0) = " << is_even_number(2.0) << ".";
 
     // program exit point
     return 0;
@@ -126,23 +117,27 @@ double power(double base, double exponent)
     double output = 1.0;
     if (exponent == 0) return 1; 
     if (exponent == 1) return base;
-    if (is_whole_number(exponent) && (exponent > 0))
+    if (is_whole_number(exponent) && (absolute_value(exponent) > 0))
     {
-        while (exponent > 0) 
+        if (exponent > 0)
         {
-            output *= base;
-            exponent -= 1;
+            while (exponent > 0) 
+            {
+                output *= base;
+                exponent -= 1;
+            }
+            return output;
         }
-        return output;
-    }
-    if (is_whole_number(exponent) && (exponent < 0))
-    {
-        while (exponent > 0) 
+        else 
         {
-            output *= base;
-            exponent -= 1;
+            exponent = absolute_value(exponent);
+            while (exponent > 0)
+            {
+                output *= base;
+                exponent -= 1;
+            }
+            return 1 / output;
         }
-        return 1 / output;
     }
     /*
     if (base < 0) 
