@@ -60,16 +60,20 @@ int main()
 
     // Print an opening message to the command line terminal.
     std::cout << "\n\n--------------------------------";
-    std::cout << "\nSTART OF PROGRAM";
-    std::cout << "\n--------------------------------";
+    std::cout << "\nSTART OF PROGRAM\n";
 
     // Print an opening message to the file output stream.
     file << "--------------------------------";
-    file << "\nSTART OF PROGRAM";
-    file << "\n--------------------------------";
+    file << "\nSTART OF PROGRAM\n";
 
     while (input_additional_values != 0)
     {
+        // Print a divider line to the command line terminal.
+        std::cout << "--------------------------------";
+
+        // Print a divider line to the file output stream.
+        file << "--------------------------------";
+
         // Prompt the user to enter a value to store in the variable named base (to the command line terminal).
         std::cout << "\n\nEnter a real number value for base which is no larger than ";
         std::cout << MAXIMUM_ABSOLUTE_VALUE_BASE;
@@ -139,16 +143,24 @@ int main()
 
         // Ask the user whether or not to continue inputing values.
         std::cout << "\n\nWould you like to continue inputing program values? (Enter 1 if YES. Enter 0 if NO): ";
+
+        // Scan the command line terminal for the most recent user input entered via keyboard to store in the variable named input_additional_values.
         std::cin >> input_additional_values;
+
+        // Print one newline character to the command line terminal.
+        std::cout << "\n";
+
+        // Print one newline character to the file output stream
+        file << "\n";
     }
 
     // Print a closing message to the command line terminal.
-    std::cout << "\n\n--------------------------------";
+    std::cout << "\n--------------------------------";
     std::cout << "\nEND OF PROGRAM";
     std::cout << "\n--------------------------------\n\n";
 
     // Print a closing message to the file output stream.
-    file << "\n\n--------------------------------";
+    file << "\n--------------------------------";
     file << "\nEND OF PROGRAM";
     file << "\n--------------------------------";
 
