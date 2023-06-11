@@ -60,17 +60,17 @@ int main()
 
     while (input_additional_values != 0)
     {
-        // Prompt the user to enter a value to store in the variable named base.
+        // Prompt the user to enter a value to store in the variable named base (to the command line terminal).
         std::cout << "\n\nEnter a real number value for base which is no larger than ";
         std::cout << MAXIMUM_ABSOLUTE_VALUE_BASE;
         std::cout << " and no smaller than ";
         std::cout << (-1 * MAXIMUM_ABSOLUTE_VALUE_BASE) << ": ";
+
+        // Print the prompt for entering a base value to the output file).
         file << "\n\nEnter a real number value for base which is no larger than ";
         file << MAXIMUM_ABSOLUTE_VALUE_BASE;
         file << " and no smaller than ";
         file << (-1 * MAXIMUM_ABSOLUTE_VALUE_BASE) << ": ";
-
-        // will continue when i get to campsite. conditions at home getting hostile.
 
         // Get user input
         std::cout << "\n\nIn: ";
