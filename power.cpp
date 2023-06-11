@@ -85,7 +85,7 @@ int main()
     file << "\n\npower(-0.25, 0.25) = " << power(-0.25, 0.25) << ".";
 
     // The following lines of code compare the cmath library pow() function and the power function defined in this program (and prints data to the command line terminal).
-    std::cout << "\n\n0.25 ^ 0.25 =  0.862. // mathematically correct equation (according to chatGPT 3.0)"; 
+    std::cout << "\n\n0.25 ^ 0.25 = 0.862. // mathematically correct equation (according to chatGPT 3.0)"; 
     std::cout << "\n\npow(0.25, 0.25) = " << pow(0.25, 0.25) << ".";
     std::cout << "\n\npower(0.25, 0.25) = " << power(0.25, 0.25) << ".";
 
