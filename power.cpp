@@ -72,6 +72,9 @@ int main()
         file << " and no smaller than ";
         file << (-1 * MAXIMUM_ABSOLUTE_VALUE_BASE) << ": ";
 
+        // Scan the command line terminal for the most recent user input entered via keyboard to store in the variable named base.
+        std::cin >> base;
+
         // Print the most recently input keyboard value to the command line terminal.
         std::cout << base;
 
@@ -89,6 +92,9 @@ int main()
         file << MAXIMUM_ABSOLUTE_VALUE_EXPONENT;
         file << " and no smaller than ";
         file << (-1 * MAXIMUM_ABSOLUTE_VALUE_EXPONENT) << ": ";
+
+        // Scan the command line terminal for the most recent user input entered via keyboard to store in the variable named exponent.
+        std::cin >> exponent;
 
         // Print the most recently input keyboard value to the command line terminal.
         std::cout << exponent;
@@ -115,11 +121,14 @@ int main()
         // Compute base to the power of exponent.
         result = power(base, exponent);
 
-        // Output result.
-        std::cout << "\n\nResult is: " << result;
+        // Print the result returned by the power function defined in this program to the command line terminal.
+        std::cout << "\n\nresult = power(base,exponent) = power(" << base << "," << exponent << ") = " << result << ".";
+
+        // Print the result returned by the power function defined in this program to the file output stream.
+        file << "\n\nresult = power(base,exponent) = power(" << base << "," << exponent << ") = " << result << ".";
 
         // Ask the user whether or not to continue inputing values.
-        std::cout << "\n\nContinue inputing program values? (Enter 1 if YES. Enter 0 if NO).";
+        std::cout << "\n\nWould you like to continue inputing program values? (Enter 1 if YES. Enter 0 if NO): ";
         std::cin >> input_additional_values;
     }
 
