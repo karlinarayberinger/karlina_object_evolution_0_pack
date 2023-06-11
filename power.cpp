@@ -262,6 +262,6 @@ double power(double base, double exponent)
             return 1 / output;
         }
     }
-    if (exponent > 0) return exp(log(base) * exponent); // Return e ^ (ln(base) * exponent). For example, power(0.5,0.5) outputs (approximately) 0.707107 (which is mathematically correct).
-    return exp(exp(log(base) * absolute_value(exponent))); // Return e ^ (e ^ (ln(base) * absolute_value(exponent))). For example, power(0.5,-0.5) outputs 2.02811 (and the mathematically correct answer is 2).
+    if (exponent > 0) return exp(log(base) * exponent); // Return e ^ (ln(base) * exponent). 
+    return exp(exp(log(base) * absolute_value(exponent))); // Return e ^ (e ^ (ln(base) * absolute_value(exponent))).
 }
