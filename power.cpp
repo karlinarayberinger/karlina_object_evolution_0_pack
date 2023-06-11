@@ -1,205 +1,144 @@
 /**
  * file: power.cpp
  * type: C++ (source file)
- * date: 09_JUNE_2023
+ * date: 11_JUNE_2023
  * author: karbytes
  * license: PUBLIC_DOMAIN
  */
 
 /* preprocessing directives */
-#include <iostream> // command line input and command line output operations
-#include <fstream> // file input and file output operations
-#include <cmath> // just for fabs, will remove after absolute value function is added
-#define MAXIMUM_INPUT 100 // constant which represents maximum value of base and maximum value of exponent.
-#define MINIMUM_INPUT -100 // constant which represents minimum value of base and minimum value of exponent.
+#include <iostream> // command line user interface input and output
+#include <fstream> // file input and output
+#include <cmath> // exp() and log() functions
 
 /* function prototypes */
-bool is_whole_number(double d);
-double naturalLog(double value);
+bool is_whole_number(double x);
+double absolute_value(double x);
 double power(double base, double exponent);
 
-int main() {
-    /*
-    std::cout << "\n\nis_whole_number(3.3) = " <<  is_whole_number(3.3) << ".";
-    std::cout << "\n\nis_whole_number(3) = " <<  is_whole_number(3) << ".";
-    std::cout << "\n\nis_whole_number(0.125) = " <<  is_whole_number(0.125) << ".";
-    std::cout << "\n\nis_whole_number(-6) = " <<  is_whole_number(3.3) << ".";
-    std::cout << "\n\nis_whole_number(9) = " <<  is_whole_number(3) << ".";
-    std::cout << "\n\nis_whole_number(12.008) = " <<  is_whole_number(0.125) << ".";
-    */
-    std::cout << "\n\nnaturalLog(8) = " <<  naturalLog(8) << ".";
-    return 0;
-}
-
-bool is_whole_number(double d)
+/**
+ * program entry point 
+ */
+int main()
 {
-    return (d == (long int)d); 
-}
+    // Declare required variables.
+    double base = 0.0, exponent = 0.0, result = 0.0;
+    int input_additional_values = 1;
 
-/*****************************************************************************
- * Power Rule of Natural Logarithms: ln(x ^ y) = y * ln(x)
- *****************************************************************************/
-
-/*****************************************************************************
- * A Property of Natural Logarithms: ln(e ^ x) = x
- *****************************************************************************/
-
-double naturalLog(double value)
-{
-    return log(value);
-}
-
-double power(base, exponent) 
-{
-    return 0;
-}
-
-// This function uses an algorithm to calculate the natural log of a number
-// this function does not work.
-/*
-double naturalLog(double value)
-{
-    double result = 0.0; // This value will hold the natural log result
-
-    // Calculate the natural log using a Taylor Series.
-    // The series is truncated after 15 terms.
-    for(int i = 1; i <= 15; i++)
+    while (input_additional_values != 0)
     {
-        double numerator = pow(-1, i - 1) * pow(value - 1, i);
-        double denominator = i * pow(value, i);
-        result += numerator / denominator; 
+        // Get user input
+        std::cout << "\n\nInput Base: ";
+        std::cin >> base;
+        std::cout << "\n\nInput Exponent: ";
+        std::cin >> exponent;
+
+        // Compute base to the power of exponent.
+        result = power(base, exponent);
+
+        // Output result.
+        std::cout << "\n\nResult is: " << result;
+
+        // Ask the user whether or not to continue inputing values.
+        std::cout << "\n\nContinue inputing program values? (Enter 0 if YES. Enter 1 if NO).";
+        std::cin >> input_additional_values;
     }
 
-    // Return the result
-    return result;
-}*/
-
-/**
- * Program Entry Point 
- */
-/*
-int main() 
-{
-    // Declare a file output stream object named file.
-    std::ofstream file;
-
-    // Declare three double type variables named base, exponent, and result.
-    double base, exponent, result;
-
-    // Set the number of digits of floating-point numbers which are printed to the command line terminal to 100 digits.
-    std::cout.precision(100);
-
-    // Set the number of digits of floating-point numbers which are printed to the file output stream to 100 digits.
-    file.precision(100);
-
-    // Open the plain-text file named power_output.txt (and create that file if it does not exist) and set that file to be overwritten with program data.
-    file.open("power_output.txt");
-
-    // Print an opening message to the command line terminal.
-    std::cout << "\n\n--------------------------------";
-    std::cout << "\nSTART OF PROGRAM";
-    std::cout << "\n--------------------------------";
-
-    // Print an opening message to the file output stream.
-    file << "--------------------------------";
-    file << "\nSTART OF PROGRAM";
-    file << "\n--------------------------------";
-
-    //************************************
-    // STEP_0: Input a value for base. 
-    //************************************
-
-    // Print "Enter a real number to store in a variable named base which is no larger than {MAXIMUM_INPUT} and no smaller than {MINIMUM_INPUT}: " to the command line terminal.
-    std::cout << "\n\nEnter a real number to store in a variable named base which is no larger than " << MAXIMUM_INPUT << " and no smaller than " << MINIMUM_INPUT << ": ";
-
-    // Print "Enter a real number to store in a variable named base which is no larger than {MAXIMUM_INPUT} and no smaller than {MINIMUM_INPUT}: " to the file output stream.
-    file << "\n\nEnter a real number to store in a variable named base which is no larger than " << MAXIMUM_INPUT << " and no smaller than " << MINIMUM_INPUT << ": ";
-
-    // Scan the command line terminal for the most recent keyboard input value and store that value in base.
-    std::cin >> base;
-
-    // Print the value stored in base to the command line terminal.
-    std::cout << base;
-
-    // Print the value stored in base to the file output stream.
-    file << base;
-
-    // If base is smaller than MINIMUM_INPUT or if base is larger than MAXIMUM_INPUT, set base to zero.
-    if ((base < MINIMUM_INPUT) || (base > MAXIMUM_INPUT)) base = 0;
-
-    // Print "base := {base}." to the command line terminal.
-    std::cout << "\n\nbase := " << base << ".";
-
-    // Print "base := {base}." to the file output stream.
-    file << "\n\nbase := " << base << ".";
-
-    //***************************************
-    // STEP_1: Input a value for exponent. 
-    //***************************************
- 
-    // Print "Enter a real number to store in a variable named exponent which is no larger than {MAXIMUM_INPUT} and no smaller than {MINIMUM_INPUT}: " to the command line terminal.
-    std::cout << "\n\nEnter a real number to store in a variable named exponent which is no larger than " << MAXIMUM_INPUT << " and no smaller than " << MINIMUM_INPUT << ": ";
-
-    // Print "Enter a real number to store in a variable named exponent which is no larger than {MAXIMUM_INPUT} and no smaller than {MINIMUM_INPUT}: " to the file output stream.
-    file << "\n\nEnter a real number to store in a variable named exponent which is no larger than " << MAXIMUM_INPUT << " and no smaller than " << MINIMUM_INPUT << ": ";
-
-    // Scan the command line terminal for the most recent keyboard input value and store that value in exponent.
-    std::cin >> exponent;
-
-    // Print the value stored in exponent to the command line terminal.
-    std::cout << exponent;
-
-    // Print the value stored in exponent to the file output stream.
-    file << exponent;
-
-    // If exponent is smaller than MINIMUM_INPUT or if base is larger than MAXIMUM_INPUT, set exponent to zero.
-    if ((exponent < MINIMUM_INPUT) || (exponent > MAXIMUM_INPUT)) exponent = 0;
-
-    // Print "exponent := {exponent}." to the command line terminal.
-    std::cout << "\n\nexponent := " << exponent << ".";
-
-    // Print "exponent := {exponent}." to the file output stream.
-    file << "\n\nexponent := " << exponent << ".";
-
-    //***************************************************************
-    // STEP_2: Output the value returned by power(base, exponent). 
-    //***************************************************************
-
-    // Compute base raised to the power of exponent and save the value obtained by that computation in result.
-    result = power(base, exponent);
-
-    // Print "result := power(base, exponent) = power({base}, {exponent}) = {result}." to the command line terminal.
-    std::cout << "\n\nresult := power(base, exponent) = power(" << base << ", " << exponent << ") = " << result << ".";
-
-    // Print "result := power(base, exponent) = power({base}, {exponent}) = {result}." to the file output stream.
-    file << "\n\nresult := power(base, exponent) = power(" << base << ", " << exponent << ") = " << result << ".";
-
-    // Print a closing message to the command line terminal.
-    std::cout << "\n\n--------------------------------";
-    std::cout << "\nEND OF PROGRAM";
-    std::cout << "\n--------------------------------\n\n";
-
-    // Print a closing message to the file output stream.
-    file << "\n\n--------------------------------";
-    file << "\nEND OF PROGRAM";
-    file << "\n--------------------------------";
-
-    // Close the file output stream.
-    file.close();
-
-    // Exit the program.
+    // program exit point
     return 0;
-}*/
+}
 
 /**
+ * If x is determined to be a whole number, return true.
+ * Otherwise, return false.
  */
-/*
+bool is_whole_number(double x)
+{
+    return (x == (long int) x); 
+}
+
+/**
+ * Return the absolute value of a real number input, x.
+ */
+double absolute_value(double x)
+{
+    if (x < 0) return -1 * x;
+    return x;
+}
+
+/**
+ * Reverse engineer the cmath pow() function 
+ * using the following properties of natural logarithms:
+ * 
+ * ln(x ^ y) = y * ln(x).
+ * 
+ * ln(e ^ x) = x. // e is approximately Euler's Number.
+ * 
+ * A potentially useful property of logarithms in general 
+ * is the following:
+ * 
+ * For a log of any positive number base, b,
+ * log(x) = ln(x) / ln(b).
+ * 
+ * Note that the base of the logarithmic function 
+ * used by the cmath log() function is e.
+ * 
+ * Hence, log(x) is approximately the 
+ * natural log of x (i.e. ln(x)).
+ * 
+ * Note that the base of the exponential function
+ * used by the cmath exp() function is
+ * (approximately) Euler's Number.
+ * 
+ * Hence, exp(x) is approcimately 
+ * x ^ e (where e is approximately Euler's Number).
+ * 
+ * Note that any number, x, raised to the power of 0 is 1.
+ * In more succinct terms, x ^ 0 = 1.
+ * 
+ * Note that any number, x, raised to the power of 1 is x.
+ * In more succinct terms, x ^ 1 = x.
+ * 
+ * Note that any real number, x, 
+ * raised to the power of a positive whole number exponent, y, 
+ * is x multiplied by itself y times.
+ * For example, if x is 2 and y is 3, 
+ * 2 ^ 3 = power(2,3) = 2 * 2 * 2 = 8.
+ * 
+ * Note that any real number, x, 
+ * raised to the power of a negative exponent, y, 
+ * is 1 / (x ^ -y).
+ * For example, if x is 2 and y is -3,
+ * 2 ^ -3 = power(2,-3) = 1 / (2 * 2 * 2) = 1/8 = 0.125.
+ */
 double power(double base, double exponent)
 {
+    double output = 1.0;
+    if (exponent == 0) return 1; 
+    if (exponent == 1) return base;
+    // if ((base == 0) && (exponent < 0)) return -666; // Technically 0 raised to the power of some negative exponent is undefined (i.e. not a number).
     if (is_whole_number(exponent))
     {
-        //...
+        if (exponent > 0)
+        {
+            while (exponent > 0) 
+            {
+                output *= base;
+                exponent -= 1;
+            }
+            return output;
+        }
+        else 
+        {
+            exponent = absolute_value(exponent);
+            while (exponent > 0)
+            {
+                output *= base;
+                exponent -= 1;
+            }
+            return 1 / output;
+        }
     }
-    return 0;
+    if (exponent > 0) return exp(log(base) * exponent); // Return e ^ (ln(base) * exponent). For example, power(0.5,0.5) outputs (approximately) 0.707107 (which is mathematically correct).
+    return exp(exp(log(base) * absolute_value(exponent))); // Return e ^ (e ^ (ln(base) * absolute_value(exponent))). For example, power(0.5,-0.5) outputs 2.02811 (and the mathematically correct answer is 2).
 }
-*/
