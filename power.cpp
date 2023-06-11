@@ -65,34 +65,64 @@ int main()
     file << "\n\npower(base, exponent) = base ^ exponent. // ideal equivalence";
 
     // The following lines of code compare the cmath library pow() function and the power function defined in this program (and prints data to the command line terminal).
-    std::cout << "\n\n0.5 ^ -0.5 = 2. // mathematically correct equation (according to chatGPT 3.0)";
+    std::cout << "\n\n0.5 ^ -0.5 = 0.70710678118. // mathematically correct equation (according to chatGPT 3.0)";
+    std::cout << "\n\n0.5 ^ -0.5 = 1.41421356237. // mathematically correct equation (according to Google)";
     std::cout << "\n\npow(0.5, -0.5) = " << pow(0.5, -0.5) << ".";
     std::cout << "\n\npower(0.5, -0.5) = " << power(0.5, -0.5) << ".";
 
     // The following lines of code compare the cmath library pow() function and the power function defined in this program (and prints data to the file output stream).
-    file << "\n\n0.5 ^ -0.5 = 2. // mathematically correct equation (according to chatGPT 3.0)";
+    file << "\n\n0.5 ^ -0.5 = 0.70710678118. // mathematically correct equation (according to chatGPT 3.0)";
+    file << "\n\n0.5 ^ -0.5 = 1.41421356237. // mathematically correct equation (according to Google)";
     file << "\n\npow(0.5, -0.5) = " << pow(0.5, -0.5) << ".";
-    file << "\n\npower(0.5,-0.5) = " << power(0.5, -0.5) << ".";
+    file << "\n\npower(0.5, -0.5) = " << power(0.5, -0.5) << ".";
 
     // The following lines of code compare the cmath library pow() function and the power function defined in this program (and prints data to the command line terminal).
-    std::cout << "\n\n-0.25 ^ 0.25 = -1.847. // mathematically correct equation (according to chatGPT 3.0)"; 
+    std::cout << "\n\n0.5 ^ 0.5 = 0.70710678118. // mathematically correct equation (according to chatGPT 3.0)";
+    std::cout << "\n\n0.5 ^ 0.5 = 0.70710678118. // mathematically correct equation (according to Google)";
+    std::cout << "\n\npow(0.5, 0.5) = " << pow(0.5, 0.5) << ".";
+    std::cout << "\n\npower(0.5, 0.5) = " << power(0.5, 0.5) << ".";
+
+    // The following lines of code compare the cmath library pow() function and the power function defined in this program (and prints data to the file output stream).
+    file << "\n\n0.5 ^ 0.5 = 0.70710678118. // mathematically correct equation (according to chatGPT 3.0)";
+    file << "\n\n0.5 ^ 0.5 = 0.70710678118. // mathematically correct equation (according to Google)";
+    file << "\n\npow(0.5, 0.5) = " << pow(0.5, 0.5) << ".";
+    file << "\n\npower(0.5, 0.5) = " << power(0.5, 0.5) << ".";
+
+    // The following lines of code compare the cmath library pow() function and the power function defined in this program (and prints data to the command line terminal).
+    std::cout << "\n\n-0.25 ^ 0.25 = -0.84370052602. // mathematically correct equation (according to chatGPT 3.0)"; 
+    std::cout << "\n\n-0.25 ^ 0.25 = -0.70710678118. // mathematically correct equation (according to Google)"; 
     std::cout << "\n\npow(-0.25, 0.25) = " << pow(-0.25, 0.25) << ".";
     std::cout << "\n\npower(-0.25, 0.25) = " << power(-0.25, 0.25) << ".";
 
     // The following lines of code compare the cmath library pow() function and the power function defined in this program (and prints data to the file output stream).
-    file << "\n\n-0.25 ^ 0.25 = -1.847. // mathematically correct equation (according to chatGPT 3.0)"; 
+    file << "\n\n-0.25 ^ 0.25 = -0.84370052602. // mathematically correct equation (according to chatGPT 3.0)"; 
+    file << "\n\n-0.25 ^ 0.25 = -0.70710678118. // mathematically correct equation (according to Google)"; 
     file << "\n\npow(-0.25, 0.25) = " << pow(-0.25, 0.25) << ".";
     file << "\n\npower(-0.25, 0.25) = " << power(-0.25, 0.25) << ".";
 
     // The following lines of code compare the cmath library pow() function and the power function defined in this program (and prints data to the command line terminal).
-    std::cout << "\n\n0.25 ^ 0.25 = 0.862. // mathematically correct equation (according to chatGPT 3.0)"; 
+    std::cout << "\n\n0.25 ^ 0.25 = 0.92016449499. // mathematically correct equation (according to chatGPT 3.0)"; 
+    std::cout << "\n\n0.25 ^ 0.25 = 0.70710678118. // mathematically correct equation (according to Google)"; 
     std::cout << "\n\npow(0.25, 0.25) = " << pow(0.25, 0.25) << ".";
     std::cout << "\n\npower(0.25, 0.25) = " << power(0.25, 0.25) << ".";
 
     // The following lines of code compare the cmath library pow() function and the power function defined in this program (and prints data to the file output stream).
-    file << "\n\n0.25 ^ 0.25 =  0.862. // mathematically correct equation (according to chatGPT 3.0)"; 
+    file << "\n\n0.25 ^ 0.25 = 0.92016449499. // mathematically correct equation (according to chatGPT 3.0)"; 
+    file << "\n\n0.25 ^ 0.25 = 0.70710678118. // mathematically correct equation (according to Google)"; 
     file << "\n\npow(0.25, 0.25) = " << pow(0.25, 0.25) << ".";
     file << "\n\npower(0.25, 0.25) = " << power(0.25, 0.25) << ".";
+
+    // The following lines of code compare the cmath library pow() function and the power function defined in this program (and prints data to the command line terminal).
+    std::cout << "\n\n0.5 ^ -1 = 0.5. // mathematically correct equation (according to chatGPT 3.0)"; 
+    std::cout << "\n\n0.5 ^ -1 = 2. // mathematically correct equation (according to Google)"; 
+    std::cout << "\n\npow(0.5, -1) = " << pow(0.5, -1) << ".";
+    std::cout << "\n\npower(0.5, -1) = " << power(0.5, -1) << ".";
+
+    // The following lines of code compare the cmath library pow() function and the power function defined in this program (and prints data to the file output stream).
+    file << "\n\n0.5 ^ -1 = 0.5. // mathematically correct equation (according to chatGPT 3.0)"; 
+    file << "\n\n0.5 ^ -1 = 2. // mathematically correct equation (according to Google)"; 
+    file << "\n\npow(0.5, -1) = " << pow(0.5, -1) << ".";
+    file << "\n\npower(0.5, -1) = " << power(0.5, -1) << ".";
 
     // Print one newline character to the command line terminal.
     std::cout << "\n\n";
