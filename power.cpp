@@ -136,10 +136,10 @@ int main()
         result = power(base, exponent);
 
         // Print the result returned by the power function defined in this program to the command line terminal.
-        std::cout << "\n\nresult = power(base,exponent) = power(" << base << "," << exponent << ") = " << result << ".";
+        std::cout << "\n\nresult = power(base,exponent) = power(" << base << "," << exponent << ") = " << base << " ^ " << exponent << " = " << result << ".";
 
         // Print the result returned by the power function defined in this program to the file output stream.
-        file << "\n\nresult = power(base,exponent) = power(" << base << "," << exponent << ") = " << result << ".";
+        file << "\n\nresult = power(base,exponent) = power(" << base << "," << exponent << ") = " << base << " ^ " << exponent << " = " << result << ".";
 
         // Ask the user whether or not to continue inputing values.
         std::cout << "\n\nWould you like to continue inputing program values? (Enter 1 if YES. Enter 0 if NO): ";
