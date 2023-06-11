@@ -38,7 +38,6 @@ int main()
     // Set the number of digits of floating-point numbers which are printed to the file output stream to 100 digits.
     file.precision(100);
 
-
     /**
      * If the file named power_output.txt does not already exist 
      * inside of the same file directory as the file named power.cpp, 
@@ -61,8 +60,20 @@ int main()
 
     while (input_additional_values != 0)
     {
+        // Prompt the user to enter a value to store in the variable named base.
+        std::cout << "\n\nEnter a real number value for base which is no larger than ";
+        std::cout << MAXIMUM_ABSOLUTE_VALUE_BASE;
+        std::cout << " and no smaller than ";
+        std::cout << (-1 * MAXIMUM_ABSOLUTE_VALUE_BASE) << ": ";
+        file << "\n\nEnter a real number value for base which is no larger than ";
+        file << MAXIMUM_ABSOLUTE_VALUE_BASE;
+        file << " and no smaller than ";
+        file << (-1 * MAXIMUM_ABSOLUTE_VALUE_BASE) << ": ";
+
+        // will continue when i get to campsite. conditions at home getting hostile.
+
         // Get user input
-        std::cout << "\n\nInput Base: ";
+        std::cout << "\n\nIn: ";
         std::cin >> base;
         std::cout << "\n\nInput Exponent: ";
         std::cin >> exponent;
