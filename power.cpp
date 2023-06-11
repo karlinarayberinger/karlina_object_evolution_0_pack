@@ -38,6 +38,16 @@ int main()
     // Set the number of digits of floating-point numbers which are printed to the file output stream to 100 digits.
     file.precision(100);
 
+    // The following lines of code compare the cmath library pow() function and the power function defined in this program (and prints data to the command line terminal).
+    std::cout << "\n\n0.5 ^ -0.5 = 2. // mathematically correct equation";
+    std::cout << "\n\npow(0.5,-0.5) = " << pow(0.5,-0.5) << ".";
+    std::cout << "\n\npower(0.5,-0.5) = " << power(0.5,-0.5) << ".";
+
+    // The following lines of code compare the cmath library pow() function and the power function defined in this program (and prints data to the file output stream).
+    file << "\n\n0.5 ^ -0.5 = 2. // mathematically correct equation";
+    file << "\n\npow(0.5,-0.5) = " << pow(0.5,-0.5) << ".";
+    file << "\n\npower(0.5,-0.5) = " << power(0.5,-0.5) << ".";
+
     /**
      * If the file named power_output.txt does not already exist 
      * inside of the same file directory as the file named power.cpp, 
