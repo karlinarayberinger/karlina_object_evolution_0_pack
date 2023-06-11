@@ -9,7 +9,6 @@
 /* preprocessing directives */
 #include <iostream> // command line user interface input and output
 #include <fstream> // file input and output
-#include <cmath> // power function (e.g. 8 = pow(2,3))
 #define MAXIMUM_N 65 // constant which represents maximum N value 
 
 /* function prototypes */
