@@ -7,8 +7,8 @@
  */
 
 /* preprocessing directives */
-#include <iostream> // command line user interface input and output
-#include <fstream> // file input and output
+#include <iostream> // standard input (std::cin), standard output (std::cout)
+#include <fstream> // file input, file output
 #include <cmath> // exp() and log() functions
 
 /* function prototypes */
