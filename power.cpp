@@ -10,6 +10,8 @@
 #include <iostream> // standard input (std::cin), standard output (std::cout)
 #include <fstream> // file input, file output
 #include <cmath> // exp() and log() functions
+#define MAXIMUM_ABSOLUTE_VALUE_BASE 100 // constant which represents maximum absolute value for base
+#define MAXIMUM_ABSOLUTE_VALUE_EXPONENT 100 // constant which represents maximum absolute value for exponent
 
 /* function prototypes */
 bool is_whole_number(double x);
@@ -21,9 +23,41 @@ double power(double base, double exponent);
  */
 int main()
 {
-    // Declare required variables.
+    // Declare a file output stream object named file.
+    std::ofstream file;
+
+    // Declare three variables for storing floating-point number values.
     double base = 0.0, exponent = 0.0, result = 0.0;
+
+    // Declare a variable for storing the program user's answer of whether or not to continue inputting values.
     int input_additional_values = 1;
+
+    // Set the number of digits of floating-point numbers which are printed to the command line terminal to 100 digits.
+    std::cout.precision(100);
+
+    // Set the number of digits of floating-point numbers which are printed to the file output stream to 100 digits.
+    file.precision(100);
+
+
+    /**
+     * If the file named power_output.txt does not already exist 
+     * inside of the same file directory as the file named power.cpp, 
+     * create a new file named power_output.txt in that directory.
+     * 
+     * Open the plain-text file named power_output.txt 
+     * and set that file to be overwritten with program data.
+     */
+    file.open("power_output.txt");
+
+    // Print an opening message to the command line terminal.
+    std::cout << "\n\n--------------------------------";
+    std::cout << "\nSTART OF PROGRAM";
+    std::cout << "\n--------------------------------";
+
+    // Print an opening message to the file output stream.
+    file << "--------------------------------";
+    file << "\nSTART OF PROGRAM";
+    file << "\n--------------------------------";
 
     while (input_additional_values != 0)
     {
@@ -40,11 +74,24 @@ int main()
         std::cout << "\n\nResult is: " << result;
 
         // Ask the user whether or not to continue inputing values.
-        std::cout << "\n\nContinue inputing program values? (Enter 0 if YES. Enter 1 if NO).";
+        std::cout << "\n\nContinue inputing program values? (Enter 1 if YES. Enter 0 if NO).";
         std::cin >> input_additional_values;
     }
 
-    // program exit point
+    // Print a closing message to the command line terminal.
+    std::cout << "\n\n--------------------------------";
+    std::cout << "\nEND OF PROGRAM";
+    std::cout << "\n--------------------------------\n\n";
+
+    // Print a closing message to the file output stream.
+    file << "\n\n--------------------------------";
+    file << "\nEND OF PROGRAM";
+    file << "\n--------------------------------";
+
+    // Close the file output stream.
+    file.close();
+
+    // Exit the program.
     return 0;
 }
 
