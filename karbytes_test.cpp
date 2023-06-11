@@ -12,7 +12,6 @@
 
 // function prototypes
 bool is_whole_number(double x);
-bool is_even_number(double x);
 double absolute_value(double x);
 double power(double base, double exponent);
 
@@ -22,21 +21,27 @@ double power(double base, double exponent);
 int main()
 {
     // Declare required variables.
-    double base, exponent, result;
+    double base = 0.0, exponent = 0.0, result = 0.0;
+    int input_additional_values = 1;
 
-    std::cout << "\n\npow(0.5,-0,5) = " << pow(0.5, -0.5) << ".";
+    while (input_additional_values != 0)
+    {
+        // Get user input
+        std::cout << "\n\nInput Base: ";
+        std::cin >> base;
+        std::cout << "\n\nInput Exponent: ";
+        std::cin >> exponent;
 
-    // Get user input.
-    std::cout << "\n\nInput Base: ";
-    std::cin >> base;
-    std::cout << "\n\nInput Exponent: ";
-    std::cin >> exponent;
+        // Compute base to the power of exponent.
+        result = power(base, exponent);
 
-    // Compute base to the power of exponent.
-    result = power(base, exponent);
+        // Output result.
+        std::cout << "\n\nResult is: " << result;
 
-    // Output result.
-    std::cout << "\n\nResult is: " << result << "\n\n";
+        // Ask the user whether or not to continue inputing values.
+        std::cout << "\n\nContinue inputing program values? (Enter 0 if YES. Enter 1 if NO).";
+        std::cin >> input_additional_values;
+    }
 
     // program exit point
     return 0;
@@ -49,16 +54,6 @@ int main()
 bool is_whole_number(double x)
 {
     return (x == (long int) x); 
-}
-
-/**
- * If x is determined to be an even number, return true.
- * Otherwise, return false.
- */
-bool is_even_number(double x)
-{
-    if (!is_whole_number(x)) return false;
-    return (0 == ((long int) x % 2));
 }
 
 /**
@@ -144,9 +139,5 @@ double power(double base, double exponent)
         }
     }
     if (exponent > 0) return exp(log(base) * exponent); // Return e ^ (ln(base) * exponent). For example, power(0.5,0.5) outputs (approximately) 0.707107 (which is mathematically correct).
-    std::cout << "\n\nthis line has been reached\n\n";
-    return exp(exp(log(base) * absolute_value(exponent))); // Return e ^ 
-    // return 1.0 / pow(base, absolute_value(exponent));
-    //return pow(base,exponent); // due to the fact that exp(log(0.5) * -0.5) evaluates to 1.41421 (approximately) instead of the mathematically correct answer 2.
-    // https://stackoverflow.com/questions/4518011/algorithm-for-powfloat-float
+    return exp(exp(log(base) * absolute_value(exponent))); // Return e ^ (e ^ (ln(base) * absolute_value(exponent))). For example, power(0.5,-0.5) outputs 2.02811 (and the mathematically correct answer is 2).
 }
