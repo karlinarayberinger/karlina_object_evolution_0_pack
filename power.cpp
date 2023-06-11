@@ -38,36 +38,6 @@ int main()
     // Set the number of digits of floating-point numbers which are printed to the file output stream to 100 digits.
     file.precision(100);
 
-    // The following lines of code compare the cmath library pow() function and the power function defined in this program (and prints data to the command line terminal).
-    std::cout << "\n\n0.5 ^ -0.5 = 2. // mathematically correct equation (according to chatGPT 3.0)";
-    std::cout << "\n\npow(0.5,-0.5) = " << pow(0.5,-0.5) << ".";
-    std::cout << "\n\npower(0.5,-0.5) = " << power(0.5,-0.5) << ".";
-
-    // The following lines of code compare the cmath library pow() function and the power function defined in this program (and prints data to the file output stream).
-    file << "\n\n0.5 ^ -0.5 = 2. // mathematically correct equation (according to chatGPT 3.0)";
-    file << "\n\npow(0.5,-0.5) = " << pow(0.5,-0.5) << ".";
-    file << "\n\npower(0.5,-0.5) = " << power(0.5,-0.5) << ".";
-
-    // The following lines of code compare the cmath library pow() function and the power function defined in this program (and prints data to the command line terminal).
-    std::cout << "\n\n-0.25 ^ 0.25 = -1.847. // mathematically correct equation (according to chatGPT 3.0)"; 
-    std::cout << "\n\npow(-0.25,0.25) = " << pow(-0.25,0.25) << ".";
-    std::cout << "\n\npower(-0.25,0.25) = " << power(-0.25,0.25) << ".";
-
-    // The following lines of code compare the cmath library pow() function and the power function defined in this program (and prints data to the file output stream).
-    file << "\n\n-0.25 ^ 0.25 = -1.847. // mathematically correct equation (according to chatGPT 3.0)"; 
-    file << "\n\npow(-0.25,0.25) = " << pow(-0.25,0.25) << ".";
-    file << "\n\npower(-0.25,0.25) = " << power(-0.25,0.25) << ".";
-
-    // The following lines of code compare the cmath library pow() function and the power function defined in this program (and prints data to the command line terminal).
-    std::cout << "\n\n0.25 ^ 0.25 =  0.862. // mathematically correct equation (according to chatGPT 3.0)"; 
-    std::cout << "\n\npow(0.25,0.25) = " << pow(0.25,0.25) << ".";
-    std::cout << "\n\npower(0.25,0.25) = " << power(0.25,0.25) << ".";
-
-    // The following lines of code compare the cmath library pow() function and the power function defined in this program (and prints data to the file output stream).
-    file << "\n\n0.25 ^ 0.25 =  0.862. // mathematically correct equation (according to chatGPT 3.0)"; 
-    file << "\n\npow(0.25,0.25) = " << pow(0.25,0.25) << ".";
-    file << "\n\npower(0.25,0.25) = " << power(0.25,0.25) << ".";
-
     /**
      * If the file named power_output.txt does not already exist 
      * inside of the same file directory as the file named power.cpp, 
@@ -80,11 +50,55 @@ int main()
 
     // Print an opening message to the command line terminal.
     std::cout << "\n\n--------------------------------";
-    std::cout << "\nSTART OF PROGRAM\n";
+    std::cout << "\nSTART OF PROGRAM";
+    std::cout << "\n--------------------------------";
 
     // Print an opening message to the file output stream.
-    file << "--------------------------------";
-    file << "\nSTART OF PROGRAM\n";
+    file << "\n\n--------------------------------";
+    file << "\nSTART OF PROGRAM";
+    file << "\n--------------------------------";
+
+    // Print some program-related data to the command line terminal.
+    std::cout << "\n\npower(base, exponent) = base ^ exponent. // ideal equivalence";
+
+    // Print some program-related data to the file output stream.
+    file << "\n\npower(base, exponent) = base ^ exponent. // ideal equivalence";
+
+    // The following lines of code compare the cmath library pow() function and the power function defined in this program (and prints data to the command line terminal).
+    std::cout << "\n\n0.5 ^ -0.5 = 2. // mathematically correct equation (according to chatGPT 3.0)";
+    std::cout << "\n\npow(0.5, -0.5) =" << pow(0.5, -0.5) << ".";
+    std::cout << "\n\npower(0.5, -0.5) = " << power(0.5, -0.5) << ".";
+
+    // The following lines of code compare the cmath library pow() function and the power function defined in this program (and prints data to the file output stream).
+    file << "\n\n0.5 ^ -0.5 = 2. // mathematically correct equation (according to chatGPT 3.0)";
+    file << "\n\npow(0.5, -0.5) = " << pow(0.5, -0.5) << ".";
+    file << "\n\npower(0.5,-0.5) = " << power(0.5, -0.5) << ".";
+
+    // The following lines of code compare the cmath library pow() function and the power function defined in this program (and prints data to the command line terminal).
+    std::cout << "\n\n-0.25 ^ 0.25 = -1.847. // mathematically correct equation (according to chatGPT 3.0)"; 
+    std::cout << "\n\npow(-0.25, 0.25) = " << pow(-0.25, 0.25) << ".";
+    std::cout << "\n\npower(-0.25, 0.25) = " << power(-0.25, 0.25) << ".";
+
+    // The following lines of code compare the cmath library pow() function and the power function defined in this program (and prints data to the file output stream).
+    file << "\n\n-0.25 ^ 0.25 = -1.847. // mathematically correct equation (according to chatGPT 3.0)"; 
+    file << "\n\npow(-0.25, 0.25) = " << pow(-0.25, 0.25) << ".";
+    file << "\n\npower(-0.25, 0.25) = " << power(-0.25, 0.25) << ".";
+
+    // The following lines of code compare the cmath library pow() function and the power function defined in this program (and prints data to the command line terminal).
+    std::cout << "\n\n0.25 ^ 0.25 =  0.862. // mathematically correct equation (according to chatGPT 3.0)"; 
+    std::cout << "\n\npow(0.25, 0.25) = " << pow(0.25, 0.25) << ".";
+    std::cout << "\n\npower(0.25, 0.25) = " << power(0.25, 0.25) << ".";
+
+    // The following lines of code compare the cmath library pow() function and the power function defined in this program (and prints data to the file output stream).
+    file << "\n\n0.25 ^ 0.25 =  0.862. // mathematically correct equation (according to chatGPT 3.0)"; 
+    file << "\n\npow(0.25, 0.25) = " << pow(0.25, 0.25) << ".";
+    file << "\n\npower(0.25, 0.25) = " << power(0.25, 0.25) << ".";
+
+    // Print one newline character to the command line terminal.
+    std::cout << "\n\n";
+
+    // Print one newline character to the file output stream
+    file << "\n\n";
 
     while (input_additional_values != 0)
     {
@@ -156,10 +170,10 @@ int main()
         result = power(base, exponent);
 
         // Print the result returned by the power function defined in this program to the command line terminal.
-        std::cout << "\n\nresult = power(base,exponent) = power(" << base << "," << exponent << ") = " << base << " ^ " << exponent << " = " << result << ".";
+        std::cout << "\n\nresult = power(base,exponent) = power(" << base << ", " << exponent << ") = " << base << " ^ " << exponent << " = " << result << ".";
 
         // Print the result returned by the power function defined in this program to the file output stream.
-        file << "\n\nresult = power(base,exponent) = power(" << base << "," << exponent << ") = " << base << " ^ " << exponent << " = " << result << ".";
+        file << "\n\nresult = power(base,exponent) = power(" << base << ", " << exponent << ") = " << base << " ^ " << exponent << " = " << result << ".";
 
         // Ask the user whether or not to continue inputing values.
         std::cout << "\n\nWould you like to continue inputing program values? (Enter 1 if YES. Enter 0 if NO): ";
