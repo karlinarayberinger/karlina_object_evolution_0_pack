@@ -10,8 +10,8 @@
 #include <iostream> // standard input (std::cin), standard output (std::cout)
 #include <fstream> // file input, file output
 #include <cmath> // exp() and log() functions
-#define MAXIMUM_ABSOLUTE_VALUE_BASE 100 // constant which represents maximum absolute value for base
-#define MAXIMUM_ABSOLUTE_VALUE_EXPONENT 100 // constant which represents maximum absolute value for exponent
+#define MAXIMUM_ABSOLUTE_VALUE_BASE 10 // constant which represents maximum absolute value for base
+#define MAXIMUM_ABSOLUTE_VALUE_EXPONENT 10 // constant which represents maximum absolute value for exponent
 
 /* function prototypes */
 bool is_whole_number(double x);
