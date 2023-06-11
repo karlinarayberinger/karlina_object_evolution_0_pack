@@ -159,7 +159,7 @@ int main()
         }
 
         // If exponent is not within the range of accepted values, set exponent to 0.
-        if ((exponent < (-1 * MAXIMUM_ABSOLUTE_VALUE_EXPONENT)) || (base > MAXIMUM_ABSOLUTE_VALUE_EXPONENT)) 
+        if ((exponent < (-1 * MAXIMUM_ABSOLUTE_VALUE_EXPONENT)) || (exponent > MAXIMUM_ABSOLUTE_VALUE_EXPONENT)) 
         {
             exponent = 0;
             std::cout << "\n\nBecause the input value for exponent was not within the range of accepted values, exponent was set to the default value of 0.";
