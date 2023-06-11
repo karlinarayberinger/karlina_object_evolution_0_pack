@@ -1,0 +1,125 @@
+--------------------------------
+START OF PROGRAM
+--------------------------------
+
+Enter a real number value for base which is no larger than 10 and no smaller than -10: 2
+
+Enter a real number value for exponent which is no larger than 10 and no smaller than -10: 3
+
+result = power(base,exponent) = power(2,3) = 2 ^ 3 = 8.
+--------------------------------
+
+Enter a real number value for base which is no larger than 10 and no smaller than -10: 2
+
+Enter a real number value for exponent which is no larger than 10 and no smaller than -10: -3
+
+result = power(base,exponent) = power(2,-3) = 2 ^ -3 = 0.125.
+--------------------------------
+
+Enter a real number value for base which is no larger than 10 and no smaller than -10: -2
+
+Enter a real number value for exponent which is no larger than 10 and no smaller than -10: 3
+
+result = power(base,exponent) = power(-2,3) = -2 ^ 3 = -8.
+--------------------------------
+
+Enter a real number value for base which is no larger than 10 and no smaller than -10: -2
+
+Enter a real number value for exponent which is no larger than 10 and no smaller than -10: 2
+
+result = power(base,exponent) = power(-2,2) = -2 ^ 2 = 4.
+--------------------------------
+
+Enter a real number value for base which is no larger than 10 and no smaller than -10: -2
+
+Enter a real number value for exponent which is no larger than 10 and no smaller than -10: 0
+
+result = power(base,exponent) = power(-2,0) = -2 ^ 0 = 1.
+--------------------------------
+
+Enter a real number value for base which is no larger than 10 and no smaller than -10: 0.5
+
+Enter a real number value for exponent which is no larger than 10 and no smaller than -10: 2
+
+result = power(base,exponent) = power(0.5,2) = 0.5 ^ 2 = 0.25.
+--------------------------------
+
+Enter a real number value for base which is no larger than 10 and no smaller than -10: 0.5
+
+Enter a real number value for exponent which is no larger than 10 and no smaller than -10: -2
+
+result = power(base,exponent) = power(0.5,-2) = 0.5 ^ -2 = 4.
+--------------------------------
+
+Enter a real number value for base which is no larger than 10 and no smaller than -10: 0.5
+
+Enter a real number value for exponent which is no larger than 10 and no smaller than -10: 0.5
+
+result = power(base,exponent) = power(0.5,0.5) = 0.5 ^ 0.5 = 0.70710678118654757273731092936941422522068023681640625.
+--------------------------------
+
+Enter a real number value for base which is no larger than 10 and no smaller than -10: 0.5
+
+Enter a real number value for exponent which is no larger than 10 and no smaller than -10: -0.5
+
+result = power(base,exponent) = power(0.5,-0.5) = 0.5 ^ -0.5 = 2.028114981647472614412208713474683463573455810546875.
+--------------------------------
+
+Enter a real number value for base which is no larger than 10 and no smaller than -10: -0.5
+
+Enter a real number value for exponent which is no larger than 10 and no smaller than -10: 0.5
+
+result = power(base,exponent) = power(-0.5,0.5) = -0.5 ^ 0.5 = -nan.
+--------------------------------
+
+Enter a real number value for base which is no larger than 10 and no smaller than -10: 0.5
+
+Enter a real number value for exponent which is no larger than 10 and no smaller than -10: 0
+
+result = power(base,exponent) = power(0.5,0) = 0.5 ^ 0 = 1.
+--------------------------------
+
+Enter a real number value for base which is no larger than 10 and no smaller than -10: 0.5
+
+Enter a real number value for exponent which is no larger than 10 and no smaller than -10: 1
+
+result = power(base,exponent) = power(0.5,1) = 0.5 ^ 1 = 0.5.
+--------------------------------
+
+Enter a real number value for base which is no larger than 10 and no smaller than -10: -0.5
+
+Enter a real number value for exponent which is no larger than 10 and no smaller than -10: 0
+
+result = power(base,exponent) = power(-0.5,0) = -0.5 ^ 0 = 1.
+--------------------------------
+
+Enter a real number value for base which is no larger than 10 and no smaller than -10: -0.5
+
+Enter a real number value for exponent which is no larger than 10 and no smaller than -10: 1
+
+result = power(base,exponent) = power(-0.5,1) = -0.5 ^ 1 = -0.5.
+--------------------------------
+
+Enter a real number value for base which is no larger than 10 and no smaller than -10: -0.5
+
+Enter a real number value for exponent which is no larger than 10 and no smaller than -10: 2
+
+result = power(base,exponent) = power(-0.5,2) = -0.5 ^ 2 = 0.25.
+--------------------------------
+
+Enter a real number value for base which is no larger than 10 and no smaller than -10: -0.25
+
+Enter a real number value for exponent which is no larger than 10 and no smaller than -10: 0.25
+
+result = power(base,exponent) = power(-0.25,0.25) = -0.25 ^ 0.25 = -nan.
+--------------------------------
+
+Enter a real number value for base which is no larger than 10 and no smaller than -10: -0.5
+
+Enter a real number value for exponent which is no larger than 10 and no smaller than -10: 0.5
+
+result = power(base,exponent) = power(-0.5,0.5) = -0.5 ^ 0.5 = -nan.
+
+--------------------------------
+END OF PROGRAM
+--------------------------------
