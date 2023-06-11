@@ -54,7 +54,7 @@ int main()
     std::cout << "\n--------------------------------";
 
     // Print an opening message to the file output stream.
-    file << "\n\n--------------------------------";
+    file << "--------------------------------";
     file << "\nSTART OF PROGRAM";
     file << "\n--------------------------------";
 
