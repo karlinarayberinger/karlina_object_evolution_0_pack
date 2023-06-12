@@ -3,29 +3,32 @@
 <hr>
 <p><span style="background:#ffff00">The <a style="background:#ff9000;color:#000000" href="https://en.wikipedia.org/wiki/C%2B%2B" target="_blank" rel="noopener">C++</a> program featured in this tutorial web page computes the approximate value of some <a style="background:#000000;color:#ff9000" href="https://karlinaobject.wordpress.com/numbers/" target="_blank" rel="noopener">real number</a> <strong>base</strong> (which the program user inputs) raised to the <strong>power</strong> of some real number <strong>exponent</strong> (which the program user also inputs). Such a mathematical operation is referred to as <a style="background:#ff9000;color:#000000" href="https://en.wikipedia.org/wiki/Exponentiation" target="_blank" rel="noopener">exponentiation</a>. The C++ program uses the <a style="background:#ff9000;color:#000000" href="https://en.wikipedia.org/wiki/Natural_logarithm" target="_blank" rel="noopener">natural logarithm</a> and the base of the natural logarithm (which is <a style="background:#000000;color:#00ff00" href="https://karlinaobject.wordpress.com/eulers_number_approximation/" target="_blank" rel="noopener">Euler&#8217;s Number</a>) to compute input base to the power of some non whole number input exponent.</span></p>
 <p><span style="background:#00ff00">To view hidden text inside of the preformatted text boxes below, scroll horizontally.</span></p>
-<pre>procedure power(base, exponent):
-    let e be approximately equal to Euler's Number.
-    let exp(x) be e raised to the power of some real number x.
-    let log(x) be the base-e logarithm of some real number x.
-    if exponent is zero: return one.
-    if exponent is one: return base.
-    if exponent is a whole number: 
-        if exponent is a positive number:
+<pre>Let base be a real number.
+Let exponent be a real number.
+Let power(base,exponent) return a real number equivalent to base raised to the power of exponent (i.e. base ^ exponent) using the following procedure:
+procedure power(base, exponent):
+    Let e be approximately equal to Euler's Number.
+    Let exp(x) be e raised to the power of some real number x.
+    Let log(x) be the base-e logarithm of some real number x.
+    If exponent is zero: return one.
+    If exponent is one: return base.
+    If exponent is a whole number: 
+        If exponent is a positive number:
             return base multiplied by base exponent times.
-        end if.
-        if exponent is a negative number:
+        End if.
+        If exponent is a negative number:
             return the reciprical of the number represented by base multiplied by base exponent times.
-        end if.
-    end if.
-    if exponent is not a whole number:
-        if exponent is a negative number:
+        End if.
+    End if.
+    If exponent is not a whole number:
+        If exponent is a negative number:
             return exp(log(base) * exponent).
-        end if.
-        if exponent is a positive number:
+        End if.
+        If exponent is a positive number:
             return exp(exp(log(base) * absolute_value(exponent))).
-        end if.
-    end if.
-end procedure.
+        End if.
+    End if.
+End procedure.
 </pre>
 <hr>
 <p><strong>SOFTWARE_APPLICATION_COMPONENTS</strong></p>
